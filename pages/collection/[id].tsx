@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Header from "../components/Header";
-import { db } from '../../firebase';
+import { db } from '../firebase';
 import { collection, query, orderBy, where } from "firebase/firestore";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Flashcard, { FlashCard } from "../components/Flashcard";

@@ -1,4 +1,4 @@
-import { db } from '../firebase';
+import { db } from './firebase';
 import { collection, query, orderBy, limit } from "firebase/firestore";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Card from './components/Card';
