@@ -2,7 +2,6 @@ import { db } from '../firebase';
 import { collection, query, orderBy, limit } from "firebase/firestore";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Card from './components/Card';
-import Page from './components/Page';
 import Header from './components/Header';
 export default function Home() {
 
