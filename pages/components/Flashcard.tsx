@@ -1,19 +1,17 @@
 import { DocumentData } from "firebase/firestore";
-import { useState } from "react";
 import styles from "../../styles/Flashcard.module.css";
 
 interface S {
-  info: DocumentData
+  info: DocumentData,
+  isFront: boolean,
+  setIsFront(isFront: boolean): void
 }
 
 export default function Flashcard(props: S): JSX.Element {
-
-  const [isFront, setIsFront] = useState(true);
-
-  const cardStyle = isFront ? "flip-card" : "flip-card-flipped";
+  const cardStyle = props.isFront ? "flip-card" : "flip-card-flipped";
 
   return (
-    <div className={styles[cardStyle]} onClick={() => setIsFront(!isFront)}>
+    <div className={styles[cardStyle]} onClick={() => props.setIsFront(!props.isFront)}>
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
           <p>
