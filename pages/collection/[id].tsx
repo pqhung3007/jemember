@@ -27,7 +27,12 @@ export default function Lesson() {
       const id = router.query.id as string;
       const thisCollection = doc(collectionRef, id);
 
-      getDoc(thisCollection).then(collection => setTitle(collection.data()?.name));
+      getDoc(thisCollection).then(collection => {
+        if (!collection.exists()) {
+          router.push('/')
+        }
+        setTitle(collection.data()?.name)
+      });
 
       fetch(id).then(
         data => {
