@@ -25,21 +25,21 @@ export default function EditFlashCard(props: S) {
 
   return (
     <div className="bg-gray-700 my-4 rounded-xl text-xl">
-      <p className="px-4 py-2 col-span-2 border-b-2 border-gray-900 font-semibold">
+      <p className="px-4 py-2 border-b-2 border-gray-900 font-semibold">
         {props.index + 1}
       </p>
-      <div className="px-4 py-6 grid grid-cols-2 gap-6">
-        <p>
+      <div className="px-4 py-6 grid lg:grid-cols-2 gap-6">
+        <p className="max-w-[100%]">
           <input type="text"
-            className="border-b bg-gray-700 focus:border-blue-500 focus:outline-none"
+            className="w-full block border-b bg-gray-700 focus:border-blue-500 focus:outline-none"
             ref={questionRef}
             onChange={update}
             value={props.info?.question}
           />
         </p>
-        <p>
+        <p className="max-w-[100%]">
           <input type="text"
-            className="border-b bg-gray-700 focus:border-blue-500 focus:outline-none"
+            className="w-full block border-b bg-gray-700 focus:border-blue-500 focus:outline-none"
             ref={answerRef}
             onChange={update}
             value={props.info?.answer}

@@ -62,11 +62,11 @@ export default function Lesson() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      <div className="pt-3">
+      <div className="p-4">
         <div className="max-w-[700px] py-6 mx-auto gap-10">
           <h1 className="font-semibold text-3xl">{title}</h1>
         </div>
-        <div className="max-w-[1500px] px-5 py-6 mx-auto flex items-center justify-center gap-10">
+        <div className="max-w-[1500px] py-6 mx-auto flex items-center justify-center gap-[min(2vw,10px)]">
           <div className={`inline-block cursor-pointer px-5 py-3 ${isPrevButtonDisabled} rounded-xl`} onClick={prev}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -84,7 +84,7 @@ export default function Lesson() {
             </svg>
           </div>
         </div>
-        <div className="max-w-[700px] px-5 py-6 mx-auto">
+        <div className="max-w-[700px] py-6 mx-auto">
           <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
             <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: percent }}></div>
           </div>
