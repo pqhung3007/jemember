@@ -1,4 +1,5 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import Head from "next/head";
 import { useState } from 'react';
 import { db } from '../../firebase';
 import Header from "../components/Header";
@@ -22,6 +23,10 @@ export default function NewCollection() {
 
   return (
     <div className="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
+      <Head>
+        <title>Jmember</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Header />
       <div className="max-w-[1500px] p-5 mx-auto flex justify-center items-center grow">
         <form className="p-6" onSubmit={sendMessage}>

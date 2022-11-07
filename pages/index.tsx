@@ -1,4 +1,5 @@
 import { collection, limit, orderBy, query } from "firebase/firestore";
+import Head from "next/head";
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from '../firebase';
 import Card from './components/Card';
@@ -11,6 +12,10 @@ export default function Home() {
 
   return (
     <div className="bg-gray-900 text-gray-200 min-h-screen">
+      <Head>
+        <title>Jmember</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Header />
       <div className="max-w-[1200px] px-5 py-6 mx-auto grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-8">
         {datas?.docs.map(collection =>

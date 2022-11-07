@@ -1,4 +1,5 @@
 import { collection, DocumentData, getDocs, query, where } from "firebase/firestore";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
 import { db } from '../../firebase';
@@ -50,6 +51,10 @@ export default function Lesson() {
 
   return (
     <div className="bg-gray-900 text-gray-200 min-h-screen">
+      <Head>
+        <title>Jmember</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Header />
       <div className="">
         <div className="max-w-[1500px] px-5 py-6 mx-auto flex items-center justify-center gap-10">
