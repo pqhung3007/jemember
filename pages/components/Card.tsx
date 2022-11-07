@@ -17,7 +17,7 @@ export default function Card({ id, name, created }: CollectionCard) {
         {name.length > 30 ? name.substring(0, 30) + "..." : name}
       </p>
       <p className="text-gray-500 pt-2">
-        {created.toDate().toLocaleDateString() + " " + created.toDate().toLocaleTimeString()}
+        {/* {created.toDate().toLocaleDateString() + " " + created.toDate().toLocaleTimeString()} */}
       </p>
     </a>
   )
