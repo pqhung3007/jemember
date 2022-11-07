@@ -1,4 +1,4 @@
-import { collection, DocumentData, getDocs, query, where } from "firebase/firestore";
+import { collection, doc, DocumentData, getDoc, getDocs, query, where } from "firebase/firestore";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
@@ -9,9 +9,11 @@ import Header from "../components/Header";
 export default function Lesson() {
   const router = useRouter()
   const cardRef = collection(db, 'card');
-  const [index, setIndex] = useState(0);
+  const collectionRef = collection(db, 'collection');
 
-  const [collections, setCollections] = useState([] as DocumentData[]);
+  const [index, setIndex] = useState(0);
+  const [title, setTitle] = useState("");
+  const [flashCard, setFlashCard] = useState([] as DocumentData[]);
 
   const [, forceUpdate] = useReducer(x => x + 1, 0);
 
@@ -22,10 +24,14 @@ export default function Lesson() {
 
   useEffect(() => {
     if (router.isReady) {
-      const id = router.query.id
-      fetch(id as string).then(
+      const id = router.query.id as string;
+      const thisCollection = doc(collectionRef, id);
+
+      getDoc(thisCollection).then(collection => setTitle(collection.data()?.name));
+
+      fetch(id).then(
         data => {
-          setCollections(data.map(data => data.data()));
+          setFlashCard(data.map(data => data.data()));
           forceUpdate();
         }
       )
@@ -33,12 +39,12 @@ export default function Lesson() {
   }, [router.isReady]);
 
   let isPrevButtonDisabled = index <= 0 ? "bg-gray-700 cursor-not-allowed" : "bg-blue-700 cursor-pointer";
-  let isNextButtonDisabled = index >= (collections == null ? 1 : collections.length) - 1 ? "bg-gray-700 cursor-not-allowed" : "bg-blue-700 cursor-pointer";
+  let isNextButtonDisabled = index >= (flashCard == null ? 1 : flashCard.length) - 1 ? "bg-gray-700 cursor-not-allowed" : "bg-blue-700 cursor-pointer";
 
-  let percent = (index + 1) * 100 / (collections == null ? 1 : collections.length) + "%";
+  let percent = (index + 1) * 100 / (flashCard == null ? 1 : flashCard.length) + "%";
 
   const next = () => {
-    if (index < (collections == null ? 0 : collections.length) - 1) {
+    if (index < (flashCard == null ? 0 : flashCard.length) - 1) {
       setIndex(index + 1);
     }
   }
@@ -56,7 +62,10 @@ export default function Lesson() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Header />
-      <div className="">
+      <div className="pt-3">
+        <div className="max-w-[700px] py-6 mx-auto gap-10">
+          <h1 className="font-semibold text-3xl">{title}</h1>
+        </div>
         <div className="max-w-[1500px] px-5 py-6 mx-auto flex items-center justify-center gap-10">
           <div className={`inline-block cursor-pointer px-5 py-3 ${isPrevButtonDisabled} rounded-xl`} onClick={prev}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -64,8 +73,8 @@ export default function Lesson() {
             </svg>
           </div>
 
-          {collections &&
-            <Flashcard info={collections[index]} />
+          {flashCard &&
+            <Flashcard info={flashCard[index]} />
           }
 
           <div className={`inline-block cursor-pointer px-5 py-3 ${isNextButtonDisabled} rounded-xl`}

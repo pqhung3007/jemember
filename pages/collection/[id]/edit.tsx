@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, DocumentData, writeBatch, doc, addDoc, QueryDocumentSnapshot, QuerySnapshot, setDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
