@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
@@ -18,9 +18,9 @@ export default function EditCollection() {
 
   const router = useRouter()
   const cardRef = collection(db, 'card');
-
+  const collectionRef = collection(db, 'collection');
   const [cards, setCards] = useState([] as FlashCardData[]);
-
+  const [title, setTitle] = useState("");
 
   const [, forceUpdate] = useReducer(x => x + 1, 0);
 
@@ -31,7 +31,16 @@ export default function EditCollection() {
 
   useEffect(() => {
     if (router.isReady) {
-      const id = router.query.id
+      const id = router.query.id as string
+      const thisCollection = doc(collectionRef, id);
+
+      getDoc(thisCollection).then(collection => {
+        if (!collection.exists()) {
+          router.push('/')
+        }
+        setTitle(collection.data()?.name)
+      });
+
       fetch(id as string).then(
         data => {
           setCards(data.docs.map(cardSnapshot => {
@@ -85,6 +94,9 @@ export default function EditCollection() {
     </Head>
     <Header />
     <div className="max-w-[1200px] px-5 py-6 mx-auto flex flex-col">
+      <div className="max-w-[700px] py-6 mx-auto gap-10">
+        <h1 className="font-semibold text-3xl">{title}</h1>
+      </div>
       {cards.map((card, index) => <EditFlashCard index={index} key={index} id={card.id} info={card} updateFlashCard={updateFlashCard} />)}
       <AddFlashCard insertFlashCard={insertFlashCard} />
     </div>
