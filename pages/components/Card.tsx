@@ -14,10 +14,10 @@ export default function Card({ id, name, created }: CollectionCard) {
     <a href={`/collection/${id}`} className="rounded-2xl px-4 py-8 bg-gray-800 hover:bg-gray-700"
     >
       <p className="text-xl font-semibold break-words">
-        {name.length > 30 ? name.substring(0, 30) + "..." : name}
+        {name?.length > 30 ? name.substring(0, 30) + "..." : name}
       </p>
       <p className="text-gray-500 pt-2">
-        {created.toDate().toLocaleDateString() + " " + created.toDate().toLocaleTimeString()}
+        {created?.toDate().toLocaleDateString() + " " + created?.toDate().toLocaleTimeString()}
       </p>
     </a>
   )
