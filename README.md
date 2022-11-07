@@ -1,9 +1,9 @@
 # Jmember
 
-Đây là repository cho dự án [Jmember](https://janki-zeta.vercel.app/), một phần mềm học flashcard được dùng để thay thế Quizlet
+Đây là repository cho dự án [Jmember](https://jmember.vercel.app/), một phần mềm học flashcard được dùng để thay thế Quizlet
 
 ## Cách dùng
-- Truy cập vào [đây](https://janki-zeta.vercel.app/) để bắt đầu sử dụng Jmember
+- Truy cập vào [đây](https://jmember.vercel.app/) để bắt đầu sử dụng Jmember
 
 ## Hướng dẫn phát triển
 1. Clone project về local
