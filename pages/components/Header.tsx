@@ -2,7 +2,7 @@ export default function Header() {
   return (
     <div className="border-b border-gray-700">
       <div className="max-w-[1500px] px-5 py-6 mx-auto flex items-center justify-between">
-        <h1 className="text-3xl font-semibold"><a href="/">Janki</a></h1>
+        <h1 className="text-3xl font-semibold"><a href="/">Jmember</a></h1>
         <form>
           <div className="relative">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

@@ -1,23 +1,21 @@
-import { Timestamp } from "firebase/firestore";
+import { DocumentData, QueryDocumentSnapshot, Timestamp } from "firebase/firestore";
 import styles from "../../styles/Flashcard.module.css";
 
-export interface FlashCard {
-  answer: string,
-  collection_id: string,
-  question: string,
+interface S {
+  info: DocumentData
 }
 
-export default function Flashcard(info: FlashCard): JSX.Element {
+export default function Flashcard(props: S): JSX.Element {
   return (
     <div className={styles["flip-card"]}>
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
           <p>
-            {info.question}
+            {props.info?.question}
           </p>
         </div>
         <div className={styles["flip-card-back"]}>
-          <p>{info.answer}</p>
+          <p>{props.info?.answer}</p>
         </div>
       </div>
     </div>
