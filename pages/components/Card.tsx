@@ -17,7 +17,7 @@ export default function Card({ id, name, created }: CollectionCard) {
         {name}
       </p>
       <p className="text-gray-500 pt-2">
-        {new Date(created.seconds).toLocaleTimeString()}
+        {/* {new Date(created.seconds).toLocaleTimeString()} */}
       </p>
     </a>
   )
