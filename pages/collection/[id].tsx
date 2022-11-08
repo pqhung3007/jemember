@@ -7,17 +7,16 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
 import { db } from "../../firebase";
-import Flashcard from "./Flashcard";
-import Nav from "../components/Nav";
 import HeadTag from "../components/HeadTag";
-import PrevCard from "./components/PrevCard";
-import NextCard from "./components/NextCard";
-import EditButton from "./components/EditButton";
+import Nav from "../components/Nav";
 import CopyButton from "./components/CopyButton";
+import EditButton from "./components/EditButton";
+import NextCard from "./components/NextCard";
+import PrevCard from "./components/PrevCard";
+import Flashcard from "./Flashcard";
 
 export default function Lesson() {
   const router = useRouter();
@@ -79,6 +78,23 @@ export default function Lesson() {
       : "bg-blue-700 cursor-pointer";
   let percent = ((index + 1) * 100) / (cards == null ? 1 : cards.length) + "%";
 
+  // useEffect(() => {
+  //   window.addEventListener("keydown", (event) => {
+  //     processKeyBinding(event);
+  //   });
+  // }, []);
+
+  const processKeyBinding = (event: any) => {
+    if (event.key === " ") {
+      let otherSide = !isFront;
+      setIsFront(otherSide);
+    } else if (event.key === "ArrowLeft") {
+      prev();
+    } else if (event.key === "ArrowRight") {
+      next();
+    }
+  };
+
   const prev = () => {
     if (index > 0) {
       setIndex(index - 1);
@@ -102,7 +118,11 @@ export default function Lesson() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-200">
+    <div
+      className="min-h-screen bg-gray-900 text-gray-200"
+      tabIndex={0}
+      onKeyDown={processKeyBinding}
+    >
       <HeadTag />
       <Nav />
       <div className="p-4">
