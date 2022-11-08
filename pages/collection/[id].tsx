@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { db } from "../../firebase";
 import HeadTag from "../components/HeadTag";
 import Nav from "../components/Nav";
@@ -31,6 +31,8 @@ export default function Lesson() {
   const [title, setTitle] = useState("");
   const [cards, setCards] = useState([] as DocumentData[]);
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const fetch = async (id: string) => {
     let getCardsByCollectionIdQuery = query(
@@ -78,11 +80,9 @@ export default function Lesson() {
       : "bg-blue-700 cursor-pointer";
   let percent = ((index + 1) * 100) / (cards == null ? 1 : cards.length) + "%";
 
-  // useEffect(() => {
-  //   window.addEventListener("keydown", (event) => {
-  //     processKeyBinding(event);
-  //   });
-  // }, []);
+  useEffect(() => {
+    containerRef.current?.focus();
+  }, []);
 
   const processKeyBinding = (event: any) => {
     if (event.key === " ") {
@@ -122,6 +122,7 @@ export default function Lesson() {
       className="min-h-screen bg-gray-900 text-gray-200"
       tabIndex={0}
       onKeyDown={processKeyBinding}
+      ref={containerRef}
     >
       <HeadTag />
       <Nav />
