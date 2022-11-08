@@ -38,6 +38,7 @@ export default function EditCollection() {
     const docSnap = await getDocs(
       query(cardRef, where("collection_id", "==", id))
     );
+    console.log("FETCH");
     return docSnap;
   };
 

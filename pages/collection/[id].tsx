@@ -40,6 +40,7 @@ export default function Lesson() {
       where("collection_id", "==", id)
     );
     const docSnap = await getDocs(getCardsByCollectionIdQuery);
+    console.log("FETCH");
     return docSnap.docs.map((cardSnapshot) => cardSnapshot.data());
   };
 
