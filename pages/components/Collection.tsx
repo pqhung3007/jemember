@@ -6,7 +6,7 @@ export interface CollectionCard {
   created: Timestamp
 }
 
-export default function Card({ id, name, created }: CollectionCard) {
+export default function Collection({ id, name, created }: CollectionCard) {
 
   let shadow = "shadow-[10px_-10px_0_-3px_var(--background),10px_-10px_var(--green),20px_-20px_0_-3px_var(--background),20px_-20px_var(--yellow),30px_-30px_0_-3px_var(--background),30px_-30px_var(--orange),40px_-40px_0_-3px_var(--background),40px_-40px_var(--red)]"
 

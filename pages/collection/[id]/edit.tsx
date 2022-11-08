@@ -2,10 +2,11 @@ import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
-import { db } from "../../../firebase";
-import Header from "../../components/Header";
+import { db } from "../../firebase";
+import Nav from "../../components/Nav";
 import AddFlashCard from "./AddFlashCard";
 import EditFlashCard from "./EditFlashCard";
+import HeadTag from "../../components/HeadTag";
 
 interface FlashCardData {
   question: string,
@@ -57,25 +58,26 @@ export default function EditCollection() {
     }
   }, [router.isReady]);
 
-  const insertFlashCard = () => {
-
+  const insertCard = () => {
     const newFlashCardRef = doc(collection(db, "card"));
 
-    setDoc(newFlashCardRef, {
-      question: "",
-      answer: "",
-      collection_id: router.query.id as string,
-    });
+    // setDoc(newFlashCardRef, {
+    //   question: "",
+    //   answer: "",
+    //   collection_id: router.query.id as string,
+    // });
 
-    setCards([...cards, {
+    const newCard = {
       question: "",
       answer: "",
       collection_id: router.query.id as string,
       id: newFlashCardRef.id,
-    }])
+    };
+
+    setCards([...cards, newCard])
   }
 
-  const updateFlashCard = (newData: FlashCardData) => {
+  const updateCard = (newData: FlashCardData) => {
     setCards(cards.map(
       val => val.id === newData.id ? newData : val
     ));
@@ -88,17 +90,23 @@ export default function EditCollection() {
   }
 
   return (<div className="bg-gray-900 text-gray-200 min-h-screen">
-    <Head>
-      <title>Jmember</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <Header />
+    <HeadTag />
+    <Nav />
     <div className="max-w-[1200px] px-5 py-6 mx-auto flex flex-col">
       <div className="max-w-[700px] py-6 mx-auto gap-10">
         <h1 className="font-semibold text-3xl">{title}</h1>
       </div>
-      {cards.map((card, index) => <EditFlashCard index={index} key={index} id={card.id} info={card} updateFlashCard={updateFlashCard} />)}
-      <AddFlashCard insertFlashCard={insertFlashCard} />
+      {cards.map(
+        (card, index) =>
+          <EditFlashCard
+            index={index}
+            key={index}
+            id={card.id}
+            info={card}
+            updateFlashCard={updateCard}
+          />
+      )}
+      <AddFlashCard insertFlashCard={insertCard} disabled={cards.length >= 1000} />
     </div>
   </div>)
 }
