@@ -3,8 +3,9 @@
 .flip-card-flipped {
   background-color: transparent;
   position: relative;
-  width: min(600px, 80vw);
+  width: min(700px, 80vw);
   height: min(600px, 50vh);
+  font-size: 1.5rem;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -27,6 +28,7 @@
 .flip-card-front,
 .flip-card-back {
   padding: 20px 30px;
+  overflow: scroll;
   white-space: pre-wrap;
   text-align: left;
   position: absolute;

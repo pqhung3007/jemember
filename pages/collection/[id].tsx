@@ -85,7 +85,11 @@ export default function Lesson() {
   }, []);
 
   const processKeyBinding = (event: any) => {
-    if (event.key === " ") {
+    if (
+      event.key === " " ||
+      event.key === "ArrowUp" ||
+      event.key === "ArrowDown"
+    ) {
       let otherSide = !isFront;
       setIsFront(otherSide);
     } else if (event.key === "ArrowLeft") {
