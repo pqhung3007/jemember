@@ -15,7 +15,7 @@ export default function Lesson() {
 
   const [index, setIndex] = useState(0);
   const [title, setTitle] = useState("");
-  const [flashCard, setFlashCard] = useState([] as DocumentData[]);
+  const [flashCards, setFlashCard] = useState([] as DocumentData[]);
 
   const [, forceUpdate] = useReducer(x => x + 1, 0);
 
@@ -29,44 +29,50 @@ export default function Lesson() {
       const id = router.query.id as string;
       const thisCollection = doc(collectionRef, id);
 
-      getDoc(thisCollection).then(collection => {
-        if (!collection.exists()) {
+      getDoc(thisCollection).then(collectionSnapshot => {
+        if (!collectionSnapshot.exists()) {
           router.push('/')
         }
-        setTitle(collection.data()?.name)
-      });
+        setTitle(collectionSnapshot.data()?.name)
+      }).catch(
+        err => console.error(err)
+      );
 
       fetch(id).then(
-        data => {
-          setFlashCard(data.map(data => data.data()));
+        querySnapshot => {
+          setFlashCard(querySnapshot.map(documentSnapshot => documentSnapshot.data()));
           forceUpdate();
         }
+      ).catch(
+        err => console.error(err)
       )
     }
   }, [router.isReady]);
 
   let isPrevButtonDisabled = index <= 0 ? "bg-gray-700 cursor-not-allowed" : "bg-blue-700 cursor-pointer";
-  let isNextButtonDisabled = index >= (flashCard == null ? 1 : flashCard.length) - 1 ? "bg-gray-700 cursor-not-allowed" : "bg-blue-700 cursor-pointer";
+  let isNextButtonDisabled = index >= (flashCards == null ? 1 : flashCards.length) - 1 ? "bg-gray-700 cursor-not-allowed" : "bg-blue-700 cursor-pointer";
 
-  let percent = (index + 1) * 100 / (flashCard == null ? 1 : flashCard.length) + "%";
+  let percent = (index + 1) * 100 / (flashCards == null ? 1 : flashCards.length) + "%";
 
   const next = () => {
-    if (index < (flashCard == null ? 0 : flashCard.length) - 1) {
+    if (index < (flashCards == null ? 0 : flashCards.length) - 1) {
       setIndex(index + 1);
+      setIsFront(true);
     }
   }
 
   const prev = () => {
     if (index > 0) {
       setIndex(index - 1);
+      setIsFront(true);
     }
   }
 
   const copy = () => {
     if (isFront) {
-      navigator.clipboard.writeText(flashCard[index].question);
+      navigator.clipboard.writeText(flashCards[index]?.question);
     } else {
-      navigator.clipboard.writeText(flashCard[index].answer);
+      navigator.clipboard.writeText(flashCards[index]?.answer);
     }
   }
 
@@ -88,8 +94,8 @@ export default function Lesson() {
             </svg>
           </div>
 
-          {flashCard &&
-            <Flashcard isFront={isFront} setIsFront={setIsFront} info={flashCard[index]} />
+          {flashCards &&
+            <Flashcard isFront={isFront} setIsFront={setIsFront} info={flashCards[index]} />
           }
 
           <div className={`inline-block cursor-pointer px-5 py-3 ${isNextButtonDisabled} rounded-xl`}
