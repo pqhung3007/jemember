@@ -2,7 +2,7 @@ import { collection, doc, DocumentData, getDoc, getDocs, query, where } from "fi
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import Flashcard from "./Flashcard";
 import Nav from "../components/Nav";
 import HeadTag from "../components/HeadTag";
@@ -42,7 +42,10 @@ export default function Lesson() {
         }
         setTitle(collectionSnapshot.data()?.name)
       }).catch(
-        err => console.error(err)
+        err => {
+          console.error(err);
+          router.push('/');
+        }
       );
 
       fetch(id)
@@ -50,7 +53,10 @@ export default function Lesson() {
           result => setFlashCards(result.map(flashCardSnapshot => flashCardSnapshot.data()))
         ).then(forceUpdate)
         .catch(
-          err => console.error(err)
+          err => {
+            console.error(err);
+            router.push('/');
+          }
         )
     }
   }, [router.isReady]);

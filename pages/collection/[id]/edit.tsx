@@ -2,7 +2,7 @@ import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
-import { db } from "../../firebase";
+import { db } from "../../../firebase";
 import Nav from "../../components/Nav";
 import AddFlashCard from "./AddFlashCard";
 import EditFlashCard from "./EditFlashCard";

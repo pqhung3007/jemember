@@ -4,7 +4,7 @@ import AddCollection from "./components/AddCollection";
 import Collection from './components/Collection';
 import HeadTag from "./components/HeadTag";
 import Nav from './components/Nav';
-import { db } from './firebase';
+import { db } from '../firebase';
 export default function Home() {
 
   const messagesRef = collection(db, 'collection');
