@@ -5,11 +5,14 @@ import Collection from './components/Collection';
 import HeadTag from "./components/HeadTag";
 import Nav from './components/Nav';
 import { db } from '../firebase';
+
 export default function Home() {
 
-  const messagesRef = collection(db, 'collection');
-  const q = query(messagesRef, orderBy('created'));
+  const collectionRef = collection(db, 'collection');
+  const q = query(collectionRef, orderBy('created'));
   const [collectionsSnapshot] = useCollection(q);
+
+  const length = collectionsSnapshot?.docs?.length || 0;
 
   return (
     <div className="bg-gray-900 text-gray-200 min-h-screen">
@@ -24,7 +27,7 @@ export default function Home() {
             created={collection.data().created}
           />
         )}
-        <AddCollection />
+        {length < 100 && <AddCollection />}
       </div>
     </div>
   )

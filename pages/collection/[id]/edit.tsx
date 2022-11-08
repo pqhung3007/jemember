@@ -1,12 +1,11 @@
-import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore";
-import Head from "next/head";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useState } from "react";
 import { db } from "../../../firebase";
+import HeadTag from "../../components/HeadTag";
 import Nav from "../../components/Nav";
 import AddFlashCard from "./AddFlashCard";
 import EditFlashCard from "./EditFlashCard";
-import HeadTag from "../../components/HeadTag";
 
 interface FlashCardData {
   question: string,
@@ -40,6 +39,9 @@ export default function EditCollection() {
           router.push('/')
         }
         setTitle(collection.data()?.name)
+      }).catch(err => {
+        console.error(err);
+        router.push('/');
       });
 
       fetch(id as string).then(
@@ -54,11 +56,18 @@ export default function EditCollection() {
           }));
           forceUpdate();
         }
-      )
+      ).catch(err => {
+        console.error(err);
+        router.push('/');
+      })
     }
   }, [router.isReady]);
 
   const insertCard = () => {
+    if (cards.length >= 1000) {
+      return;
+    }
+
     const newFlashCardRef = doc(collection(db, "card"));
 
     // setDoc(newFlashCardRef, {
@@ -89,6 +98,10 @@ export default function EditCollection() {
     })
   }
 
+  const deleteCard = (id: string) => {
+    deleteDoc(doc(db, "card", id));
+  }
+
   return (<div className="bg-gray-900 text-gray-200 min-h-screen">
     <HeadTag />
     <Nav />
@@ -106,7 +119,7 @@ export default function EditCollection() {
             updateFlashCard={updateCard}
           />
       )}
-      <AddFlashCard insertFlashCard={insertCard} disabled={cards.length >= 1000} />
+      <AddFlashCard insertFlashCard={insertCard} />
     </div>
   </div>)
 }
