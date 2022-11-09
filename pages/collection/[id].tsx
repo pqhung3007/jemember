@@ -106,6 +106,7 @@ export default function Lesson() {
       event.key === "ArrowUp" ||
       event.key === "ArrowDown"
     ) {
+      event.preventDefault();
       setIsFront(!isFront);
     } else if (event.key === "ArrowLeft") {
       prev();
