@@ -12,6 +12,7 @@ import { useEffect, useReducer, useRef, useState } from "react";
 import { db } from "../../firebase";
 import HeadTag from "../components/HeadTag";
 import Nav from "../components/Nav";
+import Search from "../components/Search";
 import CopyButton from "./components/CopyButton";
 import EditButton from "./components/EditButton";
 import NextCard from "./components/NextCard";
@@ -30,6 +31,8 @@ export default function Lesson() {
   const [index, setIndex] = useState(0);
   const [title, setTitle] = useState("");
   const [cards, setCards] = useState([] as DocumentData[]);
+  const [cardsSearch, setCardsSearch] = useState([] as DocumentData[]);
+  const [keyWord, setKeyWord] = useState("");
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -40,7 +43,6 @@ export default function Lesson() {
       where("collection_id", "==", id)
     );
     const docSnap = await getDocs(getCardsByCollectionIdQuery);
-    console.log("FETCH");
     return docSnap.docs.map((cardSnapshot) => cardSnapshot.data());
   };
 
@@ -71,6 +73,19 @@ export default function Lesson() {
     }
   }, [router.isReady]);
 
+  useEffect(() => {
+    if (keyWord.trim() !== "") {
+      let newResult = cards.filter(
+        (card) =>
+          includeString(card.question, keyWord) ||
+          includeString(card.answer, keyWord)
+      );
+      setCardsSearch(newResult);
+    } else {
+      setCardsSearch(cards);
+    }
+  }, [cards, keyWord]);
+
   let prevButtonStyle =
     index <= 0
       ? "bg-gray-700 cursor-not-allowed"
@@ -91,8 +106,7 @@ export default function Lesson() {
       event.key === "ArrowUp" ||
       event.key === "ArrowDown"
     ) {
-      let otherSide = !isFront;
-      setIsFront(otherSide);
+      setIsFront(!isFront);
     } else if (event.key === "ArrowLeft") {
       prev();
     } else if (event.key === "ArrowRight") {
@@ -102,15 +116,15 @@ export default function Lesson() {
 
   const prev = () => {
     if (index > 0) {
-      setIndex(index - 1);
       setIsFront(true);
+      setIndex(index - 1);
     }
   };
 
   const next = () => {
     if (index < (cards == null ? 0 : cards.length) - 1) {
-      setIndex(index + 1);
       setIsFront(true);
+      setIndex(index + 1);
     }
   };
 
@@ -120,6 +134,10 @@ export default function Lesson() {
     } else {
       navigator.clipboard.writeText(cards[index] ? cards[index].answer : "");
     }
+  };
+
+  const includeString = (first: string, second: string) => {
+    return first.toLowerCase().includes(second.toLowerCase());
   };
 
   return (
@@ -144,7 +162,7 @@ export default function Lesson() {
           />
           <NextCard nextButtonStyle={nextButtonStyle} next={next} />
         </div>
-        <div className="mx-auto max-w-[700px] py-6">
+        <div className="mx-auto max-w-[800px] py-6">
           <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
             <div
               className="h-2.5 rounded-full bg-blue-600"
@@ -160,6 +178,19 @@ export default function Lesson() {
               <EditButton id={router.query.id as string} />
               <CopyButton copy={copy} />
             </div>
+          </div>
+          <div className="space-y-3">
+            <Search setKeyWord={setKeyWord} />
+            {cardsSearch.map((card) => (
+              <div className="grid grid-cols-3 gap-4 rounded-xl bg-gray-800 p-5">
+                <div className="col-span-2 whitespace-pre-wrap">
+                  {card.question}
+                </div>
+                <div className="col-span-1 whitespace-pre-wrap border-l border-gray-600 pl-4">
+                  {card.answer}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
