@@ -17,7 +17,7 @@ export default function Flashcard(props: S): JSX.Element {
     >
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
-          <p className="overflow-scroll max-h-[95%]" >{props.info?.question}</p>
+          <p className="overflow-y-scroll max-h-[95%]" >{props.info?.question}</p>
         </div>
         <div className={styles["flip-card-back"]}>
           <p>{props.info?.answer}</p>

@@ -28,7 +28,7 @@
 .flip-card-front,
 .flip-card-back {
   padding: 20px 30px;
-  overflow: scroll;
+  overflow-y: scroll;
   white-space: pre-wrap;
   text-align: left;
   position: absolute;

@@ -95,7 +95,7 @@ export default function Lesson() {
   let prevButtonStyle = setButtonState(index <= 0);
   let nextButtonStyle = setButtonState(index >= cards.length - 1);
 
-  let percent = ((index + 1) * 100) / (cards == null ? 1 : cards.length) + "%";
+  let percent = ((index + 1) * 100) / cards.length + "%";
 
   useEffect(() => {
     containerRef.current?.focus();
