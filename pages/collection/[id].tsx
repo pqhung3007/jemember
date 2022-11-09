@@ -144,7 +144,7 @@ export default function Lesson() {
 
   return (
     <div
-      className="min-h-screen bg-gray-900 text-gray-200"
+      className="min-h-screen bg-gray-900 font-[Inter] text-gray-200"
       tabIndex={0}
       onKeyDown={processKeyBinding}
       ref={containerRef}
@@ -165,9 +165,9 @@ export default function Lesson() {
           <NextCard nextButtonStyle={nextButtonStyle} next={next} />
         </div>
         <div className="mx-auto max-w-[800px] py-6">
-          <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+          <div className="mb-6 h-0.5 w-full rounded-full bg-gray-700">
             <div
-              className="h-2.5 rounded-full bg-blue-600"
+              className="h-0.5 rounded-full bg-white"
               style={{ width: percent }}
             ></div>
           </div>

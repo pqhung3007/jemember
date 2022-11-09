@@ -49,7 +49,7 @@ export default function Home() {
   }, [collections, keyWord]);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-200">
+    <div className="min-h-screen bg-gray-900 font-[Inter] text-gray-200">
       <HeadTag />
       <Nav />
       <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
