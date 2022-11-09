@@ -144,25 +144,28 @@ export default function Lesson() {
 
   return (
     <div
-      className="min-h-screen bg-gray-900 font-[Inter] text-gray-200"
-      tabIndex={0}
-      onKeyDown={processKeyBinding}
-      ref={containerRef}
+      className="min-h-screen bg-gray-900 text-gray-200"
     >
       <HeadTag />
       <Nav />
       <div className="p-4">
-        <div className="mx-auto max-w-[700px] gap-10 py-6">
-          <h1 className="text-3xl font-semibold">{title}</h1>
-        </div>
-        <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)] py-6">
-          <PrevCard prevButtonStyle={prevButtonStyle} prev={prev} />
-          <Flashcard
-            isFront={isFront}
-            setIsFront={setIsFront}
-            info={cards[index]}
-          />
-          <NextCard nextButtonStyle={nextButtonStyle} next={next} />
+        <div className=""
+          tabIndex={0}
+          ref={containerRef}
+          onKeyDown={processKeyBinding}
+        >
+          <div className="mx-auto max-w-[700px] gap-10 py-6">
+            <h1 className="text-3xl font-semibold">{title}</h1>
+          </div>
+          <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)] py-6">
+            <PrevCard prevButtonStyle={prevButtonStyle} prev={prev} />
+            <Flashcard
+              isFront={isFront}
+              setIsFront={setIsFront}
+              info={cards[index]}
+            />
+            <NextCard nextButtonStyle={nextButtonStyle} next={next} />
+          </div>
         </div>
         <div className="mx-auto max-w-[800px] py-6">
           <div className="mb-6 h-0.5 w-full rounded-full bg-gray-700">

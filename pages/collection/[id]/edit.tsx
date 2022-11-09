@@ -131,7 +131,7 @@ export default function EditCollection() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 font-[Inter] text-gray-200">
+    <div className="min-h-screen bg-gray-900 text-gray-200">
       <HeadTag />
       <Nav />
       <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-6">

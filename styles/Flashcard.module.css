@@ -5,7 +5,6 @@
   position: relative;
   width: min(800px, 70vw);
   height: min(500px, 40vw);
-  font-size: 1.5rem;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -27,7 +26,7 @@
 /* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
-  padding: 20px 30px;
+  padding: 1rem 1.5rem;
   overflow-y: scroll;
   white-space: pre-wrap;
   text-align: left;
