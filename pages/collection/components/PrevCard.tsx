@@ -1,7 +1,7 @@
 export default function PrevCard({ prevButtonStyle, prev }: any) {
   return (
     <div
-      className={`inline-block cursor-pointer px-5 py-3 ${prevButtonStyle} rounded-xl`}
+      className={`inline-block px-5 py-3 ${prevButtonStyle} rounded-xl`}
       onClick={prev}
     >
       <svg

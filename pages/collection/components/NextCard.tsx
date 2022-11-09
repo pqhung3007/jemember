@@ -1,7 +1,7 @@
 export default function NextCard({ nextButtonStyle, next }: any) {
   return (
     <div
-      className={`inline-block cursor-pointer px-5 py-3 ${nextButtonStyle} rounded-xl`}
+      className={`inline-block px-5 py-3 ${nextButtonStyle} rounded-xl`}
       onClick={next}
     >
       <svg

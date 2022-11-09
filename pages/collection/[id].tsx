@@ -86,14 +86,15 @@ export default function Lesson() {
     }
   }, [cards, keyWord]);
 
-  let prevButtonStyle =
-    index <= 0
+  const setButtonState = (isDisabled: boolean): string => {
+    return isDisabled
       ? "bg-gray-700 cursor-not-allowed"
       : "bg-blue-700 cursor-pointer";
-  let nextButtonStyle =
-    index >= (cards == null ? 1 : cards.length) - 1
-      ? "bg-gray-700 cursor-not-allowed"
-      : "bg-blue-700 cursor-pointer";
+  };
+
+  let prevButtonStyle = setButtonState(index <= 0);
+  let nextButtonStyle = setButtonState(index >= cards.length - 1);
+
   let percent = ((index + 1) * 100) / (cards == null ? 1 : cards.length) + "%";
 
   useEffect(() => {
@@ -123,7 +124,7 @@ export default function Lesson() {
   };
 
   const next = () => {
-    if (index < (cards == null ? 0 : cards.length) - 1) {
+    if (index < cards.length - 1) {
       setIsFront(true);
       setIndex(index + 1);
     }
@@ -170,7 +171,7 @@ export default function Lesson() {
               style={{ width: percent }}
             ></div>
           </div>
-          <div className="flex justify-between py-5">
+          <div className="flex items-center justify-between py-5">
             <div className="">
               <p>Created by</p>
               <p>FU-JS</p>
@@ -182,8 +183,11 @@ export default function Lesson() {
           </div>
           <div className="space-y-3">
             <Search setKeyWord={setKeyWord} />
-            {cardsSearch.map((card) => (
-              <div className="grid grid-cols-3 gap-4 rounded-xl bg-gray-800 p-5">
+            {cardsSearch.map((card, index) => (
+              <div
+                className="grid grid-cols-3 gap-4 rounded-xl bg-gray-800 p-5"
+                key={index}
+              >
                 <div className="col-span-2 whitespace-pre-wrap">
                   {card.question}
                 </div>
