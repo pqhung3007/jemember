@@ -1,3 +1,5 @@
+"use client";
+
 import { DocumentData } from "firebase/firestore";
 import { useEffect, useRef } from "react";
 
@@ -5,7 +7,7 @@ interface S {
   info: DocumentData;
   index: number;
   id: string;
-  updateFlashCard(newData: DocumentData): void;
+  // updateFlashCard(newData: DocumentData): void;
 }
 
 export default function EditFlashCard(props: S) {
@@ -31,12 +33,12 @@ export default function EditFlashCard(props: S) {
     let newQuestion = questionRef.current?.value;
     let newAnswer = answerRef.current?.value;
 
-    props.updateFlashCard({
-      id: props.id,
-      question: newQuestion,
-      answer: newAnswer,
-      collection_id: props.info.collection_id,
-    });
+    // props.updateFlashCard({
+    //   id: props.id,
+    //   question: newQuestion,
+    //   answer: newAnswer,
+    //   collection_id: props.info.collection_id,
+    // });
   };
 
   return (
