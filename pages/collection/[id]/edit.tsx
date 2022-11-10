@@ -12,10 +12,9 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useReducer, useRef, useState } from "react";
 import { db } from "../../../firebase";
-import HeadTag from "../../components/HeadTag";
-import Nav from "../../components/Nav";
-import AddFlashCard from "./AddFlashCard";
-import EditFlashCard from "./EditFlashCard";
+import Nav from "../../../components/layouts/Nav";
+import AddFlashCard from "../../../components/lesson/AddFlashCard";
+import EditFlashCard from "../../../components/lesson/EditFlashCard";
 
 interface FlashCardData {
   question: string;
@@ -132,7 +131,6 @@ export default function EditCollection() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200">
-      <HeadTag />
       <Nav />
       <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-6">
         <div className="flex max-w-[700px] items-center gap-10 py-6">

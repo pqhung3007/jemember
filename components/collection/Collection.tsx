@@ -1,5 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
+import Link from "next/link";
+
 export interface CollectionCard {
   id: string;
   name: string;
@@ -13,7 +15,7 @@ export default function Collection({ id, name, created }: CollectionCard) {
     "hover:shadow-[10px_-10px_0_-3px_#334155cc,20px_-20px_0_-5px_#334155aa,30px_-30px_0_-7px_#334155aa] hover:top-4 hover:right-4";
 
   return (
-    <a
+    <Link
       href={`/collection/${id}`}
       className={`relative rounded-2xl bg-gray-800 px-4 py-6 duration-100 hover:bg-gray-800/70 ${shadow} ${shadowHover}`}
     >
@@ -25,6 +27,6 @@ export default function Collection({ id, name, created }: CollectionCard) {
           " " +
           created?.toDate().toLocaleTimeString()}
       </p>
-    </a>
+    </Link>
   );
 }

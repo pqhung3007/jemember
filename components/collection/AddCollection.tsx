@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 export default function AddCollection() {
   return (
-    <a
+    <Link
       href="/collection/new"
       className="flex items-center justify-center rounded-2xl bg-gray-800 px-4 py-8 hover:bg-blue-400/40"
     >
@@ -20,6 +22,6 @@ export default function AddCollection() {
           />
         </svg>
       </p>
-    </a>
+    </Link>
   );
 }
