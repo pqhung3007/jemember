@@ -1,6 +1,4 @@
-import { DocumentData } from "firebase/firestore";
-
-export default function CardDetails({ cards }: { cards: DocumentData[] }) {
+export default function CardDetails({ cards }: { cards: any[] }) {
   return (
     <>
       {cards.map((card, index) => (

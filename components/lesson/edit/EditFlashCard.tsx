@@ -1,17 +1,10 @@
 "use client";
 
-import { DocumentData } from "firebase/firestore";
 import { useEffect, useRef } from "react";
-
-interface Card {
-  id: string;
-  question: string;
-  answer: string;
-  collection_id: string;
-}
+import { Card } from "../Flashcard";
 
 interface Props {
-  info: DocumentData;
+  info: Card;
   index: number;
   id: string;
   updateCard(newData: Card): void;
@@ -20,6 +13,7 @@ interface Props {
 export default function EditFlashCard(props: Props) {
   const questionRef = useRef<HTMLTextAreaElement>(null);
   const answerRef = useRef<HTMLTextAreaElement>(null);
+  let typingTimer: NodeJS.Timeout;
 
   useEffect(() => {
     let newQuestion = questionRef.current?.value;
@@ -37,15 +31,18 @@ export default function EditFlashCard(props: Props) {
   }, [questionRef.current?.value, answerRef.current?.value]);
 
   const update = () => {
-    let newQuestion = questionRef.current?.value || "";
-    let newAnswer = answerRef.current?.value || "";
+    clearTimeout(typingTimer);
 
-    props.updateCard({
-      id: props.id,
-      question: newQuestion,
-      answer: newAnswer,
-      collection_id: props.info.collection_id,
-    });
+    typingTimer = setTimeout(() => {
+      let newQuestion = questionRef.current?.value || "";
+      let newAnswer = answerRef.current?.value || "";
+      props.updateCard({
+        id: props.id,
+        question: newQuestion,
+        answer: newAnswer,
+        collection_id: props.info.collection_id,
+      });
+    }, 500);
   };
 
   return (
@@ -58,17 +55,20 @@ export default function EditFlashCard(props: Props) {
           <textarea
             className="block w-full resize-none border-b bg-gray-700 focus:border-blue-500 focus:outline-none"
             ref={questionRef}
-            onChange={update}
-            value={props.info?.question}
+            onKeyDown={() => clearTimeout(typingTimer)}
+            onKeyUp={update}
+            defaultValue={props.info?.question}
           ></textarea>
         </p>
         <p className="max-w-[100%]">
           <textarea
             className="block w-full resize-none border-b bg-gray-700 focus:border-blue-500 focus:outline-none"
             ref={answerRef}
-            onChange={update}
-            value={props.info?.answer}
-          ></textarea>
+            onKeyDown={() => clearTimeout(typingTimer)}
+            onKeyUp={update}
+            defaultValue={props.info?.answer}
+          >
+          </textarea>
         </p>
       </div>
     </div>

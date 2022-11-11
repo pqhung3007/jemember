@@ -1,14 +1,12 @@
-import { Timestamp } from "firebase/firestore";
-
 import Link from "next/link";
 
 export interface CollectionCard {
   id: string;
   name: string;
-  created: Timestamp;
+  created_at: string;
 }
 
-export default function Collection({ id, name, created }: CollectionCard) {
+export default function Collection({ id, name, created_at }: CollectionCard) {
   let shadow =
     "shadow-[10px_-10px_0_-3px_#334155cc,20px_-20px_0_-5px_#334155aa]";
   let shadowHover =
@@ -23,9 +21,10 @@ export default function Collection({ id, name, created }: CollectionCard) {
         {name?.length > 30 ? name.substring(0, 30) + "..." : name}
       </p>
       <p className="pt-4 text-gray-500">
-        {created?.toDate().toLocaleDateString() +
+        {/* {created?.toDate().toLocaleDateString() +
           " " +
-          created?.toDate().toLocaleTimeString()}
+          created?.toDate().toLocaleTimeString()} */}
+        {created_at}
       </p>
     </Link>
   );

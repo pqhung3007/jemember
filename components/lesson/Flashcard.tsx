@@ -1,8 +1,14 @@
-import { DocumentData } from "firebase/firestore";
 import styles from "../../styles/Flashcard.module.css";
 
+export interface Card {
+  id: string;
+  question: string;
+  answer: string;
+  collection_id: string;
+}
+
 interface S {
-  info: DocumentData;
+  info: Card;
   isFront: boolean;
   setIsFront(isFront: boolean): void;
 }
