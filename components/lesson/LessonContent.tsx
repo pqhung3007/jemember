@@ -4,15 +4,16 @@ import { DocumentData } from "firebase/firestore";
 
 import { useEffect, useRef, useState } from "react";
 
-import LocalSearch from "../LocalSearch";
+import LocalSearch from "../search/LocalSearch";
 import CopyButton from "./CopyButton";
-import EditButton from "./EditButton";
 import Flashcard from "./Flashcard";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
 
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { includeString } from "../../utils";
 import CardDetails from "./CardDetails";
+import EditButton from "./EditButton";
 
 interface LessonProps {
   id: string;
@@ -101,7 +102,10 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
         ref={containerRef}
         onKeyDown={processKeyBinding}
       >
-        <div className="mx-auto max-w-[700px] gap-10 py-6">
+        <div className="mx-auto flex max-w-[800px] items-center gap-4 py-6">
+          <a href="/">
+            <ChevronLeftIcon className="h-6 w-6 text-white" />
+          </a>
           <h1 className="text-3xl font-semibold">{title}</h1>
         </div>
         <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)] py-6">

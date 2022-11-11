@@ -3,14 +3,21 @@
 import { DocumentData } from "firebase/firestore";
 import { useEffect, useRef } from "react";
 
-interface S {
+interface Card {
+  id: string;
+  question: string;
+  answer: string;
+  collection_id: string;
+}
+
+interface Props {
   info: DocumentData;
   index: number;
   id: string;
-  // updateFlashCard(newData: DocumentData): void;
+  updateCard(newData: Card): void;
 }
 
-export default function EditFlashCard(props: S) {
+export default function EditFlashCard(props: Props) {
   const questionRef = useRef<HTMLTextAreaElement>(null);
   const answerRef = useRef<HTMLTextAreaElement>(null);
 
@@ -30,15 +37,15 @@ export default function EditFlashCard(props: S) {
   }, [questionRef.current?.value, answerRef.current?.value]);
 
   const update = () => {
-    let newQuestion = questionRef.current?.value;
-    let newAnswer = answerRef.current?.value;
+    let newQuestion = questionRef.current?.value || "";
+    let newAnswer = answerRef.current?.value || "";
 
-    // props.updateFlashCard({
-    //   id: props.id,
-    //   question: newQuestion,
-    //   answer: newAnswer,
-    //   collection_id: props.info.collection_id,
-    // });
+    props.updateCard({
+      id: props.id,
+      question: newQuestion,
+      answer: newAnswer,
+      collection_id: props.info.collection_id,
+    });
   };
 
   return (

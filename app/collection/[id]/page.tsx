@@ -9,8 +9,8 @@ import {
 import { db } from "../../../firebase";
 
 import { notFound } from "next/navigation";
-
 import LessonContent from "../../../components/lesson/LessonContent";
+
 
 export const revalidate = "force-dynamic";
 
@@ -43,7 +43,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="p-4">
+    <div className="px-4 pt-10 pb-32">
       <LessonContent id={params.id} title={collectionSnapshot.data()?.name} cards={cards} />
     </div>
   );

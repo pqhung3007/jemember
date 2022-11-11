@@ -4,6 +4,7 @@ importers:
 
   .:
     specifiers:
+      '@heroicons/react': ^2.0.13
       '@next/font': ^13.0.2
       '@react-query-firebase/firestore': ^1.0.0-dev.7
       '@types/node': ^18.11.9
@@ -23,6 +24,7 @@ importers:
       tailwindcss: ^3.2.2
       typescript: ^4.8.4
     dependencies:
+      '@heroicons/react': 2.0.13_react@18.2.0
       '@next/font': 13.0.2
       '@react-query-firebase/firestore': 1.0.0-dev.7_7wxjyg6bdespd7po5yzmejsbd4
       dotenv: 16.0.3
@@ -549,6 +551,14 @@ packages:
       long: 4.0.0
       protobufjs: 7.1.2
       yargs: 16.2.0
+    dev: false
+
+  /@heroicons/react/2.0.13_react@18.2.0:
+    resolution: {integrity: sha512-iSN5XwmagrnirWlYEWNPdCDj9aRYVD/lnK3JlsC9/+fqGF80k8C7rl+1HCvBX0dBoagKqOFBs6fMhJJ1hOg1EQ==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@next/env/13.0.2:
