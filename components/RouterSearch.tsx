@@ -1,6 +1,19 @@
-export default function Search(props: any) {
+"use client";
+
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+
+export default function RouterSearch() {
+  const router = useRouter();
+  const [keyWord, setKeyWord] = useState("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push(keyWord ? `/?term=${keyWord}` : '/');
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <svg
@@ -20,12 +33,12 @@ export default function Search(props: any) {
           </svg>
         </div>
         <input
-          onChange={(e) => props.setKeyWord(e.currentTarget.value)}
+          onChange={(e) => setKeyWord(e.currentTarget.value)}
+          value={keyWord}
           type="search"
           size={40}
           placeholder="Search"
           className="block w-full rounded-lg border border-gray-600 bg-gray-700 py-3 pl-10 text-white placeholder-gray-400 focus:outline-none"
-          required
         />
       </div>
     </form>
