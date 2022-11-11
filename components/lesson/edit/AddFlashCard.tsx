@@ -2,7 +2,7 @@ export default function AddFlashCard(props: any) {
   return (
     <div
       className="my-4 flex cursor-pointer justify-center rounded-xl bg-gray-700 py-8 text-xl hover:bg-blue-400/40"
-      onClick={props.insertFlashCard}
+      onClick={props.insertCard}
     >
       <div className="flex items-center gap-2">
         <svg

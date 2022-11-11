@@ -2,22 +2,23 @@
 
 import { DocumentData } from "firebase/firestore";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import LocalSearch from "../LocalSearch";
+import LocalSearch from "../search/LocalSearch";
 import CopyButton from "./CopyButton";
-import EditButton from "./EditButton";
+import Flashcard from "./Flashcard";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
-import Flashcard from "./Flashcard";
 
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { includeString } from "../../utils";
 import CardDetails from "./CardDetails";
+import EditButton from "./EditButton";
 
 interface LessonProps {
-	id: string;
-	title: string;
-	cards: DocumentData[];
+  id: string;
+  title: string;
+  cards: DocumentData[];
 }
 
 const setButtonState = (isDisabled: boolean): string => {
@@ -27,7 +28,7 @@ const setButtonState = (isDisabled: boolean): string => {
 };
 
 export default function LessonContent({ id, title, cards }: LessonProps) {
-	const [isFront, setIsFront] = useState(true);
+  const [isFront, setIsFront] = useState(true);
   const [index, setIndex] = useState(0);
   const [cardsSearch, setCardsSearch] = useState([] as DocumentData[]);
   const [keyWord, setKeyWord] = useState("");
@@ -69,9 +70,9 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
     } else {
       navigator.clipboard.writeText(cards[index] ? cards[index].answer : "");
     }
-  };  
+  };
 
-	useEffect(() => {
+  useEffect(() => {
     if (keyWord.trim() !== "") {
       let newResult = cards.filter(
         (card) =>
@@ -84,24 +85,27 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
     }
   }, [cards, keyWord]);
 
-	useEffect(() => {
+  useEffect(() => {
     containerRef.current?.focus();
   }, []);
 
-	let prevButtonStyle = setButtonState(index <= 0);
+  let prevButtonStyle = setButtonState(index <= 0);
   let nextButtonStyle = setButtonState(index >= cards.length - 1);
 
   let percent = ((index + 1) * 100) / cards.length + "%";
 
   return (
-		<>
-    	<div
-        className=""
+    <>
+      <div
+        className="focus:outline-none"
         tabIndex={0}
         ref={containerRef}
         onKeyDown={processKeyBinding}
       >
-        <div className="mx-auto max-w-[700px] gap-10 py-6">
+        <div className="mx-auto flex max-w-[800px] items-center gap-4 py-6">
+          <a href="/">
+            <ChevronLeftIcon className="h-6 w-6 text-white" />
+          </a>
           <h1 className="text-3xl font-semibold">{title}</h1>
         </div>
         <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)] py-6">
@@ -137,7 +141,6 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
           <CardDetails cards={cardsSearch} />
         </div>
       </div>
-		</>
-
-  )
+    </>
+  );
 }

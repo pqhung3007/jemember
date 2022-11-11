@@ -3,4 +3,6 @@ module.exports = {
   tabWidth: 2,
   singleQuote: false,
   semi: true,
+  useTabs: false,
+  printWidth: 80,
 };

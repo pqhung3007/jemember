@@ -10,6 +10,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.13",
     "@next/font": "^13.0.2",
     "@react-query-firebase/firestore": "^1.0.0-dev.7",
     "dotenv": "^16.0.3",
