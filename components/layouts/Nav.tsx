@@ -1,9 +1,7 @@
+import { User } from "@supabase/supabase-js";
 import Link from "next/link";
-import { supabase } from "../../supabase";
 
-export default async function Nav() {
-
-  const { data: { user } } = await supabase.auth.getUser()
+export default function Nav({ user }: { user: User | null }) {
 
   return (
     <header className="border-b border-neutral-700">

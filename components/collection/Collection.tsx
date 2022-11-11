@@ -13,7 +13,7 @@ export default function Collection({ id, name, created_at }: CollectionCard) {
   return (
     <Link
       href={`/collection/${id}`}
-      className={`relative rounded-2xl bg-neutral-800 px-4 py-6 duration-100 hover:bg-neutral-800/70 ${shadow} hover:shadow-none`}
+      className={`relative rounded-lg bg-neutral-800 px-4 py-8 duration-100 hover:bg-neutral-800/70 ${shadow} hover:shadow-none`}
     >
       <p className="break-words text-xl font-semibold">
         {name?.length > 30 ? name.substring(0, 30) + "..." : name}

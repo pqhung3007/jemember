@@ -31,7 +31,7 @@ export default function Search({
         type="search"
         size={40}
         placeholder="Search"
-        className="block w-full rounded-lg border border-neutral-600 bg-neutral-700 py-3 pl-10 text-white placeholder-neutral-400 focus:outline-none"
+        className="block w-full rounded-lg border border-neutral-600 bg-neutral-800 py-3 pl-10 text-white placeholder-neutral-400 focus:outline-none"
         required
       />
     </div>
