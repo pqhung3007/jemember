@@ -7,13 +7,15 @@ export interface Card {
   collection_id: string;
 }
 
-interface S {
+interface Props {
+  size: number;
+  index: number;
   info: Card;
   isFront: boolean;
   setIsFront(isFront: boolean): void;
 }
 
-export default function Flashcard(props: S): JSX.Element {
+export default function Flashcard(props: Props): JSX.Element {
   const cardStyle = props.isFront ? "flip-card" : "flip-card-flipped";
 
   return (
@@ -23,9 +25,17 @@ export default function Flashcard(props: S): JSX.Element {
     >
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
-          <p className="overflow-y-scroll max-h-[95%] md:text-2xl">{props.info?.question}</p>
+          <p className="absolute top-4 font-medium">
+            {props.index + 1} / {props.size}
+          </p>
+          <p className="max-h-[95%] overflow-y-scroll md:text-2xl">
+            {props.info?.question}
+          </p>
         </div>
         <div className={styles["flip-card-back"]}>
+          <p className="absolute top-4 font-medium">
+            {props.index + 1} / {props.size}
+          </p>
           <p className="md:text-2xl">{props.info?.answer}</p>
         </div>
       </div>

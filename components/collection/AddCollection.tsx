@@ -4,7 +4,7 @@ export default function AddCollection() {
   return (
     <Link
       href="/collection/new"
-      className="flex items-center justify-center rounded-2xl bg-gray-800 px-4 py-8 hover:bg-blue-400/40"
+      className="flex items-center justify-center rounded-2xl bg-neutral-800 px-4 py-8 hover:bg-green-400/40"
     >
       <p>
         <svg
@@ -13,7 +13,7 @@ export default function AddCollection() {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="h-6 w-6 text-blue-500"
+          className="h-6 w-6 text-green-500"
         >
           <path
             strokeLinecap="round"

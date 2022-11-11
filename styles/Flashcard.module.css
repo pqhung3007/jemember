@@ -5,7 +5,7 @@
   position: relative;
   width: min(800px, 70vw);
   height: min(500px, 40vw);
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  perspective: 2000px;
 }
 
 /* This container is needed to position the front and back side */
@@ -40,7 +40,7 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: rgb(51 65 85);
+  background-color: rgb(40 50 50);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: rgb(51 65 85);
+  background-color: rgb(40 50 50);
   display: flex;
   justify-content: center;
   align-items: center;

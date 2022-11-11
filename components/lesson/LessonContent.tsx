@@ -21,8 +21,8 @@ interface LessonProps {
 
 const setButtonState = (isDisabled: boolean): string => {
   return isDisabled
-    ? "bg-gray-700 cursor-not-allowed"
-    : "bg-blue-700 cursor-pointer";
+    ? "bg-neutral-700 cursor-not-allowed"
+    : "bg-green-700 cursor-pointer";
 };
 
 export default function LessonContent({ id, title, cards }: LessonProps) {
@@ -106,24 +106,28 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
           </a>
           <h1 className="text-3xl font-semibold">{title}</h1>
         </div>
-        <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)] py-6">
+        <div className="mx-auto max-w-[800px] pt-6">
+          <div className="mb-6 h-0.5 w-full rounded-full bg-neutral-700">
+            <div
+              className="h-0.5 rounded-full bg-white"
+              style={{ width: percent }}
+            ></div>
+          </div>
+        </div>
+        <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)]">
           <PrevCard prevButtonStyle={prevButtonStyle} prev={prev} />
           <Flashcard
             isFront={isFront}
             setIsFront={setIsFront}
             info={cards[index]}
+            index={index}
+            size={cards?.length}
           />
           <NextCard nextButtonStyle={nextButtonStyle} next={next} />
         </div>
       </div>
 
-      <div className="mx-auto max-w-[800px] py-6">
-        <div className="mb-6 h-0.5 w-full rounded-full bg-gray-700">
-          <div
-            className="h-0.5 rounded-full bg-white"
-            style={{ width: percent }}
-          ></div>
-        </div>
+      <div className="mx-auto max-w-[800px]">
         <div className="flex items-center justify-between py-5">
           <div className="">
             <p>Created by</p>
