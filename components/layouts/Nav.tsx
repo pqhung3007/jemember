@@ -7,6 +7,7 @@ export default function Nav() {
         <h1 className="text-3xl font-semibold">
           <Link href="/">Jmember</Link>
         </h1>
+        <Link href="/signup">Sign up</Link>
       </div>
     </header>
   );

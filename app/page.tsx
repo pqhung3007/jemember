@@ -21,16 +21,16 @@ export default async function Home({
   searchParams: { term?: string };
 }) {
   const collections = await fetchAllCollections();
-  // const searchResult = collections.filter((collection) =>
-  //   includeString(collection.name, searchParams?.term ?? "")
-  // );
+  const searchResult = collections.filter((collection) =>
+    includeString(collection.name, searchParams?.term ?? "")
+  );
 
   return (
     <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
       <div className="col-span-full flex justify-center">
         <RouterSearch />
       </div>
-      <CollectionList collections={collections} />
+      <CollectionList collections={searchResult} />
       {collections.length < 100 && <AddCollection />}
     </div>
   );
