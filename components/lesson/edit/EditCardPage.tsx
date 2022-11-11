@@ -1,60 +1,69 @@
 "use client";
 
-import { collection, doc, setDoc } from "firebase/firestore";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import { db } from "../../../firebase";
+import { supabase } from "../../../supabase";
+import { Card } from "../Flashcard";
 import AddFlashCard from "./AddFlashCard";
 import EditFlashCard from "./EditFlashCard";
 import ImportFlashCard from "./ImportFlashCard";
-import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
-interface Card {
-  id: string;
-  question: string;
-  answer: string;
-  collection_id: string;
-}
+const updateCardToDatabase = async (newData: Card) => {
+  await supabase.from("card").upsert({
+    id: newData.id,
+    question: newData.question,
+    answer: newData.answer,
+    collection_id: newData.collection_id,
+  });
+};
 
 export default function EditCardPage(props: any) {
-  const [cards, setCards] = useState(props.cards);
+  const [cards, setCards] = useState(props.cards as Card[]);
 
-  // const importCard = (content: string) => {
-  //   let lines = content.split("\n\n");
-  //   for (let i = 0; i < Math.min(100, lines.length); i++) {
-  //     const [question, answer] = lines[i].split(" ------ ");
-  // addDoc(cardRef, {
-  //   question: question || "",
-  //   answer: answer || "",
-  //   collection_id: params.id as string,
-  // }).catch((err) => console.log(err));
-  // }
-  // };
+  const importCard = async (content: string) => {
+    let lines = content.split(";;;;;;");
+    let { data, error } = await supabase
+      .from("card")
+      .insert(
+        lines.map((line) => {
+          const [question, answer] = line.split("&&&&&&");
+          return {
+            question: question || "",
+            answer: answer || "",
+            collection_id: props.collection.id as string,
+          };
+        })
+      )
+      .select();
+    if (!error) {
+      setCards([...cards, ...(data as Card[])]);
+    }
+  };
 
-  const insertCard = () => {
+  const insertCard = async () => {
     if (props.cards.length >= 1000) {
       return;
     }
 
-    const newFlashCardRef = doc(collection(db, "card"));
-
     const newCard = {
       question: "",
       answer: "",
-      collection_id: props.id as string,
-      id: newFlashCardRef.id,
+      collection_id: props.collection.id,
     };
 
-    setCards([...cards, newCard]);
+    const { data, error } = await supabase
+      .from("card")
+      .insert(newCard)
+      .select();
+
+    if (!error) {
+      setCards([...cards, data[0] as Card]);
+    }
   };
 
-  const updateCard = (newData: Card) => {
+  const updateCard = async (newData: Card) => {
     setCards(cards.map((val: Card) => (val.id === newData.id ? newData : val)));
-
-    setDoc(doc(db, "card", newData.id), {
-      question: newData.question,
-      answer: newData.answer,
-      collection_id: newData.collection_id,
-    });
+    await updateCardToDatabase(newData);
   };
 
   // const deleteCard = (id: string) => {
@@ -70,7 +79,7 @@ export default function EditCardPage(props: any) {
           </a>
           <h1 className="text-3xl font-semibold">{props.collection.name}</h1>
         </div>
-        <ImportFlashCard />
+        <ImportFlashCard importCard={importCard} />
         {cards.map((card: Card, index: number) => (
           <EditFlashCard
             index={index}

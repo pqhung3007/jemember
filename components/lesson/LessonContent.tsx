@@ -1,7 +1,5 @@
 "use client";
 
-import { DocumentData } from "firebase/firestore";
-
 import { useEffect, useRef, useState } from "react";
 
 import LocalSearch from "../search/LocalSearch";
@@ -18,7 +16,7 @@ import EditButton from "./EditButton";
 interface LessonProps {
   id: string;
   title: string;
-  cards: DocumentData[];
+  cards: any[];
 }
 
 const setButtonState = (isDisabled: boolean): string => {
@@ -30,7 +28,7 @@ const setButtonState = (isDisabled: boolean): string => {
 export default function LessonContent({ id, title, cards }: LessonProps) {
   const [isFront, setIsFront] = useState(true);
   const [index, setIndex] = useState(0);
-  const [cardsSearch, setCardsSearch] = useState([] as DocumentData[]);
+  const [cardsSearch, setCardsSearch] = useState([] as any[]);
   const [keyWord, setKeyWord] = useState("");
 
   const containerRef = useRef<HTMLDivElement>(null);

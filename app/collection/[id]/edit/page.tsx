@@ -1,46 +1,29 @@
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
-
 import { notFound } from "next/navigation";
 import EditCardPage from "../../../../components/lesson/edit/EditCardPage";
-import { db } from "../../../../firebase";
-
+import { supabase } from "../../../../supabase";
 export const revalidate = "force-dynamic";
+import { Card } from "../../../../components/lesson/Flashcard";
 
 const fetchCollectionById = async (id: string) => {
-  const collectionRef = collection(db, "collection");
-  const thisCollection = doc(collectionRef, id);
-  const collectionSnapshot = await getDoc(thisCollection);
-
-  return collectionSnapshot;
+  const { data, error } = await supabase.from("lesson").select().eq("id", id);
+  if (!error) {
+    return data[0];
+  }
 };
 
-const fetchCardsByCollectionId = async (id: string) => {
-  const cardRef = collection(db, "card");
-  let getCardsByCollectionIdQuery = query(
-    cardRef,
-    where("collection_id", "==", id)
-  );
-  const docSnap = await getDocs(getCardsByCollectionIdQuery);
-  return docSnap.docs;
+const fetchCardsByCollectionId = async (lessonId: string) => {
+  const { data, error } = await supabase
+    .from("card")
+    .select()
+    .eq("collection_id", lessonId);
+  if (!error) {
+    return data;
+  }
 };
 
 interface Collection {
   id: string;
   name: string;
-}
-
-interface Card {
-  id: string;
-  question: string;
-  answer: string;
-  collection_id: string;
 }
 
 export default async function Lesson({ params }: { params: { id: string } }) {
@@ -52,27 +35,23 @@ export default async function Lesson({ params }: { params: { id: string } }) {
     _cardsPromise,
   ]);
 
-  if (!collectionSnapshot.exists()) {
+  if (!collectionSnapshot) {
     notFound();
   }
 
   let collection: Collection = {
     id: collectionSnapshot.id,
-    name: collectionSnapshot.data().name,
+    name: collectionSnapshot.name,
   };
 
-  let cards: Card[] = cardsSnapshot.map((cardSnapshot) => {
-    return {
-      id: cardSnapshot.id,
-      question: cardSnapshot.data().question,
-      answer: cardSnapshot.data().answer,
-      collection_id: cardSnapshot.data().collection_id,
-    };
-  });
+  let cards: Card[] = cardsSnapshot as Card[];
 
   return (
     <div className="p-4">
-      <EditCardPage collection={collection} cards={cards} />
+      <EditCardPage
+        collection={collection}
+        cards={cards}
+      />
     </div>
   );
 }
