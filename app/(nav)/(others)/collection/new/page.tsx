@@ -1,5 +1,5 @@
-import AddLesson from "../../../components/lesson/new/AddLesson";
-import { supabase } from "../../../supabase";
+import AddLesson from "../../../../../components/lesson/new/AddLesson";
+import { supabase } from "../../../../../supabase";
 
 const countCollection = async () => {
   const { data, error, count } = await supabase

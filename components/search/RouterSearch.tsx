@@ -14,7 +14,7 @@ export default function RouterSearch() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="relative">
+      <div className="relative flex gap-5">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <svg
             aria-hidden="true"
@@ -37,9 +37,12 @@ export default function RouterSearch() {
           value={keyWord}
           type="search"
           size={40}
-          placeholder="Search"
+          placeholder="Collections' name"
           className="block w-full rounded-lg border border-neutral-600 bg-neutral-800 py-3 pl-10 text-white placeholder-neutral-500 focus:outline-none"
         />
+        <button type="submit" className="rounded-lg bg-neutral-800 px-4">
+          Search
+        </button>
       </div>
     </form>
   );

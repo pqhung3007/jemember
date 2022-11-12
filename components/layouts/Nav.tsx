@@ -11,7 +11,7 @@ export default function Nav({ user }: { user: User | null }) {
         </h1>
         <div className="flex gap-5">
           {
-            user &&
+            !user &&
             <>
               <Link href="/login">Log in</Link>
               <Link href="/signup">Sign up</Link>

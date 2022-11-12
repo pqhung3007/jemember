@@ -1,7 +1,7 @@
-import { supabase } from "../../../supabase";
+import { supabase } from "../../../../../supabase";
 
 import { notFound } from "next/navigation";
-import LessonContent from "../../../components/lesson/LessonContent";
+import LessonContent from "../../../../../components/lesson/LessonContent";
 
 export const revalidate = "force-dynamic";
 
