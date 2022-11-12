@@ -1,7 +1,6 @@
-
 // import "../styles/globals.css";
 
-export default function RootLayout({
+export default function SingupLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -26,11 +25,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body>
-        <div className="min-h-screen bg-neutral-900 text-neutral-200">
-          {children}
-        </div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
