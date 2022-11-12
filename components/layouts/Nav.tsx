@@ -1,7 +1,19 @@
+"use client";
+
 import { User } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { supabase } from "supabase";
 
-export default function Nav({ user }: { user: User | null }) {
+export default function Nav() {
+  const [user, setUser] = useState({} as User);
+
+  useEffect(() => {
+    supabase.auth.getSession().then((session) => {
+      if (session.data.session?.user) setUser(session.data.session?.user);
+    });
+  }, []);
+
   return (
     <header className="border-b border-neutral-700">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-6">
@@ -9,13 +21,13 @@ export default function Nav({ user }: { user: User | null }) {
           <Link href="/">Jmember</Link>
         </h1>
         <div className="flex gap-5">
-          {
-            !user &&
+          {!user && (
             <>
               <Link href="/login">Log in</Link>
               <Link href="/signup">Sign up</Link>
             </>
-          }
+          )}
+          <p>{user?.email}</p>
         </div>
       </div>
     </header>

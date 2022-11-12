@@ -1,9 +1,12 @@
 import { supabase } from "supabase";
-
+import { Card } from "components/lesson/Flashcard";
 import { notFound } from "next/navigation";
-import LessonContent from "components/lesson/LessonContent";
+import LearnPage from "components/lesson/learn/LearnPage";
 
-export const revalidate = "force-dynamic";
+interface Collection {
+  id: string;
+  name: string;
+}
 
 const fetchCollectionById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
@@ -23,11 +26,11 @@ const fetchCardsByCollectionId = async (lessonId: string) => {
   return [];
 };
 
-export default async function Lesson({ params }: { params: { id: string } }) {
+export default async function Learn({ params }: { params: { id: string } }) {
   const _collectionPromise = fetchCollectionById(params.id);
   const _cardsPromise = fetchCardsByCollectionId(params.id);
 
-  const [collectionSnapshot, cards] = await Promise.all([
+  const [collectionSnapshot, cardsSnapshot] = await Promise.all([
     _collectionPromise,
     _cardsPromise,
   ]);
@@ -36,13 +39,16 @@ export default async function Lesson({ params }: { params: { id: string } }) {
     notFound();
   }
 
+  let collection: Collection = {
+    id: collectionSnapshot.id,
+    name: collectionSnapshot.name,
+  };
+
+  let cards: Card[] = cardsSnapshot as Card[];
+
   return (
-    <div className="px-4 pt-10 pb-32">
-      <LessonContent
-        id={params.id}
-        title={collectionSnapshot.name}
-        cards={cards}
-      />
+    <div className="p-4">
+      <LearnPage collection={collection} cards={cards} />
     </div>
   );
 }

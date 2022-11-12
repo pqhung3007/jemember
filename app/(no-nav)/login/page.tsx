@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { supabase } from "../../../supabase";
+import { supabase } from "supabase";
 
 export default function Login() {
   const router = useRouter();
@@ -16,26 +16,27 @@ export default function Login() {
     event.preventDefault();
     let email = emailRef?.current?.value || "";
     let pass = passRef?.current?.value || "";
-    const { data, error: errorServer } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: pass,
-    })
+    const { data, error: errorServer } = await supabase.auth.signInWithPassword(
+      {
+        email: email,
+        password: pass,
+      }
+    );
     if (!errorServer) {
-      router.push("/")
+      router.push("/");
     } else {
-      setError(errorServer.message)
+      setError(errorServer.message);
     }
-  }
+  };
 
   return (
-    <div className="relative h-screen w-screen flex justify-center items-center p-4 text-white">
-      <form className="relative max-w-md rounded-xl shadow bg-neutral-700"
+    <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">
+      <form
+        className="relative max-w-md rounded-xl bg-neutral-700 shadow"
         onSubmit={login}
       >
         <div className="py-6 px-6 lg:px-8">
-          <div className="mb-4 text-3xl text-center font-semibold">
-            Log in
-          </div>
+          <div className="mb-4 text-center text-3xl font-semibold">Log in</div>
           <div className="space-y-6">
             <div>
               <div className="mb-2 block text-sm font-medium text-neutral-300">
@@ -48,7 +49,7 @@ export default function Login() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
-                className="block w-full rounded-lg border p-2.5 text-sm focus:border-green-500 focus:ring-green-500 border-neutral-500 bg-neutral-600 placeholder-neutral-400"
+                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -65,25 +66,20 @@ export default function Login() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-lg border p-2.5 text-sm focus:border-green-500 focus:ring-green-500 border-neutral-500 bg-neutral-600 placeholder-neutral-400"
+                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
                 required
               />
             </div>
-            <div className="text-center text-red-600">
-              {error}
-            </div>
+            <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-lg px-5 py-2.5 text-center text-sm font-medium focus:outline-none bg-green-600 hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-neutral-800"
+              className="w-full rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium hover:bg-green-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-800"
               disabled={error.trim() !== ""}
             >
               Log in
             </button>
             <div className="text-sm font-medium text-neutral-300">
               New here ?{" "}
-              <Link
-                href="/signup"
-                className="hover:underline text-green-500"
-              >
+              <Link href="/signup" className="text-green-500 hover:underline">
                 Signup
               </Link>
             </div>

@@ -10,3 +10,8 @@
 1. Clone project về local
 2. Chạy lệnh `pnpm i` để cài đặt `node_modules`
 3. Chạy lệnh `pnpm run dev` để chạy web app trên môi trường dev
+
+## Credit
+- Founder: Nguyễn Huy Hoàng
+- Tài trợ tên miền: Hồ Khánh Vũ
+- Hướng dẫn đóng góp; Vũ Hải Lâm

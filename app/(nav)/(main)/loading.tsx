@@ -1,9 +1,8 @@
-
-import RouterSearch from "../../../components/search/RouterSearch";
+import RouterSearch from "components/search/RouterSearch";
 
 const Skeleton = () => (
-  <div className="rounded-lg bg-neutral-800 py-[60px] duration-50 animate-pulse"></div>
-)
+  <div className="duration-50 animate-pulse rounded-lg bg-neutral-800 py-[60px]"></div>
+);
 
 export default function CollectionListSkeleton() {
   return (
@@ -16,5 +15,5 @@ export default function CollectionListSkeleton() {
         <Skeleton key={i} />
       ))}
     </div>
-  )
+  );
 }

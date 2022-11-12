@@ -1,8 +1,7 @@
-import { Suspense } from "react";
-import AddCollection from "../../../components/collection/AddCollection";
-import CollectionList from "../../../components/collection/CollectionList";
-import RouterSearch from "../../../components/search/RouterSearch";
-import { supabase } from "../../../supabase";
+import AddCollection from "components/collection/AddCollection";
+import CollectionList from "components/collection/CollectionList";
+import RouterSearch from "components/search/RouterSearch";
+import { supabase } from "supabase";
 
 import { includeString } from "../../../utils";
 
@@ -11,10 +10,16 @@ export const revalidate = "force-dynamic";
 const fetchAllCollections = async () => {
   const { data, error } = await supabase.from("lesson").select();
 
-  if (error)
-    throw new Error("An error occured while fetching collections");
+  if (error) throw new Error("An error occured while fetching collections");
 
   return data;
+};
+
+const getCurrentUser = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return user;
 };
 
 export default async function Home({
@@ -23,6 +28,8 @@ export default async function Home({
   searchParams: { term?: string };
 }) {
   const collections = await fetchAllCollections();
+  const user = await getCurrentUser();
+  console.log(user);
   const searchResult = collections.filter((collection) =>
     includeString(collection.name, searchParams?.term ?? "")
   );

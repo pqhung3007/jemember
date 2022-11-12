@@ -25,7 +25,7 @@ export default function Flashcard(props: Props): JSX.Element {
     >
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
-          <p className="absolute top-4 font-medium">
+          <p className="absolute top-1 font-medium">
             {props.index + 1} / {props.size}
           </p>
           <p className="max-h-[95%] overflow-y-scroll md:text-2xl">
@@ -33,7 +33,7 @@ export default function Flashcard(props: Props): JSX.Element {
           </p>
         </div>
         <div className={styles["flip-card-back"]}>
-          <p className="absolute top-4 font-medium">
+          <p className="absolute top-2 font-medium">
             {props.index + 1} / {props.size}
           </p>
           <p className="md:text-2xl">{props.info?.answer}</p>

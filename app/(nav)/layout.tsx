@@ -1,5 +1,4 @@
-import Nav from "../../components/layouts/Nav";
-import { supabase } from "../../supabase";
+import Nav from "components/layouts/Nav";
 
 import "../../styles/globals.css";
 
@@ -8,9 +7,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  const { data: { user } } = await supabase.auth.getUser()
-
   return (
     <html lang="en">
       <head>
@@ -33,7 +29,7 @@ export default async function RootLayout({
 
       <body>
         <div className="min-h-screen bg-neutral-900 text-neutral-200">
-          <Nav user={user} />
+          <Nav />
           {children}
         </div>
       </body>

@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import EditCardPage from "../../../../../../components/lesson/edit/EditCardPage";
-import { supabase } from "../../../../../../supabase";
+import EditCardPage from "components/lesson/edit/EditCardPage";
+import { supabase } from "supabase";
 export const revalidate = "force-dynamic";
-import { Card } from "../../../../../../components/lesson/Flashcard";
+import { Card } from "components/lesson/Flashcard";
 
 const fetchCollectionById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
@@ -48,10 +48,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
 
   return (
     <div className="p-4">
-      <EditCardPage
-        collection={collection}
-        cards={cards}
-      />
+      <EditCardPage collection={collection} cards={cards} />
     </div>
   );
 }

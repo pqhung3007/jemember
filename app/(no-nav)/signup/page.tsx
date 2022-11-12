@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { supabase } from "../../../supabase";
+import { supabase } from "supabase";
 
 export default function Signup() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function Signup() {
       password: pass,
     });
     if (!errorServer) {
-      router.push("/");
+      router.push("/login");
     } else {
       setError(errorServer.message);
     }
@@ -59,7 +59,7 @@ export default function Signup() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
-                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:ring-green-500"
+                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -76,7 +76,7 @@ export default function Signup() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:ring-green-500"
+                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
                 required
               />
             </div>
@@ -92,7 +92,7 @@ export default function Signup() {
                 pattern=".{8,}"
                 ref={repeatPassRef}
                 title="Eight or more characters"
-                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:ring-green-500"
+                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
                 required
               />
             </div>
