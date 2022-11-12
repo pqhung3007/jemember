@@ -14,17 +14,8 @@ const fetchAllCollections = async () => {
   if (error)
     throw new Error("An error occured while fetching collections");
 
-  await new Promise((resolve) => setTimeout(resolve, 5000));
   return data;
 };
-
-const CollectionListSkeleton = () => (
-  <>
-    {[...Array(6)].map((_, i) => (
-      <div key={i} className="rounded-lg bg-neutral-800 py-[60px] duration-50 animate-pulse"></div>
-    ))};
-  </>
-) 
 
 export default async function Home({
   searchParams,
@@ -42,10 +33,8 @@ export default async function Home({
         <RouterSearch />
       </div>
 
-      <Suspense fallback={<CollectionListSkeleton />}>
-        <CollectionList collections={searchResult} />
-        {collections.length < 100 && <AddCollection />}
-      </Suspense>
+      <CollectionList collections={searchResult} />
+      {collections.length < 100 && <AddCollection />}
     </div>
   );
 }
