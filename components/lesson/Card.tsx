@@ -1,4 +1,4 @@
-import styles from "../../styles/Flashcard.module.css";
+import styles from "../../styles/Card.module.css";
 
 export interface Card {
   id: string;
@@ -15,7 +15,7 @@ interface Props {
   setIsFront(isFront: boolean): void;
 }
 
-export default function Flashcard(props: Props): JSX.Element {
+export default function Card(props: Props): JSX.Element {
   const cardStyle = props.isFront ? "flip-card" : "flip-card-flipped";
 
   return (

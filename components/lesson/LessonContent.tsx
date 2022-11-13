@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import LocalSearch from "../search/LocalSearch";
 import CopyButton from "./CopyButton";
-import Flashcard from "./Card";
+import Card from "./Card";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
 
@@ -22,7 +22,7 @@ interface LessonProps {
 const setButtonState = (isDisabled: boolean): string => {
   return isDisabled
     ? "bg-neutral-700 cursor-not-allowed"
-    : "bg-green-700 cursor-pointer";
+    : "bg-green-800 cursor-pointer";
 };
 
 export default function LessonContent({ id, title, cards }: LessonProps) {
@@ -116,7 +116,7 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
         </div>
         <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)]">
           <PrevCard prevButtonStyle={prevButtonStyle} prev={prev} />
-          <Flashcard
+          <Card
             isFront={isFront}
             setIsFront={setIsFront}
             info={cards[index]}

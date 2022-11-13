@@ -19,7 +19,7 @@ export default function Lesson({ id, name, created_at }: LessonCard) {
         {name?.length > 30 ? name.substring(0, 30) + "..." : name}
       </p>
       <p className="pt-4 text-neutral-400">
-        {created_at}
+        {new Date(created_at).toLocaleString("vi-VN")}
       </p>
     </Link>
   );

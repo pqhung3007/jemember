@@ -18,7 +18,10 @@ export default function Nav() {
     <header className="border-b border-neutral-700">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-6">
         <h1 className="text-3xl font-semibold">
-          <Link href="/">Jmember</Link>
+          <Link href="/" className="flex">
+            <p className="text-red-500">J</p>
+            member
+          </Link>
         </h1>
         <div className="flex gap-5">
           {!user && (
