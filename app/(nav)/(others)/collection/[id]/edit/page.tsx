@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
-import EditCardPage from "components/lesson/edit/EditCardPage";
+import EditCardPage from "app/(nav)/(others)/collection/[id]/edit/EditCardPage";
 import { supabase } from "supabase";
 export const revalidate = "force-dynamic";
-import { Card } from "components/lesson/Flashcard";
+import { Card } from "components/lesson/Card";
 
 const fetchCollectionById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);

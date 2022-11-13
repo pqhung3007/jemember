@@ -3,10 +3,10 @@
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { supabase } from "supabase";
-import { Card } from "../Flashcard";
-import AddFlashCard from "./AddFlashCard";
-import EditFlashCard from "./EditFlashCard";
-import ImportFlashCard from "./ImportFlashCard";
+import { Card } from "components/lesson/Card";
+import AddFlashCard from "components/lesson/edit/AddCard";
+import EditFlashCard from "components/lesson/edit/EditCard";
+import ImportFlashCard from "components/lesson/edit/ImportCard";
 
 const updateCardToDatabase = async (newData: Card) => {
   await supabase.from("card").upsert({

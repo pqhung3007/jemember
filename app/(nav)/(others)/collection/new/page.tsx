@@ -1,4 +1,4 @@
-import AddLesson from "components/lesson/new/AddLesson";
+import AddLesson from "app/(nav)/(others)/collection/new/AddLessonPage";
 import { supabase } from "supabase";
 
 const countCollection = async () => {

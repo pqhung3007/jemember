@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import LocalSearch from "../search/LocalSearch";
 import CopyButton from "./CopyButton";
-import Flashcard from "./Flashcard";
+import Flashcard from "./Card";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
 

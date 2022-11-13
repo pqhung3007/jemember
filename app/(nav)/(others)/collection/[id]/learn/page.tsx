@@ -1,7 +1,7 @@
 import { supabase } from "supabase";
-import { Card } from "components/lesson/Flashcard";
+import { Card } from "components/lesson/Card";
 import { notFound } from "next/navigation";
-import LearnPage from "components/lesson/learn/LearnPage";
+import LearnPage from "app/(nav)/(others)/collection/[id]/learn/LearnPage";
 
 interface Collection {
   id: string;

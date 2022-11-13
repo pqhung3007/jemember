@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Card } from "../Flashcard";
+import { Card } from "../Card";
 
 interface Props {
   info: Card;
