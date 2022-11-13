@@ -13,6 +13,9 @@
 - TailwindCSS 3.2.4
 - Supabase
 
+## Yêu cầu
+- [pnpm](https://pnpm.io/installation)
+
 ## Chức năng
 - Tạo lesson chứa các thẻ flashcard
 - (Đang phát triển) Tính năng đánh dấu flashcard
