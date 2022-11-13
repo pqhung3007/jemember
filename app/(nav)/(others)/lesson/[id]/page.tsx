@@ -1,7 +1,7 @@
 import { supabase } from "supabase";
 
 import { notFound } from "next/navigation";
-import LessonContent from "app/(nav)/(others)/lesson/[id]/LessonContent";
+import LessonPage from "app/(nav)/(others)/lesson/[id]/LessonPage";
 
 export const revalidate = "force-dynamic";
 
@@ -38,7 +38,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
 
   return (
     <div className="px-4 pt-10 pb-32">
-      <LessonContent
+      <LessonPage
         lessonId={params.id}
         title={lessonSnapshot.name}
         cards={cards}

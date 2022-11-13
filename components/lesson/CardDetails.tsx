@@ -20,9 +20,19 @@ export default function CardDetails({ cards, markedIds, toggleMarked }:
 
   return (
     <>
-      <div className="flex gap-4 justify-end">
-        <div className="cursor-pointer" onClick={() => setIsMarkedOnly(true)}>Marked</div>
-        <div className="cursor-pointer" onClick={() => setIsMarkedOnly(false)}>Unmarked</div>
+      <div className="flex gap-4 justify-end py-3">
+        <button
+          className={`cursor-pointer px-3 py-2 rounded-lg ${isMarkedOnly && "bg-green-700"}`}
+          onClick={() => setIsMarkedOnly(true)}
+        >
+          Marked
+        </button>
+        <button
+          className={`cursor-pointer px-3 py-2 rounded-lg ${!isMarkedOnly && "bg-green-700"}`}
+          onClick={() => setIsMarkedOnly(false)}
+        >
+          Not marked
+        </button>
       </div>
       {cards.map((card, index) => (
         <div
@@ -46,7 +56,3 @@ export default function CardDetails({ cards, markedIds, toggleMarked }:
     </>
   );
 }
-function setState(arg0: boolean): [any, any] {
-  throw new Error("Function not implemented.");
-}
-

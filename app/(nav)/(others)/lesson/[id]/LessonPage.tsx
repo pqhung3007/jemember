@@ -36,7 +36,7 @@ const fetchMarkedCardsId = async (uid: string, lesson_id: string) => {
   return [];
 }
 
-export default function LessonContent({ lessonId, title, cards }: LessonProps) {
+export default function LessonPage({ lessonId, title, cards }: LessonProps) {
   const [uid, setUid] = useState("");
   const [isFront, setIsFront] = useState(true);
   const [index, setIndex] = useState(0);
@@ -86,19 +86,19 @@ export default function LessonContent({ lessonId, title, cards }: LessonProps) {
   const toggleMarked = async (card_id: string) => {
     let uid = await fetchCurrentUID();
     if (!marked.includes(card_id)) {
-      const { error } = await supabase
+      setMarked([...marked, card_id]);
+      await supabase
         .from('users_mark_cards')
         .insert({
           uid: uid,
           card_id: card_id,
         })
-      setMarked([...marked, card_id]);
     } else {
-      const { error } = await supabase
+      setMarked(marked.filter(id => id !== card_id));
+      await supabase
         .from('users_mark_cards')
         .delete()
-        .eq('uid', card_id)
-      setMarked(marked.filter(id => id !== card_id));
+        .eq('card_id', card_id)
     }
   }
 
@@ -160,7 +160,9 @@ export default function LessonContent({ lessonId, title, cards }: LessonProps) {
             setIsFront={setIsFront}
             card={cards[index]}
             index={index}
+            isMarked={marked.includes(cards[index].id)}
             size={cards?.length}
+            toggleMarked={toggleMarked}
           />
           <NextCard nextButtonStyle={nextButtonStyle} next={next} />
         </div>
