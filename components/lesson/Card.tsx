@@ -4,7 +4,7 @@ export interface Card {
   id: string;
   question: string;
   answer: string;
-  collection_id: string;
+  lesson_id: string;
 }
 
 interface Props {

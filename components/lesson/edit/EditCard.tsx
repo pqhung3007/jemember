@@ -40,7 +40,7 @@ export default function EditFlashCard(props: Props) {
         id: props.id,
         question: newQuestion,
         answer: newAnswer,
-        collection_id: props.info.collection_id,
+        lesson_id: props.info.lesson_id,
       });
     }, 500);
   };

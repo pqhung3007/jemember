@@ -1,5 +1,5 @@
-import AddCollection from "components/collection/AddCollection";
-import CollectionList from "components/collection/CollectionList";
+import AddLesson from "components/lessons/AddLesson";
+import LessonList from "components/lessons/LessonList";
 import RouterSearch from "components/search/RouterSearch";
 import { supabase } from "supabase";
 
@@ -7,10 +7,10 @@ import { includeString } from "../../../utils";
 
 export const revalidate = "force-dynamic";
 
-const fetchAllCollections = async () => {
+const fetchAllLessons = async () => {
   const { data, error } = await supabase.from("lesson").select();
 
-  if (error) throw new Error("An error occured while fetching collections");
+  if (error) throw new Error("An error occured while fetching lessons");
 
   return data;
 };
@@ -27,11 +27,11 @@ export default async function Home({
 }: {
   searchParams: { term?: string };
 }) {
-  const collections = await fetchAllCollections();
+  const lessons = await fetchAllLessons();
   const user = await getCurrentUser();
   console.log(user);
-  const searchResult = collections.filter((collection) =>
-    includeString(collection.name, searchParams?.term ?? "")
+  const searchResult = lessons.filter((lesson) =>
+    includeString(lesson.name, searchParams?.term ?? "")
   );
 
   return (
@@ -40,8 +40,8 @@ export default async function Home({
         <RouterSearch />
       </div>
 
-      <CollectionList collections={searchResult} />
-      {collections.length < 100 && <AddCollection />}
+      <LessonList lessons={searchResult} />
+      {lessons.length < 100 && <AddLesson />}
     </div>
   );
 }

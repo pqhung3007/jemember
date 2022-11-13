@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-export default function CollectionError({ error, reset }: {
+export default function LessonError({ error, reset }: {
   error: Error;
   reset: () => void;
 }) {

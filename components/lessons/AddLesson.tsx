@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-export default function AddCollection() {
+export default function AddLesson() {
   return (
     <Link
-      href="/collection/new"
+      href="/lesson/new"
       className="flex items-center justify-center rounded-2xl bg-neutral-800 px-4 py-8 hover:bg-green-400/40"
     >
       <p>

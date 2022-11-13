@@ -5,18 +5,18 @@ import LessonContent from "components/lesson/LessonContent";
 
 export const revalidate = "force-dynamic";
 
-const fetchCollectionById = async (id: string) => {
+const fetchLessonById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
   if (!error) {
     return data[0];
   }
 };
 
-const fetchCardsByCollectionId = async (lessonId: string) => {
+const fetchCardsByLessonId = async (lessonId: string) => {
   const { data, error } = await supabase
     .from("card")
     .select()
-    .eq("collection_id", lessonId);
+    .eq("lesson_id", lessonId);
   if (!error) {
     return data;
   }
@@ -24,15 +24,15 @@ const fetchCardsByCollectionId = async (lessonId: string) => {
 };
 
 export default async function Lesson({ params }: { params: { id: string } }) {
-  const _collectionPromise = fetchCollectionById(params.id);
-  const _cardsPromise = fetchCardsByCollectionId(params.id);
+  const _lessonPromise = fetchLessonById(params.id);
+  const _cardsPromise = fetchCardsByLessonId(params.id);
 
-  const [collectionSnapshot, cards] = await Promise.all([
-    _collectionPromise,
+  const [lessonSnapshot, cards] = await Promise.all([
+    _lessonPromise,
     _cardsPromise,
   ]);
 
-  if (!collectionSnapshot) {
+  if (!lessonSnapshot) {
     notFound();
   }
 
@@ -40,7 +40,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
     <div className="px-4 pt-10 pb-32">
       <LessonContent
         id={params.id}
-        title={collectionSnapshot.name}
+        title={lessonSnapshot.name}
         cards={cards}
       />
     </div>

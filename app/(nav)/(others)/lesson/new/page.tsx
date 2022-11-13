@@ -1,15 +1,15 @@
-import AddLesson from "app/(nav)/(others)/collection/new/AddLessonPage";
+import AddLesson from "app/(nav)/(others)/lesson/new/AddLessonPage";
 import { supabase } from "supabase";
 
-const countCollection = async () => {
+const countLesson = async () => {
   const { data, error, count } = await supabase
     .from("lesson")
     .select("*", { count: "exact", head: true });
   return count || 0;
 };
 
-export default async function NewCollection() {
-  const count = await countCollection();
+export default async function NewLesson() {
+  const count = await countLesson();
 
   return (
     <div className="mx-auto flex max-w-[1500px] grow items-center justify-center p-5">

@@ -37,7 +37,7 @@ export default function RouterSearch() {
           value={keyWord}
           type="search"
           size={40}
-          placeholder="Collections' name"
+          placeholder="Lessons' name"
           className="block w-full rounded-lg border border-neutral-600 bg-neutral-800 py-3 pl-10 text-white placeholder-neutral-500 focus:outline-none"
         />
         <button type="submit" className="rounded-lg bg-neutral-800 px-4">

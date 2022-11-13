@@ -1,54 +1,54 @@
 import { notFound } from "next/navigation";
-import EditCardPage from "app/(nav)/(others)/collection/[id]/edit/EditCardPage";
+import EditCardPage from "app/(nav)/(others)/lesson/[id]/edit/EditCardPage";
 import { supabase } from "supabase";
 export const revalidate = "force-dynamic";
 import { Card } from "components/lesson/Card";
 
-const fetchCollectionById = async (id: string) => {
+const fetchLessonById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
   if (!error) {
     return data[0];
   }
 };
 
-const fetchCardsByCollectionId = async (lessonId: string) => {
+const fetchCardsByLessonId = async (lessonId: string) => {
   const { data, error } = await supabase
     .from("card")
     .select()
-    .eq("collection_id", lessonId);
+    .eq("lesson_id", lessonId);
   if (!error) {
     return data;
   }
 };
 
-interface Collection {
+interface Lesson {
   id: string;
   name: string;
 }
 
 export default async function Lesson({ params }: { params: { id: string } }) {
-  const _collectionPromise = fetchCollectionById(params.id);
-  const _cardsPromise = fetchCardsByCollectionId(params.id);
+  const _lessonPromise = fetchLessonById(params.id);
+  const _cardsPromise = fetchCardsByLessonId(params.id);
 
-  const [collectionSnapshot, cardsSnapshot] = await Promise.all([
-    _collectionPromise,
+  const [lessonSnapshot, cardsSnapshot] = await Promise.all([
+    _lessonPromise,
     _cardsPromise,
   ]);
 
-  if (!collectionSnapshot) {
+  if (!lessonSnapshot) {
     notFound();
   }
 
-  let collection: Collection = {
-    id: collectionSnapshot.id,
-    name: collectionSnapshot.name,
+  let lesson: Lesson = {
+    id: lessonSnapshot.id,
+    name: lessonSnapshot.name,
   };
 
   let cards: Card[] = cardsSnapshot as Card[];
 
   return (
     <div className="p-4">
-      <EditCardPage collection={collection} cards={cards} />
+      <EditCardPage lesson={lesson} cards={cards} />
     </div>
   );
 }

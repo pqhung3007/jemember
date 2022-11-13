@@ -13,7 +13,7 @@ const updateCardToDatabase = async (newData: Card) => {
     id: newData.id,
     question: newData.question,
     answer: newData.answer,
-    collection_id: newData.collection_id,
+    lesson_id: newData.lesson_id,
   });
 };
 
@@ -30,7 +30,7 @@ export default function EditCardPage(props: any) {
           return {
             question: question || "",
             answer: answer || "",
-            collection_id: props.collection.id as string,
+            lesson_id: props.lesson.id as string,
           };
         })
       )
@@ -48,7 +48,7 @@ export default function EditCardPage(props: any) {
     const newCard = {
       question: "",
       answer: "",
-      collection_id: props.collection.id,
+      lesson_id: props.lesson.id,
     };
 
     const { data, error } = await supabase
@@ -77,7 +77,7 @@ export default function EditCardPage(props: any) {
           <a href="./" className="px-3">
             <ChevronLeftIcon className="h-6 w-6 font-bold text-white" />
           </a>
-          <h1 className="text-3xl font-semibold">{props.collection.name}</h1>
+          <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
         </div>
         <ImportFlashCard importCard={importCard} />
         {cards.map((card: Card, index: number) => (
