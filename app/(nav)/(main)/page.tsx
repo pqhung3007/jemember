@@ -3,7 +3,7 @@ import LessonList from "components/lessons/LessonList";
 import RouterSearch from "components/search/RouterSearch";
 import { supabase } from "supabase";
 
-import { includeString } from "../../../utils";
+import { includeString } from "utils";
 
 export const revalidate = "force-dynamic";
 

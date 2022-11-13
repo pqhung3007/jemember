@@ -23,15 +23,13 @@ export default function Nav() {
             member
           </Link>
         </h1>
-        <div className="flex gap-5">
-          {!user && (
-            <>
-              <Link href="/login">Log in</Link>
-              <Link href="/signup">Sign up</Link>
-            </>
-          )}
-          <p>{user?.email}</p>
-        </div>
+        {!user.id &&
+          <div className="flex gap-5">
+            <Link href="/login">Log in</Link>
+            <Link href="/signup">Sign up</Link>
+          </div>
+        }
+        {user.id && <p>{user.email}</p>}
       </div>
     </header>
   );
