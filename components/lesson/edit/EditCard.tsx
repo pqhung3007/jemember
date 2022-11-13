@@ -2,12 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import { Card } from "../Card";
+import { TrashIcon } from "@heroicons/react/24/outline"
 
 interface Props {
   info: Card;
   index: number;
   id: string;
   updateCard(newData: Card): void;
+  deleteCard(id: string): void;
 }
 
 export default function EditFlashCard(props: Props) {
@@ -45,11 +47,18 @@ export default function EditFlashCard(props: Props) {
     }, 500);
   };
 
+  const deleteListener = () => {
+    props.deleteCard(props.id);
+  }
+
   return (
     <div className="my-4 rounded-xl bg-neutral-700 text-xl">
-      <p className="border-b-2 border-neutral-900 px-4 py-2 font-semibold">
-        {props.index + 1}
-      </p>
+      <div className="flex items-center justify-between border-b-2 border-neutral-900 px-4 py-2 font-semibold">
+        <p>
+          {props.index + 1}
+        </p>
+        <TrashIcon className="h-6 w-6 cursor-pointer" onClick={deleteListener} />
+      </div>
       <div className="grid gap-6 px-4 py-6 lg:grid-cols-2">
         <p className="max-w-[100%]">
           <textarea

@@ -1,7 +1,7 @@
 import { supabase } from "supabase";
 
 import { notFound } from "next/navigation";
-import LessonContent from "components/lesson/LessonContent";
+import LessonContent from "app/(nav)/(others)/lesson/[id]/LessonContent";
 
 export const revalidate = "force-dynamic";
 

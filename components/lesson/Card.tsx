@@ -10,7 +10,7 @@ export interface Card {
 interface Props {
   size: number;
   index: number;
-  info: Card;
+  card: Card;
   isFront: boolean;
   setIsFront(isFront: boolean): void;
 }
@@ -29,14 +29,14 @@ export default function Card(props: Props): JSX.Element {
             {props.index + 1} / {props.size}
           </p>
           <p className="max-h-[95%] overflow-y-scroll md:text-2xl">
-            {props.info?.question}
+            {props.card?.question}
           </p>
         </div>
         <div className={styles["flip-card-back"]}>
           <p className="absolute top-2 font-medium">
             {props.index + 1} / {props.size}
           </p>
-          <p className="md:text-2xl">{props.info?.answer}</p>
+          <p className="md:text-2xl">{props.card?.answer}</p>
         </div>
       </div>
     </div>

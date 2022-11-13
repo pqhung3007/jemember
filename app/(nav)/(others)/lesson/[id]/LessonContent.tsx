@@ -2,21 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import LocalSearch from "../search/LocalSearch";
-import CopyButton from "./CopyButton";
-import Card from "./Card";
-import NextCard from "./NextCard";
-import PrevCard from "./PrevCard";
+import LocalSearch from "components/search/LocalSearch";
+import CopyButton from "components/lesson/CopyButton";
+import Card, {Card as CardData} from "components/lesson/Card";
+import NextCard from "components/lesson/NextCard";
+import PrevCard from "components/lesson/PrevCard";
 
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { includeString } from "../../utils";
-import CardDetails from "./CardDetails";
-import EditButton from "./EditButton";
+import { includeString } from "../../../../../utils";
+import CardDetails from "components/lesson/CardDetails";
+import EditButton from "components/lesson/EditButton";
 
 interface LessonProps {
   id: string;
   title: string;
-  cards: any[];
+  cards: CardData[];
 }
 
 const setButtonState = (isDisabled: boolean): string => {
@@ -119,7 +119,7 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
           <Card
             isFront={isFront}
             setIsFront={setIsFront}
-            info={cards[index]}
+            card={cards[index]}
             index={index}
             size={cards?.length}
           />
@@ -138,8 +138,10 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
             <CopyButton copy={copy} />
           </div>
         </div>
-        <div className="space-y-3">
+        <div className="py-4 sticky top-0">
           <LocalSearch setKeyWord={setKeyWord} />
+        </div>
+        <div className="space-y-3">
           <CardDetails cards={cardsSearch} />
         </div>
       </div>

@@ -1,4 +1,6 @@
-export default function CardDetails({ cards }: { cards: any[] }) {
+import { Card as CardData } from "./Card";
+
+export default function CardDetails({ cards }: { cards: CardData[] }) {
   return (
     <>
       {cards.map((card, index) => (

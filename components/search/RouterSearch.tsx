@@ -13,8 +13,8 @@ export default function RouterSearch() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="relative flex gap-5">
+    <form onSubmit={handleSubmit} className="flex gap-5">
+      <div className="bg-neutral-800 relative rounded-lg border border-neutral-600 py-3 pl-10 pr-4">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <svg
             aria-hidden="true"
@@ -36,14 +36,14 @@ export default function RouterSearch() {
           onChange={(e) => setKeyWord(e.currentTarget.value)}
           value={keyWord}
           type="search"
-          size={40}
-          placeholder="Lessons' name"
-          className="block w-full rounded-lg border border-neutral-600 bg-neutral-800 py-3 pl-10 text-white placeholder-neutral-500 focus:outline-none"
+          size={30}
+          placeholder="Lesson's name"
+          className="bg-neutral-800 text-white placeholder-neutral-500 focus:outline-none"
         />
-        <button type="submit" className="rounded-lg bg-neutral-800 px-4">
-          Search
-        </button>
       </div>
+      <button type="submit" className="rounded-lg bg-neutral-800 px-4">
+        Search
+      </button>
     </form>
   );
 }

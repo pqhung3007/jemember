@@ -66,9 +66,18 @@ export default function EditCardPage(props: any) {
     await updateCardToDatabase(newData);
   };
 
-  // const deleteCard = (id: string) => {
-  //   deleteDoc(doc(db, "card", id));
-  // };
+  const deleteCard = async (id: string) => {
+
+    const { error } = await supabase
+      .from('card')
+      .delete()
+      .eq('id', id);
+
+    if (!error) {
+      setCards(cards.filter(card => card.id !== id));
+    }
+
+  };
 
   return (
     <div>
@@ -87,6 +96,7 @@ export default function EditCardPage(props: any) {
             id={card.id}
             info={card}
             updateCard={updateCard}
+            deleteCard={deleteCard}
           />
         ))}
         <AddFlashCard insertCard={insertCard} />
