@@ -5,5 +5,5 @@ export const includeString = (first: string, second: string) => {
 export const setButtonState = (isDisabled: boolean): string => {
   return isDisabled
     ? "bg-neutral-700 cursor-not-allowed"
-    : "bg-green-800 cursor-pointer";
+    : "bg-green-700 cursor-pointer";
 };
