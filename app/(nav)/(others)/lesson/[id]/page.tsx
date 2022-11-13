@@ -39,7 +39,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
   return (
     <div className="px-4 pt-10 pb-32">
       <LessonContent
-        id={params.id}
+        lessonId={params.id}
         title={lessonSnapshot.name}
         cards={cards}
       />

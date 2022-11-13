@@ -4,32 +4,45 @@ import { useEffect, useRef, useState } from "react";
 
 import LocalSearch from "components/search/LocalSearch";
 import CopyButton from "components/lesson/CopyButton";
-import Card, {Card as CardData} from "components/lesson/Card";
+import Card, { Card as CardData } from "components/lesson/Card";
 import NextCard from "components/lesson/NextCard";
 import PrevCard from "components/lesson/PrevCard";
 
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { includeString } from "../../../../../utils";
+import { includeString, setButtonState } from "utils";
 import CardDetails from "components/lesson/CardDetails";
 import EditButton from "components/lesson/EditButton";
+import { supabase } from "supabase";
 
 interface LessonProps {
-  id: string;
+  lessonId: string;
   title: string;
   cards: CardData[];
 }
 
-const setButtonState = (isDisabled: boolean): string => {
-  return isDisabled
-    ? "bg-neutral-700 cursor-not-allowed"
-    : "bg-green-800 cursor-pointer";
-};
+const fetchCurrentUID = async () => {
+  const { data, error } = await supabase.auth.getSession()
+  return data.session?.user.id || "";
+}
 
-export default function LessonContent({ id, title, cards }: LessonProps) {
+const fetchMarkedCardsId = async (uid: string, lesson_id: string) => {
+  if (!uid) return [];
+  const { data, error } = await supabase
+    .from('users_mark_cards')
+    .select('card_id, card (lesson_id)')
+    .eq("card.lesson_id", lesson_id)
+    .eq('uid', uid);
+  if (!error) return data.map(card => card.card_id);
+  return [];
+}
+
+export default function LessonContent({ lessonId, title, cards }: LessonProps) {
+  const [uid, setUid] = useState("");
   const [isFront, setIsFront] = useState(true);
   const [index, setIndex] = useState(0);
   const [cardsSearch, setCardsSearch] = useState([] as any[]);
   const [keyWord, setKeyWord] = useState("");
+  const [marked, setMarked] = useState([] as string[]);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -70,10 +83,29 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
     }
   };
 
+  const toggleMarked = async (card_id: string) => {
+    let uid = await fetchCurrentUID();
+    if (!marked.includes(card_id)) {
+      const { error } = await supabase
+        .from('users_mark_cards')
+        .insert({
+          uid: uid,
+          card_id: card_id,
+        })
+      setMarked([...marked, card_id]);
+    } else {
+      const { error } = await supabase
+        .from('users_mark_cards')
+        .delete()
+        .eq('uid', card_id)
+      setMarked(marked.filter(id => id !== card_id));
+    }
+  }
+
   useEffect(() => {
     if (keyWord.trim() !== "") {
       let newResult = cards.filter(
-        (card) =>
+        card =>
           includeString(card.question, keyWord) ||
           includeString(card.answer, keyWord)
       );
@@ -85,11 +117,18 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
 
   useEffect(() => {
     containerRef.current?.focus();
+    fetchCurrentUID().then(
+      uid => {
+        setUid(uid);
+        fetchMarkedCardsId(uid, lessonId).then(
+          markedCards => setMarked(markedCards)
+        )
+      }
+    );
   }, []);
 
   let prevButtonStyle = setButtonState(index <= 0);
   let nextButtonStyle = setButtonState(index >= cards.length - 1);
-
   let percent = ((index + 1) * 100) / cards.length + "%";
 
   return (
@@ -134,7 +173,7 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
             <p>FU-JS</p>
           </div>
           <div className="flex">
-            <EditButton id={id} />
+            <EditButton id={lessonId} />
             <CopyButton copy={copy} />
           </div>
         </div>
@@ -142,7 +181,7 @@ export default function LessonContent({ id, title, cards }: LessonProps) {
           <LocalSearch setKeyWord={setKeyWord} />
         </div>
         <div className="space-y-3">
-          <CardDetails cards={cardsSearch} />
+          <CardDetails markedIds={marked} cards={cardsSearch} toggleMarked={toggleMarked} />
         </div>
       </div>
     </>
