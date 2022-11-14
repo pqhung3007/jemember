@@ -25,13 +25,11 @@ export default function AddLesson({ count }: { count: number }) {
   };
 
   return (
-    <form className="p-6" onSubmit={addLessonListener}>
-      <div className="mb-2 block text-xl font-medium text-gray-300">
-        Lesson name
-      </div>
+    <form className="p-6 text-2xl" onSubmit={addLessonListener}>
+      <div className="mb-2 block font-medium text-gray-300">Lesson name</div>
       <input
         type="text"
-        className="block w-full rounded-lg border border-gray-600 bg-gray-700 p-2.5 text-white placeholder-gray-400 focus:outline-none focus:ring focus:ring-gray-500/70"
+        className="block w-full rounded-md bg-gray-700 p-2.5 text-white placeholder-gray-400 ring-1 ring-gray-500/70 focus:outline-none focus:ring-gray-400"
         placeholder="My Jmember lesson"
         required
         value={lessonName}
@@ -39,7 +37,7 @@ export default function AddLesson({ count }: { count: number }) {
       />
       <button
         type="submit"
-        className="my-5 w-full cursor-pointer rounded-lg bg-gray-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-800 sm:w-auto"
+        className="my-5 w-full cursor-pointer rounded-lg bg-green-700 px-5 py-2 text-center font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-gray-800 disabled:cursor-not-allowed disabled:bg-gray-600 sm:w-auto md:text-sm"
         disabled={!lessonName && count < 100}
       >
         Create

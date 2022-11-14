@@ -12,7 +12,7 @@ export default async function NewLesson() {
   const count = await countLesson();
 
   return (
-    <div className="mx-auto flex max-w-[1500px] grow items-center justify-center p-5">
+    <div className="mx-auto flex justify-center max-w-[1500px] p-5">
       <AddLesson count={count} />
     </div>
   );
