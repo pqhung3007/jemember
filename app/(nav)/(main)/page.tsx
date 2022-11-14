@@ -1,6 +1,8 @@
+"use client";
 import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
 import RouterSearch from "components/search/RouterSearch";
+import { useState } from "react";
 import { supabase } from "supabase";
 
 import { includeString } from "utils";
@@ -15,12 +17,13 @@ const fetchAllLessons = async () => {
   return data;
 };
 
-export default async function Home({
+export default function Home({
   searchParams,
 }: {
   searchParams: { term?: string };
 }) {
-  const lessons = await fetchAllLessons();
+  const [lessons, setLessons] = useState([] as any[]);
+  fetchAllLessons().then((lessons) => setLessons(lessons));
   const searchResult = lessons.filter((lesson) =>
     includeString(lesson.name, searchParams?.term ?? "")
   );
