@@ -105,10 +105,6 @@ export default function CardSlide({
               className="fa-solid fa-pencil cursor-pointer text-gray-400"
               onClick={() => lessonNameInputRef.current?.focus()}
             ></i>
-            {/* <PencilIcon
-              className="h-6 w-6 cursor-pointer text-gray-400"
-              onClick={() => lessonNameInputRef.current?.focus()}
-            /> */}
           </div>
         </div>
         <div className="mx-auto max-w-[800px] pt-6">

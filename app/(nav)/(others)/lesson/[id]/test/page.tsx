@@ -1,15 +1,14 @@
-import EditCardPage from "app/(nav)/(others)/lesson/[id]/edit/EditCardPage";
 import { Card } from "components/lesson/Card";
 import { notFound } from "next/navigation";
 import { fetchCardsByLessonId, fetchLessonById } from "utils";
-export const revalidate = "force-dynamic";
+import TestPage from "./TestPage";
 
 interface Lesson {
   id: string;
   name: string;
 }
 
-export default async function Lesson({ params }: { params: { id: string } }) {
+export default async function Learn({ params }: { params: { id: string } }) {
   const _lessonPromise = fetchLessonById(params.id);
   const _cardsPromise = fetchCardsByLessonId(params.id);
 
@@ -31,7 +30,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
 
   return (
     <div className="p-4">
-      <EditCardPage lesson={lesson} cards={cards} />
+      <TestPage lesson={lesson} cards={cards} />
     </div>
   );
 }

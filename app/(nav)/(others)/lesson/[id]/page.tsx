@@ -1,27 +1,9 @@
-import { supabase } from "supabase";
 
-import { notFound } from "next/navigation";
 import LessonPage from "app/(nav)/(others)/lesson/[id]/LessonPage";
+import { notFound } from "next/navigation";
+import { fetchCardsByLessonId, fetchLessonById } from "utils";
 
 export const revalidate = "force-dynamic";
-
-const fetchLessonById = async (id: string) => {
-  const { data, error } = await supabase.from("lesson").select().eq("id", id);
-  if (!error) {
-    return data[0];
-  }
-};
-
-const fetchCardsByLessonId = async (lessonId: string) => {
-  const { data, error } = await supabase
-    .from("card")
-    .select()
-    .eq("lesson_id", lessonId);
-  if (!error) {
-    return data;
-  }
-  return [];
-};
 
 export default async function Lesson({ params }: { params: { id: string } }) {
   const _lessonPromise = fetchLessonById(params.id);

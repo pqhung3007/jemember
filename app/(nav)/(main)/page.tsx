@@ -3,19 +3,11 @@ import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
 import LocalSearch from "components/search/LocalSearch";
 import { useEffect, useState } from "react";
-import { supabase } from "supabase";
 
-import { includeString } from "utils";
+import { fetchAllLessons, includeString } from "utils";
 
 export const revalidate = "force-dynamic";
 
-const fetchAllLessons = async () => {
-  const { data, error } = await supabase.from("lesson").select();
-
-  if (error) throw new Error("An error occured while fetching lessons");
-
-  return data;
-};
 
 export default function Home() {
   const [lessons, setLessons] = useState([] as any[]);
