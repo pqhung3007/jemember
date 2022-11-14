@@ -9,18 +9,20 @@
 Đây là repository thuộc về dự án [Jemember](https://jemember.jsclub.tech/), một web app học flashcard lấy cảm hứng từ Quizlet được thiết kế cho các thành viên của câu lạc bộ [JS Club](https://www.facebook.com/fu.jsclub).
 
 ## Công nghệ sử dụng
+- NodeJS
 - NEXT.js 13
 - TailwindCSS 3.2.4
 - Supabase
 
 ## Yêu cầu
+- [NodeJS](https://nodejs.org/en/)
 - [pnpm](https://pnpm.io/installation)
 
 ## Chức năng
 - Tạo lesson chứa các thẻ flashcard
-- (Đang phát triển) Tính năng đánh dấu flashcard
-- (Đang phát triển) Tính năng học flashcard
-- (Đang phát triển) Tính năng kiểm tra flashcard
+- Đánh dấu flashcard
+- (Đang phát triển) Học flashcard
+- (Đang phát triển) Kiểm tra flashcard
 
 ## Trạng thái
 
