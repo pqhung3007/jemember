@@ -15,7 +15,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="border-b border-neutral-700">
+    <header className="border-b border-gray-700">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-6">
         <h1 className="text-3xl font-semibold">
           <Link href="/" className="flex">
@@ -23,12 +23,12 @@ export default function Nav() {
             member
           </Link>
         </h1>
-        {!user.id &&
+        {!user.id && (
           <div className="flex gap-5">
             <Link href="/login">Log in</Link>
             <Link href="/signup">Sign up</Link>
           </div>
-        }
+        )}
         {user.id && <p>{user.email}</p>}
       </div>
     </header>

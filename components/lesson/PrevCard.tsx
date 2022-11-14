@@ -1,7 +1,9 @@
+"use client";
+
 export default function PrevCard({ prevButtonStyle, prev }: any) {
   return (
     <div
-      className={`inline-block lg:px-5 px-3 py-3 ${prevButtonStyle} rounded-xl`}
+      className={`inline-block px-3 py-3 lg:px-5 ${prevButtonStyle} rounded-xl`}
       onClick={prev}
     >
       <svg

@@ -1,7 +1,9 @@
+"use client";
+
 export default function NextCard({ nextButtonStyle, next }: any) {
   return (
     <div
-      className={`inline-block lg:px-5 px-3 py-3 ${nextButtonStyle} rounded-xl`}
+      className={`inline-block px-3 py-3 lg:px-5 ${nextButtonStyle} rounded-xl`}
       onClick={next}
     >
       <svg

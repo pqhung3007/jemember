@@ -139,7 +139,7 @@ export default function LessonPage({ lessonId, title, cards }: LessonProps) {
           <h1 className="text-3xl font-semibold">{title}</h1>
         </div>
         <div className="mx-auto max-w-[800px] pt-6">
-          <div className="mb-6 h-0.5 w-full rounded-full bg-neutral-700">
+          <div className="mb-6 h-0.5 w-full rounded-full bg-gray-700">
             <div
               className="h-0.5 rounded-full bg-white"
               style={{ width: percent }}

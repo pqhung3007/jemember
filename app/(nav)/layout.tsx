@@ -27,8 +27,8 @@ export default async function RootLayout({
         />
       </head>
 
-      <body>
-        <div className="min-h-screen bg-neutral-900 text-neutral-200">
+      <body className="bg-black">
+        <div className="min-h-screen bg-gray-900/60 text-gray-100">
           <Nav />
           {children}
         </div>

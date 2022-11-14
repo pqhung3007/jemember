@@ -41,7 +41,7 @@ export default function Signup() {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">
       <form
-        className="relative max-w-md rounded-xl bg-neutral-700 shadow"
+        className="relative max-w-md rounded-xl bg-gray-700 shadow"
         onSubmit={signup}
         onChange={validate}
       >
@@ -49,7 +49,7 @@ export default function Signup() {
           <div className="mb-4 text-center text-3xl font-semibold">Sign up</div>
           <div className="space-y-6">
             <div>
-              <div className="mb-2 block text-sm font-medium text-neutral-300">
+              <div className="mb-2 block text-sm font-medium text-gray-300">
                 Your email
               </div>
               <input
@@ -59,7 +59,7 @@ export default function Signup() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
-                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
+                className="block w-full rounded-lg border border-gray-500 bg-gray-600 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -76,7 +76,7 @@ export default function Signup() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
+                className="block w-full rounded-lg border border-gray-500 bg-gray-600 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 required
               />
             </div>
@@ -92,20 +92,20 @@ export default function Signup() {
                 pattern=".{8,}"
                 ref={repeatPassRef}
                 title="Eight or more characters"
-                className="block w-full rounded-lg border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-green-500 focus:outline-none"
+                className="block w-full rounded-lg border border-gray-500 bg-gray-600 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 required
               />
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium hover:bg-green-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-800"
+              className="w-full rounded-lg bg-gray-600 px-5 py-2.5 text-center text-sm font-medium hover:bg-gray-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800"
               disabled={error.trim() !== ""}
             >
               Create account
             </button>
-            <div className="text-sm font-medium text-neutral-300">
+            <div className="text-sm font-medium text-gray-300">
               Already have an account?{" "}
-              <Link href="/login" className="text-green-500 hover:underline">
+              <Link href="/login" className="text-gray-500 hover:underline">
                 Login
               </Link>
             </div>

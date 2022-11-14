@@ -1,7 +1,7 @@
 export default function AddCard(props: any) {
   return (
     <div
-      className="my-4 flex cursor-pointer justify-center rounded-xl bg-neutral-700 py-8 text-xl hover:bg-green-400/40"
+      className="my-4 flex cursor-pointer justify-center rounded-xl bg-gray-700 py-8 text-xl hover:bg-gray-400/40"
       onClick={props.insertCard}
     >
       <div className="flex items-center gap-2">
@@ -11,7 +11,7 @@ export default function AddCard(props: any) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="h-6 w-6 text-green-400"
+          className="h-6 w-6 text-gray-400"
         >
           <path
             strokeLinecap="round"

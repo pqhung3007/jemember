@@ -13,12 +13,12 @@ export default function Lesson({ id, name, created_at }: LessonCard) {
   return (
     <Link
       href={`/lesson/${id}`}
-      className={`relative rounded-lg bg-neutral-800 px-4 py-8 duration-100 hover:bg-neutral-800/70 ${shadow} hover:shadow-none`}
+      className={`relative rounded-lg bg-gray-800 px-4 py-8 duration-100 hover:bg-gray-800/70 ${shadow} hover:shadow-none`}
     >
       <p className="break-words text-xl font-semibold">
         {name?.length > 30 ? name.substring(0, 30) + "..." : name}
       </p>
-      <p className="pt-4 text-neutral-400">
+      <p className="pt-4 text-gray-400">
         {new Date(created_at).toLocaleString("vi-VN")}
       </p>
     </Link>
