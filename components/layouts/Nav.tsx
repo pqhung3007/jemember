@@ -2,10 +2,12 @@
 
 import { User } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "supabase";
 
 export default function Nav() {
+  const router = useRouter();
   const [user, setUser] = useState({} as User);
 
   useEffect(() => {
@@ -13,6 +15,15 @@ export default function Nav() {
       if (session.data.session?.user) setUser(session.data.session?.user);
     });
   }, []);
+
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error(error);
+    }
+    setUser({} as User);
+    router.push("/");
+  };
 
   return (
     <header className="border-b border-gray-700">
@@ -29,7 +40,12 @@ export default function Nav() {
             <Link href="/signup">Sign up</Link>
           </div>
         )}
-        {user.id && <p>{user.email}</p>}
+        {user.id && (
+          <div className="flex gap-5">
+            <p>{user.email}</p>
+            <button onClick={logout}>Log out</button>
+          </div>
+        )}
       </div>
     </header>
   );

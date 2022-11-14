@@ -98,14 +98,14 @@ export default function Signup() {
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-lg bg-gray-600 px-5 py-2.5 text-center text-sm font-medium hover:bg-gray-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800"
+              className="w-full rounded-lg bg-green-700 px-5 py-2.5 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800"
               disabled={error.trim() !== ""}
             >
               Create account
             </button>
             <div className="text-sm font-medium text-gray-300">
               Already have an account?{" "}
-              <Link href="/login" className="text-gray-500 hover:underline">
+              <Link href="/login" className="text-green-500 hover:underline">
                 Login
               </Link>
             </div>

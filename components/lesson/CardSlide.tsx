@@ -94,14 +94,14 @@ export default function CardSlide({
           <Link href="/">
             <ChevronLeftIcon className="h-6 w-6 text-white" />
           </Link>
-          <div className="flex items-center">
-            <input
-              className="inline bg-transparent text-3xl font-semibold focus:outline-none"
-              defaultValue={title}
-              ref={lessonNameInputRef}
-              onKeyDown={() => clearTimeout(typingTimer)}
-              onKeyUp={updateTitle}
-            />
+          <input
+            className="inline max-w-[60vw] grow bg-transparent text-3xl font-semibold focus:outline-none"
+            defaultValue={title}
+            ref={lessonNameInputRef}
+            onKeyDown={() => clearTimeout(typingTimer)}
+            onKeyUp={updateTitle}
+          />
+          <div className="">
             <PencilIcon
               className="h-6 w-6 cursor-pointer text-gray-400"
               onClick={() => lessonNameInputRef.current?.focus()}

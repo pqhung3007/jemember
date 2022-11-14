@@ -67,11 +67,10 @@ export default function EditCardPage(props: any) {
   };
 
   const deleteCard = async (id: string) => {
-    const { error } = await supabase.from("card").delete().eq("id", id);
+    await supabase.from("users_mark_cards").delete().eq("card_id", id);
+    await supabase.from("card").delete().eq("id", id);
 
-    if (!error) {
-      setCards(cards.filter((card) => card.id !== id));
-    }
+    setCards(cards.filter((card) => card.id !== id));
   };
 
   return (

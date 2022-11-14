@@ -28,7 +28,6 @@ export default async function Home({
   searchParams: { term?: string };
 }) {
   const lessons = await fetchAllLessons();
-  const user = await getCurrentUser();
   const searchResult = lessons.filter((lesson) =>
     includeString(lesson.name, searchParams?.term ?? "")
   );

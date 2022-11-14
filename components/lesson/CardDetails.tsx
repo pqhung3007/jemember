@@ -54,7 +54,7 @@ export default function CardDetails({
             }`}
             onClick={() => setIsMarkedOnly(true)}
           >
-            Marked cards
+            Marked cards ({markedIds.length || 0})
           </button>
           <button
             className={`cursor-pointer rounded-lg px-3 py-1.5 ${
@@ -62,7 +62,7 @@ export default function CardDetails({
             }`}
             onClick={() => setIsMarkedOnly(false)}
           >
-            All cards
+            All cards ({cards.length || 0})
           </button>
         </div>
         {cardsSearch.map((card, index) => (
@@ -72,10 +72,10 @@ export default function CardDetails({
             )}`}
             key={index}
           >
-            <div className="col-span-9 whitespace-pre-wrap">
+            <div className="col-span-9 whitespace-pre-wrap pr-2">
               {card.question}
             </div>
-            <div className="col-span-3 whitespace-pre-wrap border-l border-gray-600 pl-4">
+            <div className="col-span-3 whitespace-pre-wrap border-l border-gray-600 pr-2 pl-4">
               {card.answer}
             </div>
             <div className="col-span-1 cursor-pointer">
