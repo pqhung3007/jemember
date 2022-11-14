@@ -21,20 +21,20 @@ interface LessonProps {
 }
 
 const fetchCurrentUID = async () => {
-  const { data, error } = await supabase.auth.getSession()
+  const { data, error } = await supabase.auth.getSession();
   return data.session?.user.id || "";
-}
+};
 
 const fetchMarkedCardsId = async (uid: string, lesson_id: string) => {
   if (!uid) return [];
   const { data, error } = await supabase
-    .from('users_mark_cards')
-    .select('card_id, card (lesson_id)')
+    .from("users_mark_cards")
+    .select("card_id, card (lesson_id)")
     .eq("card.lesson_id", lesson_id)
-    .eq('uid', uid);
-  if (!error) return data.map(card => card.card_id);
+    .eq("uid", uid);
+  if (!error) return data.map((card) => card.card_id);
   return [];
-}
+};
 
 export default function LessonPage({ lessonId, title, cards }: LessonProps) {
   const [uid, setUid] = useState("");
@@ -87,25 +87,20 @@ export default function LessonPage({ lessonId, title, cards }: LessonProps) {
     let uid = await fetchCurrentUID();
     if (!marked.includes(card_id)) {
       setMarked([...marked, card_id]);
-      await supabase
-        .from('users_mark_cards')
-        .insert({
-          uid: uid,
-          card_id: card_id,
-        })
+      await supabase.from("users_mark_cards").insert({
+        uid: uid,
+        card_id: card_id,
+      });
     } else {
-      setMarked(marked.filter(id => id !== card_id));
-      await supabase
-        .from('users_mark_cards')
-        .delete()
-        .eq('card_id', card_id)
+      setMarked(marked.filter((id) => id !== card_id));
+      await supabase.from("users_mark_cards").delete().eq("card_id", card_id);
     }
-  }
+  };
 
   useEffect(() => {
     if (keyWord.trim() !== "") {
       let newResult = cards.filter(
-        card =>
+        (card) =>
           includeString(card.question, keyWord) ||
           includeString(card.answer, keyWord)
       );
@@ -117,14 +112,12 @@ export default function LessonPage({ lessonId, title, cards }: LessonProps) {
 
   useEffect(() => {
     containerRef.current?.focus();
-    fetchCurrentUID().then(
-      uid => {
-        setUid(uid);
-        fetchMarkedCardsId(uid, lessonId).then(
-          markedCards => setMarked(markedCards)
-        )
-      }
-    );
+    fetchCurrentUID().then((uid) => {
+      setUid(uid);
+      fetchMarkedCardsId(uid, lessonId).then((markedCards) =>
+        setMarked(markedCards)
+      );
+    });
   }, []);
 
   let prevButtonStyle = setButtonState(index <= 0);
@@ -155,15 +148,17 @@ export default function LessonPage({ lessonId, title, cards }: LessonProps) {
         </div>
         <div className="mx-auto flex max-w-[1500px] items-center justify-center gap-[min(2vw,10px)]">
           <PrevCard prevButtonStyle={prevButtonStyle} prev={prev} />
-          <Card
-            isFront={isFront}
-            setIsFront={setIsFront}
-            card={cards[index]}
-            index={index}
-            isMarked={marked.includes(cards[index].id)}
-            size={cards?.length}
-            toggleMarked={toggleMarked}
-          />
+          {cards[index] && (
+            <Card
+              isFront={isFront}
+              setIsFront={setIsFront}
+              card={cards[index]}
+              index={index}
+              isMarked={marked.includes(cards[index].id)}
+              size={cards?.length}
+              toggleMarked={toggleMarked}
+            />
+          )}
           <NextCard nextButtonStyle={nextButtonStyle} next={next} />
         </div>
       </div>
@@ -179,11 +174,15 @@ export default function LessonPage({ lessonId, title, cards }: LessonProps) {
             <CopyButton copy={copy} />
           </div>
         </div>
-        <div className="py-4 sticky top-0">
+        <div className="sticky top-0 py-4">
           <LocalSearch setKeyWord={setKeyWord} />
         </div>
         <div className="space-y-3">
-          <CardDetails markedIds={marked} cards={cardsSearch} toggleMarked={toggleMarked} />
+          <CardDetails
+            markedIds={marked}
+            cards={cardsSearch}
+            toggleMarked={toggleMarked}
+          />
         </div>
       </div>
     </>

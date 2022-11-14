@@ -4,9 +4,9 @@ import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { supabase } from "supabase";
 import { Card } from "components/lesson/Card";
-import AddFlashCard from "components/lesson/edit/AddCard";
-import EditFlashCard from "components/lesson/edit/EditCard";
-import ImportFlashCard from "components/lesson/edit/ImportCard";
+import AddCard from "components/lesson/edit/AddCard";
+import EditCard from "components/lesson/edit/EditCard";
+import ImportCard from "components/lesson/edit/ImportCard";
 
 const updateCardToDatabase = async (newData: Card) => {
   await supabase.from("card").upsert({
@@ -67,16 +67,11 @@ export default function EditCardPage(props: any) {
   };
 
   const deleteCard = async (id: string) => {
-
-    const { error } = await supabase
-      .from('card')
-      .delete()
-      .eq('id', id);
+    const { error } = await supabase.from("card").delete().eq("id", id);
 
     if (!error) {
-      setCards(cards.filter(card => card.id !== id));
+      setCards(cards.filter((card) => card.id !== id));
     }
-
   };
 
   return (
@@ -88,9 +83,9 @@ export default function EditCardPage(props: any) {
           </a>
           <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
         </div>
-        <ImportFlashCard importCard={importCard} />
+        <ImportCard importCard={importCard} />
         {cards.map((card: Card, index: number) => (
-          <EditFlashCard
+          <EditCard
             index={index}
             key={index}
             id={card.id}
@@ -99,7 +94,7 @@ export default function EditCardPage(props: any) {
             deleteCard={deleteCard}
           />
         ))}
-        <AddFlashCard insertCard={insertCard} />
+        <AddCard insertCard={insertCard} />
       </div>
     </div>
   );

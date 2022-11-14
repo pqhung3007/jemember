@@ -1,4 +1,4 @@
-export default function AddFlashCard(props: any) {
+export default function AddCard(props: any) {
   return (
     <div
       className="my-4 flex cursor-pointer justify-center rounded-xl bg-neutral-700 py-8 text-xl hover:bg-green-400/40"

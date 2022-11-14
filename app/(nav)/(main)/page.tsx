@@ -29,7 +29,6 @@ export default async function Home({
 }) {
   const lessons = await fetchAllLessons();
   const user = await getCurrentUser();
-  console.log(user);
   const searchResult = lessons.filter((lesson) =>
     includeString(lesson.name, searchParams?.term ?? "")
   );

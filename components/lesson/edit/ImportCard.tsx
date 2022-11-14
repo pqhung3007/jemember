@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 
-export default function ImportFlashCard({ importCard }: { importCard: any }) {
+export default function ImportCard({ importCard }: { importCard: any }) {
   const importRef = useRef<HTMLTextAreaElement>(null);
 
   const importListener = async () => {
