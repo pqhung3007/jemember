@@ -17,16 +17,12 @@ const fetchAllLessons = async () => {
   return data;
 };
 
-export default function Home({
-  searchParams,
-}: {
-  searchParams: { term?: string };
-}) {
+export default function Home() {
   const [lessons, setLessons] = useState([] as any[]);
   fetchAllLessons().then((lessons) => setLessons(lessons));
-  const searchResult = lessons.filter((lesson) =>
-    includeString(lesson.name, searchParams?.term ?? "")
-  );
+  // const searchResult = lessons.filter((lesson) =>
+  //   includeString(lesson.name, searchParams?.term ?? "")
+  // );
 
   return (
     <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
@@ -34,7 +30,7 @@ export default function Home({
         <RouterSearch />
       </div>
 
-      <LessonList lessons={searchResult} />
+      <LessonList lessons={lessons} />
       {lessons.length < 100 && <AddLesson />}
     </div>
   );
