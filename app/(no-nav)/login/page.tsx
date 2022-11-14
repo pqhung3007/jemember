@@ -49,6 +49,7 @@ export default function Login() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
+                onChange={() => setError("")}
                 className="block w-full rounded-lg border border-gray-500 bg-gray-600 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
@@ -67,6 +68,7 @@ export default function Login() {
                 pattern=".{8,}"
                 title="Eight or more characters"
                 className="block w-full rounded-lg border border-gray-500 bg-gray-600 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                onChange={() => setError("")}
                 required
               />
             </div>

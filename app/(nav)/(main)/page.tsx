@@ -2,7 +2,6 @@
 import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
 import LocalSearch from "components/search/LocalSearch";
-import RouterSearch from "components/search/RouterSearch";
 import { useEffect, useState } from "react";
 import { supabase } from "supabase";
 
