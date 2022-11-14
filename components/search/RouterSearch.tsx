@@ -14,7 +14,7 @@ export default function RouterSearch() {
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-5">
-      <div className="relative rounded-lg border border-gray-600 bg-gray-800 py-3 pl-10 pr-4">
+      <div className="relative rounded-lg border border-gray-600 bg-gray-800 py-2 pl-10 pr-4">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
           <svg
             aria-hidden="true"
@@ -41,7 +41,7 @@ export default function RouterSearch() {
           className="bg-gray-800 text-white placeholder-gray-500 focus:outline-none"
         />
       </div>
-      <button type="submit" className="rounded-lg bg-gray-800 px-4">
+      <button type="submit" className="rounded-lg bg-green-700 hover:bg-green-600 px-6">
         Search
       </button>
     </form>

@@ -1,10 +1,11 @@
 "use client";
 
-export default function PrevCard({ prevButtonStyle, prev }: any) {
+export default function PrevCard({ isDisabled, prev }: any) {
   return (
-    <div
-      className={`inline-block px-3 py-3 lg:px-5 ${prevButtonStyle} rounded-xl`}
+    <button
+      className="inline-block rounded-xl bg-green-700 px-3 py-3 disabled:cursor-not-allowed disabled:bg-gray-700 lg:px-5"
       onClick={prev}
+      disabled={isDisabled}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -20,6 +21,6 @@ export default function PrevCard({ prevButtonStyle, prev }: any) {
           d="M15.75 19.5L8.25 12l7.5-7.5"
         />
       </svg>
-    </div>
+    </button>
   );
 }

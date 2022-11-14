@@ -1,6 +1,6 @@
 import Nav from "components/layouts/Nav";
 
-import "../../styles/globals.css";
+import "styles/globals.css";
 
 export default async function RootLayout({
   children,

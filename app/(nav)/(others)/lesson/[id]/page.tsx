@@ -27,22 +27,18 @@ export default async function Lesson({ params }: { params: { id: string } }) {
   const _lessonPromise = fetchLessonById(params.id);
   const _cardsPromise = fetchCardsByLessonId(params.id);
 
-  const [lessonSnapshot, cards] = await Promise.all([
+  const [lesson, cards] = await Promise.all([
     _lessonPromise,
     _cardsPromise,
   ]);
 
-  if (!lessonSnapshot) {
+  if (!lesson) {
     notFound();
   }
 
   return (
     <div className="px-4 pt-10 pb-32">
-      <LessonPage
-        lessonId={params.id}
-        title={lessonSnapshot.name}
-        cards={cards}
-      />
+      <LessonPage lesson={lesson} cards={cards} />
     </div>
   );
 }

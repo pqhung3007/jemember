@@ -3,8 +3,8 @@
 .flip-card-flipped {
   background-color: transparent;
   position: relative;
-  width: min(800px, 70vw);
-  height: min(500px, 35vw);
+  width: min(800px, 100vw);
+  height: min(500px, 50vw);
 }
 
 /* This container is needed to position the front and back side */

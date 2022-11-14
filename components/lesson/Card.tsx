@@ -1,4 +1,4 @@
-import styles from "../../styles/Card.module.css";
+import styles from "styles/Card.module.css";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 
@@ -10,8 +10,7 @@ export interface Card {
 }
 
 interface Props {
-  size: number;
-  index: number;
+  progress: string;
   card: Card;
   isFront: boolean;
   isMarked: boolean;
@@ -22,47 +21,50 @@ interface Props {
 export default function Card(props: Props): JSX.Element {
   const cardStyle = props.isFront ? "flip-card" : "flip-card-flipped";
 
-  const markListener = (e: any) => {
-    e.preventDefault();
+  const markListener = () => {
     props.toggleMarked(props.card.id);
-  }
+  };
 
   return (
     <div className={styles[cardStyle]}>
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
-          <div className={`absolute top-2 right-2 cursor-pointer z-[99] ${!props.isFront ? "hidden" : ""}`}
-            onClick={markListener}>
-            {props.isMarked ?
-              <StarIconSolid className="h-6 w-6 text-yellow-400" /> :
-              <StarIcon className="h-6 w-6 text-yellow-400" />
-            }
+          <div
+            className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
+            onClick={markListener}
+          >
+            {props.isMarked ? <StarIconSolid /> : <StarIcon />}
           </div>
-          <div className="absolute inset-0" onClick={() => props.setIsFront(!props.isFront)}>
+          <div
+            className="absolute inset-0"
+            onClick={() => props.setIsFront(!props.isFront)}
+          >
             <p className="absolute w-full text-center font-medium">
-              {props.index + 1} / {props.size}
+              {props.progress}
             </p>
-            <div className="max-w-[90%] mx-auto p-8 h-full md:text-2xl justify-center flex items-center">
-              <p className="max-h-[100%] px-3 overflow-y-scroll">
+            <div className="mx-auto flex h-full max-w-[90%] items-center justify-center p-6 md:text-2xl">
+              <p className="max-h-[100%] overflow-y-auto px-3">
                 {props.card?.question}
               </p>
             </div>
           </div>
         </div>
         <div className={styles["flip-card-back"]}>
-          <div className={`absolute top-2 right-2 cursor-pointer z-[99] ${props.isFront ? "hidden" : ""}`}
-            onClick={markListener}>
-            {props.isMarked ?
-              <StarIconSolid className="h-6 w-6 text-yellow-400" /> :
-              <StarIcon className="h-6 w-6 text-yellow-400" />
-            }
+          <div
+            className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
+            onClick={markListener}
+          >
+            {props.isMarked ? <StarIconSolid /> : <StarIcon />}
           </div>
-          <div className="absolute inset-0" onClick={() => props.setIsFront(!props.isFront)}>
+          <div
+            className="absolute inset-0"
+            onClick={() => props.setIsFront(!props.isFront)}
+          >
             <p className="absolute w-full text-center font-medium">
-              {props.index + 1} / {props.size}
+              {props.progress}
             </p>
-            <div className="max-w-[90%] mx-auto p-8 h-full md:text-2xl justify-center flex items-center">
-              <p className="max-h-[100%] px-3 overflow-y-scroll">
+            <div className="mx-auto flex h-full max-w-[90%] items-center justify-center p-6 md:text-2xl">
+              <p className="max-h-[100%] overflow-y-auto px-3">
                 {props.card?.answer}
               </p>
             </div>
