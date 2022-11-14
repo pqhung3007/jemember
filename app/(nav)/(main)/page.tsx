@@ -15,13 +15,6 @@ const fetchAllLessons = async () => {
   return data;
 };
 
-const getCurrentUser = async () => {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return user;
-};
-
 export default async function Home({
   searchParams,
 }: {

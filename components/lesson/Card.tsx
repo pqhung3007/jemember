@@ -1,6 +1,4 @@
 import styles from "styles/Card.module.css";
-import { StarIcon } from "@heroicons/react/24/outline";
-import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 
 export interface Card {
   id: string;
@@ -33,7 +31,11 @@ export default function Card(props: Props): JSX.Element {
             className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
             onClick={markListener}
           >
-            {props.isMarked ? <StarIconSolid /> : <StarIcon />}
+            {props.isMarked ? (
+              <i className="fa-solid fa-star"></i>
+            ) : (
+              <i className="fa-regular fa-star"></i>
+            )}
           </div>
           <div
             className="absolute inset-0"
@@ -54,7 +56,11 @@ export default function Card(props: Props): JSX.Element {
             className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
             onClick={markListener}
           >
-            {props.isMarked ? <StarIconSolid /> : <StarIcon />}
+            {props.isMarked ? (
+              <i className="fa-solid fa-star"></i>
+            ) : (
+              <i className="fa-regular fa-star"></i>
+            )}
           </div>
           <div
             className="absolute inset-0"

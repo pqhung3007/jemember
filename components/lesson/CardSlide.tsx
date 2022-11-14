@@ -1,4 +1,3 @@
-import { ChevronLeftIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { Card as CardData } from "components/lesson/Card";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -92,7 +91,7 @@ export default function CardSlide({
       <div className="">
         <div className="mx-auto flex max-w-[800px] items-center gap-4 py-6">
           <Link href="/">
-            <ChevronLeftIcon className="h-6 w-6 text-white" />
+            <i className="fa-solid fa-chevron-left fa-lg cursor-pointer text-white"></i>
           </Link>
           <input
             className="inline max-w-[60vw] grow bg-transparent text-3xl font-semibold focus:outline-none"
@@ -102,10 +101,14 @@ export default function CardSlide({
             onKeyUp={updateTitle}
           />
           <div className="">
-            <PencilIcon
+            <i
+              className="fa-solid fa-pencil cursor-pointer text-gray-400"
+              onClick={() => lessonNameInputRef.current?.focus()}
+            ></i>
+            {/* <PencilIcon
               className="h-6 w-6 cursor-pointer text-gray-400"
               onClick={() => lessonNameInputRef.current?.focus()}
-            />
+            /> */}
           </div>
         </div>
         <div className="mx-auto max-w-[800px] pt-6">

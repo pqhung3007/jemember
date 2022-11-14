@@ -1,3 +1,5 @@
+"use client";
+
 import Lesson from "./Lesson";
 
 export default function LessonList({ lessons }: { lessons: any[] }) {

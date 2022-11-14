@@ -1,12 +1,11 @@
 "use client";
 
-import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
-import { supabase } from "supabase";
 import { Card } from "components/lesson/Card";
 import AddCard from "components/lesson/edit/AddCard";
 import EditCard from "components/lesson/edit/EditCard";
 import ImportCard from "components/lesson/edit/ImportCard";
+import { useState } from "react";
+import { supabase } from "supabase";
 
 const updateCardToDatabase = async (newData: Card) => {
   await supabase.from("card").upsert({
@@ -78,7 +77,7 @@ export default function EditCardPage(props: any) {
       <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-6">
         <div className="flex max-w-[700px] items-center gap-10 py-6">
           <a href="./" className="px-3">
-            <ChevronLeftIcon className="h-6 w-6 font-bold text-white" />
+            <i className="fa-solid fa-chevron-left fa-lg cursor-pointer text-white"></i>
           </a>
           <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
         </div>
