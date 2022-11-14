@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@heroicons/react': ^2.0.13
+      '@fortawesome/fontawesome-free': ^6.2.0
       '@next/font': ^13.0.3
       '@supabase/supabase-js': ^2.0.6
       '@types/node': ^18.11.9
@@ -23,7 +23,7 @@ importers:
       tailwindcss: ^3.2.3
       typescript: ^4.8.4
     dependencies:
-      '@heroicons/react': 2.0.13_react@18.2.0
+      '@fortawesome/fontawesome-free': 6.2.0
       '@next/font': 13.0.3
       '@supabase/supabase-js': 2.0.6_encoding@0.1.13
       dotenv: 16.0.3
@@ -52,12 +52,10 @@ packages:
       regenerator-runtime: 0.13.10
     dev: false
 
-  /@heroicons/react/2.0.13_react@18.2.0:
-    resolution: {integrity: sha512-iSN5XwmagrnirWlYEWNPdCDj9aRYVD/lnK3JlsC9/+fqGF80k8C7rl+1HCvBX0dBoagKqOFBs6fMhJJ1hOg1EQ==}
-    peerDependencies:
-      react: '>= 16'
-    dependencies:
-      react: 18.2.0
+  /@fortawesome/fontawesome-free/6.2.0:
+    resolution: {integrity: sha512-CNR7qRIfCwWHNN7FnKUniva94edPdyQzil/zCwk3v6k4R6rR2Fr8i4s3PM7n/lyfPA6Zfko9z5WDzFxG9SW1uQ==}
+    engines: {node: '>=6'}
+    requiresBuild: true
     dev: false
 
   /@next/env/13.0.3:

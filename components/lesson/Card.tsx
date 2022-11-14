@@ -1,6 +1,4 @@
 import styles from "styles/Card.module.css";
-import { StarIcon } from "@heroicons/react/24/outline";
-import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 
 export interface Card {
   id: string;
@@ -33,7 +31,11 @@ export default function Card(props: Props): JSX.Element {
             className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
             onClick={markListener}
           >
-            {props.isMarked ? <StarIconSolid /> : <StarIcon />}
+            {props.isMarked ? (
+              <i className="fa-solid fa-star"></i>
+            ) : (
+              <i className="fa-regular fa-star"></i>
+            )}
           </div>
           <div
             className="absolute inset-0"
@@ -42,7 +44,7 @@ export default function Card(props: Props): JSX.Element {
             <p className="absolute w-full text-center font-medium">
               {props.progress}
             </p>
-            <div className="mx-auto flex h-full max-w-[90%] items-center justify-center p-6 md:text-2xl">
+            <div className="mx-auto flex h-full max-w-[90%] items-center justify-center py-6 md:text-2xl">
               <p className="max-h-[100%] overflow-y-auto px-3">
                 {props.card?.question}
               </p>
@@ -54,7 +56,11 @@ export default function Card(props: Props): JSX.Element {
             className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
             onClick={markListener}
           >
-            {props.isMarked ? <StarIconSolid /> : <StarIcon />}
+            {props.isMarked ? (
+              <i className="fa-solid fa-star"></i>
+            ) : (
+              <i className="fa-regular fa-star"></i>
+            )}
           </div>
           <div
             className="absolute inset-0"
@@ -63,7 +69,7 @@ export default function Card(props: Props): JSX.Element {
             <p className="absolute w-full text-center font-medium">
               {props.progress}
             </p>
-            <div className="mx-auto flex h-full max-w-[90%] items-center justify-center p-6 md:text-2xl">
+            <div className="mx-auto flex h-full max-w-[90%] items-center justify-center py-6 md:text-2xl">
               <p className="max-h-[100%] overflow-y-auto px-3">
                 {props.card?.answer}
               </p>

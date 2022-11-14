@@ -18,9 +18,9 @@ export default function AddLesson({ count }: { count: number }) {
     router.push("/");
   };
 
-  const addLessonListener = (e: any) => {
+  const addLessonListener = async (e: any) => {
     e.preventDefault();
-    addLesson(lessonName);
+    await addLesson(lessonName);
     router.push("/");
   };
 

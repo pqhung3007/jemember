@@ -1,7 +1,5 @@
 "use client";
 
-import { StarIcon } from "@heroicons/react/24/outline";
-import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 import LocalSearch from "components/search/LocalSearch";
 import { useEffect, useState } from "react";
 import { includeString } from "utils";
@@ -54,7 +52,7 @@ export default function CardDetails({
             }`}
             onClick={() => setIsMarkedOnly(true)}
           >
-            Marked cards
+            Marked cards ({markedIds.length || 0})
           </button>
           <button
             className={`cursor-pointer rounded-lg px-3 py-1.5 ${
@@ -62,7 +60,7 @@ export default function CardDetails({
             }`}
             onClick={() => setIsMarkedOnly(false)}
           >
-            All cards
+            All cards ({cards.length || 0})
           </button>
         </div>
         {cardsSearch.map((card, index) => (
@@ -72,10 +70,10 @@ export default function CardDetails({
             )}`}
             key={index}
           >
-            <div className="col-span-9 whitespace-pre-wrap">
+            <div className="col-span-9 whitespace-pre-wrap pr-2">
               {card.question}
             </div>
-            <div className="col-span-3 whitespace-pre-wrap border-l border-gray-600 pl-4">
+            <div className="col-span-3 whitespace-pre-wrap border-l border-gray-600 pr-2 pl-4">
               {card.answer}
             </div>
             <div className="col-span-1 cursor-pointer">
@@ -83,7 +81,11 @@ export default function CardDetails({
                 className="h-6 w-6 text-yellow-400"
                 onClick={() => toggleMarked(card.id)}
               >
-                {markedIds.includes(card.id) ? <StarIconSolid /> : <StarIcon />}
+                {markedIds.includes(card.id) ? (
+                  <i className="fa-solid fa-star"></i>
+                ) : (
+                  <i className="fa-regular fa-star"></i>
+                )}
               </div>
             </div>
           </div>

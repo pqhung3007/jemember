@@ -7,27 +7,12 @@ import { Card as CardData } from "components/lesson/Card";
 import CardDetails from "components/lesson/CardDetails";
 import CardSlide from "components/lesson/CardSlide";
 import { supabase } from "supabase";
+import { fetchCurrentUID, fetchMarkedCardsId } from "utils";
 
 export interface LessonProps {
   lesson: any;
   cards: CardData[];
 }
-
-const fetchCurrentUID = async () => {
-  const { data, error } = await supabase.auth.getSession();
-  return data.session?.user.id || "";
-};
-
-const fetchMarkedCardsId = async (uid: string, lesson_id: string) => {
-  if (!uid) return [];
-  const { data, error } = await supabase
-    .from("users_mark_cards")
-    .select("card_id, card (lesson_id)")
-    .eq("card.lesson_id", lesson_id)
-    .eq("uid", uid);
-  if (!error) return data.map((card) => card.card_id);
-  return [];
-};
 
 export default function LessonPage({ lesson, cards }: LessonProps) {
   const [uid, setUid] = useState("");
