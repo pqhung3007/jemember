@@ -25,12 +25,12 @@ export default function Nav() {
     router.push("/");
   };
 
-  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  let lastScrollTop = document.documentElement.scrollTop;
 
   document.addEventListener(
     "scroll",
     () => {
-      let st = window.pageYOffset || document.documentElement.scrollTop;
+      let st = document.documentElement.scrollTop;
       let up = document.getElementById("nav-title-up");
       let down = document.getElementById("nav-title-down");
       if (st > lastScrollTop) {
