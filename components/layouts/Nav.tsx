@@ -25,31 +25,33 @@ export default function Nav() {
     router.push("/");
   };
 
-  let lastScrollTop = document.documentElement.scrollTop;
+  let lastScrollTop = 0;
 
-  document.addEventListener(
-    "scroll",
-    () => {
-      let st = document.documentElement.scrollTop;
-      let up = document.getElementById("nav-title-up");
-      let down = document.getElementById("nav-title-down");
-      if (st > lastScrollTop) {
-        // down
-        up?.classList.replace("right-0", "right-10");
-        up?.classList.replace("opacity-1", "opacity-0");
-        down?.classList.replace("left-0", "-left-[8.5rem]");
-        down?.classList.replace("opacity-0", "opacity-1");
-      } else {
-        // up
-        up?.classList.replace("right-10", "right-0");
-        up?.classList.replace("opacity-0", "opacity-1");
-        down?.classList.replace("-left-[8.5rem]", "left-0");
-        down?.classList.replace("opacity-1", "opacity-0");
-      }
-      lastScrollTop = st <= 0 ? 0 : st;
-    },
-    false
-  );
+  useEffect(() => {
+    document.addEventListener(
+      "scroll",
+      () => {
+        let st = document.documentElement.scrollTop;
+        let up = document.getElementById("nav-title-up");
+        let down = document.getElementById("nav-title-down");
+        if (st > lastScrollTop) {
+          // down
+          up?.classList.replace("right-0", "right-10");
+          up?.classList.replace("opacity-1", "opacity-0");
+          down?.classList.replace("left-0", "-left-[8.5rem]");
+          down?.classList.replace("opacity-0", "opacity-1");
+        } else {
+          // up
+          up?.classList.replace("right-10", "right-0");
+          up?.classList.replace("opacity-0", "opacity-1");
+          down?.classList.replace("-left-[8.5rem]", "left-0");
+          down?.classList.replace("opacity-1", "opacity-0");
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
+      },
+      false
+    );
+  }, []);
 
   return (
     <header className="fixed top-0 z-[99] w-full border-b border-gray-700 bg-gray-900">
