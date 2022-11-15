@@ -4,20 +4,20 @@ import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { supabase } from "supabase";
+import { supabaseGetCurrentUser, supabaseSignOut } from "utils";
 
 export default function Nav() {
   const router = useRouter();
   const [user, setUser] = useState({} as User);
 
   useEffect(() => {
-    supabase.auth.getSession().then((session) => {
-      if (session.data.session?.user) setUser(session.data.session?.user);
+    supabaseGetCurrentUser().then((user) => {
+      if (user) setUser(user);
     });
   }, []);
 
   const logout = async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabaseSignOut();
     if (error) {
       console.error(error);
     }

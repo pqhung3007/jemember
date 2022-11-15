@@ -1,7 +1,7 @@
 import { Card as CardData } from "components/lesson/Card";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { supabase } from "supabase";
+import { supabaseUpdateLessonById } from "utils";
 import Card from "./Card";
 import CopyButton from "./CopyButton";
 import EditButton from "./EditButton";
@@ -35,10 +35,7 @@ export default function CardSlide({
       if (lessonNameInputRef.current?.value) {
         let newName = lessonNameInputRef.current.value;
         setTitle(newName);
-        await supabase
-          .from("lesson")
-          .update({ name: newName })
-          .match({ id: lesson.id });
+        await supabaseUpdateLessonById(newName, lesson.id);
       }
     }, 500);
   };

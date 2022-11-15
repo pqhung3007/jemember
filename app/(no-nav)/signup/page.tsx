@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { supabase } from "supabase";
+import { supabaseSignup } from "utils";
 
 export default function Signup() {
   const router = useRouter();
@@ -27,10 +27,7 @@ export default function Signup() {
     event.preventDefault();
     let email = emailRef?.current?.value || "";
     let pass = passRef?.current?.value || "";
-    const { data, error: errorServer } = await supabase.auth.signUp({
-      email: email,
-      password: pass,
-    });
+    const { data, error: errorServer } = await supabaseSignup(email, pass);
     if (!errorServer) {
       router.push("/login");
     } else {

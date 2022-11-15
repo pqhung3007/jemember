@@ -1,6 +1,6 @@
 import { Card } from "components/lesson/Card";
 import { notFound } from "next/navigation";
-import { fetchCardsByLessonId, fetchLessonById } from "utils";
+import { supabaseGetCardsByLessonId, fetchLessonById } from "utils";
 import TestPage from "./TestPage";
 
 interface Lesson {
@@ -10,7 +10,7 @@ interface Lesson {
 
 export default async function Learn({ params }: { params: { id: string } }) {
   const _lessonPromise = fetchLessonById(params.id);
-  const _cardsPromise = fetchCardsByLessonId(params.id);
+  const _cardsPromise = supabaseGetCardsByLessonId(params.id);
 
   const [lessonSnapshot, cardsSnapshot] = await Promise.all([
     _lessonPromise,

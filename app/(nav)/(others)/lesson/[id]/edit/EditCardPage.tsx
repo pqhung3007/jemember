@@ -1,41 +1,25 @@
 "use client";
 
-import { Card } from "components/lesson/Card";
+import { Card as CardData } from "components/lesson/Card";
 import AddCard from "components/lesson/edit/AddCard";
 import EditCard from "components/lesson/edit/EditCard";
 import ImportCard from "components/lesson/edit/ImportCard";
 import { useState } from "react";
-import { supabase } from "supabase";
-
-const updateCardToDatabase = async (newData: Card) => {
-  await supabase.from("card").upsert({
-    id: newData.id,
-    question: newData.question,
-    answer: newData.answer,
-    lesson_id: newData.lesson_id,
-  });
-};
+import {
+  supabaseInsertNewCardInLesson,
+  supabaseDeleteCardById,
+  supabaseDeleteMarkByCardId,
+  updateCardToDatabase,
+  supabaseImportCard,
+} from "utils";
 
 export default function EditCardPage(props: any) {
-  const [cards, setCards] = useState(props.cards as Card[]);
+  const [cards, setCards] = useState(props.cards as CardData[]);
 
   const importCard = async (content: string) => {
-    let lines = content.split(";;;;;;");
-    let { data, error } = await supabase
-      .from("card")
-      .insert(
-        lines.map((line) => {
-          const [question, answer] = line.split("&&&&&&");
-          return {
-            question: question || "",
-            answer: answer || "",
-            lesson_id: props.lesson.id as string,
-          };
-        })
-      )
-      .select();
+    let { data, error } = await supabaseImportCard(content, props.lesson.id);
     if (!error) {
-      setCards([...cards, ...(data as Card[])]);
+      setCards([...cards, ...(data as CardData[])]);
     }
   };
 
@@ -44,32 +28,27 @@ export default function EditCardPage(props: any) {
       return;
     }
 
-    const newCard = {
-      question: "",
-      answer: "",
-      lesson_id: props.lesson.id,
-    };
-
-    const { data, error } = await supabase
-      .from("card")
-      .insert(newCard)
-      .select();
+    const { data, error } = await supabaseInsertNewCardInLesson(
+      props.lesson.id
+    );
 
     if (!error) {
-      setCards([...cards, data[0] as Card]);
+      setCards([...cards, data[0] as CardData]);
     }
   };
 
-  const updateCard = async (newData: Card) => {
-    setCards(cards.map((val: Card) => (val.id === newData.id ? newData : val)));
+  const updateCard = async (newData: CardData) => {
+    setCards(
+      cards.map((val: CardData) => (val.id === newData.id ? newData : val))
+    );
     await updateCardToDatabase(newData);
   };
 
-  const deleteCard = async (id: string) => {
-    await supabase.from("users_mark_cards").delete().eq("card_id", id);
-    await supabase.from("card").delete().eq("id", id);
+  const deleteCard = async (card_id: string) => {
+    await supabaseDeleteMarkByCardId(card_id);
+    await supabaseDeleteCardById(card_id);
 
-    setCards(cards.filter((card) => card.id !== id));
+    setCards(cards.filter((card) => card.id !== card_id));
   };
 
   return (
@@ -82,7 +61,7 @@ export default function EditCardPage(props: any) {
           <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
         </div>
         <ImportCard importCard={importCard} />
-        {cards.map((card: Card, index: number) => (
+        {cards.map((card: CardData, index: number) => (
           <EditCard
             index={index}
             key={index}

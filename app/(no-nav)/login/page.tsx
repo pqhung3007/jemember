@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import { supabase } from "supabase";
+import { supabaseSignin } from "utils";
 
 export default function Login() {
   const router = useRouter();
@@ -16,12 +16,7 @@ export default function Login() {
     event.preventDefault();
     let email = emailRef?.current?.value || "";
     let pass = passRef?.current?.value || "";
-    const { data, error: errorServer } = await supabase.auth.signInWithPassword(
-      {
-        email: email,
-        password: pass,
-      }
-    );
+    const { data, error: errorServer } = await supabaseSignin(email, pass);
     if (!errorServer) {
       router.push("/");
     } else {
