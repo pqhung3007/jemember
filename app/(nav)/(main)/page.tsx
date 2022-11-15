@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 
 import { supabaseGetAllLessons, includeString } from "utils";
 
-export const revalidate = "force-dynamic";
-
 export default function Home() {
   const [lessons, setLessons] = useState([] as any[]);
   const [keyWord, setKeyWord] = useState("");

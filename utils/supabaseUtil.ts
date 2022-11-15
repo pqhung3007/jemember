@@ -29,11 +29,8 @@ export const supabaseGetCurrentUser = async () => {
   return data.session?.user;
 };
 
-export const supabaseGetMarkedCardsId = async (
-  uid: string,
-  lesson_id: string
-) => {
-  if (!uid) return [];
+export const supabaseGetMarkedCardsIdByLessonId = async (lesson_id: string) => {
+  let uid = await supabaseGetCurrentUID();
   const { data, error } = await supabase
     .from("users_mark_cards")
     .select("card_id, card (lesson_id)")

@@ -1,6 +1,6 @@
-import { Card } from "components/lesson/Card";
+import { Card as CardData } from "components/lesson/Card";
 import { notFound } from "next/navigation";
-import { supabaseGetCardsByLessonId, fetchLessonById } from "utils";
+import { supabaseGetCardsByLessonId, supabaseGetLessonById } from "utils";
 import TestPage from "./TestPage";
 
 interface Lesson {
@@ -9,7 +9,7 @@ interface Lesson {
 }
 
 export default async function Learn({ params }: { params: { id: string } }) {
-  const _lessonPromise = fetchLessonById(params.id);
+  const _lessonPromise = supabaseGetLessonById(params.id);
   const _cardsPromise = supabaseGetCardsByLessonId(params.id);
 
   const [lessonSnapshot, cardsSnapshot] = await Promise.all([
@@ -21,16 +21,11 @@ export default async function Learn({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  let lesson: Lesson = {
-    id: lessonSnapshot.id,
-    name: lessonSnapshot.name,
-  };
-
-  let cards: Card[] = cardsSnapshot as Card[];
+  let cards: CardData[] = cardsSnapshot as CardData[];
 
   return (
     <div className="p-4">
-      <TestPage lesson={lesson} cards={cards} />
+      <TestPage cards={cards} id={params.id} />
     </div>
   );
 }

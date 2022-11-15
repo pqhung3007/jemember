@@ -1,8 +1,7 @@
 import EditCardPage from "app/(nav)/(others)/lesson/[id]/edit/EditCardPage";
 import { Card } from "components/lesson/Card";
 import { notFound } from "next/navigation";
-import { supabaseGetCardsByLessonId, fetchLessonById } from "utils";
-export const revalidate = "force-dynamic";
+import { supabaseGetCardsByLessonId, supabaseGetLessonById } from "utils";
 
 interface Lesson {
   id: string;
@@ -10,7 +9,7 @@ interface Lesson {
 }
 
 export default async function Lesson({ params }: { params: { id: string } }) {
-  const _lessonPromise = fetchLessonById(params.id);
+  const _lessonPromise = supabaseGetLessonById(params.id);
   const _cardsPromise = supabaseGetCardsByLessonId(params.id);
 
   const [lessonSnapshot, cardsSnapshot] = await Promise.all([

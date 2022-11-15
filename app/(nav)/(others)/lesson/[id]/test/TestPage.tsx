@@ -1,16 +1,38 @@
 "use client";
 
+import { Card as CardData } from "components/lesson/Card";
 import Question from "components/lesson/test/Question";
+import ToggleMarked from "components/lesson/test/ToggleMarked";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { compareString, getMultipleRandom, replaceAt } from "utils";
+import {
+  compareString,
+  getMultipleRandom,
+  replaceAt,
+  supabaseGetCurrentUID,
+  supabaseGetMarkedCardsIdByLessonId,
+} from "utils";
 
-export default function TestPage({ lesson, cards }: any) {
+export default function TestPage({
+  cards,
+  id,
+}: {
+  cards: CardData[];
+  id: string;
+}) {
+  const [isMarkedOnly, setIsMarkedOnly] = useState(false);
+  const [uid, setUid] = useState("");
   const [length, setLength] = useState(5);
   const lengthInputRef = useRef<HTMLInputElement>(null);
-
   const [testCards, setTestCards] = useState([] as any[]);
-
   const [isViewResult, setIsViewResult] = useState(false);
+  const [marked, setMarked] = useState([] as CardData[]);
+
+  useEffect(() => {
+    supabaseGetCurrentUID().then((sessionUid) => setUid(sessionUid));
+    supabaseGetMarkedCardsIdByLessonId(id).then((markedIds) =>
+      setMarked(cards.filter((card) => markedIds.includes(card.id)))
+    );
+  }, []);
 
   const [answers, setAnswers] = useState(
     new Array(length).fill("") as string[]
@@ -22,11 +44,15 @@ export default function TestPage({ lesson, cards }: any) {
 
   const resetTest = () => {
     setIsViewResult(false);
-    setTestCards(getMultipleRandom(cards, length));
+    if (isMarkedOnly) {
+      setTestCards(getMultipleRandom(marked, length));
+    } else {
+      setTestCards(getMultipleRandom(cards, length));
+    }
     setAnswers(new Array(length).fill(""));
   };
 
-  useEffect(resetTest, [length]);
+  useEffect(resetTest, [length, isMarkedOnly]);
 
   const newTestLength = () => {
     let newLength = parseInt(lengthInputRef.current?.value || "5");
@@ -49,20 +75,21 @@ export default function TestPage({ lesson, cards }: any) {
 
   return (
     <div className="mx-auto flex max-w-[75ch] flex-col gap-5 pb-20">
-      <div className="flex gap-4">
-        <div className="flex grow gap-3 rounded-lg bg-gray-700 px-4 py-2 font-medium">
+      <div className="items-center justify-between gap-4 md:flex">
+        <div className="flex gap-3 rounded-lg bg-gray-700 px-4 py-2 font-medium">
           <p className="pointer-events-none text-gray-400">Test length</p>
           <input
-            className="grow bg-gray-700 focus:outline-none"
+            className="w-[5rem] bg-gray-700 focus:outline-none"
             type="number"
             min={1}
-            max={cards.length}
+            max={isMarkedOnly ? marked.length : cards.length}
             defaultValue={length}
             ref={lengthInputRef}
           />
         </div>
+        {uid && <ToggleMarked setIsMarkedOnly={setIsMarkedOnly} />}
         <button
-          className="rounded-xl bg-green-700 px-8 font-semibold hover:bg-green-600"
+          className="rounded-xl bg-green-700 px-8 py-2 font-semibold hover:bg-green-600"
           onClick={newTestLength}
         >
           Create new test

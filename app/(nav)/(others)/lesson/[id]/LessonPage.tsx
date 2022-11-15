@@ -8,7 +8,7 @@ import CardDetails from "components/lesson/CardDetails";
 import CardSlide from "components/lesson/CardSlide";
 import {
   supabaseGetCurrentUID,
-  supabaseGetMarkedCardsId,
+  supabaseGetMarkedCardsIdByLessonId,
   supabaseDeleteMarkByCardId,
   supabaseInsertMark,
 } from "utils";
@@ -33,7 +33,7 @@ export default function LessonPage({ lesson, cards }: LessonProps) {
 
   useEffect(() => {
     supabaseGetCurrentUID().then((uid) => {
-      supabaseGetMarkedCardsId(uid, lesson.id).then((markedCards) =>
+      supabaseGetMarkedCardsIdByLessonId(lesson.id).then((markedCards) =>
         setMarked(markedCards)
       );
     });
