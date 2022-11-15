@@ -4,10 +4,7 @@ import LessonList from "components/lessons/LessonList";
 import LocalSearch from "components/search/LocalSearch";
 import { useEffect, useState } from "react";
 
-import { fetchAllLessons, includeString } from "utils";
-
-export const revalidate = "force-dynamic";
-
+import { supabaseGetAllLessons, includeString } from "utils";
 
 export default function Home() {
   const [lessons, setLessons] = useState([] as any[]);
@@ -15,7 +12,7 @@ export default function Home() {
   const [cardsSearch, setCardsSearch] = useState(lessons);
 
   useEffect(() => {
-    fetchAllLessons().then((lessons) => {
+    supabaseGetAllLessons().then((lessons) => {
       setLessons(lessons);
       setCardsSearch(lessons);
     });

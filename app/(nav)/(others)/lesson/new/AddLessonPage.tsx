@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { supabase } from "supabase";
+import { supabaseInsertLesson } from "utils";
 
 export default function AddLesson({ count }: { count: number }) {
   const router = useRouter();
@@ -14,7 +14,7 @@ export default function AddLesson({ count }: { count: number }) {
       return;
     }
 
-    await supabase.from("lesson").insert({ name: name });
+    await supabaseInsertLesson(name);
     router.push("/");
   };
 
@@ -30,7 +30,7 @@ export default function AddLesson({ count }: { count: number }) {
       <input
         type="text"
         className="block w-full rounded-md bg-gray-700 p-2.5 text-white placeholder-gray-400 ring-1 ring-gray-500/70 focus:outline-none focus:ring-gray-400"
-        placeholder="My Jmember lesson"
+        placeholder="My Jemember lesson"
         required
         value={lessonName}
         onChange={(e) => setLessonName(e.target.value)}

@@ -1,18 +1,11 @@
 import AddLesson from "app/(nav)/(others)/lesson/new/AddLessonPage";
-import { supabase } from "supabase";
-
-const countLesson = async () => {
-  const { data, error, count } = await supabase
-    .from("lesson")
-    .select("*", { count: "exact", head: true });
-  return count || 0;
-};
+import { supabaseCountLesson } from "utils";
 
 export default async function NewLesson() {
-  const count = await countLesson();
+  const count = await supabaseCountLesson();
 
   return (
-    <div className="mx-auto flex justify-center max-w-[1500px] p-5">
+    <div className="mx-auto flex max-w-[1500px] justify-center p-5">
       <AddLesson count={count} />
     </div>
   );

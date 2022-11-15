@@ -1,18 +1,12 @@
-
 import LessonPage from "app/(nav)/(others)/lesson/[id]/LessonPage";
 import { notFound } from "next/navigation";
-import { fetchCardsByLessonId, fetchLessonById } from "utils";
-
-export const revalidate = "force-dynamic";
+import { supabaseGetCardsByLessonId, supabaseGetLessonById } from "utils";
 
 export default async function Lesson({ params }: { params: { id: string } }) {
-  const _lessonPromise = fetchLessonById(params.id);
-  const _cardsPromise = fetchCardsByLessonId(params.id);
+  const _lessonPromise = supabaseGetLessonById(params.id);
+  const _cardsPromise = supabaseGetCardsByLessonId(params.id);
 
-  const [lesson, cards] = await Promise.all([
-    _lessonPromise,
-    _cardsPromise,
-  ]);
+  const [lesson, cards] = await Promise.all([_lessonPromise, _cardsPromise]);
 
   if (!lesson) {
     notFound();

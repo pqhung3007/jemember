@@ -1,7 +1,7 @@
 import { Card as CardData } from "components/lesson/Card";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { supabase } from "supabase";
+import { supabaseUpdateLessonById } from "utils";
 import Card from "./Card";
 import CopyButton from "./CopyButton";
 import EditButton from "./EditButton";
@@ -35,10 +35,7 @@ export default function CardSlide({
       if (lessonNameInputRef.current?.value) {
         let newName = lessonNameInputRef.current.value;
         setTitle(newName);
-        await supabase
-          .from("lesson")
-          .update({ name: newName })
-          .match({ id: lesson.id });
+        await supabaseUpdateLessonById(newName, lesson.id);
       }
     }, 500);
   };
@@ -141,8 +138,14 @@ export default function CardSlide({
             <p>Created by</p>
             <p>FU-JS</p>
           </div>
-          <div className="flex">
+          <div className="flex gap-4">
             <EditButton id={lesson.id} />
+            <Link
+              href={`/lesson/${lesson.id}/test`}
+              className="flex cursor-pointer items-center gap-2 rounded-lg bg-gray-800 px-5 py-2 text-sm font-medium text-white ring-1 ring-gray-600 hover:bg-gray-700/80 hover:ring-gray-500 focus:outline-none"
+            >
+              <p>Test this lesson</p>
+            </Link>
             <CopyButton copy={copy} />
           </div>
         </div>
