@@ -141,8 +141,14 @@ export default function CardSlide({
             <p>Created by</p>
             <p>FU-JS</p>
           </div>
-          <div className="flex">
+          <div className="flex gap-4">
             <EditButton id={lesson.id} />
+            <Link
+              href={`/lesson/${lesson.id}/test`}
+              className="flex cursor-pointer items-center gap-2 rounded-lg bg-gray-800 px-5 py-2 text-sm font-medium text-white ring-1 ring-gray-600 hover:bg-gray-700/80 hover:ring-gray-500 focus:outline-none"
+            >
+              <p>Test this lesson</p>
+            </Link>
             <CopyButton copy={copy} />
           </div>
         </div>

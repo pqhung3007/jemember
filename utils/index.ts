@@ -4,6 +4,10 @@ export const includeString = (first: string, second: string) => {
   return first.toLowerCase().includes(second.toLowerCase());
 };
 
+export const compareString = (first: string, second: string) => {
+  return first.toLowerCase().trim() === second.toLowerCase().trim();
+};
+
 export const fetchLessonById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
   if (!error) {

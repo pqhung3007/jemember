@@ -59,20 +59,20 @@ Bạn có thể xem video hướng dẫn này để có thể biết thêm về 
 
 - **1.** Fork the original repository (nút fork ở góc trên của project)
 - **2.** Clone project bạn đã fork về máy của bạn
-  
+
   ```shell
   git clone https://github.com/<name>/jmember.git
   ```
 
 - **3.** Mở project bằng IDE hoặc editor yêu thích của bạn
-- **4.** Thêm remote upstream. Đây là link remote của dự án Jmember. Bạn có thể đọc thêm các bài viết sau để hiểu thêm: ["Working with Remotes" from the Pro Git book](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes), [Managing remote repositories](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories)
-  
+- **4.** Thêm remote upstream. Đây là link remote của dự án Jemember. Bạn có thể đọc thêm các bài viết sau để hiểu thêm: ["Working with Remotes" from the Pro Git book](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes), [Managing remote repositories](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories)
+
   ```shell
   git remote add upstream https://github.com/fu-js/jmember.git
   ```
 
 - **5.** Hiện tại bạn đang ở nhánh master, hãy tạo nhánh riêng của bạn
-  
+
   ```shell
   git checkout -b my-new-pr
   ```
@@ -81,7 +81,7 @@ Bạn có thể xem video hướng dẫn này để có thể biết thêm về 
 
 - **6.** Add và commit những thay đổi code của bạn
 - **7.** Kiểm tra lại rùi push lên để tạo Pull Request thôi nào.
-  
+
   ```shell
   git diff
 
@@ -94,14 +94,14 @@ Bạn có thể xem video hướng dẫn này để có thể biết thêm về 
 
 ```shell
 ! [rejected]         master -> master (non-fast-forward)
-error: failed to push some refs to 
+error: failed to push some refs to
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Integrate the remote changes (e.g.
 hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
-Do branch của bạn bị conflict hoặc nhưng thay đổi của bạn chưa được cập nhật, hãy thử ```git pull --rebase upstream my-new-pr```. Rồi sau đó push lên lại nhé.
+Do branch của bạn bị conflict hoặc nhưng thay đổi của bạn chưa được cập nhật, hãy thử `git pull --rebase upstream my-new-pr`. Rồi sau đó push lên lại nhé.
 
 #### Format của commit
 
