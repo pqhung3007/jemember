@@ -1,6 +1,6 @@
-import { Card as CardData } from "components/lesson/Card";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { CardProps, LessonBaseProps } from "types";
 import { supabaseUpdateLessonById } from "utils";
 import Card from "./Card";
 import CopyButton from "./CopyButton";
@@ -8,19 +8,17 @@ import EditButton from "./EditButton";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
 
-interface LessonProps {
-  lesson: any;
-  cards: CardData[];
-  marked: string[];
-  toggleMarked: (card_id: string) => void;
-}
-
 export default function CardSlide({
   lesson,
   cards,
   marked,
   toggleMarked,
-}: LessonProps) {
+}: {
+  lesson: LessonBaseProps;
+  cards: CardProps[];
+  marked: string[];
+  toggleMarked: (card_id: string) => void;
+}) {
   const [isFront, setIsFront] = useState(true);
   const [index, setIndex] = useState(0);
   const [title, setTitle] = useState(lesson.name);

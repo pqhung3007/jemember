@@ -2,7 +2,11 @@
 
 import { useRef } from "react";
 
-export default function ImportCard({ importCard }: { importCard: any }) {
+export default function ImportCard({
+  importCard,
+}: {
+  importCard: (content: string) => Promise<void>;
+}) {
   const importRef = useRef<HTMLTextAreaElement>(null);
 
   const importListener = async () => {

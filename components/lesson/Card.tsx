@@ -1,22 +1,14 @@
 import styles from "styles/Card.module.css";
+import { CardProps } from "types";
 
-export interface Card {
-  id: string;
-  question: string;
-  answer: string;
-  lesson_id: string;
-}
-
-interface Props {
+export default function Card(props: {
   progress: string;
-  card: Card;
+  card: CardProps;
   isFront: boolean;
   isMarked: boolean;
   toggleMarked(card_id: string): void;
   setIsFront(isFront: boolean): void;
-}
-
-export default function Card(props: Props): JSX.Element {
+}): JSX.Element {
   const cardStyle = props.isFront ? "flip-card" : "flip-card-flipped";
 
   const markListener = () => {

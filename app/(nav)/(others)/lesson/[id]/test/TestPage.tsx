@@ -1,9 +1,9 @@
 "use client";
 
-import { Card as CardData } from "components/lesson/Card";
 import Question from "components/lesson/test/Question";
 import ToggleMarked from "components/lesson/test/ToggleMarked";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { CardProps } from "types";
 import {
   compareString,
   getMultipleRandom,
@@ -16,16 +16,16 @@ export default function TestPage({
   cards,
   id,
 }: {
-  cards: CardData[];
+  cards: CardProps[];
   id: string;
 }) {
   const [isMarkedOnly, setIsMarkedOnly] = useState(false);
   const [uid, setUid] = useState("");
   const [length, setLength] = useState(5);
   const lengthInputRef = useRef<HTMLInputElement>(null);
-  const [testCards, setTestCards] = useState([] as any[]);
+  const [testCards, setTestCards] = useState([] as CardProps[]);
   const [isViewResult, setIsViewResult] = useState(false);
-  const [marked, setMarked] = useState([] as CardData[]);
+  const [marked, setMarked] = useState([] as CardProps[]);
 
   useEffect(() => {
     supabaseGetCurrentUID().then((sessionUid) => setUid(sessionUid));
@@ -38,7 +38,7 @@ export default function TestPage({
     new Array(length).fill("") as string[]
   );
 
-  const updateAnswer = (newValue: any, index: number) => {
+  const updateAnswer = (newValue: string, index: number) => {
     setAnswers(replaceAt(answers, index, newValue));
   };
 

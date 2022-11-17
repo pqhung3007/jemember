@@ -1,8 +1,12 @@
-export default function AddCard(props: any) {
+export default function AddCard({
+  insertCard,
+}: {
+  insertCard: () => Promise<void>;
+}) {
   return (
     <div
       className="my-4 flex cursor-pointer justify-center rounded-xl bg-green-700 py-8 text-xl hover:bg-green-600/90"
-      onClick={props.insertCard}
+      onClick={insertCard}
     >
       <div className="flex items-center gap-2">
         <i className="fa-solid fa-plus fa-lg cursor-pointer text-green-300"></i>

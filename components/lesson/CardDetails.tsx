@@ -2,29 +2,23 @@
 
 import LocalSearch from "components/search/LocalSearch";
 import { useEffect, useState } from "react";
+import { CardProps } from "types";
 import { includeString } from "utils";
-import { Card as CardData } from "./Card";
+import CardDetail from "./CardDetail";
 
 export default function CardDetails({
   cards,
   markedIds,
   toggleMarked,
 }: {
-  cards: CardData[];
+  cards: CardProps[];
   markedIds: string[];
-  toggleMarked: (card_id: string) => void;
+  toggleMarked: (card_id: string) => Promise<void>;
 }) {
   const [cardsSearch, setCardsSearch] = useState(cards);
   const [keyWord, setKeyWord] = useState("");
 
   const [isMarkedOnly, setIsMarkedOnly] = useState(false);
-
-  const hiddenTrigger = (id: string) => {
-    if (isMarkedOnly && !markedIds.includes(id)) {
-      return "hidden";
-    }
-    return "";
-  };
 
   useEffect(() => {
     if (keyWord.trim() !== "") {
@@ -64,31 +58,13 @@ export default function CardDetails({
           </button>
         </div>
         {cardsSearch.map((card, index) => (
-          <div
-            className={`grid grid-cols-[repeat(13,1fr)] rounded-xl bg-gray-800 p-5 ${hiddenTrigger(
-              card.id
-            )}`}
+          <CardDetail
+            card={card}
             key={index}
-          >
-            <div className="col-span-9 whitespace-pre-wrap pr-2">
-              {card.question}
-            </div>
-            <div className="col-span-3 whitespace-pre-wrap border-l border-gray-600 pr-2 pl-4">
-              {card.answer}
-            </div>
-            <div className="col-span-1 cursor-pointer">
-              <div
-                className="h-6 w-6 text-yellow-400"
-                onClick={() => toggleMarked(card.id)}
-              >
-                {markedIds.includes(card.id) ? (
-                  <i className="fa-solid fa-star"></i>
-                ) : (
-                  <i className="fa-regular fa-star"></i>
-                )}
-              </div>
-            </div>
-          </div>
+            marked={markedIds.includes(card.id)}
+            hidden={isMarkedOnly && !markedIds.includes(card.id)}
+            toggleMarked={toggleMarked}
+          />
         ))}
       </div>
     </div>

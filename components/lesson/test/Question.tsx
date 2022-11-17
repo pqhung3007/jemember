@@ -1,3 +1,5 @@
+import { CardProps } from "types";
+
 export default function Question({
   ques,
   index,
@@ -5,11 +7,11 @@ export default function Question({
   actual,
   updateAnswer,
 }: {
-  ques: any;
+  ques: CardProps;
   index: number;
   isViewResult: boolean;
   actual: string;
-  updateAnswer: (newValue: any, index: number) => void;
+  updateAnswer: (newValue: string, index: number) => void;
 }) {
   const setInputBorder = (actual: string, expected: string) => {
     if (isViewResult) {

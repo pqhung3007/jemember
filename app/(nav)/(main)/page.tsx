@@ -3,11 +3,12 @@ import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
 import LocalSearch from "components/search/LocalSearch";
 import { useEffect, useState } from "react";
+import { LessonBaseProps } from "types";
 
-import { supabaseGetAllLessons, includeString } from "utils";
+import { includeString, supabaseGetAllLessons } from "utils";
 
 export default function Home() {
-  const [lessons, setLessons] = useState([] as any[]);
+  const [lessons, setLessons] = useState([] as LessonBaseProps[]);
   const [keyWord, setKeyWord] = useState("");
   const [cardsSearch, setCardsSearch] = useState(lessons);
 

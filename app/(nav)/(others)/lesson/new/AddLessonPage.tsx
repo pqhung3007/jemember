@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { supabaseInsertLesson } from "utils";
 
 export default function AddLesson({ count }: { count: number }) {
@@ -18,7 +18,7 @@ export default function AddLesson({ count }: { count: number }) {
     router.push("/");
   };
 
-  const addLessonListener = async (e: any) => {
+  const addLessonListener = async (e: FormEvent) => {
     e.preventDefault();
     await addLesson(lessonName);
     router.push("/");

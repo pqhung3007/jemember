@@ -1,12 +1,7 @@
-import { Card as CardData } from "components/lesson/Card";
 import { notFound } from "next/navigation";
+import { CardProps } from "types";
 import { supabaseGetCardsByLessonId, supabaseGetLessonById } from "utils";
 import TestPage from "./TestPage";
-
-interface Lesson {
-  id: string;
-  name: string;
-}
 
 export default async function Learn({ params }: { params: { id: string } }) {
   const _lessonPromise = supabaseGetLessonById(params.id);
@@ -21,7 +16,7 @@ export default async function Learn({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  let cards: CardData[] = cardsSnapshot as CardData[];
+  let cards: CardProps[] = cardsSnapshot as CardProps[];
 
   return (
     <div className="p-4">

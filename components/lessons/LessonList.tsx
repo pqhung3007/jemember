@@ -1,12 +1,17 @@
 "use client";
 
-import Lesson from "./Lesson";
+import { LessonBaseProps } from "types";
+import LessonCard from "./Lesson";
 
-export default function LessonList({ lessons }: { lessons: any[] }) {
+export default function LessonList({
+  lessons,
+}: {
+  lessons: LessonBaseProps[];
+}) {
   return (
     <>
       {lessons.map((lesson) => (
-        <Lesson
+        <LessonCard
           key={lesson.id}
           id={lesson.id}
           name={lesson.name}

@@ -1,25 +1,25 @@
 "use client";
 
-import { Card as CardData } from "components/lesson/Card";
 import AddCard from "components/lesson/edit/AddCard";
 import EditCard from "components/lesson/edit/EditCard";
 import ImportCard from "components/lesson/edit/ImportCard";
 import { useState } from "react";
+import { CardProps, LessonProps } from "types";
 import {
-  supabaseInsertNewCardInLesson,
   supabaseDeleteCardById,
   supabaseDeleteMarkByCardId,
-  updateCardToDatabase,
   supabaseImportCard,
+  supabaseInsertNewCardInLesson,
+  updateCardToDatabase,
 } from "utils";
 
-export default function EditCardPage(props: any) {
-  const [cards, setCards] = useState(props.cards as CardData[]);
+export default function EditLessonPage(props: LessonProps) {
+  const [cards, setCards] = useState(props.cards as CardProps[]);
 
   const importCard = async (content: string) => {
     let { data, error } = await supabaseImportCard(content, props.lesson.id);
     if (!error) {
-      setCards([...cards, ...(data as CardData[])]);
+      setCards([...cards, ...(data as CardProps[])]);
     }
   };
 
@@ -33,13 +33,13 @@ export default function EditCardPage(props: any) {
     );
 
     if (!error) {
-      setCards([...cards, data[0] as CardData]);
+      setCards([...cards, data[0] as CardProps]);
     }
   };
 
-  const updateCard = async (newData: CardData) => {
+  const updateCard = async (newData: CardProps) => {
     setCards(
-      cards.map((val: CardData) => (val.id === newData.id ? newData : val))
+      cards.map((val: CardProps) => (val.id === newData.id ? newData : val))
     );
     await updateCardToDatabase(newData);
   };
@@ -61,7 +61,7 @@ export default function EditCardPage(props: any) {
           <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
         </div>
         <ImportCard importCard={importCard} />
-        {cards.map((card: CardData, index: number) => (
+        {cards.map((card: CardProps, index: number) => (
           <EditCard
             index={index}
             key={index}

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { supabaseSignup } from "utils";
 
 export default function Signup() {
@@ -23,7 +23,7 @@ export default function Signup() {
     setError("");
   };
 
-  const signup = async (event: any) => {
+  const signup = async (event: FormEvent) => {
     event.preventDefault();
     let email = emailRef?.current?.value || "";
     let pass = passRef?.current?.value || "";

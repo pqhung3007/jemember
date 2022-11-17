@@ -1,5 +1,5 @@
-import { Card as CardData } from "components/lesson/Card";
 import { supabase } from "supabase";
+import { CardProps } from "types";
 
 export const supabaseGetLessonById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
@@ -61,7 +61,7 @@ export const supabaseSignup = async (email: string, pass: string) => {
   });
 };
 
-export const updateCardToDatabase = async (newData: CardData) => {
+export const updateCardToDatabase = async (newData: CardProps) => {
   await supabase.from("card").upsert({
     id: newData.id,
     question: newData.question,

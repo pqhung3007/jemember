@@ -2,21 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import { Card as CardData } from "components/lesson/Card";
-
 import CardDetails from "components/lesson/CardDetails";
 import CardSlide from "components/lesson/CardSlide";
+import { LessonProps } from "types";
 import {
-  supabaseGetCurrentUID,
-  supabaseGetMarkedCardsIdByLessonId,
   supabaseDeleteMarkByCardId,
+  supabaseGetMarkedCardsIdByLessonId,
   supabaseInsertMark,
 } from "utils";
-
-export interface LessonProps {
-  lesson: any;
-  cards: CardData[];
-}
 
 export default function LessonPage({ lesson, cards }: LessonProps) {
   const [marked, setMarked] = useState([] as string[]);

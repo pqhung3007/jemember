@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Card } from "../Card";
+import { CardProps } from "types";
 
-interface Props {
-  info: Card;
+export default function EditCard(props: {
+  info: CardProps;
   index: number;
   id: string;
-  updateCard(newData: Card): void;
+  updateCard(newData: CardProps): void;
   deleteCard(id: string): void;
-}
-
-export default function EditCard(props: Props) {
+}) {
   const questionRef = useRef<HTMLTextAreaElement>(null);
   const answerRef = useRef<HTMLTextAreaElement>(null);
   let typingTimer: NodeJS.Timeout;
