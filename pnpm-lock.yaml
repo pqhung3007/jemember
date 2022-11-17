@@ -14,6 +14,7 @@ importers:
       dotenv: ^16.0.3
       encoding: ^0.1.13
       next: 13.0.3
+      pnpm: ^7.16.1
       postcss: ^8.4.19
       prettier: ^2.7.1
       prettier-plugin-tailwindcss: ^0.1.13
@@ -29,6 +30,7 @@ importers:
       dotenv: 16.0.3
       encoding: 0.1.13
       next: 13.0.3_biqbaboplfbrettd7655fr4n2y
+      pnpm: 7.16.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
@@ -864,6 +866,12 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /pnpm/7.16.1:
+    resolution: {integrity: sha512-vtAw/kJ+Slm/XdLvd3zbSA8FKBgetrk+1KQFDnyvPP0q2Pjc1f2HsA7idYs9MJewYi4o03cjyZhAdqrCcjknsw==}
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: false
 
   /postcss-import/14.1.0_postcss@8.4.19:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}

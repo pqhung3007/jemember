@@ -52,7 +52,6 @@ export default function Signup() {
               <input
                 type="email"
                 name="email"
-                id="email"
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
@@ -68,7 +67,6 @@ export default function Signup() {
               <input
                 type="password"
                 name="password"
-                id="password"
                 ref={passRef}
                 placeholder="••••••••"
                 pattern=".{8,}"
@@ -83,8 +81,7 @@ export default function Signup() {
               </div>
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="repeat_password"
                 placeholder="••••••••"
                 pattern=".{8,}"
                 ref={repeatPassRef}
