@@ -32,10 +32,8 @@ export default function LessonPage({ lesson, cards }: LessonProps) {
   };
 
   useEffect(() => {
-    supabaseGetCurrentUID().then((uid) => {
-      supabaseGetMarkedCardsIdByLessonId(lesson.id).then((markedCards) =>
-        setMarked(markedCards)
-      );
+    supabaseGetMarkedCardsIdByLessonId(lesson.id).then((markedCards) => {
+      setMarked(markedCards);
     });
   }, []);
 

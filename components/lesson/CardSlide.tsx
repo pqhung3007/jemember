@@ -86,23 +86,20 @@ export default function CardSlide({
   return (
     <>
       <div className="">
-        <div className="mx-auto flex max-w-[800px] items-center gap-4 py-6">
-          <Link href="/">
-            <i className="fa-solid fa-chevron-left fa-lg cursor-pointer text-white"></i>
-          </Link>
+        <div className="group mx-auto flex max-w-[800px] items-center gap-4 py-6">
+          <div className="opacity-0 group-hover:opacity-100">
+            <i
+              className="fa-regular fa-pen-to-square fa-xl cursor-pointer text-gray-400"
+              onClick={() => lessonNameInputRef.current?.focus()}
+            ></i>
+          </div>
           <input
-            className="inline max-w-[60vw] grow bg-transparent text-3xl font-semibold focus:outline-none"
+            className="w-full bg-transparent text-3xl font-semibold focus:outline-none"
             defaultValue={title}
             ref={lessonNameInputRef}
             onKeyDown={() => clearTimeout(typingTimer)}
             onKeyUp={updateTitle}
           />
-          <div className="">
-            <i
-              className="fa-solid fa-pencil cursor-pointer text-gray-400"
-              onClick={() => lessonNameInputRef.current?.focus()}
-            ></i>
-          </div>
         </div>
         <div className="mx-auto max-w-[800px] pt-6">
           <div className="mb-6 h-0.5 w-full rounded-full bg-gray-700">

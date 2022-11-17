@@ -31,12 +31,11 @@ export const supabaseGetCurrentUser = async () => {
 
 export const supabaseGetMarkedCardsIdByLessonId = async (lesson_id: string) => {
   let uid = await supabaseGetCurrentUID();
-  const { data, error } = await supabase
-    .from("users_mark_cards")
-    .select("card_id, card (lesson_id)")
-    .eq("card.lesson_id", lesson_id)
-    .eq("uid", uid);
-  if (!error) return data.map((card) => card.card_id);
+  const { data, error } = await supabase.rpc("marked_cards", {
+    _uid: uid,
+    _lesson_id: lesson_id,
+  });
+  if (!error) return data.map((card) => card.id);
   return [];
 };
 
