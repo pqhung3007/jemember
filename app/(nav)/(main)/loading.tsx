@@ -1,3 +1,5 @@
+"use client";
+
 import RouterSearch from "components/search/RouterSearch";
 
 const Skeleton = () => (
@@ -11,7 +13,7 @@ export default function LessonListSkeleton() {
         <RouterSearch />
       </div>
 
-      {[...Array(6)].map((_, i) => (
+      {[...Array(9)].map((_, i) => (
         <Skeleton key={i} />
       ))}
     </div>

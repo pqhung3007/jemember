@@ -11,7 +11,6 @@ export const supabaseGetCurrentUserMetadata = async () => {
   if (!user) {
     return;
   }
-  console.log(user.email);
   const { data, error } = await supabase
     .from("users_metadata")
     .select("name")

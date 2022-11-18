@@ -1,37 +1,29 @@
-"use client";
 import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
-import LocalSearch from "components/search/LocalSearch";
-import { useEffect, useState } from "react";
-import { LessonBaseProps } from "types";
+import RouterSearch from "components/search/RouterSearch";
 
 import { includeString, supabaseGetAllLessons } from "utils";
 
-export default function Home() {
-  const [lessons, setLessons] = useState([] as LessonBaseProps[]);
-  const [keyWord, setKeyWord] = useState("");
-  const [cardsSearch, setCardsSearch] = useState(lessons);
+export const revalidate = 30;
 
-  useEffect(() => {
-    supabaseGetAllLessons().then((lessons) => {
-      setLessons(lessons);
-      setCardsSearch(lessons);
-    });
-  }, []);
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { term?: string };
+}) {
+  const lessons = await supabaseGetAllLessons();
 
-  useEffect(() => {
-    setCardsSearch(
-      lessons.filter((lesson) => includeString(lesson.name, keyWord))
-    );
-  }, [keyWord]);
+  let lessonsSearch = lessons.filter((lesson) =>
+    includeString(lesson.name, searchParams?.term ?? "")
+  );
 
   return (
     <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
       <div className="col-span-full flex justify-center">
-        <LocalSearch setKeyWord={setKeyWord} />
+        <RouterSearch />
       </div>
 
-      <LessonList lessons={cardsSearch} />
+      <LessonList lessons={lessonsSearch} />
       {lessons.length < 100 && <AddLesson />}
     </div>
   );

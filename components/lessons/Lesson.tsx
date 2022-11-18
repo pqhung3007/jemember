@@ -14,7 +14,9 @@ export default function LessonCard({ id, name, created_at }: LessonBaseProps) {
         {name?.length > 30 ? name.substring(0, 30) + "..." : name}
       </p>
       <p className="pt-4 text-gray-300/90">
-        {new Date(created_at).toLocaleString("vi-VN")}
+        {new Date(created_at).toLocaleString("en-GB", {
+          timeZone: "Asia/Ho_Chi_Minh",
+        })}
       </p>
     </Link>
   );
