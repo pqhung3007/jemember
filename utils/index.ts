@@ -17,4 +17,5 @@ export const replaceAt = (array: string[], index: number, value: string) => {
   return ret;
 };
 
-export * from "./supabaseUtil";
+export * from "./supabase/lesson";
+export * from "./supabase/user";

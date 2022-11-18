@@ -4,14 +4,15 @@ import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { supabaseGetCurrentUser, supabaseSignOut } from "utils";
+import { UserProps } from "types";
+import { supabaseGetCurrentUserMetadata, supabaseSignOut } from "utils";
 
 export default function Nav() {
   const router = useRouter();
-  const [user, setUser] = useState({} as User);
+  const [user, setUser] = useState({} as UserProps);
 
   useEffect(() => {
-    supabaseGetCurrentUser().then((user) => {
+    supabaseGetCurrentUserMetadata().then((user) => {
       if (user) setUser(user);
     });
   }, []);
@@ -21,7 +22,7 @@ export default function Nav() {
     if (error) {
       console.error(error);
     }
-    setUser({} as User);
+    setUser({} as UserProps);
     router.push("/");
   };
 
@@ -81,8 +82,8 @@ export default function Nav() {
           </div>
         )}
         {user.id && (
-          <div className="flex gap-5">
-            <p>{user.email}</p>
+          <div className="disabled flex gap-5">
+            <Link href="/profile">{user.name}</Link>
             <button onClick={logout}>Log out</button>
           </div>
         )}

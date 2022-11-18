@@ -15,3 +15,9 @@ export interface CardProps {
   answer: string;
   lesson_id: string;
 }
+
+export interface UserProps {
+  id: string;
+  name: string;
+  email: string;
+}

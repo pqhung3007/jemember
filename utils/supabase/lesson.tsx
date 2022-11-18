@@ -1,5 +1,6 @@
 import { supabase } from "supabase";
 import { CardProps } from "types";
+import { supabaseGetCurrentUID } from "./user";
 
 export const supabaseGetLessonById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);
@@ -19,16 +20,6 @@ export const supabaseGetCardsByLessonId = async (lessonId: string) => {
   return [];
 };
 
-export const supabaseGetCurrentUID = async () => {
-  const { data, error } = await supabase.auth.getSession();
-  return data.session?.user.id || "";
-};
-
-export const supabaseGetCurrentUser = async () => {
-  const { data, error } = await supabase.auth.getSession();
-  return data.session?.user;
-};
-
 export const supabaseGetMarkedCardsIdByLessonId = async (lesson_id: string) => {
   let uid = await supabaseGetCurrentUID();
   const { data, error } = await supabase.rpc("marked_cards", {
@@ -45,20 +36,6 @@ export const supabaseGetAllLessons = async () => {
   if (error) throw new Error("An error occured while fetching lessons");
 
   return data;
-};
-
-export const supabaseSignin = async (email: string, pass: string) => {
-  return await supabase.auth.signInWithPassword({
-    email: email,
-    password: pass,
-  });
-};
-
-export const supabaseSignup = async (email: string, pass: string) => {
-  return await supabase.auth.signUp({
-    email: email,
-    password: pass,
-  });
 };
 
 export const updateCardToDatabase = async (newData: CardProps) => {
@@ -95,10 +72,6 @@ export const supabaseDeleteCardById = async (id: string) => {
 
 export const supabaseInsertLesson = async (name: string) => {
   await supabase.from("lesson").insert({ name: name });
-};
-
-export const supabaseSignOut = async () => {
-  return await supabase.auth.signOut();
 };
 
 export const supabaseCountLesson = async () => {
