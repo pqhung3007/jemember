@@ -6,7 +6,7 @@ export const compareString = (first: string, second: string) => {
   return first.toLowerCase().trim() === second.toLowerCase().trim();
 };
 
-export const getMultipleRandom = (arr: any[], num: number) => {
+export const pickRandom = (arr: any[], num: number) => {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, num);
 };

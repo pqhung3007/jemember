@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -32,9 +31,9 @@ export default function Nav() {
     document.addEventListener(
       "scroll",
       () => {
-        let st = document.documentElement.scrollTop;
-        let up = document.getElementById("nav-title-up");
-        let down = document.getElementById("nav-title-down");
+        const st = document.documentElement.scrollTop;
+        const up = document.getElementById("nav-title-up");
+        const down = document.getElementById("nav-title-down");
         if (st > lastScrollTop) {
           // down
           up?.classList.replace("right-0", "right-10");

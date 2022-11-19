@@ -1,13 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef } from "react";
 import { supabaseInsertLesson } from "utils";
 
 export default function AddLesson({ count }: { count: number }) {
   const router = useRouter();
-
-  const [lessonName, setLessonName] = useState("");
+  const lessonNameRef = useRef<HTMLInputElement>();
 
   const addLesson = async (name: string) => {
     if (count >= 100) {
@@ -20,7 +19,9 @@ export default function AddLesson({ count }: { count: number }) {
 
   const addLessonListener = async (e: FormEvent) => {
     e.preventDefault();
-    await addLesson(lessonName);
+    if (lessonNameRef.current) {
+      await addLesson(lessonNameRef.current?.value);
+    }
     router.push("/");
   };
 
@@ -32,13 +33,11 @@ export default function AddLesson({ count }: { count: number }) {
         className="block w-full rounded-md bg-gray-700 p-2.5 text-white placeholder-gray-400 ring-1 ring-gray-500/70 focus:outline-none focus:ring-gray-400"
         placeholder="My Jemember lesson"
         required
-        value={lessonName}
-        onChange={(e) => setLessonName(e.target.value)}
       />
       <button
         type="submit"
         className="my-5 w-full cursor-pointer rounded-lg bg-green-700 px-5 py-2 text-center font-medium text-white hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-gray-800 disabled:cursor-not-allowed disabled:bg-gray-600 sm:w-auto md:text-sm"
-        disabled={!lessonName && count < 100}
+        disabled={!lessonNameRef.current?.value && count < 100}
       >
         Create
       </button>

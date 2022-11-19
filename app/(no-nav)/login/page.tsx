@@ -14,9 +14,9 @@ export default function Login() {
 
   const login = async (event: FormEvent) => {
     event.preventDefault();
-    let email = emailRef?.current?.value || "";
-    let pass = passRef?.current?.value || "";
-    const { data, error: errorServer } = await supabaseSignin(email, pass);
+    const email = emailRef?.current?.value || "";
+    const pass = passRef?.current?.value || "";
+    const { error: errorServer } = await supabaseSignin(email, pass);
     if (!errorServer) {
       router.push("/");
     } else {

@@ -13,7 +13,7 @@ export default async function Home({
 }) {
   const lessons = await supabaseGetAllLessons();
 
-  let lessonsSearch = lessons.filter((lesson) =>
+  const lessonsSearch = lessons.filter((lesson) =>
     includeString(lesson.name, searchParams?.term ?? "")
   );
 

@@ -31,7 +31,7 @@ export default function CardSlide({
 
     typingTimer = setTimeout(async () => {
       if (lessonNameInputRef.current?.value) {
-        let newName = lessonNameInputRef.current.value;
+        const newName = lessonNameInputRef.current.value;
         setTitle(newName);
         await supabaseUpdateLessonById(newName, lesson.id);
       }
@@ -79,7 +79,7 @@ export default function CardSlide({
     }
   };
 
-  let percent = ((index + 1) * 100) / cards.length + "%";
+  const percent = ((index + 1) * 100) / cards.length + "%";
 
   return (
     <>

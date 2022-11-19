@@ -17,7 +17,7 @@ export default function EditLessonPage(props: LessonProps) {
   const [cards, setCards] = useState(props.cards as CardProps[]);
 
   const importCard = async (content: string) => {
-    let { data, error } = await supabaseImportCard(content, props.lesson.id);
+    const { data, error } = await supabaseImportCard(content, props.lesson.id);
     if (!error) {
       setCards([...cards, ...(data as CardProps[])]);
     }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LessonBaseProps } from "types";
 
 export default function LessonCard({ id, name, created_at }: LessonBaseProps) {
-  let shadow =
+  const shadow =
     "shadow-[10px_-10px_0_-3px_#14532D99,20px_-20px_0_-5px_#14532D55]";
 
   return (

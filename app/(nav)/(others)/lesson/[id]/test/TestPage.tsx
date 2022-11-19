@@ -6,9 +6,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CardProps } from "types";
 import {
   compareString,
-  getMultipleRandom,
+  pickRandom,
   replaceAt,
-  supabaseGetCurrentUID,
   supabaseGetMarkedCardsIdByLessonId,
 } from "utils";
 
@@ -20,23 +19,20 @@ export default function TestPage({
   id: string;
 }) {
   const [isMarkedOnly, setIsMarkedOnly] = useState(false);
-  const [uid, setUid] = useState("");
   const [length, setLength] = useState(5);
-  const lengthInputRef = useRef<HTMLInputElement>(null);
+  const lengthRef = useRef<HTMLInputElement>(null);
   const [testCards, setTestCards] = useState([] as CardProps[]);
   const [isViewResult, setIsViewResult] = useState(false);
-  const [marked, setMarked] = useState([] as CardProps[]);
+
+  let marked: CardProps[] = [];
 
   useEffect(() => {
-    supabaseGetCurrentUID().then((sessionUid) => setUid(sessionUid));
-    supabaseGetMarkedCardsIdByLessonId(id).then((markedIds) =>
-      setMarked(cards.filter((card) => markedIds.includes(card.id)))
-    );
+    supabaseGetMarkedCardsIdByLessonId(id).then((markedIds) => {
+      marked = cards.filter((card) => markedIds.includes(card.id));
+    });
   }, []);
 
-  const [answers, setAnswers] = useState(
-    new Array(length).fill("") as string[]
-  );
+  const [answers, setAnswers] = useState(new Array(length).fill(""));
 
   const updateAnswer = (newValue: string, index: number) => {
     setAnswers(replaceAt(answers, index, newValue));
@@ -44,18 +40,14 @@ export default function TestPage({
 
   const resetTest = () => {
     setIsViewResult(false);
-    if (isMarkedOnly) {
-      setTestCards(getMultipleRandom(marked, length));
-    } else {
-      setTestCards(getMultipleRandom(cards, length));
-    }
+    setTestCards(pickRandom(isMarkedOnly ? marked : cards, length));
     setAnswers(new Array(length).fill(""));
   };
 
   useEffect(resetTest, [length, isMarkedOnly]);
 
   const newTestLength = () => {
-    let newLength = parseInt(lengthInputRef.current?.value || "5");
+    const newLength = parseInt(lengthRef.current?.value || "5");
     if (length === newLength) {
       resetTest();
     } else {
@@ -84,10 +76,10 @@ export default function TestPage({
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}
             defaultValue={length}
-            ref={lengthInputRef}
+            ref={lengthRef}
           />
         </div>
-        {uid && <ToggleMarked setIsMarkedOnly={setIsMarkedOnly} />}
+        {marked.length > 0 && <ToggleMarked toggleMarked={setIsMarkedOnly} />}
         <button
           className="rounded-xl bg-green-700 px-8 py-2 font-semibold hover:bg-green-600"
           onClick={newTestLength}

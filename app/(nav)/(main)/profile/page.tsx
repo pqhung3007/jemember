@@ -5,7 +5,7 @@ import { UserProps } from "types";
 import { supabaseGetCurrentUserMetadata } from "utils";
 import ProfilePage from "./ProfilePage";
 
-export default function Lesson() {
+export default function Profile() {
   const [user, setUser] = useState({} as UserProps);
 
   useEffect(() => {

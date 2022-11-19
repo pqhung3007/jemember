@@ -14,8 +14,8 @@ export default function Signup() {
   const [error, setError] = useState(" ");
 
   const validate = () => {
-    let pass = passRef?.current?.value;
-    let repeatPass = repeatPassRef?.current?.value;
+    const pass = passRef?.current?.value;
+    const repeatPass = repeatPassRef?.current?.value;
     if (pass !== repeatPass) {
       setError("Password does not match");
       return;
@@ -25,9 +25,9 @@ export default function Signup() {
 
   const signup = async (event: FormEvent) => {
     event.preventDefault();
-    let email = emailRef?.current?.value || "";
-    let pass = passRef?.current?.value || "";
-    const { data, error: errorServer } = await supabaseSignup(email, pass);
+    const email = emailRef?.current?.value || "";
+    const pass = passRef?.current?.value || "";
+    const { error: errorServer } = await supabaseSignup(email, pass);
     if (!errorServer) {
       router.push("/login");
     } else {

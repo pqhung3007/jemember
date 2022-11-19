@@ -16,7 +16,7 @@ export default async function Learn({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  let cards: CardProps[] = cardsSnapshot as CardProps[];
+  const cards: CardProps[] = cardsSnapshot as CardProps[];
 
   return (
     <div className="p-4">

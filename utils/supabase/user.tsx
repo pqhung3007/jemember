@@ -2,7 +2,7 @@ import { supabase } from "supabase";
 import { UserProps } from "types";
 
 export const supabaseGetCurrentUID = async () => {
-  const { data, error } = await supabase.auth.getSession();
+  const { data } = await supabase.auth.getSession();
   return data.session?.user.id || "";
 };
 
@@ -11,7 +11,7 @@ export const supabaseGetCurrentUserMetadata = async () => {
   if (!user) {
     return;
   }
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("users_metadata")
     .select("name")
     .eq("id", user.id);
@@ -26,12 +26,12 @@ export const supabaseGetCurrentUserMetadata = async () => {
 };
 
 export const supabaseGetCurrentUser = async () => {
-  const { data, error } = await supabase.auth.getSession();
+  const { data } = await supabase.auth.getSession();
   return data.session?.user;
 };
 
 export const supabaseUpdateUserMeta = async (user: UserProps) => {
-  const { error } = await supabase
+  await supabase
     .from("users_metadata")
     .update({
       name: user.name,

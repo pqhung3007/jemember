@@ -22,7 +22,7 @@ export default function CardDetails({
 
   useEffect(() => {
     if (keyWord.trim() !== "") {
-      let newResult = cards.filter(
+      const newResult = cards.filter(
         (card) =>
           includeString(card.question, keyWord) ||
           includeString(card.answer, keyWord)

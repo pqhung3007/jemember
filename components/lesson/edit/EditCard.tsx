@@ -15,10 +15,10 @@ export default function EditCard(props: {
   let typingTimer: NodeJS.Timeout;
 
   useEffect(() => {
-    let newQuestion = questionRef.current?.value;
-    let newAnswer = answerRef.current?.value;
-    let questionLength = newQuestion?.split("\n").length || 0;
-    let answerLength = newAnswer?.split("\n").length || 0;
+    const newQuestion = questionRef.current?.value;
+    const newAnswer = answerRef.current?.value;
+    const questionLength = newQuestion?.split("\n").length || 0;
+    const answerLength = newAnswer?.split("\n").length || 0;
 
     if (questionRef.current) {
       questionRef.current.rows = questionLength;
@@ -33,8 +33,8 @@ export default function EditCard(props: {
     clearTimeout(typingTimer);
 
     typingTimer = setTimeout(() => {
-      let newQuestion = questionRef.current?.value || "";
-      let newAnswer = answerRef.current?.value || "";
+      const newQuestion = questionRef.current?.value || "";
+      const newAnswer = answerRef.current?.value || "";
       props.updateCard({
         id: props.id,
         question: newQuestion,
