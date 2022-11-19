@@ -1,5 +1,6 @@
 "use client";
 
+import { UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
@@ -28,14 +29,13 @@ export default function ProfilePage({ user }: { user: UserProps }) {
   return (
     <div className="mx-auto grid max-w-[1200px] grid-cols-[16rem_1fr] gap-10 px-4 pt-28">
       <div className="flex flex-col gap-1 pr-4">
-        <a href="" className="rounded-lg px-4 py-1.5 hover:bg-gray-800">
-          <i className="fa-regular fa-user fa-sm pr-2 text-gray-400"></i>
+        <a
+          href=""
+          className="flex items-center rounded-lg px-4 py-1.5 hover:bg-gray-800"
+        >
+          <UserIcon className="h-6 w-6 pr-2 text-gray-400" />
           Profile
         </a>
-        {/* <a href="/" className="rounded-lg px-4 py-1.5 hover:bg-gray-800">
-          <i className="fa-solid fa-shield-halved pr-2 text-gray-400"></i>
-          Password
-        </a> */}
       </div>
       <div className="max-w-[75ch]">
         <h1 className="border-b border-gray-800 pb-5 text-4xl font-semibold">

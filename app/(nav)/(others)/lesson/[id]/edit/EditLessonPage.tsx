@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import AddCard from "components/lesson/edit/AddCard";
 import EditCard from "components/lesson/edit/EditCard";
 import ImportCard from "components/lesson/edit/ImportCard";
@@ -56,7 +57,7 @@ export default function EditLessonPage(props: LessonProps) {
       <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-6">
         <div className="flex max-w-[700px] items-center gap-10 py-6">
           <a href="./" className="px-3">
-            <i className="fa-solid fa-chevron-left fa-lg cursor-pointer text-white"></i>
+            <ChevronLeftIcon className="h-6 w-6 cursor-pointer text-white" />
           </a>
           <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
         </div>

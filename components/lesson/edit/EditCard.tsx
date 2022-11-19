@@ -1,5 +1,6 @@
 "use client";
 
+import { TrashIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef } from "react";
 import { CardProps } from "types";
 
@@ -52,10 +53,10 @@ export default function EditCard(props: {
     <div className="my-4 rounded-xl bg-gray-700 text-xl">
       <div className="flex items-center justify-between border-b-2 border-gray-900 px-4 py-2 font-semibold">
         <p>{props.index + 1}</p>
-        <i
-          className="fa-solid fa-trash fa-md cursor-pointer text-red-600"
+        <TrashIcon
+          className="h-6 w-6 cursor-pointer text-red-600"
           onClick={deleteListener}
-        ></i>
+        />
       </div>
       <div className="grid gap-6 px-4 py-6 lg:grid-cols-2">
         <p className="max-w-[100%]">

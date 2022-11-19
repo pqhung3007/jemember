@@ -1,3 +1,5 @@
+import { PlusIcon } from "@heroicons/react/24/outline";
+
 export default function AddCard({
   insertCard,
 }: {
@@ -9,7 +11,7 @@ export default function AddCard({
       onClick={insertCard}
     >
       <div className="flex items-center gap-2">
-        <i className="fa-solid fa-plus fa-lg cursor-pointer text-green-300"></i>
+        <PlusIcon className="h-6 w-6 cursor-pointer text-green-300" />
         <p className="font-semibold">Thêm thẻ</p>
       </div>
     </div>

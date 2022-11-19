@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/24/outline";
 import styles from "styles/Card.module.css";
 import { CardProps } from "types";
 
@@ -24,9 +25,9 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <i className="fa-solid fa-star"></i>
+              <StarIcon className="text-yellow-400" />
             ) : (
-              <i className="fa-regular fa-star"></i>
+              <StarIcon className="text-white" />
             )}
           </div>
           <div
@@ -49,9 +50,9 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <i className="fa-solid fa-star"></i>
+              <StarIcon className="text-yellow-400" />
             ) : (
-              <i className="fa-regular fa-star"></i>
+              <StarIcon className="text-white" />
             )}
           </div>
           <div

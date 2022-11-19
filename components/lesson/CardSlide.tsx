@@ -1,3 +1,4 @@
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { CardProps, LessonBaseProps } from "types";
@@ -86,12 +87,16 @@ export default function CardSlide({
       <div className="">
         <div className="group mx-auto flex max-w-[800px] items-center gap-4 py-6">
           <div className="opacity-0 group-hover:opacity-100">
-            <i
-              className="fa-regular fa-pen-to-square fa-xl cursor-pointer text-gray-400"
+            <PencilSquareIcon
+              className="h-6 w-6 cursor-pointer text-gray-400"
               onClick={() => lessonNameInputRef.current?.focus()}
-            ></i>
+            />
           </div>
+          <label htmlFor="name" className="sr-only">
+            Lesson Name
+          </label>
           <input
+            id="name"
             className="w-full bg-transparent text-3xl font-semibold focus:outline-none"
             defaultValue={title}
             ref={lessonNameInputRef}
@@ -139,7 +144,7 @@ export default function CardSlide({
               href={`/lesson/${lesson.id}/test`}
               className="flex cursor-pointer items-center gap-2 rounded-lg bg-gray-800 px-5 py-2 text-sm font-medium text-white ring-1 ring-gray-600 hover:bg-gray-700/80 hover:ring-gray-500 focus:outline-none"
             >
-              <p>Test this lesson</p>
+              <p>Test</p>
             </Link>
             <CopyButton copy={copy} />
           </div>

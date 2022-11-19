@@ -1,3 +1,4 @@
+import { StarIcon } from "@heroicons/react/24/outline";
 import { CardProps } from "types";
 
 export default function CardDetail({
@@ -27,9 +28,9 @@ export default function CardDetail({
           onClick={() => toggleMarked(card.id)}
         >
           {marked ? (
-            <i className="fa-solid fa-star"></i>
+            <StarIcon className="text-yellow-400" />
           ) : (
-            <i className="fa-regular fa-star"></i>
+            <StarIcon className="text-white" />
           )}
         </div>
       </div>
