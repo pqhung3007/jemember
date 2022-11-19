@@ -4,7 +4,7 @@ import { CardProps } from "types";
 
 export default function Card(props: {
   progress: string;
-  card: CardProps;
+  card: CardProps | undefined;
   isFront: boolean;
   isMarked: boolean;
   toggleMarked(card_id: string): void;
@@ -13,7 +13,7 @@ export default function Card(props: {
   const cardStyle = props.isFront ? "flip-card" : "flip-card-flipped";
 
   const markListener = () => {
-    props.toggleMarked(props.card.id);
+    props.toggleMarked(props.card?.id || "");
   };
 
   return (
@@ -39,7 +39,7 @@ export default function Card(props: {
             </p>
             <div className="mx-auto flex h-full max-w-[90%] items-center justify-center py-6 md:text-2xl">
               <p className="max-h-[100%] overflow-y-auto px-3">
-                {props.card?.question}
+                {props.card?.question || "Loading...."}
               </p>
             </div>
           </div>

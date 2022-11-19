@@ -119,16 +119,14 @@ export default function CardSlide({
           onKeyDown={processKeyBinding}
         >
           <PrevCard isDisabled={index <= 0} prev={prev} />
-          {cards[index] && (
-            <Card
-              isFront={isFront}
-              setIsFront={setIsFront}
-              card={cards[index]}
-              isMarked={marked.includes(cards[index].id)}
-              progress={index + 1 + " / " + cards?.length}
-              toggleMarked={toggleMarked}
-            />
-          )}
+          <Card
+            isFront={isFront}
+            setIsFront={setIsFront}
+            card={cards[index] || undefined}
+            isMarked={marked.includes(cards[index]?.id) || false}
+            progress={index + 1 + " / " + cards?.length}
+            toggleMarked={toggleMarked}
+          />
           <NextCard isDisabled={index >= cards.length - 1} next={next} />
         </div>
       </div>
