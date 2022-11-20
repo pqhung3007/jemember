@@ -11,12 +11,12 @@ export default function NextCard({
 }) {
   return (
     <button
-      className="inline-block rounded-xl bg-green-700 px-3 py-3 disabled:cursor-not-allowed disabled:bg-gray-700 lg:px-5"
+      className="green inline-block disabled:cursor-not-allowed md:pl-10"
       onClick={next}
-      name="next"
+      aria-label="next"
       disabled={isDisabled}
     >
-      <ChevronRightIcon className="h-6 w-6" />
+      <ChevronRightIcon className="h-6 w-6 group-disabled:text-gray-500" />
     </button>
   );
 }

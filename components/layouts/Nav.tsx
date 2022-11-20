@@ -26,8 +26,8 @@ export default function Nav() {
   };
 
   return (
-    <header className="fixed top-0 z-[99] w-full border-b border-gray-700 bg-gray-900">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-6">
+    <header className="fixed top-0 z-[99] w-full bg-gray-800 shadow-xl">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-4">
         <h1 className="text-3xl font-semibold">
           <Link href="/" className="flex">
             <p className="text-red-500">J</p>

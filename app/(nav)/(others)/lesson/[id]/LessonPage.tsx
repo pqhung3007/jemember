@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import CardDetails from "components/lesson/CardDetails";
 import CardSlide from "components/lesson/CardSlide";
@@ -11,18 +11,6 @@ import {
   supabaseGetMarkedCardsIdByLessonId,
   supabaseInsertMark,
 } from "utils";
-
-const CollectionListSkeleton = () => (
-  <>
-    {[...Array(6)].map((_, i) => (
-      <div
-        key={i}
-        className="duration-50 animate-pulse rounded-lg bg-neutral-800 py-[60px]"
-      ></div>
-    ))}
-    ;
-  </>
-);
 
 export default function LessonPage({ lesson }: { lesson: LessonBaseProps }) {
   const [marked, setMarked] = useState([] as string[]);
@@ -57,13 +45,11 @@ export default function LessonPage({ lesson }: { lesson: LessonBaseProps }) {
         toggleMarked={toggleMarked}
       />
 
-      <Suspense fallback={<CollectionListSkeleton />}>
-        <CardDetails
-          markedIds={marked}
-          cards={cards}
-          toggleMarked={toggleMarked}
-        />
-      </Suspense>
+      <CardDetails
+        markedIds={marked}
+        cards={cards}
+        toggleMarked={toggleMarked}
+      />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { StarIcon } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/solid";
 import styles from "styles/Card.module.css";
 import { CardProps } from "types";
 

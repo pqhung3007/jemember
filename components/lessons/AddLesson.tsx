@@ -5,10 +5,12 @@ export default function AddLesson() {
   return (
     <Link
       href="/lesson/new"
-      className="flex items-center justify-center gap-4 rounded-lg bg-green-700 px-4 py-8 hover:bg-green-600"
+      className="fixed bottom-5 right-5 rounded-2xl bg-green-800 py-4 pl-5 pr-7 shadow-xl hover:bg-green-700"
     >
-      <PlusIcon className="h-6 w-6 text-green-200" />
-      <p className="font-semibold text-green-100">Add lesson</p>
+      <div className="flex items-center gap-2">
+        <PlusIcon className="h-6 w-6 text-green-200" />
+        <p className="hidden text-green-200 md:block">Add lesson</p>
+      </div>
     </Link>
   );
 }

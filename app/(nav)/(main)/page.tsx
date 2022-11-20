@@ -18,12 +18,13 @@ export default async function Home({
   );
 
   return (
-    <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
-      <div className="col-span-full flex justify-center">
+    <div className="relative">
+      <div className="flex justify-center py-5">
         <RouterSearch />
       </div>
-
-      <LessonList lessons={lessonsSearch} />
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
+        <LessonList lessons={lessonsSearch} />
+      </div>
       {lessons.length < 100 && <AddLesson />}
     </div>
   );

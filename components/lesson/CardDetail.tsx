@@ -1,4 +1,4 @@
-import { StarIcon } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/solid";
 import { CardProps } from "types";
 
 export default function CardDetail({

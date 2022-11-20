@@ -11,12 +11,12 @@ export default function PrevCard({
 }) {
   return (
     <button
-      className="inline-block rounded-xl bg-green-700 px-3 py-3 disabled:cursor-not-allowed disabled:bg-gray-700 lg:px-5"
+      className="group inline-block disabled:cursor-not-allowed md:pr-10"
       onClick={prev}
-      name="prev"
+      aria-label="prev"
       disabled={isDisabled}
     >
-      <ChevronLeftIcon className="h-6 w-6" />
+      <ChevronLeftIcon className="h-6 w-6 group-disabled:text-gray-500" />
     </button>
   );
 }

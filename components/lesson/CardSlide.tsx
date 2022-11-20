@@ -140,7 +140,7 @@ export default function CardSlide({
             <EditButton id={lesson.id} />
             <Link
               href={`/lesson/${lesson.id}/test`}
-              className="flex cursor-pointer items-center gap-2 rounded-lg bg-gray-800 px-5 py-2 text-sm font-medium text-white ring-1 ring-gray-600 hover:bg-gray-700/80 hover:ring-gray-500 focus:outline-none"
+              className="flex cursor-pointer items-center gap-2 rounded-full bg-gray-800 px-5 py-2 text-sm font-medium text-white shadow-xl hover:bg-gray-700/80 hover:ring-gray-500 focus:outline-none"
             >
               <p>Test</p>
             </Link>
