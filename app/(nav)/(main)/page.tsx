@@ -4,7 +4,7 @@ import RouterSearch from "components/search/RouterSearch";
 
 import { supabaseGetLessons } from "utils";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "auto";
 
 export default async function Home({
   searchParams,
