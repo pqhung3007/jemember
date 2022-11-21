@@ -41,6 +41,14 @@ export const supabaseGetAllLessons = async () => {
   return data;
 };
 
+export const supabaseGetLessons = async (name: string) => {
+  const { data, error } = await supabase.from("lesson").select().ilike("name", `%${name}%`);
+
+  if (error) throw new Error("An error occured while fetching lessons");
+
+  return data;
+};
+
 export const updateCardToDatabase = async (newData: CardProps) => {
   await supabase.from("card").upsert({
     id: newData.id,

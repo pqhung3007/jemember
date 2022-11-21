@@ -2,28 +2,24 @@ import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
 import RouterSearch from "components/search/RouterSearch";
 
-import { includeString, supabaseGetAllLessons } from "utils";
+import { supabaseGetLessons } from "utils";
 
-export const revalidate = 30;
+export const dynamic = "force-dynamic";
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { term?: string };
+  searchParams: { name?: string };
 }) {
-  const lessons = await supabaseGetAllLessons();
-
-  const lessonsSearch = lessons.filter((lesson) =>
-    includeString(lesson.name, searchParams?.term ?? "")
-  );
+  const lessons = await supabaseGetLessons(searchParams.name ?? "");
 
   return (
     <div className="relative">
       <div className="flex justify-center pb-8">
-        <RouterSearch />
+        <RouterSearch searchParamName="name" />
       </div>
       <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
-        <LessonList lessons={lessonsSearch} />
+        <LessonList lessons={lessons} />
       </div>
       {lessons.length < 100 && <AddLesson />}
     </div>

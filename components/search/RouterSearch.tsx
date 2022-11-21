@@ -2,16 +2,24 @@
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
-export default function RouterSearch() {
+export default function RouterSearch({ searchParamName }: { searchParamName: string }) {
   const router = useRouter();
   const [keyWord, setKeyWord] = useState("");
 
+  const refresh = () => router.refresh();
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(keyWord ? `/?term=${keyWord}` : "/");
+    router.push(keyWord ? `/?${searchParamName}=${keyWord}` : "/");
   };
+
+  useEffect(() => {
+    window.addEventListener('popstate', refresh);
+
+    return () => window.removeEventListener('popstate', refresh);
+  }, []);
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-5">
