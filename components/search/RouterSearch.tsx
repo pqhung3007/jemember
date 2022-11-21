@@ -23,7 +23,7 @@ export default function RouterSearch({
     window.addEventListener("popstate", refresh);
 
     return () => window.removeEventListener("popstate", refresh);
-  }, []);
+  });
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-5">
