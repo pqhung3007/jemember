@@ -16,7 +16,7 @@ export default function PrevCard({
       aria-label="prev"
       disabled={isDisabled}
     >
-      <ChevronLeftIcon className="h-6 w-6 group-disabled:text-gray-500" />
+      <ChevronLeftIcon className="h-6 w-6 group-disabled:text-slate-500" />
     </button>
   );
 }

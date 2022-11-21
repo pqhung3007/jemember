@@ -42,7 +42,10 @@ export const supabaseGetAllLessons = async () => {
 };
 
 export const supabaseGetLessons = async (name: string) => {
-  const { data, error } = await supabase.from("lesson").select().ilike("name", `%${name}%`);
+  const { data, error } = await supabase
+    .from("lesson")
+    .select()
+    .ilike("name", `%${name}%`);
 
   if (error) throw new Error("An error occured while fetching lessons");
 

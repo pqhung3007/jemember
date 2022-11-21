@@ -26,9 +26,9 @@ export default function Nav() {
   };
 
   return (
-    <header className="fixed top-0 z-[99] w-full bg-gray-800 shadow-xl">
+    <header className="fixed top-0 z-[99] w-full bg-slate-800 shadow-xl">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-4">
-        <h1 className="text-3xl font-semibold">
+        <h1 className="text-3xl font-medium">
           <Link href="/" className="flex">
             <p className="text-red-500">J</p>
             <p>emember</p>

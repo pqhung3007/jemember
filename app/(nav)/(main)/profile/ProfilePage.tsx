@@ -31,9 +31,9 @@ export default function ProfilePage({ user }: { user: UserProps }) {
       <div className="flex flex-col gap-1 pr-4">
         <a
           href=""
-          className="flex items-center rounded-full px-4 py-3 hover:bg-gray-800"
+          className="flex items-center rounded-full px-4 py-3 hover:bg-slate-800"
         >
-          <UserIcon className="h-6 w-6 pr-2 text-gray-400" />
+          <UserIcon className="h-6 w-6 pr-2 text-slate-400" />
           Profile
         </a>
       </div>
@@ -46,7 +46,7 @@ export default function ProfilePage({ user }: { user: UserProps }) {
               type="text"
               ref={nameRef}
               defaultValue={user.name}
-              className="w-full rounded-full border border-gray-700 bg-gray-900 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full rounded-full border border-slate-700 bg-slate-900 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
           <div className="">
@@ -55,7 +55,7 @@ export default function ProfilePage({ user }: { user: UserProps }) {
               type="text"
               defaultValue={user.email}
               disabled
-              className="w-full cursor-not-allowed rounded-full border border-gray-700 bg-gray-900 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full cursor-not-allowed rounded-full border border-slate-700 bg-slate-900 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function ProfilePage({ user }: { user: UserProps }) {
           </button>
           <Link
             href="/"
-            className="rounded-full bg-gray-700 px-7 py-3 hover:bg-gray-600 hover:ring-gray-400 focus:outline-none"
+            className="rounded-full bg-slate-700 px-7 py-3 hover:bg-slate-600 hover:ring-slate-400 focus:outline-none"
           >
             Cancel
           </Link>

@@ -26,7 +26,9 @@ export default function SingupLayout({
       </head>
 
       <body>
-        <div className="min-h-screen bg-gray-900 text-gray-200">{children}</div>
+        <div className="min-h-screen bg-slate-900 text-slate-100">
+          {children}
+        </div>
       </body>
     </html>
   );

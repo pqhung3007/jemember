@@ -36,11 +36,11 @@ export default function CardDetails({
   return (
     <div className="mx-auto max-w-[800px]">
       <div className="sticky top-16 py-4">
-        <div className="absolute top-0 h-[2.5rem] w-full bg-gray-900"></div>
+        <div className="absolute top-0 h-[2.5rem] w-full bg-slate-900"></div>
         <LocalSearch setKeyWord={setKeyWord} />
       </div>
       <div className="space-y-3">
-        <div className="flex justify-end gap-4 py-3 text-gray-400">
+        <div className="flex justify-end gap-4 py-3 text-slate-400">
           <button
             className={`h-10 cursor-pointer rounded-full px-5 ${
               isMarkedOnly && "bg-green-800 text-white"

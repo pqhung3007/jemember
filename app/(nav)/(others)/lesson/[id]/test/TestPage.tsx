@@ -68,10 +68,10 @@ export default function TestPage({
   return (
     <div className="mx-auto flex max-w-[75ch] flex-col gap-5 pb-20">
       <div className="items-center justify-between gap-4 md:flex">
-        <div className="flex gap-3 rounded-lg bg-gray-700 px-4 py-2 font-medium">
-          <p className="pointer-events-none text-gray-400">Test length</p>
+        <div className="flex gap-3 rounded-lg bg-slate-700 px-4 py-2 font-medium">
+          <p className="pointer-events-none text-slate-400">Test length</p>
           <input
-            className="w-[5rem] bg-gray-700 focus:outline-none"
+            className="w-[5rem] bg-slate-700 focus:outline-none"
             type="number"
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}

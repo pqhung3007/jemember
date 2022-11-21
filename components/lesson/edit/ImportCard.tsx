@@ -21,7 +21,7 @@ export default function ImportCard({
         cols={30}
         rows={10}
         ref={importRef}
-        className="rounded-xl bg-gray-600 p-2 text-white focus:outline-none"
+        className="rounded-xl bg-slate-600 p-2 text-white focus:outline-none"
       ></textarea>
       <button
         onClick={importListener}

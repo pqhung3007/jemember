@@ -1,4 +1,5 @@
-import { StarIcon } from "@heroicons/react/24/solid";
+import { BookmarkIcon } from "@heroicons/react/24/outline";
+import { BookmarkIcon as BookmarkedIcon } from "@heroicons/react/24/solid";
 import styles from "styles/Card.module.css";
 import { CardProps } from "types";
 
@@ -21,13 +22,13 @@ export default function Card(props: {
       <div className={styles["flip-card-inner"]}>
         <div className={styles["flip-card-front"]}>
           <div
-            className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
+            className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer`}
             onClick={markListener}
           >
             {props.isMarked ? (
-              <StarIcon className="text-yellow-400" />
+              <BookmarkedIcon className="text-slate-400" />
             ) : (
-              <StarIcon className="text-white" />
+              <BookmarkIcon className="text-white" />
             )}
           </div>
           <div
@@ -39,20 +40,20 @@ export default function Card(props: {
             </p>
             <div className="mx-auto flex h-full max-w-[90%] items-center justify-center py-6 md:text-2xl">
               <p className="max-h-[100%] overflow-y-auto px-3">
-                {props.card?.question || "Loading...."}
+                {props.card ? props.card.question : "Loading...."}
               </p>
             </div>
           </div>
         </div>
         <div className={styles["flip-card-back"]}>
           <div
-            className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer text-yellow-400`}
+            className={`absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer`}
             onClick={markListener}
           >
             {props.isMarked ? (
-              <StarIcon className="text-yellow-400" />
+              <BookmarkedIcon className="text-slate-400" />
             ) : (
-              <StarIcon className="text-white" />
+              <BookmarkIcon className="text-white" />
             )}
           </div>
           <div

@@ -89,7 +89,7 @@ export default function CardSlide({
         <div className="group mx-auto flex max-w-[800px] items-center gap-4 py-6">
           <div className="opacity-0 group-hover:opacity-100">
             <PencilSquareIcon
-              className="h-6 w-6 cursor-pointer text-gray-400"
+              className="h-6 w-6 cursor-pointer text-slate-400"
               onClick={() => lessonNameInputRef.current?.focus()}
             />
           </div>
@@ -98,7 +98,7 @@ export default function CardSlide({
           </label>
           <input
             id="name"
-            className="w-full bg-transparent text-3xl font-semibold focus:outline-none"
+            className="w-full bg-transparent text-5xl font-semibold focus:outline-none"
             defaultValue={title}
             ref={lessonNameInputRef}
             onKeyDown={() => clearTimeout(typingTimer)}
@@ -106,9 +106,9 @@ export default function CardSlide({
           />
         </div>
         <div className="mx-auto max-w-[800px] pt-6">
-          <div className="mb-6 h-0.5 w-full rounded-full bg-gray-700">
+          <div className="mb-6 h-2 w-full rounded-full bg-slate-700">
             <div
-              className="h-0.5 rounded-full bg-green-600"
+              className="h-2 rounded-full bg-green-700"
               style={{ width: percent }}
             ></div>
           </div>

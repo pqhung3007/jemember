@@ -21,12 +21,12 @@ export default function Question({
         return "border-red-600";
       }
     }
-    return "border-gray-600";
+    return "border-slate-600";
   };
 
   return (
     <div
-      className="rounded-lg border border-gray-600 bg-gray-800 p-5"
+      className="rounded-lg border border-slate-600 bg-slate-800 p-5"
       key={ques.id}
     >
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
@@ -34,7 +34,7 @@ export default function Question({
         <input
           type="text"
           placeholder="Answer"
-          className={`border bg-gray-900 ${setInputBorder(
+          className={`border bg-slate-900 ${setInputBorder(
             actual || "",
             ques.answer
           )} my-6 w-full rounded px-4 py-2 focus:outline-none`}
