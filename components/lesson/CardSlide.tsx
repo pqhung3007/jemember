@@ -8,6 +8,7 @@ import CopyButton from "./CopyButton";
 import EditButton from "./EditButton";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
+import TestButton from "./TestButton";
 
 export default function CardSlide({
   lesson,
@@ -138,12 +139,7 @@ export default function CardSlide({
           </div>
           <div className="flex gap-4">
             <EditButton id={lesson.id} />
-            <Link
-              href={`/lesson/${lesson.id}/test`}
-              className="flex cursor-pointer items-center gap-2 rounded-full bg-gray-800 px-5 py-2 text-sm font-medium text-white shadow-xl hover:bg-gray-700/80 hover:ring-gray-500 focus:outline-none"
-            >
-              <p>Test</p>
-            </Link>
+            <TestButton id={lesson.id} />
             <CopyButton copy={copy} />
           </div>
         </div>
