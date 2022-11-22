@@ -24,7 +24,7 @@ export default function CardSlide({
 
   useEffect(() => {
     containerRef.current?.focus();
-  });
+  }, []);
 
   const processKeyBinding = (event: any) => {
     if (

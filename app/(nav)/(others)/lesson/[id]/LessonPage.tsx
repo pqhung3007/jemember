@@ -31,7 +31,7 @@ export default function LessonPage({ lesson }: { lesson: LessonBaseProps }) {
     supabaseGetMarkedCardsIdByLessonId(lesson.id).then((markedCards) => {
       setMarked(markedCards);
     });
-  });
+  }, []);
 
   return (
     <>
