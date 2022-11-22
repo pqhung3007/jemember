@@ -1,6 +1,6 @@
 "use client";
 
-import a from "next/link";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { UserProps } from "types";
@@ -29,20 +29,20 @@ export default function Nav() {
     <header className="fixed top-0 z-[99] w-full bg-slate-800 shadow-xl">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-4">
         <h1 className="text-3xl font-medium">
-          <a href="/" className="flex">
+          <Link href="/" className="flex">
             <p className="text-red-500">J</p>
             <p>emember</p>
-          </a>
+          </Link>
         </h1>
         {!user.id && (
           <div className="flex gap-5">
-            <a href="/login">Log in</a>
-            <a href="/signup">Sign up</a>
+            <Link href="/login">Log in</Link>
+            <Link href="/signup">Sign up</Link>
           </div>
         )}
         {user.id && (
           <div className="disabled flex gap-5">
-            <a href="/profile">{user.name}</a>
+            <Link href="/profile">{user.name}</Link>
             <button onClick={logout}>Log out</button>
           </div>
         )}
