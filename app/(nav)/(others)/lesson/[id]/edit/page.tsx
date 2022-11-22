@@ -1,6 +1,6 @@
-import EditLessonPage from "app/(nav)/(others)/lesson/[id]/edit/EditLessonPage";
 import { notFound } from "next/navigation";
 import { supabaseGetCardsByLessonId, supabaseGetLessonById } from "utils";
+import EditLessonPage from "./EditLessonPage";
 
 export default async function LessonEdit({
   params,

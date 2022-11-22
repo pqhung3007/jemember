@@ -1,6 +1,6 @@
-import LearnPage from "app/(nav)/(others)/lesson/[id]/learn/LearnPage";
 import { notFound } from "next/navigation";
 import { supabaseGetCardsByLessonId, supabaseGetLessonById } from "utils";
+import LearnPage from "./LearnPage";
 
 export default async function Learn({ params }: { params: { id: string } }) {
   const _lessonPromise = supabaseGetLessonById(params.id);

@@ -1,5 +1,5 @@
-import AddLesson from "app/(nav)/(others)/lesson/new/AddLessonPage";
 import { supabaseCountLesson } from "utils";
+import AddLesson from "./AddLessonPage";
 
 export default async function NewLesson() {
   const count = await supabaseCountLesson();
