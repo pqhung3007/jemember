@@ -3,7 +3,7 @@
 .flip-card-flipped {
   background-color: transparent;
   position: relative;
-  width: min(800px, 100vw);
+  width: min(1000px, 100vw);
   height: min(500px, 50vw);
 }
 

@@ -4,18 +4,34 @@ import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import AddCard from "components/lesson/edit/AddCard";
 import EditCard from "components/lesson/edit/EditCard";
 import ImportCard from "components/lesson/edit/ImportCard";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CardProps, LessonProps } from "types";
 import {
   supabaseDeleteCardById,
   supabaseDeleteMarkByCardId,
   supabaseImportCard,
   supabaseInsertNewCardInLesson,
+  supabaseUpdateLessonById,
   updateCardToDatabase,
 } from "utils";
 
 export default function EditLessonPage(props: LessonProps) {
+  const [title, setTitle] = useState(props.lesson.name);
+  const lessonNameInputRef = useRef<HTMLInputElement>(null);
   const [cards, setCards] = useState(props.cards as CardProps[]);
+  let typingTimer: NodeJS.Timeout;
+
+  const updateTitle = async () => {
+    clearTimeout(typingTimer);
+
+    typingTimer = setTimeout(async () => {
+      if (lessonNameInputRef.current?.value) {
+        const newName = lessonNameInputRef.current.value;
+        setTitle(newName);
+        await supabaseUpdateLessonById(newName, props.lesson.id);
+      }
+    }, 500);
+  };
 
   const importCard = async (content: string) => {
     const { data, error } = await supabaseImportCard(content, props.lesson.id);
@@ -59,7 +75,14 @@ export default function EditLessonPage(props: LessonProps) {
           <a href="./" className="px-3">
             <ChevronLeftIcon className="h-6 w-6 cursor-pointer text-white" />
           </a>
-          <h1 className="text-3xl font-semibold">{props.lesson.name}</h1>
+          <input
+            id="name"
+            className="w-full bg-transparent text-4xl font-semibold focus:outline-none"
+            defaultValue={title}
+            ref={lessonNameInputRef}
+            onKeyDown={() => clearTimeout(typingTimer)}
+            onKeyUp={updateTitle}
+          />
         </div>
         <ImportCard importCard={importCard} />
         {cards.map((card: CardProps, index: number) => (

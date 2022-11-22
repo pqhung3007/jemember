@@ -14,7 +14,7 @@ export default function Nav() {
     supabaseGetCurrentUserMetadata().then((user) => {
       if (user) setUser(user);
     });
-  }, []);
+  });
 
   const logout = async () => {
     const { error } = await supabaseSignOut();

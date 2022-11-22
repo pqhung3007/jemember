@@ -32,7 +32,7 @@ export default async function RootLayout({
       </head>
 
       <body className="">
-        <div className="min-h-screen bg-slate-900 text-slate-100">
+        <div className="min-h-screen bg-gray-900 text-blue-100">
           <Nav />
           <div className="pt-28">{children}</div>
         </div>

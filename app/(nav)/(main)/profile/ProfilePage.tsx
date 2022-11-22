@@ -46,7 +46,7 @@ export default function ProfilePage({ user }: { user: UserProps }) {
               type="text"
               ref={nameRef}
               defaultValue={user.name}
-              className="w-full rounded-full border border-slate-700 bg-slate-900 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full rounded-full bg-slate-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
           <div className="">
@@ -55,7 +55,7 @@ export default function ProfilePage({ user }: { user: UserProps }) {
               type="text"
               defaultValue={user.email}
               disabled
-              className="w-full cursor-not-allowed rounded-full border border-slate-700 bg-slate-900 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full cursor-not-allowed rounded-full bg-slate-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
         </div>

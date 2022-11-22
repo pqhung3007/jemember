@@ -34,7 +34,7 @@ export default function CardDetails({
   }, [cards, keyWord]);
 
   return (
-    <div className="mx-auto max-w-[800px]">
+    <div className="mx-auto max-w-[1000px]">
       <div className="sticky top-16 py-4">
         <div className="absolute top-0 h-[2.5rem] w-full bg-slate-900"></div>
         <LocalSearch setKeyWord={setKeyWord} />

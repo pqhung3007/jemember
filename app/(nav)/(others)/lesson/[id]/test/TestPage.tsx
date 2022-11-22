@@ -30,7 +30,7 @@ export default function TestPage({
     supabaseGetMarkedCardsIdByLessonId(id).then((markedIds) => {
       marked = cards.filter((card) => markedIds.includes(card.id));
     });
-  }, []);
+  });
 
   const [answers, setAnswers] = useState(new Array(length).fill(""));
 

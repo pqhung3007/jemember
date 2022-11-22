@@ -14,7 +14,7 @@ export default function Profile() {
         setUser(userMeta);
       }
     });
-  }, []);
+  });
 
   return <ProfilePage user={user} />;
 }

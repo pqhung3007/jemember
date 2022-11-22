@@ -16,10 +16,6 @@ export default function LessonPage({ lesson }: { lesson: LessonBaseProps }) {
   const [marked, setMarked] = useState([] as string[]);
   const [cards, setCards] = useState([] as CardProps[]);
 
-  useEffect(() => {
-    supabaseGetCardsByLessonId(lesson.id).then((data) => setCards(data));
-  }, []);
-
   const toggleMarked = async (card_id: string) => {
     if (!marked.includes(card_id)) {
       setMarked([...marked, card_id]);
@@ -31,10 +27,11 @@ export default function LessonPage({ lesson }: { lesson: LessonBaseProps }) {
   };
 
   useEffect(() => {
+    supabaseGetCardsByLessonId(lesson.id).then((data) => setCards(data));
     supabaseGetMarkedCardsIdByLessonId(lesson.id).then((markedCards) => {
       setMarked(markedCards);
     });
-  }, []);
+  });
 
   return (
     <>
