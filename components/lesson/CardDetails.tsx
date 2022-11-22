@@ -2,7 +2,7 @@
 
 import LocalSearch from "components/search/LocalSearch";
 import { useEffect, useState } from "react";
-import { CardProps } from "types";
+import { Card } from "type";
 import { includeString } from "utils";
 import CardDetail from "./CardDetail";
 
@@ -11,7 +11,7 @@ export default function CardDetails({
   markedIds,
   toggleMarked,
 }: {
-  cards: CardProps[];
+  cards: Card[];
   markedIds: string[];
   toggleMarked: (card_id: string) => Promise<void>;
 }) {

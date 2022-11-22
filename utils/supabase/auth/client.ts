@@ -1,28 +1,9 @@
 import { supabaseBrowserClient as supabase } from "../browser";
-import { UserProps } from "types";
+import type { UserMetaData } from "type";
 
 export const supabaseGetCurrentUID = async () => {
   const { data } = await supabase.auth.getSession();
   return data.session?.user.id || "";
-};
-
-export const supabaseGetCurrentUserMetadata = async () => {
-  const user = await supabaseGetCurrentUser();
-  if (!user) {
-    return;
-  }
-  const { data } = await supabase
-    .from("users_metadata")
-    .select("name")
-    .eq("id", user.id);
-  if (!data || data.length === 0) {
-    return;
-  }
-  return {
-    id: user.id,
-    name: (data[0].name as string) || "",
-    email: user.email || "",
-  };
 };
 
 export const supabaseGetCurrentUser = async () => {
@@ -30,7 +11,7 @@ export const supabaseGetCurrentUser = async () => {
   return data.session?.user;
 };
 
-export const supabaseUpdateUserMeta = async (user: UserProps) => {
+export const supabaseUpdateUserMeta = async (user: UserMetaData) => {
   await supabase
     .from("users_metadata")
     .update({

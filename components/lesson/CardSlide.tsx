@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { CardProps, LessonBaseProps } from "types";
-import Card from "./Card";
+import { useEffect, useRef, useState, KeyboardEvent } from "react";
+import type { Card, LessonBase } from "type";
+import CardComp from "./Card";
 import CopyButton from "./CopyButton";
 import EditButton from "./EditButton";
 import NextCard from "./NextCard";
@@ -13,8 +13,8 @@ export default function CardSlide({
   marked,
   toggleMarked,
 }: {
-  lesson: LessonBaseProps;
-  cards: CardProps[];
+  lesson: LessonBase;
+  cards: Card[];
   marked: string[];
   toggleMarked: (card_id: string) => void;
 }) {
@@ -26,7 +26,7 @@ export default function CardSlide({
     containerRef.current?.focus();
   }, []);
 
-  const processKeyBinding = (event: any) => {
+  const processKeyBinding = (event: KeyboardEvent<HTMLDivElement>) => {
     if (
       event.key === " " ||
       event.key === "ArrowUp" ||
@@ -86,7 +86,7 @@ export default function CardSlide({
           onKeyDown={processKeyBinding}
         >
           <PrevCard isDisabled={index <= 0} prev={prev} />
-          <Card
+          <CardComp
             isFront={isFront}
             setIsFront={setIsFront}
             card={cards[index] || undefined}

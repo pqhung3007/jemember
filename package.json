@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "preinstall": "npx only-allow pnpm",
-    "gentypes": "supabase gen types typescript --project-id dyqqfziibuvldfpiyigz > types/database.types.ts"
+    "gentypes": "supabase gen types typescript --project-id dyqqfziibuvldfpiyigz > types/database.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
@@ -16,7 +16,7 @@
     "@supabase/supabase-js": "^2.1.0",
     "dotenv": "^16.0.3",
     "encoding": "^0.1.13",
-    "next": "13.0.4",
+    "next": "^13.0.4",
     "pnpm": "^7.17.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -1,6 +1,6 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import { BookmarkIcon as BookmarkedIcon } from "@heroicons/react/24/solid";
-import { CardProps } from "types";
+import { Card } from "type";
 
 export default function CardDetail({
   card,
@@ -8,7 +8,7 @@ export default function CardDetail({
   hidden,
   toggleMarked,
 }: {
-  card: CardProps;
+  card: Card;
   marked: boolean;
   hidden: boolean;
   toggleMarked: (card_id: string) => Promise<void>;

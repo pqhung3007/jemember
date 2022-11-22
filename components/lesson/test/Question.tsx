@@ -1,4 +1,4 @@
-import { CardProps } from "types";
+import { Card } from "type";
 
 export default function Question({
   ques,
@@ -7,7 +7,7 @@ export default function Question({
   actual,
   updateAnswer,
 }: {
-  ques: CardProps;
+  ques: Card;
   index: number;
   isViewResult: boolean;
   actual: string;

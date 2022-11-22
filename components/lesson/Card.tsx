@@ -1,11 +1,11 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import { BookmarkIcon as BookmarkedIcon } from "@heroicons/react/24/solid";
 import styles from "styles/Card.module.css";
-import { CardProps } from "types";
+import type { Card } from "type";
 
 export default function Card(props: {
   progress: string;
-  card: CardProps | undefined;
+  card: Card | undefined;
   isFront: boolean;
   isMarked: boolean;
   toggleMarked(card_id: string): void;

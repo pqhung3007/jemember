@@ -16,7 +16,7 @@ importers:
       dotenv: ^16.0.3
       encoding: ^0.1.13
       eslint: 8.28.0
-      next: 13.0.4
+      next: ^13.0.4
       pnpm: ^7.17.0
       postcss: ^8.4.19
       prettier: ^2.7.1
@@ -267,8 +267,8 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/gotrue-js/2.3.0_encoding@0.1.13:
-    resolution: {integrity: sha512-e50w8LkfbxtI2SJxUbuQNM7pN+Yu3HYkvCLsidwBgivTdcoFOkhFodwLvWSVdeaxY1mH6Gm66RiKeUMn1+BAow==}
+  /@supabase/gotrue-js/2.3.1_encoding@0.1.13:
+    resolution: {integrity: sha512-txYVDrKAFXxT4nyVGnW3M9Oid4u3Xe/Na+wTEzwU+IBuPUEz72ZBHNKo6HBKlZNpnlGtgCSciYhH8qFkZYGV3g==}
     dependencies:
       cross-fetch: 3.1.5_encoding@0.1.13
     transitivePeerDependencies:
@@ -304,7 +304,7 @@ packages:
     resolution: {integrity: sha512-hODrAUDSC6RV6EhwuSMyhaQCF32gij0EBTceuDR+8suJsg7XcyUG0fYgeYecWIvt0nz61xAMY6E+Ywb0tJaAng==}
     dependencies:
       '@supabase/functions-js': 2.0.0_encoding@0.1.13
-      '@supabase/gotrue-js': 2.3.0_encoding@0.1.13
+      '@supabase/gotrue-js': 2.3.1_encoding@0.1.13
       '@supabase/postgrest-js': 1.1.0_encoding@0.1.13
       '@supabase/realtime-js': 2.1.0
       '@supabase/storage-js': 2.0.0_encoding@0.1.13

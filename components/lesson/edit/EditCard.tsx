@@ -2,13 +2,13 @@
 
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef } from "react";
-import { CardProps } from "types";
+import { Card } from "type";
 
 export default function EditCard(props: {
-  info: CardProps;
+  info: Card;
   index: number;
   id: string;
-  updateCard(newData: CardProps): void;
+  updateCard(newData: Card): void;
   deleteCard(id: string): void;
 }) {
   const questionRef = useRef<HTMLTextAreaElement>(null);
