@@ -1,6 +1,6 @@
 import { supabase } from "supabase";
 import { CardProps } from "types";
-import { supabaseGetCurrentUID } from "./user";
+import { supabaseGetCurrentUID } from "./auth/client";
 
 export const supabaseGetLessonById = async (id: string) => {
   const { data, error } = await supabase.from("lesson").select().eq("id", id);

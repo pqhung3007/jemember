@@ -1,3 +1,5 @@
+export * from "./database.types";
+
 export interface LessonProps {
   lesson: LessonBaseProps;
   cards: CardProps[];

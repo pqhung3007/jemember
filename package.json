@@ -7,17 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "gentypes": "supabase gen types typescript --project-id dyqqfziibuvldfpiyigz > types/database.types.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "@supabase/auth-helpers-nextjs": "^0.5.2",
     "@supabase/supabase-js": "^2.1.0",
     "dotenv": "^16.0.3",
     "encoding": "^0.1.13",
     "next": "13.0.4",
     "pnpm": "^7.17.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
@@ -30,6 +33,7 @@
     "postcss": "^8.4.19",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
+    "supabase": "^1.15.0",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3"
   }

@@ -1,4 +1,4 @@
-import { supabase } from "supabase";
+import { supabaseBrowserClient as supabase } from "../browser";
 import { UserProps } from "types";
 
 export const supabaseGetCurrentUID = async () => {
