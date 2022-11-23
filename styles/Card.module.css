@@ -3,7 +3,7 @@
 .flip-card-flipped {
   background-color: transparent;
   position: relative;
-  width: min(1000px, 100vw);
+  width: min(950px, 100vw);
   height: min(500px, 50vw);
 }
 
@@ -26,7 +26,7 @@
 .flip-card-back {
   transition: transform 0.2s;
   transform-style: preserve-3d;
-  background-color: rgb(55 65 81);
+  background-color: rgb(55 55 55);
   white-space: pre-wrap;
   text-align: left;
   position: absolute;

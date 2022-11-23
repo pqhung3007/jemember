@@ -26,7 +26,7 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <BookmarkedIcon className="text-slate-400" />
+              <BookmarkedIcon className="text-neutral-400" />
             ) : (
               <BookmarkIcon className="text-white" />
             )}
@@ -51,7 +51,7 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <BookmarkedIcon className="text-slate-400" />
+              <BookmarkedIcon className="text-neutral-400" />
             ) : (
               <BookmarkIcon className="text-white" />
             )}

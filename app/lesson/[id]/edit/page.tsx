@@ -20,7 +20,7 @@ export default async function LessonEdit({
   }
 
   return (
-    <div className="p-4 pt-32">
+    <div className="p-4 pt-32 md:pl-24 lg:px-24">
       <EditLessonPage lesson={lesson} cards={cards} />
     </div>
   );

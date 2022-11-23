@@ -21,17 +21,17 @@ export default function Question({
         return "border-red-600";
       }
     }
-    return "border-slate-600";
+    return "border-neutral-600";
   };
 
   return (
-    <div className="rounded-2xl bg-slate-800 p-5" key={ques.id}>
+    <div className="rounded-2xl bg-neutral-800 p-5" key={ques.id}>
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
       <div className="">
         <input
           type="text"
           placeholder="Answer"
-          className={`bg-slate-900 ${setInputBorder(
+          className={`bg-neutral-900 ${setInputBorder(
             actual || "",
             ques.answer
           )} mt-6 w-full rounded-full px-4 py-3 focus:outline-none`}

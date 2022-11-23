@@ -27,17 +27,16 @@ export default function RouterSearch({
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-5">
-      <div className="relative rounded-full bg-slate-800 py-2 pl-16 pr-4">
+      <div className="relative rounded-full bg-neutral-800 py-2 pl-16 pr-4">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-6">
-          <MagnifyingGlassIcon className="h-6 w-6 text-slate-400" />
+          <MagnifyingGlassIcon className="h-6 w-6 text-neutral-400" />
         </div>
         <input
           onChange={(e) => setKeyWord(e.currentTarget.value)}
           value={keyWord}
           type="search"
-          size={30}
           placeholder="Lesson's name"
-          className="bg-slate-800 py-1 text-lg text-white placeholder-slate-500 focus:outline-none"
+          className="bg-transparent py-1 text-lg text-white placeholder-neutral-500 focus:outline-none"
         />
       </div>
       <button

@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
-import { useCardsByLessonId, useLessonById } from "utils/supabase/lesson/server";
+import {
+  useCardsByLessonId,
+  useLessonById,
+} from "utils/supabase/lesson/server";
 import LearnPage from "./LearnPage";
 
 export default async function Learn({ params }: { params: { id: string } }) {
@@ -13,7 +16,7 @@ export default async function Learn({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 md:pl-24 lg:px-24">
       <LearnPage lesson={lesson} cards={cards} />
     </div>
   );

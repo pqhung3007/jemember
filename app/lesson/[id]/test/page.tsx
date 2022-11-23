@@ -24,7 +24,7 @@ export default async function Learn({ params }: { params: { id: string } }) {
   const marked = cards.filter((card) => markedCardsIds.includes(card.id));
 
   return (
-    <div className="p-4 pt-32">
+    <div className="p-4 pt-32 md:pl-24 lg:px-24">
       <TestPage cards={cards} marked={marked} />
     </div>
   );

@@ -27,7 +27,7 @@ export default function Login() {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">
       <form
-        className="relative max-w-lg rounded-xl bg-slate-700 shadow md:min-w-[50ch]"
+        className="relative max-w-lg rounded-xl bg-neutral-700 shadow md:min-w-[50ch]"
         onSubmit={login}
       >
         <div className="py-6 px-6 lg:px-8">
@@ -43,7 +43,7 @@ export default function Login() {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
                 onChange={() => setError("")}
-                className="block w-full rounded-full border border-slate-500 bg-slate-600 p-2.5 text-sm placeholder-slate-400 focus:border-slate-500 focus:outline-none"
+                className="block w-full rounded-full border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-neutral-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -60,19 +60,19 @@ export default function Login() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-full border border-slate-500 bg-slate-600 p-2.5 text-sm placeholder-slate-400 focus:border-slate-500 focus:outline-none"
+                className="block w-full rounded-full border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-neutral-500 focus:outline-none"
                 onChange={() => setError("")}
                 required
               />
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-800"
+              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-800"
               disabled={error.trim() !== ""}
             >
               Log in
             </button>
-            <div className="text-sm font-medium text-slate-300">
+            <div className="text-sm font-medium text-neutral-300">
               New here ?{" "}
               <Link href="/signup" className="text-green-500 hover:underline">
                 Signup

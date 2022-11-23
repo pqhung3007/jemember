@@ -1,5 +1,5 @@
 const Skeleton = () => (
-  <div className="duration-50 animate-pulse rounded-lg bg-slate-800 py-[60px]"></div>
+  <div className="duration-50 animate-pulse rounded-lg bg-neutral-800 py-[60px]"></div>
 );
 
 export default function LessonListSkeleton() {

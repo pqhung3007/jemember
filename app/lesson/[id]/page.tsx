@@ -22,7 +22,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="px-4 pt-32 pb-32">
+    <div className="px-4 pt-32 pb-32 md:pl-24 lg:px-24">
       <LessonPage lesson={lesson} cards={cards} markedCards={markedCardsIds} />
     </div>
   );

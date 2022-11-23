@@ -38,7 +38,7 @@ export default function Signup() {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">
       <form
-        className="relative max-w-md rounded-2xl bg-slate-700 shadow md:w-[60ch]"
+        className="relative max-w-md rounded-2xl bg-neutral-700 shadow md:w-[60ch]"
         onSubmit={signup}
         onChange={validate}
       >
@@ -53,7 +53,7 @@ export default function Signup() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
-                className="block w-full rounded-full border border-slate-500 bg-slate-600 p-2.5 text-sm placeholder-slate-400 focus:border-slate-500 focus:outline-none"
+                className="block w-full rounded-full border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-neutral-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -69,7 +69,7 @@ export default function Signup() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-full border border-slate-500 bg-slate-600 p-2.5 text-sm placeholder-slate-400 focus:border-slate-500 focus:outline-none"
+                className="block w-full rounded-full border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-neutral-500 focus:outline-none"
                 required
               />
             </div>
@@ -84,18 +84,18 @@ export default function Signup() {
                 pattern=".{8,}"
                 ref={repeatPassRef}
                 title="Eight or more characters"
-                className="block w-full rounded-full border border-slate-500 bg-slate-600 p-2.5 text-sm placeholder-slate-400 focus:border-slate-500 focus:outline-none"
+                className="block w-full rounded-full border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-neutral-500 focus:outline-none"
                 required
               />
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium text-green-200 hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-800 disabled:text-slate-200"
+              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium text-green-200 hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-800 disabled:text-neutral-200"
               disabled={error.trim() !== ""}
             >
               Create account
             </button>
-            <div className="text-sm font-medium text-slate-300">
+            <div className="text-sm font-medium text-neutral-300">
               Already have an account?{" "}
               <Link href="/login" className="text-green-500 hover:underline">
                 Login

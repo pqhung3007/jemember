@@ -15,3 +15,8 @@ html {
   font-size: clamp(12px, calc(0.6vw + 8px), 16px);
 }
 
+@layer components {
+  .tooltip {
+    @apply relative after:absolute after:left-16 after:top-1 after:ml-0.5 after:rounded-xl after:bg-green-700 after:p-2 after:opacity-0  after:hover:opacity-100;
+  }
+}

@@ -22,7 +22,6 @@ export default async function Home({
       <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
         <LessonList lessons={lessons} />
       </div>
-      {lessons.length < 100 && <AddLesson />}
     </div>
   );
 }

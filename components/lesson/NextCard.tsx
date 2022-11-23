@@ -16,7 +16,7 @@ export default function NextCard({
       aria-label="next"
       disabled={isDisabled}
     >
-      <ChevronRightIcon className="h-6 w-6 group-disabled:text-slate-500" />
+      <ChevronRightIcon className="h-6 w-6 group-disabled:text-neutral-500" />
     </button>
   );
 }

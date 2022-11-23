@@ -20,24 +20,24 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
       return;
     }
     await supabaseUpdateUserMeta({
-      ...user as UserMetaData,
+      ...(user as UserMetaData),
       name: nameRef.current.value,
     });
     router.push("/");
   };
 
   return (
-    <div className="mx-auto grid max-w-[1200px] grid-cols-[16rem_1fr] gap-10 px-4 pt-28">
+    <div className="mx-auto grid max-w-[1200px] grid-cols-[16rem_1fr] gap-10 px-4 pt-28 md:pl-24 lg:px-24">
       <div className="flex flex-col gap-1 pr-4">
         <a
           href=""
-          className="flex items-center rounded-full px-4 py-3 hover:bg-slate-800"
+          className="flex items-center rounded-full px-4 py-3 hover:bg-neutral-800"
         >
-          <UserIcon className="h-6 w-6 pr-2 text-slate-400" />
+          <UserIcon className="h-6 w-6 pr-2 text-neutral-400" />
           Profile
         </a>
       </div>
-      
+
       <div className="max-w-[75ch]">
         <h1 className="text-4xl font-semibold">Public profile</h1>
         <div className="flex flex-col gap-5 py-6 font-medium">
@@ -47,7 +47,7 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
               type="text"
               ref={nameRef}
               defaultValue={user?.name}
-              className="w-full rounded-full bg-slate-800 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full rounded-full bg-neutral-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
 
@@ -57,7 +57,7 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
               type="text"
               defaultValue={user?.email}
               disabled
-              className="w-full cursor-not-allowed rounded-full bg-slate-800 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full cursor-not-allowed rounded-full bg-neutral-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
           </button>
           <Link
             href="/"
-            className="rounded-full bg-slate-700 px-7 py-3 hover:bg-slate-600 hover:ring-slate-400 focus:outline-none"
+            className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-neutral-600 hover:ring-neutral-400 focus:outline-none"
           >
             Cancel
           </Link>

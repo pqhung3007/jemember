@@ -28,10 +28,10 @@ export default async function RootLayout({
         <meta property="og:image" content="./js_og.jpg" />
       </head>
 
-      <body className="text-slate-100">
+      <body className="text-neutral-100">
         <Nav user={userMetaData} />
         <SupabaseListener accessToken={session?.access_token} />
-        <div className="min-h-screen bg-gray-900">{children}</div>
+        <div className="min-h-screen bg-neutral-900">{children}</div>
       </body>
     </html>
   );

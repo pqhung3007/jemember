@@ -5,9 +5,18 @@ import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { supabaseSignOut } from "utils/supabase/auth/client";
 
 import type { UserMetaData } from "type";
+import {
+  ArrowLeftOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
+  UserIcon,
+  UserPlusIcon,
+} from "@heroicons/react/24/outline";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 export default function Nav({ user }: { user: UserMetaData | null }) {
-  const isNotRendered = ["login", "signup"].includes(useSelectedLayoutSegment() ?? "");
+  const isNotRendered = ["login", "signup"].includes(
+    useSelectedLayoutSegment() ?? ""
+  );
 
   const router = useRouter();
 
@@ -21,28 +30,51 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
     router.push("/");
   };
 
-  return isNotRendered ? null : ( 
-    <header className="fixed top-0 z-[99] w-full bg-slate-800 shadow-xl">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-3 px-5 py-4">
-        <h1 className="text-3xl font-medium">
-          <Link href="/" className="flex">
+  return isNotRendered ? null : (
+    <header className="fixed left-0 z-[99] w-screen bg-neutral-800 shadow-xl md:h-full md:w-[7rem] md:bg-transparent">
+      <div className="mx-auto flex w-full items-center justify-between gap-3 px-5 py-4 md:h-screen md:flex-col md:justify-center">
+        <h1 className="p-3 text-3xl font-medium">
+          <Link href="/" className="">
             <p className="text-red-500">J</p>
-            <p>emember</p>
           </Link>
         </h1>
 
+        <Link
+          href="/lesson/new"
+          className="rounded-full p-3 hover:bg-green-800/40"
+        >
+          <PlusIcon className="h-6 w-6" />
+        </Link>
+
         {!user?.id && (
-          <div className="flex gap-5">
-            <Link href="/login">Log in</Link>
-            <Link href="/signup">Sign up</Link>
-          </div>
+          <>
+            <Link
+              href="/login"
+              className="tooltip rounded-full p-3 after:content-['Login'] hover:bg-green-800/40 "
+            >
+              <ArrowRightOnRectangleIcon className="h-6 w-6" />
+            </Link>
+            <Link
+              href="/signup"
+              className="tooltip rounded-full p-3 after:content-['Signup'] hover:bg-green-800/40"
+            >
+              <UserPlusIcon className="h-6 w-6" />
+            </Link>
+          </>
         )}
 
         {user?.id && (
-          <div className="disabled flex gap-5">
-            <Link href="/profile">{user.name}</Link>
-            <button onClick={signOut}>Log out</button>
-          </div>
+          <>
+            <Link href="/profile">
+              <UserIcon className="h-6 w-6" />
+            </Link>
+            <button
+              onClick={signOut}
+              className="rounded-full p-3 hover:bg-green-800/40"
+            >
+              <ArrowLeftOnRectangleIcon className="h-6 w-6" />
+            </button>
+          </>
         )}
       </div>
     </header>
