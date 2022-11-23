@@ -10,12 +10,12 @@ export const dynamic = "auto",
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { name?: string };
+  searchParams?: { name?: string };
 }) {
-  const lessons = await useLessonsByName(searchParams.name ?? "");
+  const lessons = await useLessonsByName(searchParams?.name ?? "");
 
   return (
-    <div className="relative pt-24">
+    <div className="relative pt-24 md:pl-24 lg:px-24">
       <div className="flex justify-center pb-8">
         <RouterSearch searchParamName="name" />
       </div>

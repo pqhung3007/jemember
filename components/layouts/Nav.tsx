@@ -31,8 +31,8 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
   };
 
   return isNotRendered ? null : (
-    <header className="fixed left-0 z-[99] w-screen bg-neutral-800 shadow-xl md:h-full md:w-[7rem] md:bg-transparent">
-      <div className="mx-auto flex w-full items-center justify-between gap-3 px-5 py-4 md:h-screen md:flex-col md:justify-center">
+    <header className="fixed left-0 z-[99] w-screen bg-neutral-800 md:h-full md:w-[5rem] md:bg-transparent">
+      <div className="mx-auto flex w-full items-center justify-between gap-3 px-2 md:h-screen md:flex-col md:justify-center">
         <h1 className="p-3 text-3xl font-medium">
           <Link href="/" className="">
             <p className="text-red-500">J</p>
@@ -41,7 +41,7 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
 
         <Link
           href="/lesson/new"
-          className="rounded-full p-3 hover:bg-green-800/40"
+          className="tooltip rounded-full p-3 after:content-['Add'] hover:bg-green-800/40"
         >
           <PlusIcon className="h-6 w-6" />
         </Link>
@@ -65,12 +65,15 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
 
         {user?.id && (
           <>
-            <Link href="/profile">
+            <Link
+              href="/profile"
+              className="tooltip rounded-full p-3 after:content-['Profile'] hover:bg-green-800/40"
+            >
               <UserIcon className="h-6 w-6" />
             </Link>
             <button
               onClick={signOut}
-              className="rounded-full p-3 hover:bg-green-800/40"
+              className="tooltip rounded-full p-3 after:content-['Signout'] hover:bg-green-800/40"
             >
               <ArrowLeftOnRectangleIcon className="h-6 w-6" />
             </button>
