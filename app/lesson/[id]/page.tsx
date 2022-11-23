@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
-import { useLessonById, useMarkedCardsIdByLessonId, useCardsByLessonId } from "utils/supabase/lesson/server";
+import {
+  useLessonById,
+  useMarkedCardsIdByLessonId,
+  useCardsByLessonId,
+} from "utils/supabase/lesson/server";
 import LessonPage from "./LessonPage";
 
 export default async function Lesson({ params }: { params: { id: string } }) {
@@ -8,7 +12,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
   const _markedCardsIdsPromise = useMarkedCardsIdByLessonId(params.id);
 
   const [lesson, cards, markedCardsIds] = await Promise.all([
-    _lessonPromise,  
+    _lessonPromise,
     _cardsPromise,
     _markedCardsIdsPromise,
   ]);
@@ -18,7 +22,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="px-4 pt-10 pb-32">
+    <div className="px-4 pt-32 pb-32">
       <LessonPage lesson={lesson} cards={cards} markedCards={markedCardsIds} />
     </div>
   );

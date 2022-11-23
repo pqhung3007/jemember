@@ -5,7 +5,7 @@ import RouterSearch from "components/search/RouterSearch";
 import { useLessonsByName } from "utils/supabase/lesson/server";
 
 export const dynamic = "auto",
-            revalidate = 0;
+  revalidate = 0;
 
 export default async function Home({
   searchParams,
@@ -15,7 +15,7 @@ export default async function Home({
   const lessons = await useLessonsByName(searchParams.name ?? "");
 
   return (
-    <div className="relative">
+    <div className="relative pt-24">
       <div className="flex justify-center pb-8">
         <RouterSearch searchParamName="name" />
       </div>

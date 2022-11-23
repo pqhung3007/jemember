@@ -10,8 +10,7 @@ export async function useLessonById(id: string): Promise<LessonBase> {
     .select()
     .eq("id", id);
 
-  if (error)
-    throw new Error(error.message);
+  if (error) throw new Error(error.message);
 
   return data[0];
 }
@@ -29,7 +28,9 @@ export const useCardsByLessonId = async (lessonId: string): Promise<Card[]> => {
   return [];
 };
 
-export const useMarkedCardsIdByLessonId = async (lessonId: string): Promise<string[]>=> {
+export const useMarkedCardsIdByLessonId = async (
+  lessonId: string
+): Promise<string[]> => {
   const uid = (await useCurrentUserSession())?.user?.id;
 
   if (!uid) {
@@ -41,19 +42,15 @@ export const useMarkedCardsIdByLessonId = async (lessonId: string): Promise<stri
     _lesson_id: lessonId,
   });
 
-  console.log(data);
+  if (error) throw new Error(error.message);
 
-  if (error)
-    throw new Error(error.message);
-
-  return data;
+  return data.map((data) => data.id);
 };
 
 export const useAllLessons = async () => {
   const { data, error } = await supabaseServerClient().from("lesson").select();
 
-  if (error)
-    throw new Error(error.message);
+  if (error) throw new Error(error.message);
 
   return data;
 };
@@ -64,8 +61,7 @@ export const useLessonsByName = async (name: string) => {
     .select()
     .ilike("name", `%${name}%`);
 
-  if (error) 
-    throw new Error(error.message);
+  if (error) throw new Error(error.message);
 
   return data;
 };

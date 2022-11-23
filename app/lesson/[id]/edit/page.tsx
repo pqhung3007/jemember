@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
-import { useCardsByLessonId, useLessonById } from "utils/supabase/lesson/server";
+import {
+  useCardsByLessonId,
+  useLessonById,
+} from "utils/supabase/lesson/server";
 import EditLessonPage from "./EditLessonPage";
 
 export default async function LessonEdit({
@@ -17,7 +20,7 @@ export default async function LessonEdit({
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 pt-32">
       <EditLessonPage lesson={lesson} cards={cards} />
     </div>
   );

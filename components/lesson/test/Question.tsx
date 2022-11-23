@@ -25,25 +25,24 @@ export default function Question({
   };
 
   return (
-    <div
-      className="rounded-lg border border-slate-600 bg-slate-800 p-5"
-      key={ques.id}
-    >
+    <div className="rounded-2xl bg-slate-800 p-5" key={ques.id}>
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
       <div className="">
         <input
           type="text"
           placeholder="Answer"
-          className={`border bg-slate-900 ${setInputBorder(
+          className={`bg-slate-900 ${setInputBorder(
             actual || "",
             ques.answer
-          )} my-6 w-full rounded px-4 py-2 focus:outline-none`}
+          )} mt-6 w-full rounded-full px-4 py-3 focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}
           disabled={isViewResult}
         />
       </div>
       {isViewResult && (
-        <p className="whitespace-pre-wrap">Actual answer: {ques.answer}</p>
+        <p className="whitespace-pre-wrap pt-4 pl-3">
+          Actual answer: {ques.answer}
+        </p>
       )}
     </div>
   );

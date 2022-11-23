@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@heroicons/react': ^2.0.13
       '@supabase/auth-helpers-nextjs': ^0.5.2
-      '@supabase/supabase-js': ^2.1.0
+      '@supabase/supabase-js': ^2.1.1
       '@types/node': ^18.11.9
       '@types/react': ^18.0.25
       '@types/react-dom': ^18.0.9
@@ -29,8 +29,8 @@ importers:
       typescript: ^4.9.3
     dependencies:
       '@heroicons/react': 2.0.13_react@18.2.0
-      '@supabase/auth-helpers-nextjs': 0.5.2_zj6vbgpit7u2xp5t7lhhtyhq6e
-      '@supabase/supabase-js': 2.1.0_encoding@0.1.13
+      '@supabase/auth-helpers-nextjs': 0.5.2_m57u6a6l34vkx3j4pjzwywi7ua
+      '@supabase/supabase-js': 2.1.1_encoding@0.1.13
       dotenv: 16.0.3
       encoding: 0.1.13
       next: 13.0.4_biqbaboplfbrettd7655fr4n2y
@@ -242,21 +242,21 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@supabase/auth-helpers-nextjs/0.5.2_zj6vbgpit7u2xp5t7lhhtyhq6e:
+  /@supabase/auth-helpers-nextjs/0.5.2_m57u6a6l34vkx3j4pjzwywi7ua:
     resolution: {integrity: sha512-B+sQFVEImAYOJKyyNX1DWqTF2qVf9SocOM1GD4eGHon6ulvLOo2a8V+v1jZAuLOBF6yzVIYnZucuYKZCiNP/Eg==}
     peerDependencies:
       '@supabase/supabase-js': ^2.0.4
     dependencies:
-      '@supabase/auth-helpers-shared': 0.2.3_zj6vbgpit7u2xp5t7lhhtyhq6e
-      '@supabase/supabase-js': 2.1.0_encoding@0.1.13
+      '@supabase/auth-helpers-shared': 0.2.3_m57u6a6l34vkx3j4pjzwywi7ua
+      '@supabase/supabase-js': 2.1.1_encoding@0.1.13
     dev: false
 
-  /@supabase/auth-helpers-shared/0.2.3_zj6vbgpit7u2xp5t7lhhtyhq6e:
+  /@supabase/auth-helpers-shared/0.2.3_m57u6a6l34vkx3j4pjzwywi7ua:
     resolution: {integrity: sha512-Xwnd2UQ/VTjTKIuVg1Xl/ryrElbSccOJhC11jbVPHOs7Y6yxzy9APxQs//jj4IpbDH4uOEDCdpMIJ0tzRxj9DQ==}
     peerDependencies:
       '@supabase/supabase-js': ^2.0.4
     dependencies:
-      '@supabase/supabase-js': 2.1.0_encoding@0.1.13
+      '@supabase/supabase-js': 2.1.1_encoding@0.1.13
     dev: false
 
   /@supabase/functions-js/2.0.0_encoding@0.1.13:
@@ -300,8 +300,8 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/supabase-js/2.1.0_encoding@0.1.13:
-    resolution: {integrity: sha512-hODrAUDSC6RV6EhwuSMyhaQCF32gij0EBTceuDR+8suJsg7XcyUG0fYgeYecWIvt0nz61xAMY6E+Ywb0tJaAng==}
+  /@supabase/supabase-js/2.1.1_encoding@0.1.13:
+    resolution: {integrity: sha512-6uBz31zrYfXkb5f2lzSHtncLWDQG5LvuH/OrmIAJqnjvliyd1pXMCGn/03xTfnflbjMolbOva+XMrydkyIMDfQ==}
     dependencies:
       '@supabase/functions-js': 2.0.0_encoding@0.1.13
       '@supabase/gotrue-js': 2.3.1_encoding@0.1.13

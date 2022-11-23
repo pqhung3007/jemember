@@ -27,7 +27,7 @@ export default function Login() {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">
       <form
-        className="relative max-w-md rounded-xl bg-slate-700 shadow"
+        className="relative max-w-lg rounded-xl bg-slate-700 shadow md:min-w-[50ch]"
         onSubmit={login}
       >
         <div className="py-6 px-6 lg:px-8">

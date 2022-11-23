@@ -38,7 +38,7 @@ export default function Signup() {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">
       <form
-        className="relative max-w-md rounded-2xl bg-slate-700 shadow"
+        className="relative max-w-md rounded-2xl bg-slate-700 shadow md:w-[60ch]"
         onSubmit={signup}
         onChange={validate}
       >
@@ -90,7 +90,7 @@ export default function Signup() {
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-800"
+              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium text-green-200 hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-800 disabled:text-slate-200"
               disabled={error.trim() !== ""}
             >
               Create account

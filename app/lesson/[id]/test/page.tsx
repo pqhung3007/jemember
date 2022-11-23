@@ -11,19 +11,21 @@ export default async function Learn({ params }: { params: { id: string } }) {
   const _cardsPromise = useCardsByLessonId(params.id);
   const _markedCardsIdsPromise = useMarkedCardsIdByLessonId(params.id);
 
-  const [lessonSnapshot, cardsSnapshot, markedCardsIds] = await Promise.all([
+  const [lesson, cards, markedCardsIds] = await Promise.all([
     _lessonPromise,
     _cardsPromise,
     _markedCardsIdsPromise,
   ]);
 
-  if (!lessonSnapshot) {
+  if (!lesson) {
     notFound();
   }
 
+  const marked = cards.filter((card) => markedCardsIds.includes(card.id));
+
   return (
-    <div className="p-4">
-      <TestPage cards={cardsSnapshot} markedCardsIds={markedCardsIds} />
+    <div className="p-4 pt-32">
+      <TestPage cards={cards} marked={marked} />
     </div>
   );
 }

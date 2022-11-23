@@ -1,6 +1,9 @@
 import "styles/globals.css";
 
-import { useCurrentUserMetadata, useCurrentUserSession } from "utils/supabase/auth/server";
+import {
+  useCurrentUserMetadata,
+  useCurrentUserSession,
+} from "utils/supabase/auth/server";
 import Nav from "components/layouts/Nav";
 import SupabaseListener from "components/common/supabase-listener";
 
@@ -25,12 +28,10 @@ export default async function RootLayout({
         <meta property="og:image" content="./js_og.jpg" />
       </head>
 
-      <body>
+      <body className="text-slate-100">
         <Nav user={userMetaData} />
         <SupabaseListener accessToken={session?.access_token} />
-        <div className="min-h-screen bg-gray-900 text-slate-100">
-          {children}
-        </div>
+        <div className="min-h-screen bg-gray-900">{children}</div>
       </body>
     </html>
   );

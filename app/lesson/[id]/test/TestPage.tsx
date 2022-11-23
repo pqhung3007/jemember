@@ -9,18 +9,16 @@ import { compareString, pickRandom, replaceAt } from "utils";
 
 export default function TestPage({
   cards,
-  markedCardsIds,
+  marked,
 }: {
   cards: Card[];
-  markedCardsIds: string[];
+  marked: Card[];
 }) {
   const [isMarkedOnly, setIsMarkedOnly] = useState(false);
   const [length, setLength] = useState(5);
   const lengthRef = useRef<HTMLInputElement>(null);
   const [testCards, setTestCards] = useState([] as Card[]);
   const [isViewResult, setIsViewResult] = useState(false);
-
-  const marked = cards.filter((card) => markedCardsIds.includes(card.id));
 
   const [answers, setAnswers] = useState(new Array(length).fill(""));
 
@@ -56,12 +54,12 @@ export default function TestPage({
   }, [isViewResult]);
 
   return (
-    <div className="mx-auto flex max-w-[75ch] flex-col gap-5 pb-20">
+    <div className="mx-auto flex max-w-[80ch] flex-col gap-5 pb-20">
       <div className="items-center justify-between gap-4 md:flex">
-        <div className="flex gap-3 rounded-lg bg-slate-700 px-4 py-2 font-medium">
+        <div className="flex gap-3 rounded-full bg-slate-700 px-4 py-2 font-medium">
           <p className="pointer-events-none text-slate-400">Test length</p>
           <input
-            className="w-[5rem] bg-slate-700 focus:outline-none"
+            className="w-[5rem] bg-slate-700 text-slate-300 focus:outline-none"
             type="number"
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}
@@ -71,7 +69,7 @@ export default function TestPage({
         </div>
         {marked.length > 0 && <ToggleMarked toggleMarked={setIsMarkedOnly} />}
         <button
-          className="rounded-xl bg-green-700 px-8 py-2 font-semibold hover:bg-green-600"
+          className="rounded-full bg-green-800 px-8 py-2 font-semibold text-green-200 hover:bg-green-700"
           onClick={newTestLength}
         >
           Create new test
@@ -79,9 +77,11 @@ export default function TestPage({
       </div>
       {isViewResult && (
         <div
-          className={`rounded-xl bg-${
-            grading() * 2 > testCards.length ? "green" : "red"
-          }-700 p-6 text-center text-2xl font-semibold`}
+          className={`rounded-xl ${
+            grading() * 2 > testCards.length
+              ? "bg-green-700 text-green-200"
+              : "bg-red-700 text-red-200"
+          } p-6 text-center text-2xl font-semibold`}
         >
           Grade: {grading() + "/" + testCards.length}
         </div>
@@ -97,7 +97,7 @@ export default function TestPage({
         />
       ))}
       <button
-        className="rounded-lg bg-green-700 py-2 font-semibold hover:bg-green-600"
+        className="rounded-full bg-green-800 py-3 font-semibold text-green-200 hover:bg-green-700"
         onClick={() => setIsViewResult(true)}
       >
         Submit
