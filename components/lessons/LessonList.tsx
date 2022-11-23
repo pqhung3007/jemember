@@ -1,12 +1,12 @@
 "use client";
 
-import { LessonBaseProps } from "types";
+import { LessonBase } from "type";
 import LessonCard from "./Lesson";
 
 export default function LessonList({
   lessons,
 }: {
-  lessons: LessonBaseProps[];
+  lessons: LessonBase[];
 }) {
   return (
     <>

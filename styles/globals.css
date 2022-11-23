@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   font-family: Inter;
 }
@@ -11,6 +15,8 @@ html {
   font-size: clamp(12px, calc(0.6vw + 8px), 16px);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer components {
+  .tooltip {
+    @apply relative after:absolute after:left-12 after:top-1 after:rounded-xl after:bg-green-800 after:py-2 after:px-4 after:opacity-0 after:hover:opacity-100;
+  }
+}

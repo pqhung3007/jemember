@@ -1,11 +1,11 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import { BookmarkIcon as BookmarkedIcon } from "@heroicons/react/24/solid";
 import styles from "styles/Card.module.css";
-import { CardProps } from "types";
+import type { Card } from "type";
 
 export default function Card(props: {
   progress: string;
-  card: CardProps | undefined;
+  card: Card | undefined;
   isFront: boolean;
   isMarked: boolean;
   toggleMarked(card_id: string): void;
@@ -26,7 +26,7 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <BookmarkedIcon className="text-slate-400" />
+              <BookmarkedIcon className="text-neutral-400" />
             ) : (
               <BookmarkIcon className="text-white" />
             )}
@@ -51,7 +51,7 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <BookmarkedIcon className="text-slate-400" />
+              <BookmarkedIcon className="text-neutral-400" />
             ) : (
               <BookmarkIcon className="text-white" />
             )}

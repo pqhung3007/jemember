@@ -11,11 +11,11 @@ export default function ToggleMarked({
         id="isMarkedOnly"
         type="checkbox"
         onChange={(e) => toggleMarked(e.currentTarget.checked)}
-        className="h-4 w-4 rounded border-slate-300 bg-slate-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:ring-offset-slate-800 dark:focus:ring-blue-600"
+        className="h-4 w-4 rounded border-neutral-300 bg-neutral-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-neutral-600 dark:bg-neutral-700 dark:ring-offset-neutral-800 dark:focus:ring-blue-600"
       />
       <label
         htmlFor="isMarkedOnly"
-        className="ml-2 grow font-medium text-slate-900 dark:text-slate-300"
+        className="ml-2 grow font-medium text-neutral-900 dark:text-neutral-300"
       >
         Only marked cards
       </label>
