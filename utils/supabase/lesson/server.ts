@@ -56,14 +56,20 @@ export const useAllLessons = async () => {
 };
 
 export const useLessonsByName = async (name: string) => {
-  const { data, error } = await supabaseServerClient()
-    .from("lesson")
-    .select()
-    .ilike("name", `%${name}%`);
-
-  if (error) throw new Error(error.message);
-
-  return data;
+  if (!name) {
+    const { data, error } = await supabaseServerClient()
+      .from("lesson")
+      .select();
+    if (error) throw new Error(error.message);
+    return data;
+  } else {
+    const { data, error } = await supabaseServerClient()
+      .from("lesson")
+      .select()
+      .ilike("name", `%${name}%`);
+    if (error) throw new Error(error.message);
+    return data;
+  }
 };
 
 export const useLessonsCount = async () => {

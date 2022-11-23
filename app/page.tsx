@@ -1,7 +1,5 @@
-import AddLesson from "components/lessons/AddLesson";
 import LessonList from "components/lessons/LessonList";
 import RouterSearch from "components/search/RouterSearch";
-
 import { useLessonsByName } from "utils/supabase/lesson/server";
 
 export const dynamic = "auto",

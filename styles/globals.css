@@ -9,6 +9,7 @@
 @font-face {
   font-family: Inter;
   src: url(../public/Inter.ttf);
+  font-display: swap;
 }
 
 html {

@@ -72,6 +72,7 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
           </button>
           <Link
             href="/"
+            prefetch={false}
             className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-neutral-600 hover:ring-neutral-400 focus:outline-none"
           >
             Cancel
