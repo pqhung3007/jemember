@@ -44,7 +44,7 @@ export const useMarkedCardsIdByLessonId = async (
 
   if (error) throw new Error(error.message);
 
-  return data.map((data) => data.id);
+  return (data as unknown as { id: string }[]).map((row) => row.id);
 };
 
 export const useAllLessons = async () => {
