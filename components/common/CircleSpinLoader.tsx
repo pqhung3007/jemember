@@ -1,6 +1,6 @@
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
-export default function Loader() {
+export default function CircleSpinLoader() {
   return (
     <div className="flex min-h-full content-center justify-center">
       <div className="text-3xl">

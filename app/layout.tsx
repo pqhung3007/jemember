@@ -20,8 +20,18 @@ export default async function RootLayout({
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" type="image/x-icon" href="/js.png" />
-        <title>Jemember</title>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Jemember" />
+        <meta
+          property="og:description"
+          content="Jemember is a flashcard app that helps you learn anything."
+        />
+        <meta property="og:url" content="https://jemember.jsclub.tech/" />
+        <meta property="og:site_name" content="Jemember" />
         <meta property="og:image" content="/js_og.jpg" />
+        <meta property="og:image:width" content="480" />
+        <meta property="og:image:height" content="270" />
+        <title>Jemember</title>
       </head>
 
       <body className="text-neutral-100">
