@@ -19,19 +19,17 @@ export async function useCurrentUserSession() {
   return { user, session };
 }
 
-export const useCurrentUserMetadata = async (user: User): Promise<UserMetaData | null> => {
-  const { data } = await supabaseServerClient()
+export const useCurrentUserMetadata = async (user: User): Promise<UserMetaData> => {
+  const { data, error } = await supabaseServerClient()
     .from("users_metadata")
     .select("name")
     .eq("id", user.id);
 
-  if (!data || data.length === 0) {
-    return null;
-  }
+  if (error)
+    throw new Error(error.message);
 
   return {
     id: user.id,
-    name: data[0].name ?? "",
-    email: user.email ?? "",
+    name: data[0]?.name ?? ""
   };
 }

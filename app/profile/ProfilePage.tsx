@@ -4,23 +4,21 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import type { UserMetaData } from "type";
 import { supabaseUpdateUserMeta } from "utils/supabase/auth/client";
 
-export default function ProfilePage({ user }: { user: UserMetaData | null }) {
+import type { UserMetaData } from "type";
+import type { User } from "@supabase/supabase-js";
+
+export default function ProfilePage({ user, userMetaData }: { user: User | null, userMetaData: UserMetaData | null }) {
   const router = useRouter();
   const nameRef = useRef<HTMLInputElement>(null);
-
-  if (!user) {
-    router.replace("/login");
-  }
 
   const updateProfile = async () => {
     if (!nameRef.current) {
       return;
     }
     await supabaseUpdateUserMeta({
-      ...(user as UserMetaData),
+      ...(userMetaData as UserMetaData),
       name: nameRef.current.value,
     });
     router.push("/");
@@ -29,13 +27,13 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
   return (
     <div className="mx-auto grid max-w-[1200px] grid-cols-[16rem_1fr] gap-10 px-4 pt-28 md:pl-24 lg:px-24">
       <div className="flex flex-col gap-1 pr-4">
-        <a
-          href=""
+        <Link
+          href="/profile"
           className="flex items-center rounded-full px-4 py-3 hover:bg-neutral-800"
         >
           <UserIcon className="h-6 w-6 pr-2 text-neutral-400" />
           Profile
-        </a>
+        </Link>
       </div>
 
       <div className="max-w-[75ch]">
@@ -46,7 +44,7 @@ export default function ProfilePage({ user }: { user: UserMetaData | null }) {
             <input
               type="text"
               ref={nameRef}
-              defaultValue={user?.name}
+              defaultValue={userMetaData?.name}
               className="w-full rounded-full bg-neutral-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>

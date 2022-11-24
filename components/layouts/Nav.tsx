@@ -28,6 +28,7 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
     }
 
     router.push("/");
+    router.refresh();
   };
 
   return isNotRendered ? null : (

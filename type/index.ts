@@ -9,8 +9,4 @@ export type LessonBase = Database["public"]["Tables"]["lesson"]["Row"];
 
 export type Card = Database["public"]["Tables"]["card"]["Row"];
 
-export interface UserMetaData {
-  id: string;
-  name: string;
-  email: string;
-}
+export type UserMetaData = Database["public"]["Tables"]["users_metadata"]["Row"];

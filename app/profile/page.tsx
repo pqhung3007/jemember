@@ -12,5 +12,5 @@ export default async function Profile() {
 
   const userData = await useCurrentUserMetadata(user);
 
-  return <ProfilePage user={userData} />;
+  return <ProfilePage user={user} userMetaData={userData} />;
 }
