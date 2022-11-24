@@ -14,8 +14,7 @@ export async function useCurrentUserSession() {
   if (error) 
     throw new Error(error.message);
   
-
-  const user = session?.user;
+  const user = session?.user ?? null;
   return { user, session };
 }
 

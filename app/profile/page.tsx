@@ -3,6 +3,8 @@ import { useCurrentUserMetadata, useCurrentUserSession } from "utils/supabase/au
 
 import { redirect } from "next/navigation";
 
+export const revalidate = 0;
+
 export default async function Profile() {
   const { user } = await useCurrentUserSession();
 

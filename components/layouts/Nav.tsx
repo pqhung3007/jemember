@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { supabaseSignOut } from "utils/supabase/auth/client";
 
-import type { UserMetaData } from "type";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowRightOnRectangleIcon,
@@ -13,7 +12,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
-export default function Nav({ user }: { user: UserMetaData | null }) {
+export default function Nav({ userID }: { userID: string | undefined }) {
   const isNotRendered = ["login", "signup"].includes(
     useSelectedLayoutSegment() ?? ""
   );
@@ -48,7 +47,7 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
           <PlusIcon className="h-6 w-6" />
         </Link>
 
-        {!user?.id && (
+        {!userID && (
           <>
             <Link
               href="/login"
@@ -67,7 +66,7 @@ export default function Nav({ user }: { user: UserMetaData | null }) {
           </>
         )}
 
-        {user?.id && (
+        {userID && (
           <>
             <Link
               href="/profile"
