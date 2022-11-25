@@ -9,8 +9,10 @@ export const supabaseGetCurrentUID = async () => {
 };
 
 export const supabaseGetCurrentUser = async () => {
-  const { data } = await supabase.auth.getSession();
-  return data.session?.user;
+  const { data: { session } } = await supabase.auth.getSession();
+  const user = session?.user ?? null;
+
+  return { user, session }
 };
 
 export const useCurrentUserMetadata = async (user: User): Promise<UserMetaData> => {
