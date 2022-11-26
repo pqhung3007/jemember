@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import {
   useCardsByLessonId,
+  useLearnedCardsIdByLessonId,
   useLessonById,
 } from "utils/supabase/lesson/server";
 import LearnPage from "./LearnPage";
@@ -8,16 +9,21 @@ import LearnPage from "./LearnPage";
 export default async function Learn({ params }: { params: { id: string } }) {
   const _lessonPromise = useLessonById(params.id);
   const _cardsPromise = useCardsByLessonId(params.id);
+  const _learnedCardsIdsPromise = useLearnedCardsIdByLessonId(params.id);
 
-  const [lesson, cards] = await Promise.all([_lessonPromise, _cardsPromise]);
+  const [lesson, cards, learnedIds] = await Promise.all([
+    _lessonPromise,
+    _cardsPromise,
+    _learnedCardsIdsPromise,
+  ]);
 
   if (!lesson) {
     notFound();
   }
 
   return (
-    <div className="p-4 md:pl-24 lg:px-24">
-      <LearnPage lesson={lesson} cards={cards} />
+    <div className="">
+      <LearnPage lesson={lesson} cards={cards} learnedSnapshot={learnedIds} />
     </div>
   );
 }

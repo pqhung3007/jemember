@@ -1,10 +1,17 @@
+"use client";
+
 import FooterWave from "components/common/FooterWave";
-import js from "public/js.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelectedLayoutSegments } from "next/navigation";
+import js from "public/js.png";
 
 export default function Footer() {
-  return (
+  const isNotRendered = useSelectedLayoutSegments().some((x) =>
+    ["login", "signup", "learn"].includes(x)
+  );
+
+  return isNotRendered ? null : (
     <div className="min-h-[32rem] bg-neutral-900 py-16 md:pl-20">
       <FooterWave />
       <div className="grid gap-12 p-12 md:grid-cols-2">

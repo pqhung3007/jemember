@@ -3,6 +3,7 @@ import type { Card, LessonBase } from "type";
 import CardComp from "./Card";
 import CopyButton from "./CopyButton";
 import EditButton from "./EditButton";
+import LearnButton from "./LearnButton";
 import NextCard from "./NextCard";
 import PrevCard from "./PrevCard";
 import TestButton from "./TestButton";
@@ -104,6 +105,7 @@ export default function CardSlide({
             <p>FU-JS</p>
           </div>
           <div className="flex gap-4">
+            <LearnButton id={lesson.id} />
             <EditButton id={lesson.id} />
             <TestButton id={lesson.id} />
             <CopyButton copy={copy} />

@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useRouter, useSelectedLayoutSegment } from "next/navigation";
+import {
+  useRouter,
+  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
+} from "next/navigation";
 import { supabaseSignOut } from "utils/supabase/auth/client";
-import js from "public/js.png";
 
 import {
   ArrowLeftOnRectangleIcon,
@@ -16,8 +18,8 @@ import {
 import { PlusIcon } from "@heroicons/react/24/solid";
 
 export default function Nav({ userID }: { userID: string | undefined }) {
-  const isNotRendered = ["login", "signup"].includes(
-    useSelectedLayoutSegment() ?? ""
+  const isNotRendered = useSelectedLayoutSegments().some((x) =>
+    ["login", "signup", "learn"].includes(x)
   );
 
   const router = useRouter();
@@ -42,7 +44,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
             href="/"
             className="block rounded-full p-3 hover:bg-neutral-700/60"
           >
-            <HomeIcon className="h-6 w-6 text-red-700/60" />
+            <HomeIcon className="h-6 w-6 text-red-500" />
           </Link>
         </h1>
 
@@ -51,7 +53,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
           prefetch={false}
           className="tooltip rounded-full p-3 after:content-['Add'] hover:bg-neutral-700/60"
         >
-          <PlusIcon className="h-6 w-6 text-green-700/70" />
+          <PlusIcon className="h-6 w-6 text-green-500" />
         </Link>
 
         {!userID && (

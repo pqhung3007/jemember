@@ -47,6 +47,25 @@ export const useMarkedCardsIdByLessonId = async (
   return (data as unknown as { id: string }[]).map((row) => row.id);
 };
 
+export const useLearnedCardsIdByLessonId = async (
+  lessonId: string
+): Promise<string[]> => {
+  const uid = (await useCurrentUserSession())?.user?.id;
+
+  if (!uid) {
+    return [];
+  }
+
+  const { data, error } = await supabaseServerClient().rpc("learned_cards", {
+    _uid: uid,
+    _lesson_id: lessonId,
+  });
+
+  if (error) throw new Error(error.message);
+
+  return (data as unknown as { id: string }[]).map((row) => row.id);
+};
+
 export const useAllLessons = async () => {
   const { data, error } = await supabaseServerClient().from("lesson").select();
 

@@ -20,6 +20,15 @@ export const supabaseInsertMark = async (card_id: string) => {
   });
 };
 
+export const supabaseLearnCard = async (card_id: string) => {
+  const uid = await supabaseGetCurrentUID();
+
+  await supabase.from("users_learn_cards").insert({
+    uid: uid,
+    card_id: card_id,
+  });
+};
+
 export const supabaseDeleteMarkByCardId = async (card_id: string) => {
   const uid = await supabaseGetCurrentUID();
 
