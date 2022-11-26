@@ -1,14 +1,9 @@
-import { redirect } from "next/navigation";
-import { useCurrentUserSession } from "utils/supabase/auth/server";
+import { authStatusOrRedirect } from "utils/supabase/auth/server";
 
 import LoginForm from "./LoginForm";
 
 export default async function Login() {
-  const { user } = await useCurrentUserSession();
-
-  if (user) {
-    redirect("/");
-  }
+  await authStatusOrRedirect(false, "/");
 
   return (
     <div className="relative flex h-screen w-screen items-center justify-center p-4 text-white">

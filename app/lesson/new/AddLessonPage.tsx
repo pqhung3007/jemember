@@ -6,21 +6,12 @@ import { supabaseInsertLesson } from "utils/supabase/lesson/client";
 
 export default function AddLesson({ count }: { count: number }) {
   const router = useRouter();
-  const lessonNameRef = useRef<HTMLInputElement>();
+  const lessonNameRef = useRef<HTMLInputElement>(null);
 
-  const addLesson = async (name: string) => {
-    if (count >= 100) {
-      return;
-    }
-
-    await supabaseInsertLesson(name);
-    router.push("/");
-  };
-
-  const addLessonListener = async (e: FormEvent) => {
+  const addLessonHandler = async (e: FormEvent) => {
     e.preventDefault();
-    if (lessonNameRef.current) {
-      await addLesson(lessonNameRef.current?.value);
+    if (lessonNameRef.current && count < 100) {
+      await supabaseInsertLesson(lessonNameRef.current?.value);
     }
     router.push("/");
   };
@@ -28,21 +19,23 @@ export default function AddLesson({ count }: { count: number }) {
   return (
     <form
       className="flex h-screen flex-col justify-center p-6 pt-8 text-2xl"
-      onSubmit={addLessonListener}
+      onSubmit={addLessonHandler}
     >
       <div className="mb-3 block pl-3 font-medium text-neutral-300">
         Lesson name
       </div>
       <input
+        ref={lessonNameRef}
         type="text"
         className="block w-full rounded-full bg-neutral-700 p-3 text-white placeholder-neutral-400 focus:outline-none"
         placeholder="My Jemember lesson"
         required
       />
+      {count >= 100 && <p className="text-red-500 mt-5">Cannot add more lesson because the limit is reached</p>}
       <button
         type="submit"
         className="my-5 w-full cursor-pointer rounded-full bg-green-700 px-5 py-3 text-center font-medium text-white hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-600 sm:w-auto md:text-sm"
-        disabled={lessonNameRef.current?.value === ""}
+        disabled={lessonNameRef.current?.value.trim() === "" || count >= 100}
       >
         Create
       </button>
