@@ -9,7 +9,13 @@ import { supabaseUpdateUserMeta } from "utils/supabase/auth/client";
 import type { UserMetaData } from "type";
 import type { User } from "@supabase/supabase-js";
 
-export default function ProfilePage({ user, userMetaData }: { user: User | null, userMetaData: UserMetaData | null }) {
+export default function ProfilePage({
+  user,
+  userMetaData,
+}: {
+  user: User | null;
+  userMetaData: UserMetaData | null;
+}) {
   const router = useRouter();
   const nameRef = useRef<HTMLInputElement>(null);
 
@@ -71,7 +77,7 @@ export default function ProfilePage({ user, userMetaData }: { user: User | null,
           <Link
             href="/"
             prefetch={false}
-            className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-neutral-600 hover:ring-neutral-400 focus:outline-none"
+            className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-red-700/70 focus:outline-none"
           >
             Cancel
           </Link>

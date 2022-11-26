@@ -5,7 +5,7 @@ const Skeleton = () => (
 export default function LessonListSkeleton() {
   return (
     <>
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 pt-20">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-20">
         {[...Array(15)].map((_, i) => (
           <Skeleton key={i} />
         ))}

@@ -32,7 +32,7 @@ export default async function Home({
       <div className="flex justify-center pb-8">
         <RouterSearch searchParamName="name" />
       </div>
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 py-6">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 pt-6 pb-20">
         {LessonList}
       </div>
     </div>

@@ -4,6 +4,7 @@ import Nav from "components/layouts/Nav";
 import SupabaseListener from "components/common/SupabaseListener";
 
 import { useCurrentUserSession } from "utils/supabase/auth/server";
+import Footer from "components/layouts/Footer";
 
 export const revalidate = 0;
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
         <Nav userID={user?.id} />
         <SupabaseListener accessToken={session?.access_token} />
         <div className="min-h-screen bg-neutral-900">{children}</div>
+        <Footer />
       </body>
     </html>
   );
