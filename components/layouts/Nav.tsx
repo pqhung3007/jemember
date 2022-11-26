@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSelectedLayoutSegment } from "next/navigation";
-import { use } from "react";
 import {
-  supabaseGetCurrentUser,
   supabaseSignOut,
 } from "utils/supabase/auth/client";
 
@@ -15,11 +13,8 @@ import {
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/24/solid";
-import SupabaseListener from "components/common/SupabaseListener";
 
-export default function Nav() {
-  const { user, session } = use(supabaseGetCurrentUser());
-
+export default function Nav({ userID }: { userID: string | undefined }) {
   const isNotRendered = ["login", "signup"].includes(
     useSelectedLayoutSegment() ?? ""
   );
@@ -38,8 +33,6 @@ export default function Nav() {
   };
 
   return isNotRendered ? null : (
-    <>
-      <SupabaseListener accessToken={session?.access_token} />
       <header className="fixed left-0 z-[99] w-screen bg-neutral-800 md:h-full md:w-[5rem] md:bg-transparent">
         <div className="mx-auto flex w-full items-center justify-between gap-3 px-2 md:h-screen md:flex-col md:justify-center">
           <h1 className="p-3 text-3xl font-medium">
@@ -56,7 +49,7 @@ export default function Nav() {
             <PlusIcon className="h-6 w-6" />
           </Link>
 
-          {!user?.id && (
+          {!userID && (
             <>
               <Link
                 href="/login"
@@ -75,7 +68,7 @@ export default function Nav() {
             </>
           )}
 
-          {user?.id && (
+          {userID && (
             <>
               <Link
                 href="/profile"
@@ -94,6 +87,5 @@ export default function Nav() {
           )}
         </div>
       </header>
-    </>
   );
 }

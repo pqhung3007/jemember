@@ -1,12 +1,19 @@
 import "styles/globals.css";
 
 import Nav from "components/layouts/Nav";
+import SupabaseListener from "components/common/SupabaseListener";
+
+import { useCurrentUserSession } from "utils/supabase/auth/server";
+
+export const revalidate = 0;
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { user, session } = await useCurrentUserSession();
+
   return (
     <html lang="en">
       <head>
@@ -17,7 +24,8 @@ export default async function RootLayout({
       </head>
 
       <body className="text-neutral-100">
-        <Nav />
+        <Nav userID={user?.id} />
+        <SupabaseListener accessToken={session?.access_token} />
         <div className="min-h-screen bg-neutral-900">{children}</div>
       </body>
     </html>
