@@ -1,4 +1,4 @@
-import { BookOpenIcon, PencilIcon } from "@heroicons/react/24/outline";
+import { BookOpenIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 export default function LearnButton({ id }: { id: string }) {

@@ -1,11 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  useRouter,
-  useSelectedLayoutSegment,
-  useSelectedLayoutSegments,
-} from "next/navigation";
+import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import { supabaseSignOut } from "utils/supabase/auth/client";
 
 import {

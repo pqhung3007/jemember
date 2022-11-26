@@ -31,7 +31,7 @@ export default function CurrentCard({
 
   const checkAnswer = async () => {
     setIsDone(true);
-    let isCorrect =
+    const isCorrect =
       inputRef.current?.value.toLowerCase() === card.answer.toLowerCase();
     setTimeout(() => {
       if (inputRef.current) {
