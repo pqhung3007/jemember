@@ -70,7 +70,7 @@ export default function Card(props: {
             <div className="mx-auto flex h-full max-w-[90%] items-center justify-center py-6 md:text-2xl">
               <p className="max-h-[100%] overflow-y-auto px-3">
                 {props.card !== undefined
-                  ? props.card.question
+                  ? props.card.answer
                   : "Please add more question."}
               </p>
             </div>
