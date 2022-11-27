@@ -3,8 +3,8 @@
 .flip-card-flipped {
   background-color: transparent;
   position: relative;
-  width: min(950px, 100vw);
-  height: min(500px, 50vw);
+  width: min(800px, 88vw);
+  height: min(400px, 44vw);
 }
 
 /* This container is needed to position the front and back side */
@@ -13,20 +13,15 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  perspective: 2000px;
+  /* perspective: 2000px; */
 }
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-/* .flip-card-flipped .flip-card-inner {
-  transform: rotateX(180deg);
-} */
 
 /* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
   transition: transform 0.2s;
   transform-style: preserve-3d;
-  background-color: rgb(55 55 55);
+  background-color: rgb(55 60 55);
   white-space: pre-wrap;
   text-align: left;
   position: absolute;

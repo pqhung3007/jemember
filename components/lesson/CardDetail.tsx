@@ -1,5 +1,5 @@
-import { BookmarkIcon } from "@heroicons/react/24/outline";
-import { BookmarkIcon as BookmarkedIcon } from "@heroicons/react/24/solid";
+import { StarIcon } from "@heroicons/react/24/outline";
+import { StarIcon as StarredIcon } from "@heroicons/react/24/solid";
 import { Card } from "type";
 
 export default function CardDetail({
@@ -11,11 +11,11 @@ export default function CardDetail({
   card: Card;
   marked: boolean;
   hidden: boolean;
-  toggleMarked: (card_id: string) => Promise<void>;
+  toggleMarked: (cardId: string) => Promise<void>;
 }) {
   return (
     <div
-      className={`grid grid-cols-[repeat(12,1fr)] rounded-xl bg-neutral-800 p-5 ${
+      className={`grid grid-cols-[repeat(12,1fr)] gap-6 rounded-xl bg-neutral-800 p-5 ${
         hidden && "hidden"
       }`}
     >
@@ -23,12 +23,12 @@ export default function CardDetail({
       <div className="col-span-2 whitespace-pre-wrap border-l border-neutral-600 pr-2 pl-4">
         {card.answer}
       </div>
-      <div className="col-span-1 cursor-pointer">
-        <div className="h-6 w-6" onClick={() => toggleMarked(card.id)}>
+      <div className="col-span-1 cursor-pointer pl-5">
+        <div className="" onClick={() => toggleMarked(card.id)}>
           {marked ? (
-            <BookmarkedIcon className="text-neutral-400" />
+            <StarredIcon className="h-6 w-6 text-yellow-400" />
           ) : (
-            <BookmarkIcon className="text-white" />
+            <StarIcon className="h-6 w-6 text-white" />
           )}
         </div>
       </div>

@@ -2,17 +2,14 @@
 
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import CurrentCard from "components/lesson/learn/CurrentCard";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Card, LessonBase } from "type";
+import { Card } from "type";
 import { supabaseLearnCard } from "utils/supabase/lesson/client";
 
 export default function LearnPage({
-  lesson,
   cards,
   learnedSnapshot,
 }: {
-  lesson: LessonBase;
   cards: Card[];
   learnedSnapshot: string[];
 }) {
@@ -49,7 +46,7 @@ export default function LearnPage({
       </a>
       <div className="">
         <CurrentCard card={current} process={processCard} />
-        <div className="mx-auto max-w-[950px] pt-6">
+        <div className="mx-auto max-w-[800px] pt-6">
           <div className="mb-6 h-2 w-full rounded-full bg-neutral-800">
             <div
               className="h-2 rounded-full bg-green-700"

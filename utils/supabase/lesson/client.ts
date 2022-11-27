@@ -11,31 +11,31 @@ export const updateCardToDatabase = async (newData: Card) => {
   });
 };
 
-export const supabaseInsertMark = async (card_id: string) => {
+export const supabaseInsertMark = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
 
   await supabase.from("users_mark_cards").insert({
     uid: uid,
-    card_id: card_id,
+    cardId: cardId,
   });
 };
 
-export const supabaseLearnCard = async (card_id: string) => {
+export const supabaseLearnCard = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
 
   await supabase.from("users_learn_cards").insert({
     uid: uid,
-    card_id: card_id,
+    cardId: cardId,
   });
 };
 
-export const supabaseDeleteMarkByCardId = async (card_id: string) => {
+export const supabaseDeleteMarkByCardId = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
 
   await supabase
     .from("users_mark_cards")
     .delete()
-    .eq("card_id", card_id)
+    .eq("card_id", cardId)
     .eq("uid", uid);
 };
 

@@ -6,9 +6,9 @@ export default function TestButton({ id }: { id: string }) {
     <Link
       href={`/lesson/${id}/test`}
       prefetch={false}
-      className="flex cursor-pointer items-center gap-2 rounded-full bg-neutral-800 py-2 pl-5 pr-7 text-sm font-medium text-white shadow-xl hover:bg-neutral-700/80 hover:ring-neutral-500 focus:outline-none"
+      className="flex h-16 items-center gap-2 rounded-2xl bg-neutral-800 pl-5 pr-7 text-xl text-white hover:bg-neutral-700 focus:outline-none md:h-10 md:rounded-full md:text-sm"
     >
-      <RectangleStackIcon className="h-4 w-4" />
+      <RectangleStackIcon className="h-6 w-6 text-neutral-300 md:h-4 md:w-4" />
       <p>Test</p>
     </Link>
   );

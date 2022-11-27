@@ -11,7 +11,7 @@ export default function PrevCard({
 }) {
   return (
     <button
-      className="group inline-block disabled:cursor-not-allowed md:pr-10"
+      className="group flex grow justify-center rounded-xl border border-neutral-600 p-3 hover:border-neutral-400 disabled:cursor-not-allowed disabled:border-neutral-800"
       onClick={prev}
       aria-label="prev"
       disabled={isDisabled}

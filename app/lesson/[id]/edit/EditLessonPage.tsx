@@ -55,17 +55,15 @@ export default function EditLessonPage(props: LessonProps) {
   };
 
   const updateCard = async (newData: Card) => {
-    setCards(
-      cards.map((val: Card) => (val.id === newData.id ? newData : val))
-    );
+    setCards(cards.map((val: Card) => (val.id === newData.id ? newData : val)));
     await updateCardToDatabase(newData);
   };
 
-  const deleteCard = async (card_id: string) => {
-    await supabaseDeleteMarkByCardId(card_id);
-    await supabaseDeleteCardById(card_id);
+  const deleteCard = async (cardId: string) => {
+    await supabaseDeleteMarkByCardId(cardId);
+    await supabaseDeleteCardById(cardId);
 
-    setCards(cards.filter((card) => card.id !== card_id));
+    setCards(cards.filter((card) => card.id !== cardId));
   };
 
   return (

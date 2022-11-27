@@ -6,7 +6,7 @@ export default function CurrentCard({
   process,
 }: {
   card: Card;
-  process: (card_id: string, isCorrect: boolean) => Promise<void>;
+  process: (cardId: string, isCorrect: boolean) => Promise<void>;
 }) {
   const [isDone, setIsDone] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);

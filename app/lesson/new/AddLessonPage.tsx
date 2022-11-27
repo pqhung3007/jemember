@@ -11,7 +11,7 @@ export default function AddLesson({ count }: { count: number }) {
   const addLessonHandler = async (e: FormEvent) => {
     e.preventDefault();
     if (lessonNameRef.current && count < 100) {
-      await supabaseInsertLesson(lessonNameRef.current?.value);
+      await supabaseInsertLesson(lessonNameRef.current?.value.trim());
     }
     router.push("/");
   };
@@ -31,11 +31,15 @@ export default function AddLesson({ count }: { count: number }) {
         placeholder="My Jemember lesson"
         required
       />
-      {count >= 100 && <p className="text-red-500 mt-5">Cannot add more lesson because the limit is reached</p>}
+      {count >= 100 && (
+        <p className="mt-5 text-red-500">
+          Cannot add more lesson because the limit is reached
+        </p>
+      )}
       <button
         type="submit"
         className="my-5 w-full cursor-pointer rounded-full bg-green-700 px-5 py-3 text-center font-medium text-white hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-600 sm:w-auto md:text-sm"
-        disabled={lessonNameRef.current?.value.trim() === "" || count >= 100}
+        disabled={count >= 100}
       >
         Create
       </button>

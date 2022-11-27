@@ -13,7 +13,7 @@ export default function CardDetails({
 }: {
   cards: Card[];
   markedIds: string[];
-  toggleMarked: (card_id: string) => Promise<void>;
+  toggleMarked: (cardId: string) => Promise<void>;
 }) {
   const [cardsSearch, setCardsSearch] = useState(cards);
   const [keyWord, setKeyWord] = useState("");
@@ -34,9 +34,9 @@ export default function CardDetails({
   }, [cards, keyWord]);
 
   return (
-    <div className="mx-auto max-w-[950px]">
-      <div className="sticky top-6 py-4">
-        <div className="absolute -top-6 h-[4.5rem] w-full bg-neutral-900"></div>
+    <div className="mx-auto max-w-[800px]">
+      <div className="sticky top-16 py-4 md:top-6">
+        <div className="absolute top-2 h-[1.5rem] w-full bg-neutral-900 md:-top-6 md:h-[4rem]"></div>
         <LocalSearch setKeyWord={setKeyWord} />
       </div>
       <div className="space-y-3">

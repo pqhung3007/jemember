@@ -49,15 +49,15 @@ export interface Database {
       users_mark_cards: {
         Row: {
           uid: string;
-          card_id: string;
+          cardId: string;
         };
         Insert: {
           uid: string;
-          card_id: string;
+          cardId: string;
         };
         Update: {
           uid?: string;
-          card_id?: string;
+          cardId?: string;
         };
       };
       users_metadata: {

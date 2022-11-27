@@ -23,7 +23,7 @@ export default async function Learn({ params }: { params: { id: string } }) {
 
   return (
     <div className="">
-      <LearnPage lesson={lesson} cards={cards} learnedSnapshot={learnedIds} />
+      <LearnPage cards={cards} learnedSnapshot={learnedIds} />
     </div>
   );
 }

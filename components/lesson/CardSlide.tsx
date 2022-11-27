@@ -17,7 +17,7 @@ export default function CardSlide({
   lesson: LessonBase;
   cards: Card[];
   marked: string[];
-  toggleMarked: (card_id: string) => void;
+  toggleMarked: (cardId: string) => void;
 }) {
   const [isFront, setIsFront] = useState(true);
   const [index, setIndex] = useState(0);
@@ -68,25 +68,22 @@ export default function CardSlide({
 
   return (
     <>
-      <div className="">
-        <div className="group mx-auto flex max-w-[950px] items-center gap-4 py-6">
-          <div className="pl-8 text-5xl font-semibold">{lesson.name}</div>
-        </div>
-        <div className="mx-auto max-w-[950px] pt-6">
-          <div className="mb-6 h-2 w-full rounded-full bg-neutral-700">
-            <div
-              className="h-2 rounded-full bg-green-700"
-              style={{ width: percent }}
-            ></div>
-          </div>
+      <div className="mx-auto flex max-w-[800px] flex-col gap-8">
+        <h1 className="text-center text-5xl font-semibold md:text-left">
+          {lesson.name}
+        </h1>
+        <div className="h-0.5 w-full rounded-full bg-neutral-700">
+          <div
+            className="h-0.5 rounded-full bg-green-700"
+            style={{ width: percent }}
+          ></div>
         </div>
         <div
-          className="mx-auto flex items-center justify-center gap-[min(2vw,10px)] focus:outline-none"
+          className="mx-auto flex flex-col items-center focus:outline-none"
           tabIndex={0}
           ref={containerRef}
           onKeyDown={processKeyBinding}
         >
-          <PrevCard isDisabled={index <= 0} prev={prev} />
           <CardComp
             isFront={isFront}
             setIsFront={setIsFront}
@@ -95,21 +92,16 @@ export default function CardSlide({
             progress={index + 1 + " / " + cards?.length}
             toggleMarked={toggleMarked}
           />
+        </div>
+        <div className="flex justify-center gap-3">
+          <PrevCard isDisabled={index <= 0} prev={prev} />
           <NextCard isDisabled={index >= cards.length - 1} next={next} />
         </div>
-      </div>
-      <div className="mx-auto max-w-[950px]">
-        <div className="flex items-center justify-between py-10 md:px-4">
-          <div className="">
-            <p>Created by</p>
-            <p>FU-JS</p>
-          </div>
-          <div className="flex gap-4">
-            <LearnButton id={lesson.id} />
-            <EditButton id={lesson.id} />
-            <TestButton id={lesson.id} />
-            <CopyButton copy={copy} />
-          </div>
+        <div className="grid max-w-[800px] gap-4 px-6 pb-8 md:mx-auto md:flex md:justify-center">
+          <LearnButton id={lesson.id} />
+          <EditButton id={lesson.id} />
+          <TestButton id={lesson.id} />
+          <CopyButton copy={copy} />
         </div>
       </div>
     </>

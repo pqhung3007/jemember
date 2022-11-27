@@ -32,7 +32,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   };
 
   return isNotRendered ? null : (
-    <header className="fixed left-0 z-[99] w-screen bg-neutral-800 drop-shadow-lg md:h-full md:w-[5rem] md:bg-transparent md:drop-shadow-none">
+    <header className="fixed left-0 z-[99] w-screen bg-neutral-800 py-3 drop-shadow-lg md:h-full md:w-[5rem] md:bg-transparent md:drop-shadow-none">
       <div className="mx-auto flex w-full items-center justify-between gap-3 px-2 md:h-screen md:flex-col md:justify-center">
         <h1 className="text-3xl font-medium">
           <Link

@@ -1,13 +1,26 @@
 import { ClipboardIcon } from "@heroicons/react/24/outline";
+import { useRef } from "react";
 
 export default function CopyButton({ copy }: { copy(): void }) {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const listener = async () => {
+    if (textRef.current) {
+      textRef.current.innerText = "Copied";
+    }
+    setTimeout(() => {
+      if (textRef.current) {
+        textRef.current.innerText = "Copy";
+      }
+    }, 500);
+  };
+
   return (
     <div
-      className="flex cursor-pointer items-center gap-2 rounded-full bg-neutral-800 py-2 pl-5 pr-7 text-sm font-medium text-white hover:bg-neutral-700/80 hover:ring-neutral-500 focus:outline-none"
-      onClick={copy}
+      className="flex h-16 cursor-pointer items-center gap-2 rounded-2xl bg-neutral-800 pl-5 pr-7 text-xl text-white hover:bg-neutral-700 focus:outline-none md:h-10 md:rounded-full md:text-sm"
+      onClick={listener}
     >
-      <ClipboardIcon className="h-4 w-4 text-neutral-300" />
-      <p>Copy</p>
+      <ClipboardIcon className="h-6 w-6 text-neutral-300 md:h-4 md:w-4" />
+      <p ref={textRef}>Copy</p>
     </div>
   );
 }

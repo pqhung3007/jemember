@@ -17,16 +17,20 @@ interface LessonPageProps {
   markedCards: string[];
 }
 
-export default function LessonPage({ lesson, cards, markedCards }: LessonPageProps) {
+export default function LessonPage({
+  lesson,
+  cards,
+  markedCards,
+}: LessonPageProps) {
   const [marked, setMarked] = useState(markedCards);
 
-  const toggleMarked = async (card_id: string) => {
-    if (!marked.includes(card_id)) {
-      setMarked([...marked, card_id]);
-      await supabaseInsertMark(card_id);
+  const toggleMarked = async (cardId: string) => {
+    if (!marked.includes(cardId)) {
+      setMarked([...marked, cardId]);
+      await supabaseInsertMark(cardId);
     } else {
-      setMarked(marked.filter((id) => id !== card_id));
-      await supabaseDeleteMarkByCardId(card_id);
+      setMarked(marked.filter((id) => id !== cardId));
+      await supabaseDeleteMarkByCardId(cardId);
     }
   };
 
