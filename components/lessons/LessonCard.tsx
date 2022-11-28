@@ -1,8 +1,13 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { memo } from "react";
 import Link from "next/link";
 import { LessonBase } from "type";
 
-export default function LessonCard({ id, name, created_at }: LessonBase) {
+const LessonCard = memo(function LessonCard({
+  id,
+  name,
+  created_at,
+}: LessonBase) {
   return (
     <Link
       href={`/lesson/${id}`}
@@ -22,4 +27,6 @@ export default function LessonCard({ id, name, created_at }: LessonBase) {
       </p>
     </Link>
   );
-}
+});
+
+export default LessonCard;
