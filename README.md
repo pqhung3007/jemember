@@ -25,7 +25,7 @@
 - Tạo lesson chứa các thẻ flashcard
 - Đánh dấu flashcard
 - Kiểm tra flashcard
-- (Đang phát triển) Học flashcard
+- (Beta) Học flashcard
 - (Đang phát triển) Import flashcard
 
 ## Trạng thái
@@ -35,9 +35,23 @@ Hiện tại project đang trong giai đoạn phát triển, hoan nghênh sự �
 ## Hướng dẫn đóng góp
 
 1. Đọc [hướng dẫn đóng góp](CONTRIBUTING.md)
-2. Clone project về local
-3. Chạy lệnh `pnpm i` để cài đặt `node_modules`
-4. Chạy lệnh `pnpm run dev` để chạy web app trên môi trường dev
+2. Clone project về local theo câu lệnh
+
+```
+git clone https://github.com/fu-js/jemember.git
+```
+
+3. Chạy lệnh để cài đặt `node_modules`
+
+```
+pnpm i
+```
+
+4. Chạy lệnh để chạy web app trên môi trường dev
+
+```
+pnpm run dev
+```
 
 ## Credit
 
