@@ -14,6 +14,10 @@ export const updateCardToDatabase = async (newData: Card) => {
 export const supabaseInsertMark = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
 
+  if (!uid) {
+    return;
+  }
+
   await supabase.from("users_mark_cards").insert({
     uid: uid,
     cardId: cardId,
@@ -22,6 +26,10 @@ export const supabaseInsertMark = async (cardId: string) => {
 
 export const supabaseLearnCard = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
+
+  if (!uid) {
+    return;
+  }
 
   await supabase.from("users_learn_cards").insert({
     uid: uid,
