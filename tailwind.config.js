@@ -3,7 +3,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        transparent: 'transparent',
         'neutral': {
           50: "#FAFFFA",
           100: "#F5F9F5",
@@ -21,7 +20,6 @@ module.exports = {
   },
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   plugins: [],

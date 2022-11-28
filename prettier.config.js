@@ -5,4 +5,5 @@ module.exports = {
   semi: true,
   useTabs: false,
   printWidth: 80,
+  bracketSameLine: true
 };
