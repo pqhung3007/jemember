@@ -7,6 +7,7 @@ export default function CopyButton({ copy }: { copy(): void }) {
     if (textRef.current) {
       textRef.current.innerText = "Copied";
     }
+    copy();
     setTimeout(() => {
       if (textRef.current) {
         textRef.current.innerText = "Copy";
