@@ -10,6 +10,7 @@ export default function SignupForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passRef = useRef<HTMLInputElement>(null);
   const repeatPassRef = useRef<HTMLInputElement>(null);
+  const usernameRef = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState(" ");
 
@@ -18,16 +19,17 @@ export default function SignupForm() {
     const repeatPass = repeatPassRef?.current?.value;
     if (pass !== repeatPass) {
       setError("Password does not match");
-      return;
+    } else {
+      setError("");
     }
-    setError("");
   };
 
   const signup = async (event: FormEvent) => {
     event.preventDefault();
     const email = emailRef?.current?.value || "";
     const pass = passRef?.current?.value || "";
-    const { error: errorServer } = await supabaseSignup(email, pass);
+    const username = usernameRef?.current?.value || "";
+    const { error: errorServer } = await supabaseSignup(email, pass, username);
     if (!errorServer) {
       router.push("/login");
     } else {
@@ -44,6 +46,17 @@ export default function SignupForm() {
       <div className="py-6 px-6 lg:px-8">
         <div className="mb-6 text-center text-4xl font-semibold">Sign up</div>
         <div className="space-y-6">
+          <div>
+            <div className="mb-2 block text-sm font-medium">Your username</div>
+            <input
+              type="text"
+              name="username"
+              ref={usernameRef}
+              className="block w-full rounded-full border border-neutral-500 bg-neutral-600 p-2.5 text-sm placeholder-neutral-400 focus:border-neutral-500 focus:outline-none"
+              placeholder="John Doe"
+              required
+            />
+          </div>
           <div>
             <div className="mb-2 block text-sm font-medium">Your email</div>
             <input

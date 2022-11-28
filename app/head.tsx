@@ -14,7 +14,7 @@ export default function RootHead() {
       <meta property="og:image:height" content="270" />
       <title>Jemember</title>
       <meta
-        property="description"
+        name="description"
         content="Jemember is a flashcard app that helps you learn anything."
       />
     </>

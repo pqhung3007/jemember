@@ -1,45 +1,23 @@
 import { supabaseBrowserClient as supabase } from "../browser";
 
-import type { UserMetaData } from "type";
-import type { User } from "@supabase/supabase-js";
-
 export const supabaseGetCurrentUID = async () => {
   const { data } = await supabase.auth.getSession();
   return data.session?.user.id || "";
 };
 
 export const supabaseGetCurrentUser = async () => {
-  const { data: { session } } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
   const user = session?.user ?? null;
 
-  return { user, session }
+  return { user, session };
 };
 
-export const useCurrentUserMetadata = async (user: User): Promise<UserMetaData> => {
-  const { data, error } = await supabase
-    .from("users_metadata")
-    .select("name")
-    .eq("id", user.id);
-
-  if (error)
-    throw new Error(error.message);
-
-  return {
-    id: user.id,
-    name: data[0]?.name ?? ""
-  };
-}
-
-
-export const supabaseUpdateUserMeta = async (user: UserMetaData) => {
-  await supabase
-    .from("users_metadata")
-    .update({
-      name: user.name,
-    })
-    .match({
-      id: user.id,
-    });
+export const supabaseUpdateUserMeta = async (username: string) => {
+  await supabase.auth.updateUser({
+    data: { username },
+  });
 };
 
 export const supabaseSignin = async (email: string, pass: string) => {
@@ -49,10 +27,19 @@ export const supabaseSignin = async (email: string, pass: string) => {
   });
 };
 
-export const supabaseSignup = async (email: string, pass: string) => {
+export const supabaseSignup = async (
+  email: string,
+  pass: string,
+  username: string
+) => {
   return await supabase.auth.signUp({
     email: email,
     password: pass,
+    options: {
+      data: {
+        username,
+      },
+    },
   });
 };
 

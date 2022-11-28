@@ -6,28 +6,21 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { supabaseUpdateUserMeta } from "utils/supabase/auth/client";
 
-import type { UserMetaData } from "type";
+import { supabaseBrowserClient } from "utils/supabase/browser";
 import type { User } from "@supabase/supabase-js";
 
-export default function ProfilePage({
-  user,
-  userMetaData,
-}: {
-  user: User | null;
-  userMetaData: UserMetaData | null;
-}) {
+export default function ProfilePage({ user }: { user: User | null }) {
   const router = useRouter();
-  const nameRef = useRef<HTMLInputElement>(null);
+  const usernameRef = useRef<HTMLInputElement>(null);
 
   const updateProfile = async () => {
-    if (!nameRef.current) {
+    if (!usernameRef.current) {
       return;
     }
-    await supabaseUpdateUserMeta({
-      ...(userMetaData as UserMetaData),
-      name: nameRef.current.value,
-    });
+    await supabaseUpdateUserMeta(usernameRef.current.value);
+    
     router.push("/");
+    supabaseBrowserClient.auth.refreshSession();
   };
 
   return (
@@ -46,11 +39,11 @@ export default function ProfilePage({
         <h1 className="text-4xl font-semibold">Public profile</h1>
         <div className="flex flex-col gap-5 py-6 font-medium">
           <div className="">
-            <p className="py-2 text-xl">Name</p>
+            <p className="py-2 text-xl">Username</p>
             <input
               type="text"
-              ref={nameRef}
-              defaultValue={userMetaData?.name}
+              ref={usernameRef}
+              defaultValue={user?.user_metadata.username}
               className="w-full rounded-full bg-neutral-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
