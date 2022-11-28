@@ -25,7 +25,7 @@
 - Tạo lesson chứa các thẻ flashcard
 - Đánh dấu flashcard
 - Kiểm tra flashcard
-- (Đang phát triển) Học flashcard
+- (Beta) Học flashcard
 - (Đang phát triển) Import flashcard
 
 ## Trạng thái
