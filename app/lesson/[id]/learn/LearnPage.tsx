@@ -2,6 +2,7 @@
 
 import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import CurrentCard from "components/lesson/learn/CurrentCard";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Card } from "type";
 import { supabaseLearnCard } from "utils/supabase/lesson/client";
@@ -15,30 +16,30 @@ export default function LearnPage({
 }) {
   const firstCardNotLearned = () => {
     for (const card of cards) {
-      if (!finished.includes(card.id)) {
+      if (!reviewed.includes(card.id)) {
         return card;
       }
     }
     return {} as Card;
   };
 
-  const [finished, setFinished] = useState(learnedSnapshot);
+  const [reviewed, setReviewed] = useState(learnedSnapshot);
   const [learnedCount, setLearnedCount] = useState(learnedSnapshot.length);
   const [current, setCurrent] = useState(firstCardNotLearned());
 
   useEffect(() => {
     setCurrent(firstCardNotLearned);
-  }, [finished]);
+  }, [reviewed]);
 
   const processCard = async (cardId: string, isCorrect: boolean) => {
-    setFinished([...finished, cardId]);
+    setReviewed([...reviewed, cardId]);
     if (isCorrect) {
       await supabaseLearnCard(cardId);
     }
     setLearnedCount(learnedCount + 1);
   };
 
-  return (
+  return current.id ? (
     <div className="relative flex h-screen items-center justify-center p-4">
       <a href="./" className="absolute top-4 left-4 flex text-neutral-300">
         <ChevronLeftIcon className="mr-4 h-6 w-6" />
@@ -52,11 +53,27 @@ export default function LearnPage({
               className="h-2 rounded-full bg-green-700"
               style={{
                 width: (learnedCount * 100) / cards.length + "%",
-              }}
-            ></div>
+              }}></div>
           </div>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="relative flex h-screen flex-col items-center justify-center gap-5 p-4">
+      <div className="text-center text-4xl">
+        <h1>You have finished all the cards !!!</h1>
+      </div>
+      <Link
+        href="./"
+        className="text-medium w-full rounded-full bg-neutral-700 px-5 py-4 text-center hover:bg-green-700 md:w-auto">
+        Back to lesson page
+      </Link>
+
+      <Link
+        href="/"
+        className="text-medium w-full rounded-full bg-neutral-700 px-5 py-4 text-center hover:bg-green-700 md:w-auto">
+        Back to home page
+      </Link>
     </div>
   );
 }

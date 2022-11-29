@@ -18,7 +18,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
       return;
     }
     await supabaseUpdateUserMeta(usernameRef.current.value);
-    
+
     router.push("/");
     supabaseBrowserClient.auth.refreshSession();
   };
@@ -28,8 +28,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
       <div className="flex flex-col gap-1 pr-4">
         <Link
           href="/profile"
-          className="flex items-center rounded-full px-4 py-3 hover:bg-neutral-800"
-        >
+          className="flex items-center rounded-full px-4 py-3 hover:bg-neutral-800">
           <UserIcon className="h-6 w-6 pr-2 text-neutral-400" />
           Profile
         </Link>
@@ -63,15 +62,13 @@ export default function ProfilePage({ user }: { user: User | null }) {
           <button
             type="button"
             onClick={updateProfile}
-            className="rounded-full bg-green-800 px-5 py-3 hover:bg-green-700 focus:outline-none"
-          >
+            className="rounded-full bg-green-800 px-5 py-3 hover:bg-green-700 focus:outline-none">
             Update profile
           </button>
           <Link
             href="/"
             prefetch={false}
-            className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-red-700/70 focus:outline-none"
-          >
+            className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-red-700/70 focus:outline-none">
             Cancel
           </Link>
         </div>

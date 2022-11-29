@@ -14,6 +14,7 @@ export const updateCardToDatabase = async (newData: Card) => {
 export const supabaseInsertMark = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
 
+
   if (!uid) {
     return;
   }
@@ -47,20 +48,26 @@ export const supabaseDeleteMarkByCardId = async (cardId: string) => {
     .eq("uid", uid);
 };
 
-export const supabaseDeleteCardById = async (id: string) => {
-  await supabase.from("card").delete().eq("id", id);
+export const supabaseDeleteLearnByCardId = async (cardId: string) => {
+  const uid = await supabaseGetCurrentUID();
+
+  await supabase
+    .from("users_learn_cards")
+    .delete()
+    .eq("card_id", cardId)
+    .eq("uid", uid);
+};
+
+export const supabaseDeleteCardById = async (cardId: string) => {
+  await supabaseDeleteMarkByCardId(cardId);
+  await supabaseDeleteLearnByCardId(cardId);
+  await supabase.from("card").delete().eq("id", cardId);
 };
 
 export const supabaseInsertLesson = async (name: string) => {
   await supabase.from("lesson").insert({ name: name });
 };
 
-export const supabaseCountLesson = async () => {
-  const { count } = await supabase
-    .from("lesson")
-    .select("*", { count: "exact", head: true });
-  return count || 0;
-};
 
 export const supabaseInsertNewCardInLesson = async (lesson_id: string) => {
   const newCard = {
@@ -74,6 +81,7 @@ export const supabaseInsertNewCardInLesson = async (lesson_id: string) => {
 
 export const supabaseImportCard = async (
   content: string,
+
   lesson_id: string
 ) => {
   const lines = content.split(";;;;;;");
