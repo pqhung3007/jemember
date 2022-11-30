@@ -75,27 +75,27 @@ export default function CardSlide({
         <div className="h-0.5 w-full rounded-full bg-neutral-700">
           <div
             className="h-0.5 rounded-full bg-green-700"
-            style={{ width: percent }}
-          ></div>
+            style={{ width: percent }}></div>
         </div>
         <div
-          className="mx-auto flex flex-col items-center focus:outline-none"
           tabIndex={0}
           ref={containerRef}
-          onKeyDown={processKeyBinding}
-        >
-          <CardComp
-            isFront={isFront}
-            setIsFront={setIsFront}
-            card={cards[index] || undefined}
-            isMarked={marked.includes(cards[index]?.id) || false}
-            progress={index + 1 + " / " + cards?.length}
-            toggleMarked={toggleMarked}
-          />
-        </div>
-        <div className="flex justify-center gap-3">
-          <PrevCard isDisabled={index <= 0} prev={prev} />
-          <NextCard isDisabled={index >= cards.length - 1} next={next} />
+          className="focus:outline-none"
+          onKeyDown={processKeyBinding}>
+          <div className="mx-auto flex flex-col items-center">
+            <CardComp
+              isFront={isFront}
+              setIsFront={setIsFront}
+              card={cards[index] || undefined}
+              isMarked={marked.includes(cards[index]?.id) || false}
+              progress={index + 1 + " / " + cards?.length}
+              toggleMarked={toggleMarked}
+            />
+          </div>
+          <div className="flex justify-center gap-3 pt-8">
+            <PrevCard isDisabled={index <= 0} prev={prev} />
+            <NextCard isDisabled={index >= cards.length - 1} next={next} />
+          </div>
         </div>
         <div className="grid max-w-[800px] gap-4 px-6 pb-8 md:mx-auto md:flex md:justify-center">
           <LearnButton id={lesson.id} />

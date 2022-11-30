@@ -1,4 +1,4 @@
-import { Card } from "type";
+import {Card} from "type";
 
 export default function Question({
   ques,

@@ -1,8 +1,10 @@
 "use client";
 
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Question from "components/lesson/test/Question";
 import ToggleMarked from "components/lesson/test/ToggleMarked";
-import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Card } from "type";
 
 import { compareString, pickRandom, replaceAt } from "utils";
@@ -15,32 +17,30 @@ export default function TestPage({
   marked: Card[];
 }) {
   const [isMarkedOnly, setIsMarkedOnly] = useState(false);
-  const [length, setLength] = useState(5);
   const lengthRef = useRef<HTMLInputElement>(null);
   const [testCards, setTestCards] = useState([] as Card[]);
   const [isViewResult, setIsViewResult] = useState(false);
 
-  const [answers, setAnswers] = useState(new Array(length).fill(""));
+  const [answers, setAnswers] = useState(new Array(5).fill(""));
 
   const updateAnswer = (newValue: string, index: number) => {
     setAnswers(replaceAt(answers, index, newValue));
   };
 
-  const resetTest = () => {
+  const resetTest = (length: number) => {
     setIsViewResult(false);
     setTestCards(pickRandom(isMarkedOnly ? marked : cards, length));
     setAnswers(new Array(length).fill(""));
   };
 
-  useEffect(resetTest, [length, isMarkedOnly]);
+  useEffect(
+    () => resetTest(parseInt(lengthRef.current?.value || "5")),
+    [isMarkedOnly]
+  );
 
   const newTestLength = () => {
     const newLength = parseInt(lengthRef.current?.value || "5");
-    if (length === newLength) {
-      resetTest();
-    } else {
-      setLength(newLength);
-    }
+    resetTest(newLength);
   };
 
   const grading = useCallback(() => {
@@ -55,6 +55,10 @@ export default function TestPage({
 
   return (
     <div className="mx-auto flex max-w-[80ch] flex-col gap-5 pb-20">
+      <Link className="flex items-center gap-4" href="./">
+        <ArrowLeftIcon className="h-6 w-6 " />
+        Back
+      </Link>
       <div className="items-center justify-between gap-4 md:flex">
         <div className="flex gap-3 rounded-full bg-neutral-700 px-4 py-2 font-medium">
           <p className="pointer-events-none text-neutral-400">Test length</p>
@@ -63,15 +67,14 @@ export default function TestPage({
             type="number"
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}
-            defaultValue={length}
+            defaultValue={5}
             ref={lengthRef}
           />
         </div>
         {marked.length > 0 && <ToggleMarked toggleMarked={setIsMarkedOnly} />}
         <button
           className="rounded-full bg-green-800 px-8 py-2 font-semibold text-green-200 hover:bg-green-700"
-          onClick={newTestLength}
-        >
+          onClick={newTestLength}>
           Create new test
         </button>
       </div>
@@ -81,8 +84,7 @@ export default function TestPage({
             grading() * 2 > testCards.length
               ? "bg-green-700 text-green-200"
               : "bg-red-700 text-red-200"
-          } p-6 text-center text-2xl font-semibold`}
-        >
+          } p-6 text-center text-2xl font-semibold`}>
           Grade: {grading() + "/" + testCards.length}
         </div>
       )}
@@ -98,8 +100,7 @@ export default function TestPage({
       ))}
       <button
         className="rounded-full bg-green-800 py-3 font-semibold text-green-200 hover:bg-green-700"
-        onClick={() => setIsViewResult(true)}
-      >
+        onClick={() => setIsViewResult(true)}>
         Submit
       </button>
     </div>
