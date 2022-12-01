@@ -75,7 +75,7 @@ export default function LoginForm() {
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-semibold font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-800"
+              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-neutral-800"
               disabled={error.trim() !== ""}>
               Log in
             </button>
