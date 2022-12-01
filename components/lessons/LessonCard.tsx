@@ -11,7 +11,6 @@ const LessonCard = memo(function LessonCard({
   return (
     <Link
       href={`/lesson/${id}`}
-      prefetch={false}
       className="group relative rounded-2xl bg-neutral-800 px-4 py-8 duration-200 hover:bg-green-800 hover:drop-shadow-md"
     >
       <div className="flex items-center break-words text-2xl font-semibold">

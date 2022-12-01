@@ -33,7 +33,9 @@ export default function LoginForm() {
       <Link href="/" className="m-5">
         <Image alt="Jemember" className="h-12 w-12" src={js} />
       </Link>
-      <div className="mb-6 text-center text-4xl font-semibold">Log in to Jemember</div>
+      <div className="mb-6 text-center text-4xl font-semibold">
+        Log in to Jemember
+      </div>
       <form
         className="relative max-w-lg rounded-xl bg-neutral-700 shadow md:min-w-[50ch]"
         onSubmit={login}>
@@ -79,10 +81,7 @@ export default function LoginForm() {
             </button>
             <div className="text-sm font-medium text-neutral-300">
               New here ?{" "}
-              <Link
-                href="/signup"
-                className="text-green-500 hover:underline"
-                prefetch={false}>
+              <Link href="/signup" className="text-green-500 hover:underline">
                 Signup
               </Link>
             </div>

@@ -22,7 +22,7 @@ export default async function RootLayout({
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:image" content="/js_og.jpg" />
-        <link rel="icon" type="image/x-icon" href="/js.png" />
+        {/* <link rel="icon" type="image/x-icon" href="/js.png" /> */}
       </head>
 
       <body className="text-neutral-100">

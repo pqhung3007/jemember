@@ -44,7 +44,9 @@ export default function SignupForm() {
       <Link href="/" className="m-5">
         <Image alt="Jemember" className="h-12 w-12" src={js} />
       </Link>
-      <div className="mb-6 text-center text-4xl font-semibold">Sign up to Jemember</div>
+      <div className="mb-6 text-center text-4xl font-semibold">
+        Sign up to Jemember
+      </div>
       <form
         className="relative max-w-md rounded-2xl bg-neutral-700 shadow md:w-[60ch]"
         onSubmit={signup}
@@ -115,10 +117,7 @@ export default function SignupForm() {
             </button>
             <div className="text-sm font-medium text-neutral-300">
               Already have an account?{" "}
-              <Link
-                href="/login"
-                prefetch={false}
-                className="text-green-500 hover:underline">
+              <Link href="/login" className="text-green-500 hover:underline">
                 Login
               </Link>
             </div>
