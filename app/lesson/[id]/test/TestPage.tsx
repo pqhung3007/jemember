@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Question from "components/lesson/test/Question";
 import ToggleMarked from "components/lesson/test/ToggleMarked";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Card } from "type";
 
 import { compareString, pickRandom, replaceAt } from "utils";
@@ -55,7 +55,7 @@ export default function TestPage({
 
   return (
     <div className="mx-auto flex max-w-[80ch] flex-col gap-5 pb-20">
-      <Link className="flex items-center gap-4" href="./">
+      <Link className="flex items-center gap-4" href=".">
         <ArrowLeftIcon className="h-6 w-6 " />
         Back
       </Link>

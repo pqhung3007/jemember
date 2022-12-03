@@ -30,11 +30,11 @@ export default function Question({
       <div className="">
         <input
           type="text"
-          placeholder="Answer"
+          placeholder="Your Answer"
           className={`bg-neutral-900 ${setInputBorder(
             actual || "",
             ques.answer
-          )} mt-6 w-full rounded-full px-4 py-3 focus:outline-none`}
+          )} mt-6 uppercase w-full rounded-full px-4 py-3 focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}
           disabled={isViewResult}
         />
