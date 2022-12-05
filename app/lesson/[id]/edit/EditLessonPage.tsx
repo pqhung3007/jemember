@@ -33,8 +33,19 @@ export default function EditLessonPage(props: LessonProps) {
     }, 500);
   };
 
-  const importCard = async (content: string) => {
-    const { data, error } = await supabaseImportCard(content, props.lesson.id);
+  const importCard = async (
+    content: string,
+    isReversed: boolean,
+    lineSep: string,
+    cardSep: string
+  ) => {
+    const { data, error } = await supabaseImportCard(
+      content,
+      props.lesson.id,
+      isReversed,
+      lineSep,
+      cardSep
+    );
     if (!error) {
       setCards([...cards, ...(data as Card[])]);
     }

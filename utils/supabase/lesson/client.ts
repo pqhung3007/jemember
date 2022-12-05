@@ -14,7 +14,6 @@ export const updateCardToDatabase = async (newData: Card) => {
 export const supabaseInsertMark = async (cardId: string) => {
   const uid = await supabaseGetCurrentUID();
 
-
   if (!uid) {
     return;
   }
@@ -68,7 +67,6 @@ export const supabaseInsertLesson = async (name: string) => {
   await supabase.from("lesson").insert({ name: name });
 };
 
-
 export const supabaseInsertNewCardInLesson = async (lesson_id: string) => {
   const newCard = {
     question: "",
@@ -81,23 +79,28 @@ export const supabaseInsertNewCardInLesson = async (lesson_id: string) => {
 
 export const supabaseImportCard = async (
   content: string,
-
-  lesson_id: string
+  lesson_id: string,
+  isReversed: boolean,
+  lineSep: string,
+  cardSep: string
 ) => {
-  const lines = content.split(";;;;;;");
-  return await supabase
-    .from("card")
-    .insert(
-      lines.map((line) => {
-        const [question, answer] = line.split("&&&&&&");
-        return {
-          question: question || "",
-          answer: answer || "",
-          lesson_id: lesson_id,
-        };
-      })
-    )
-    .select();
+  const lines = content.split(lineSep);
+
+  const cardSet = lines.map((line) => {
+    let question, answer;
+    if (isReversed) {
+      [question, answer] = line.split(cardSep);
+    } else {
+      [answer, question] = line.split(cardSep);
+    }
+    return {
+      question: question || "",
+      answer: answer || "",
+      lesson_id: lesson_id,
+    };
+  });
+
+  return await supabase.from("card").insert(cardSet).select();
 };
 
 export const supabaseUpdateLessonById = async (
