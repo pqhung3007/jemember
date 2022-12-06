@@ -3,6 +3,7 @@ import {
   useCardsByLessonId,
   useLearnedCardsIdByLessonId,
   useLessonById,
+  useMarkedCardsIdByLessonId,
 } from "utils/supabase/lesson/server";
 import LearnPage from "./LearnPage";
 
@@ -21,9 +22,12 @@ export default async function Learn({ params }: { params: { id: string } }) {
     notFound();
   }
 
+  const markeds = await useMarkedCardsIdByLessonId(lesson.id);
+
+
   return (
     <div className="">
-      <LearnPage cards={cards} learnedSnapshot={learnedIds} />
+      <LearnPage cards={cards} markeds={markeds} learnedSnapshot={learnedIds} />
     </div>
   );
 }

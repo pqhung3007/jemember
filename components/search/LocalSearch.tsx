@@ -17,7 +17,7 @@ export default function Search({
         onChange={(e) => setKeyWord(e.currentTarget.value)}
         type="search"
         size={40}
-        className="block w-full rounded-full bg-neutral-700 py-3 pl-20 text-xl text-white placeholder-neutral-400 shadow-lg focus:border-green-600 focus:outline-none"
+        className="block w-full rounded-full bg-neutral-700 py-3 px-20 text-xl text-white placeholder-neutral-400 shadow-lg focus:border-green-600 focus:outline-none"
       />
     </div>
   );

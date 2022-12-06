@@ -1,15 +1,25 @@
-import { KeyboardEvent, useMemo, useRef, useState } from "react";
+import { StarIcon } from "@heroicons/react/24/outline";
+import { StarIcon as StarredIcon } from "@heroicons/react/24/solid";
+import { KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Card } from "type";
 
 export default function CurrentCard({
   card,
   process,
+  isMarked,
+  toggleMarked,
 }: {
   card: Card;
   process: (cardId: string, isCorrect: boolean) => Promise<void>;
+  isMarked: boolean;
+  toggleMarked: (cardId: string) => void;
 }) {
   const [isDone, setIsDone] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [isDone]);
 
   const setBorder = useMemo(() => {
     if (isDone) {
@@ -29,6 +39,10 @@ export default function CurrentCard({
     }
   };
 
+  const toggleMarkedThisCard = () => {
+    toggleMarked(card.id);
+  };
+
   const checkAnswer = async () => {
     setIsDone(true);
     const isCorrect =
@@ -42,8 +56,28 @@ export default function CurrentCard({
     }, 1000);
   };
 
+  const chooseAnswer = (answer: string) => {
+    if (inputRef.current) {
+      inputRef.current.value = answer;
+      checkAnswer();
+    }
+  };
+
   return (
-    <div className="flex w-[90vw] flex-col justify-between rounded-3xl bg-neutral-700 p-5 md:w-[70vw]">
+    <div className="flex w-[90ch] flex-col justify-between rounded-3xl bg-neutral-700 p-5">
+      <div className="flex justify-end">
+        {isMarked ? (
+          <StarredIcon
+            className="h-6 w-6 text-yellow-400"
+            onClick={toggleMarkedThisCard}
+          />
+        ) : (
+          <StarIcon
+            className="h-6 w-6 text-white"
+            onClick={toggleMarkedThisCard}
+          />
+        )}
+      </div>
       <p className="whitespace-pre-wrap pb-8 text-xl">{card.question}</p>
       <div className="flex flex-col gap-4 md:flex-row">
         <input
@@ -55,9 +89,30 @@ export default function CurrentCard({
         />
         <button
           className="w-full rounded-full bg-green-700 px-8 py-3 md:w-auto"
-          onClick={checkAnswer}
-        >
+          onClick={checkAnswer}>
           Submit
+        </button>
+      </div>
+      <div className="grid gap-4 py-3 md:grid-cols-4">
+        <button
+          className="rounded-xl border-2 border-neutral-600 py-3"
+          onClick={() => chooseAnswer("A")}>
+          A
+        </button>
+        <button
+          className="rounded-xl border-2 border-neutral-600 py-3"
+          onClick={() => chooseAnswer("B")}>
+          B
+        </button>
+        <button
+          className="rounded-xl border-2 border-neutral-600 py-3"
+          onClick={() => chooseAnswer("C")}>
+          C
+        </button>
+        <button
+          className="rounded-xl border-2 border-neutral-600 py-3"
+          onClick={() => chooseAnswer("D")}>
+          D
         </button>
       </div>
       {isDone ? (
@@ -65,7 +120,7 @@ export default function CurrentCard({
           Correct answer: {card.answer}
         </p>
       ) : (
-        <div className="h-12"></div>
+        <div className="h-[3.5rem]"></div>
       )}
     </div>
   );

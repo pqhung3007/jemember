@@ -5,14 +5,20 @@ import CurrentCard from "components/lesson/learn/CurrentCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Card } from "type";
-import { supabaseLearnCard } from "utils/supabase/lesson/client";
+import {
+  supabaseDeleteMarkByCardId,
+  supabaseInsertMark,
+  supabaseLearnCard,
+} from "utils/supabase/lesson/client";
 
 export default function LearnPage({
   cards,
   learnedSnapshot,
+  markeds,
 }: {
   cards: Card[];
   learnedSnapshot: string[];
+  markeds: string[];
 }) {
   const firstCardNotLearned = () => {
     for (const card of cards) {
@@ -26,6 +32,7 @@ export default function LearnPage({
   const [reviewed, setReviewed] = useState(learnedSnapshot);
   const [learnedCount, setLearnedCount] = useState(learnedSnapshot.length);
   const [current, setCurrent] = useState(firstCardNotLearned());
+  const [markedIds, setMarkedIds] = useState(markeds);
 
   useEffect(() => {
     setCurrent(firstCardNotLearned);
@@ -39,6 +46,16 @@ export default function LearnPage({
     setLearnedCount(learnedCount + 1);
   };
 
+  const toggleMarked = async (cardId: string) => {
+    if (!markedIds.includes(cardId)) {
+      setMarkedIds([...markedIds, cardId]);
+      await supabaseInsertMark(cardId);
+    } else {
+      setMarkedIds(markedIds.filter((id) => id !== cardId));
+      await supabaseDeleteMarkByCardId(cardId);
+    }
+  };
+
   return current.id ? (
     <div className="relative flex h-screen items-center justify-center p-4">
       <a href="./" className="absolute top-4 left-4 flex text-neutral-300">
@@ -46,11 +63,16 @@ export default function LearnPage({
         <p>Back</p>
       </a>
       <div className="">
-        <CurrentCard card={current} process={processCard} />
+        <CurrentCard
+          card={current}
+          process={processCard}
+          isMarked={markedIds.includes(current.id)}
+          toggleMarked={toggleMarked}
+        />
         <div className="mx-auto max-w-[800px] pt-6">
           <div className="mb-6 h-2 w-full rounded-full bg-neutral-800">
             <div
-              className="h-2 rounded-full bg-green-700"
+              className="h-2 rounded-full bg-blue-700/50"
               style={{
                 width: (learnedCount * 100) / cards.length + "%",
               }}></div>
