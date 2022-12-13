@@ -1,4 +1,4 @@
-import {Card} from "type";
+import { Card } from "type";
 
 export default function Question({
   ques,
@@ -13,9 +13,9 @@ export default function Question({
   actual: string;
   updateAnswer: (newValue: string, index: number) => void;
 }) {
-  const setInputBorder = (actual: string, expected: string) => {
+  const setInputBorder = () => {
     if (isViewResult) {
-      if (actual.toUpperCase() === expected.toUpperCase()) {
+      if (actual.toUpperCase() === ques.answer.toUpperCase()) {
         return "border-green-600";
       } else {
         return "border-red-600";
@@ -31,10 +31,7 @@ export default function Question({
         <input
           type="text"
           placeholder="Your Answer"
-          className={`bg-neutral-900 ${setInputBorder(
-            actual || "",
-            ques.answer
-          )} mt-6 uppercase w-full rounded-full px-4 py-3 focus:outline-none`}
+          className={`border bg-neutral-900 ${setInputBorder()} mt-6 w-full rounded-full px-4 py-3 uppercase focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}
           disabled={isViewResult}
         />

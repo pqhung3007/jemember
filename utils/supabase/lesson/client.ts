@@ -20,7 +20,7 @@ export const supabaseInsertMark = async (cardId: string) => {
 
   await supabase.from("users_mark_cards").insert({
     uid: uid,
-    card_id: cardId,
+    cardId: cardId,
   });
 };
 
@@ -33,7 +33,7 @@ export const supabaseLearnCard = async (cardId: string) => {
 
   await supabase.from("users_learn_cards").insert({
     uid: uid,
-    card_id: cardId,
+    cardId: cardId,
   });
 };
 

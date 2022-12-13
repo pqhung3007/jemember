@@ -51,6 +51,9 @@ export default function CurrentCard({
       if (inputRef.current) {
         inputRef.current.value = "";
       }
+      if (!isCorrect && !isMarked) {
+        toggleMarkedThisCard();
+      }
       setIsDone(false);
       process(card.id, isCorrect);
     }, 1000);
@@ -95,22 +98,22 @@ export default function CurrentCard({
       </div>
       <div className="grid gap-4 py-3 md:grid-cols-4">
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3"
+          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
           onClick={() => chooseAnswer("A")}>
           A
         </button>
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3"
+          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
           onClick={() => chooseAnswer("B")}>
           B
         </button>
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3"
+          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
           onClick={() => chooseAnswer("C")}>
           C
         </button>
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3"
+          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
           onClick={() => chooseAnswer("D")}>
           D
         </button>
