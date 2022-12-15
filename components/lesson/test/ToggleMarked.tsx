@@ -15,7 +15,7 @@ export default function ToggleMarked({
       />
       <label
         htmlFor="isMarkedOnly"
-        className="ml-2 grow font-medium text-neutral-900 dark:text-neutral-300"
+        className="ml-2 grow font-medium text-neutral-100 dark:text-neutral-300"
       >
         Only marked cards
       </label>
