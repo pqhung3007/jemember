@@ -33,15 +33,12 @@ export default function TestPage({
     setAnswers(new Array(length).fill(""));
   };
 
-  useEffect(
-    () => resetTest(parseInt(lengthRef.current?.value || "5")),
-    [isMarkedOnly]
-  );
-
   const newTestLength = () => {
     const newLength = parseInt(lengthRef.current?.value || "5");
     resetTest(newLength);
   };
+
+  useEffect(newTestLength, [isMarkedOnly]);
 
   const grading = useCallback(() => {
     let count = 0;
@@ -69,6 +66,7 @@ export default function TestPage({
             max={isMarkedOnly ? marked.length : cards.length}
             defaultValue={5}
             ref={lengthRef}
+            onChange={newTestLength}
           />
         </div>
         {marked.length > 0 && <ToggleMarked toggleMarked={setIsMarkedOnly} />}

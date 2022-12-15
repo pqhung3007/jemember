@@ -11,7 +11,7 @@ export const updateCardToDatabase = async (newData: Card) => {
   });
 };
 
-export const supabaseInsertMark = async (cardId: string) => {
+export const supabaseInsertMark = async (card_id: string) => {
   const uid = await supabaseGetCurrentUID();
 
   if (!uid) {
@@ -20,11 +20,11 @@ export const supabaseInsertMark = async (cardId: string) => {
 
   await supabase.from("users_mark_cards").insert({
     uid: uid,
-    cardId: cardId,
+    card_id: card_id,
   });
 };
 
-export const supabaseLearnCard = async (cardId: string) => {
+export const supabaseLearnCard = async (card_id: string) => {
   const uid = await supabaseGetCurrentUID();
 
   if (!uid) {
@@ -33,34 +33,34 @@ export const supabaseLearnCard = async (cardId: string) => {
 
   await supabase.from("users_learn_cards").insert({
     uid: uid,
-    cardId: cardId,
+    card_id: card_id,
   });
 };
 
-export const supabaseDeleteMarkByCardId = async (cardId: string) => {
+export const supabaseDeleteMarkByCardId = async (card_id: string) => {
   const uid = await supabaseGetCurrentUID();
 
   await supabase
     .from("users_mark_cards")
     .delete()
-    .eq("card_id", cardId)
+    .eq("card_id", card_id)
     .eq("uid", uid);
 };
 
-export const supabaseDeleteLearnByCardId = async (cardId: string) => {
+export const supabaseDeleteLearnByCardId = async (card_id: string) => {
   const uid = await supabaseGetCurrentUID();
 
   await supabase
     .from("users_learn_cards")
     .delete()
-    .eq("card_id", cardId)
+    .eq("card_id", card_id)
     .eq("uid", uid);
 };
 
-export const supabaseDeleteCardById = async (cardId: string) => {
-  await supabaseDeleteMarkByCardId(cardId);
-  await supabaseDeleteLearnByCardId(cardId);
-  await supabase.from("card").delete().eq("id", cardId);
+export const supabaseDeleteCardById = async (card_id: string) => {
+  await supabaseDeleteMarkByCardId(card_id);
+  await supabaseDeleteLearnByCardId(card_id);
+  await supabase.from("card").delete().eq("id", card_id);
 };
 
 export const supabaseInsertLesson = async (name: string) => {
