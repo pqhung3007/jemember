@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { Card } from "type";
+import { isAnswerCorrect } from "utils";
 
 export default function Question({
   ques,
@@ -13,9 +15,22 @@ export default function Question({
   actual: string;
   updateAnswer: (newValue: string, index: number) => void;
 }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const parseQuestion = (question: String) => {
+    const regex = /(?<=\s)[A-Z](?=\.)/g;
+    if (question.match(regex)) {
+      return question.match(regex);
+    } else {
+      return ["True", "False"];
+    }
+  };
+
+  const choices = parseQuestion(ques.question);
+
   const setInputBorder = () => {
     if (isViewResult) {
-      if (actual.toUpperCase() === ques.answer.toUpperCase()) {
+      if (isAnswerCorrect(actual, ques.answer)) {
         return "border-green-600";
       } else {
         return "border-red-600";
@@ -24,11 +39,28 @@ export default function Question({
     return "border-neutral-600";
   };
 
+  const addToAnswer = (answerToAdd: string) => {
+    if (inputRef.current && !inputRef.current.value.includes(answerToAdd)) {
+      inputRef.current.value += answerToAdd;
+      updateAnswer(inputRef.current.value, index);
+    }
+  };
+
   return (
     <div className="rounded-2xl bg-neutral-800 p-5" key={ques.id}>
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
+      <div className="flex gap-2 pt-4">
+        {choices?.map((choice) => (
+          <button
+            className="grow rounded-lg border border-neutral-600 p-2"
+            onClick={() => addToAnswer(choice)}>
+            {choice}
+          </button>
+        ))}
+      </div>
       <div className="">
         <input
+          ref={inputRef}
           type="text"
           placeholder="Your Answer"
           className={`border bg-neutral-900 ${setInputBorder()} mt-6 w-full rounded-full px-4 py-3 uppercase focus:outline-none`}

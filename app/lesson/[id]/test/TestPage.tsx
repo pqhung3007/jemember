@@ -1,13 +1,13 @@
 "use client";
 
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
 import Question from "components/lesson/test/Question";
 import ToggleMarked from "components/lesson/test/ToggleMarked";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Card } from "type";
 
-import { compareString, pickRandom, replaceAt } from "utils";
+import { isAnswerCorrect, pickRandom, replaceAt } from "utils";
 
 export default function TestPage({
   cards,
@@ -21,7 +21,7 @@ export default function TestPage({
   const [testCards, setTestCards] = useState([] as Card[]);
   const [isViewResult, setIsViewResult] = useState(false);
 
-  const [answers, setAnswers] = useState(new Array(5).fill(""));
+  const [answers, setAnswers] = useState(new Array(20).fill(""));
 
   const updateAnswer = (newValue: string, index: number) => {
     setAnswers(replaceAt(answers, index, newValue));
@@ -34,7 +34,7 @@ export default function TestPage({
   };
 
   const newTestLength = () => {
-    const newLength = parseInt(lengthRef.current?.value || "5");
+    const newLength = parseInt(lengthRef.current?.value || "20");
     resetTest(newLength);
   };
 
@@ -43,7 +43,7 @@ export default function TestPage({
   const grading = useCallback(() => {
     let count = 0;
     for (let i = 0; i < answers.length; i++) {
-      if (compareString(answers[i], testCards[i].answer)) {
+      if (isAnswerCorrect(answers[i], testCards[i].answer)) {
         count++;
       }
     }
@@ -52,6 +52,11 @@ export default function TestPage({
 
   return (
     <div className="mx-auto flex max-w-[80ch] flex-col gap-5 pb-20">
+      <button
+        className="fixed right-4 bottom-4 cursor-pointer rounded-full border border-neutral-700 bg-neutral-800 p-5 focus:outline-none"
+        onClick={() => window.scrollTo(0, 0)}>
+        <ArrowUpIcon className="h-6 w-6 text-green-300" />
+      </button>
       <Link className="flex items-center gap-4" href=".">
         <ArrowLeftIcon className="h-6 w-6 " />
         Back
@@ -64,7 +69,7 @@ export default function TestPage({
             type="number"
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}
-            defaultValue={5}
+            defaultValue={20}
             ref={lengthRef}
             onChange={newTestLength}
           />
@@ -96,10 +101,27 @@ export default function TestPage({
           updateAnswer={updateAnswer}
         />
       ))}
+      {!isViewResult && (
+        <button
+          className="rounded-full bg-green-800 py-3 font-semibold text-green-200 hover:bg-green-700"
+          onClick={() => setIsViewResult(true)}>
+          Submit
+        </button>
+      )}
+      {isViewResult && (
+        <div
+          className={`rounded-xl ${
+            grading() * 2 > testCards.length
+              ? "bg-green-700 text-green-200"
+              : "bg-red-700 text-red-200"
+          } p-6 text-center text-2xl font-semibold`}>
+          Grade: {grading() + "/" + testCards.length}
+        </div>
+      )}
       <button
-        className="rounded-full bg-green-800 py-3 font-semibold text-green-200 hover:bg-green-700"
-        onClick={() => setIsViewResult(true)}>
-        Submit
+        className="rounded-full bg-green-800 px-8 py-2 font-semibold text-green-200 hover:bg-green-700"
+        onClick={newTestLength}>
+        Create new test
       </button>
     </div>
   );
