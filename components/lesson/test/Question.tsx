@@ -17,8 +17,8 @@ export default function Question({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const parseQuestion = (question: String) => {
-    const regex = /(?<=\s)[A-Z](?=\.)/g;
+  const parseChoicesFromQuestion = (question: String) => {
+    const regex = /(?<=\s)[A-Z](?=\.\s)/g;
     if (question.match(regex)) {
       return question.match(regex);
     } else {
@@ -26,7 +26,7 @@ export default function Question({
     }
   };
 
-  const choices = parseQuestion(ques.question);
+  const choices = parseChoicesFromQuestion(ques.question);
 
   const setInputBorder = () => {
     if (isViewResult) {
@@ -40,7 +40,11 @@ export default function Question({
   };
 
   const addToAnswer = (answerToAdd: string) => {
-    if (inputRef.current && !inputRef.current.value.includes(answerToAdd)) {
+    if (
+      inputRef.current &&
+      !inputRef.current.value.includes(answerToAdd) &&
+      !isViewResult
+    ) {
       inputRef.current.value += answerToAdd;
       updateAnswer(inputRef.current.value, index);
     }
