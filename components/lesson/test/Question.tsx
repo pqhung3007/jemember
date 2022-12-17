@@ -17,8 +17,8 @@ export default function Question({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const parseChoicesFromQuestion = (question: String) => {
-    const regex = /(?<=\s)[A-Z](?=\.\s)/g;
+  const parseChoicesFromQuestion = (question: string) => {
+    const regex = /(?<=\s)[A-Z](?=\.)/g;
     if (question.match(regex)) {
       return question.match(regex);
     } else {
