@@ -72,7 +72,7 @@ export default function CardSlide({
         <h1 className="text-center text-5xl font-semibold md:text-left">
           {lesson.name}
         </h1>
-        <div className="h-0.5 w-full rounded-full bg-neutral-700">
+        <div className="h-0.5 w-full rounded-full bg-gray-700">
           <div
             className="h-0.5 rounded-full bg-green-700"
             style={{ width: percent }}></div>

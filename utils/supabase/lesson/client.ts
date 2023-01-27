@@ -64,7 +64,8 @@ export const supabaseDeleteCardById = async (card_id: string) => {
 };
 
 export const supabaseInsertLesson = async (name: string) => {
-  await supabase.from("lesson").insert({ name: name });
+  const uid = await supabaseGetCurrentUID();
+  await supabase.from("lesson").insert({ name: name, owner: uid });
 };
 
 export const supabaseInsertNewCardInLesson = async (lesson_id: string) => {

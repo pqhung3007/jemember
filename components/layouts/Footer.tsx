@@ -12,7 +12,7 @@ export default function Footer() {
   );
 
   return isNotRendered ? null : (
-    <div className="min-h-[32rem] bg-neutral-900 py-16 md:pl-20">
+    <div className="min-h-[32rem] bg-gray-900 py-16 md:pl-20">
       <FooterWave />
       <div className="grid gap-12 p-12 md:grid-cols-2">
         <div className="">
@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
         <div className="">
           <div className="">
-            <p className="py-5 text-sm text-neutral-400">Social</p>
+            <p className="py-5 text-sm text-gray-400">Social</p>
             <div className="flex flex-col gap-5">
               <a
                 href="https://www.facebook.com/fu.jsclub"

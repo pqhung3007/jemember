@@ -15,12 +15,12 @@ export default function CopyButton({ copy }: { copy(): void }) {
 
   return (
     <div
-      className="flex h-16 cursor-pointer items-center gap-2 rounded-2xl bg-neutral-800 pl-5 pr-7 text-xl text-white hover:bg-neutral-700 focus:outline-none md:h-10 md:rounded-full md:text-sm"
+      className="cursor-pointer flex h-16 items-center gap-2 rounded-xl bg-gray-800 pl-5 pr-7 text-xl text-white hover:bg-gray-700 focus:outline-none md:h-10 md:text-sm"
       onClick={listener}>
       {!isCopied ? (
-        <ClipboardIcon className="h-6 w-6 text-neutral-300 md:h-4 md:w-4" />
+        <ClipboardIcon className="h-6 w-6 text-gray-300 md:h-4 md:w-4" />
       ) : (
-        <CheckIcon className="h-6 w-6 text-neutral-300 md:h-4 md:w-4" />
+        <CheckIcon className="h-6 w-6 text-gray-300 md:h-4 md:w-4" />
       )}
       <p ref={textRef}>Copy</p>
     </div>

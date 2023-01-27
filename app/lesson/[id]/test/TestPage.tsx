@@ -53,7 +53,7 @@ export default function TestPage({
   return (
     <div className="mx-auto flex max-w-[80ch] flex-col gap-5 pb-20">
       <button
-        className="fixed right-4 bottom-4 cursor-pointer rounded-full border border-neutral-700 bg-neutral-800 p-5 focus:outline-none"
+        className="fixed right-4 bottom-4 cursor-pointer rounded-full border border-gray-700 bg-gray-800 p-5 focus:outline-none"
         onClick={() => window.scrollTo(0, 0)}>
         <ArrowUpIcon className="h-6 w-6 text-green-300" />
       </button>
@@ -62,10 +62,10 @@ export default function TestPage({
         Back
       </Link>
       <div className="items-center justify-between gap-4 md:flex">
-        <div className="flex gap-3 rounded-full bg-neutral-700 px-4 py-2 font-medium">
-          <p className="pointer-events-none text-neutral-400">Test length</p>
+        <div className="flex gap-3 rounded-xl bg-gray-700 px-4 py-2 font-medium">
+          <p className="pointer-events-none text-gray-400">Test length</p>
           <input
-            className="w-[5rem] bg-neutral-700 text-neutral-300 focus:outline-none"
+            className="w-[5rem] bg-gray-700 text-gray-300 focus:outline-none"
             type="number"
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}
@@ -76,7 +76,7 @@ export default function TestPage({
         </div>
         {marked.length > 0 && <ToggleMarked toggleMarked={setIsMarkedOnly} />}
         <button
-          className="rounded-full bg-green-800 px-8 py-2 font-semibold text-green-200 hover:bg-green-700"
+          className="rounded-xl bg-green-800 px-8 py-2 font-semibold text-green-100 hover:bg-green-700"
           onClick={newTestLength}>
           Create new test
         </button>
@@ -103,7 +103,7 @@ export default function TestPage({
       ))}
       {!isViewResult && (
         <button
-          className="rounded-full bg-green-800 py-3 font-semibold text-green-200 hover:bg-green-700"
+          className="rounded-xl bg-gray-800 py-3 font-semibold text-gray-200 hover:bg-gray-700"
           onClick={() => setIsViewResult(true)}>
           Submit
         </button>
@@ -118,11 +118,6 @@ export default function TestPage({
           Grade: {grading() + "/" + testCards.length}
         </div>
       )}
-      <button
-        className="rounded-full bg-green-800 px-8 py-2 font-semibold text-green-200 hover:bg-green-700"
-        onClick={newTestLength}>
-        Create new test
-      </button>
     </div>
   );
 }

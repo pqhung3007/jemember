@@ -55,7 +55,7 @@ export default function Card(props: {
             onClick={markListener}
           >
             {props.isMarked ? (
-              <StarredIcon className="text-neutral-400" />
+              <StarredIcon className="text-yellow-400" />
             ) : (
               <StarIcon className="text-white" />
             )}

@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
+  isEditable,
   useCardsByLessonId,
   useLessonById,
 } from "utils/supabase/lesson/server";
@@ -10,6 +11,13 @@ export default async function LessonEdit({
 }: {
   params: { id: string };
 }) {
+
+  const editable = await isEditable(params.id);
+
+  if (!editable) {
+    redirect("/login");
+  }
+
   const _lessonPromise = useLessonById(params.id);
   const _cardsPromise = useCardsByLessonId(params.id);
 

@@ -28,8 +28,8 @@ export default function ProfilePage({ user }: { user: User | null }) {
       <div className="flex flex-col gap-1 pr-4">
         <Link
           href="/profile"
-          className="flex items-center rounded-full px-4 py-3 hover:bg-neutral-800">
-          <UserIcon className="h-6 w-6 pr-2 text-neutral-400" />
+          className="flex items-center rounded-full px-4 py-3 hover:bg-gray-800">
+          <UserIcon className="h-6 w-6 pr-2 text-gray-400" />
           Profile
         </Link>
       </div>
@@ -43,7 +43,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
               type="text"
               ref={usernameRef}
               defaultValue={user?.user_metadata.username}
-              className="w-full rounded-full bg-neutral-800 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full rounded-full bg-gray-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
 
@@ -53,7 +53,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
               type="text"
               defaultValue={user?.email}
               disabled
-              className="w-full cursor-not-allowed rounded-full bg-neutral-800 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full cursor-not-allowed rounded-full bg-gray-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
           <Link
             href="/"
             prefetch={false}
-            className="rounded-full bg-neutral-700 px-7 py-3 hover:bg-red-700/70 focus:outline-none">
+            className="rounded-full bg-gray-700 px-7 py-3 hover:bg-red-700/70 focus:outline-none">
             Cancel
           </Link>
         </div>

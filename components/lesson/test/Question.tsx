@@ -18,9 +18,9 @@ export default function Question({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const parseChoicesFromQuestion = (question: string) => {
-    const regex = /(?<=\s)[A-Z](?=\.)/g;
+    const regex = /(?<=\s)[A-Za-z](?=\.)/g;
     if (question.match(regex)) {
-      return question.match(regex);
+      return Array.from(new Set(question.match(regex)));
     } else {
       return ["True", "False"];
     }
@@ -36,7 +36,7 @@ export default function Question({
         return "border-red-600";
       }
     }
-    return "border-neutral-600";
+    return "border-gray-600";
   };
 
   const addToAnswer = (answerToAdd: string) => {
@@ -51,12 +51,12 @@ export default function Question({
   };
 
   return (
-    <div className="rounded-2xl bg-neutral-800 p-5" key={ques.id}>
+    <div className="rounded-2xl bg-gray-800 p-5" key={ques.id}>
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
       <div className="flex gap-2 pt-4">
         {choices?.map((choice) => (
           <button
-            className="grow rounded-lg border border-neutral-600 p-2"
+            className="grow rounded-lg border border-gray-600 p-2"
             onClick={() => addToAnswer(choice)}>
             {choice}
           </button>
@@ -66,8 +66,8 @@ export default function Question({
         <input
           ref={inputRef}
           type="text"
-          placeholder="Your Answer"
-          className={`border bg-neutral-900 ${setInputBorder()} mt-6 w-full rounded-full px-4 py-3 uppercase focus:outline-none`}
+          placeholder="Your answer..."
+          className={`border bg-gray-900 ${setInputBorder()} mt-6 w-full rounded-xl px-4 py-3 focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}
           disabled={isViewResult}
         />

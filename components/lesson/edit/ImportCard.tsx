@@ -35,12 +35,12 @@ export default function ImportCard({
       <div className="grid gap-5 py-3 md:grid-cols-2">
         <input
           type="text"
-          className="rounded-xl border border-neutral-700 bg-transparent px-3 py-2 focus:outline-none"
+          className="rounded-xl border border-gray-700 bg-transparent px-3 py-2 focus:outline-none"
           placeholder="Line separator (default \n\n)"
         />
         <input
           type="text"
-          className="rounded-xl border border-neutral-700 bg-transparent px-3 py-2 focus:outline-none"
+          className="rounded-xl border border-gray-700 bg-transparent px-3 py-2 focus:outline-none"
           placeholder="Question and answer separator (default ' - ')"
         />
       </div>
@@ -50,7 +50,7 @@ export default function ImportCard({
         cols={30}
         rows={10}
         ref={importRef}
-        className="rounded-xl bg-neutral-700 p-2 text-white focus:outline-none"></textarea>
+        className="rounded-xl bg-gray-700 p-2 text-white focus:outline-none"></textarea>
       <button
         onClick={importListener}
         type="button"

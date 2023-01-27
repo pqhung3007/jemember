@@ -1,6 +1,5 @@
 "use client";
 
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Dispatch, SetStateAction } from "react";
 
 export default function Search({
@@ -10,14 +9,12 @@ export default function Search({
 }) {
   return (
     <div className="relative">
-      <div className="pointer-events-none absolute inset-y-0 m-4 flex items-center pl-3">
-        <MagnifyingGlassIcon className="h-6 w-6 text-neutral-400" />
-      </div>
       <input
         onChange={(e) => setKeyWord(e.currentTarget.value)}
         type="search"
+        placeholder="Search..."
         size={40}
-        className="block w-full rounded-full bg-neutral-700 py-3 px-20 text-xl text-white placeholder-neutral-400 shadow-lg focus:border-green-600 focus:outline-none"
+        className="block w-full rounded-2xl bg-gray-700 py-3 px-6 text-xl text-white placeholder-gray-400 focus:border-green-600 focus:outline-none"
       />
     </div>
   );

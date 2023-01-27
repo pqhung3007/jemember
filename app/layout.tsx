@@ -25,10 +25,10 @@ export default async function RootLayout({
         <link rel="icon" type="image/x-icon" href="/js.png" />
       </head>
 
-      <body className="text-neutral-100">
+      <body className="text-gray-100">
         <Nav userID={user?.id} />
         <SupabaseListener accessToken={session?.access_token} />
-        <div className="min-h-screen bg-neutral-900">{children}</div>
+        <div className="min-h-screen bg-gray-900">{children}</div>
         <Footer />
       </body>
     </html>

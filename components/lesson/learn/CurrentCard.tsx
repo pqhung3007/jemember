@@ -67,7 +67,7 @@ export default function CurrentCard({
   };
 
   return (
-    <div className="flex w-[90ch] flex-col justify-between rounded-3xl bg-neutral-700 p-5">
+    <div className="flex w-[90ch] flex-col justify-between rounded-3xl bg-gray-700 p-5">
       <div className="flex justify-end">
         {isMarked ? (
           <StarredIcon
@@ -88,7 +88,7 @@ export default function CurrentCard({
           ref={inputRef}
           disabled={isDone}
           onKeyDown={processKeyBinding}
-          className="w-full rounded-full bg-neutral-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
+          className="w-full rounded-full bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
         />
         <button
           className="w-full rounded-full bg-green-700 px-8 py-3 md:w-auto"
@@ -98,22 +98,22 @@ export default function CurrentCard({
       </div>
       <div className="grid gap-4 py-3 md:grid-cols-4">
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
+          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
           onClick={() => chooseAnswer("A")}>
           A
         </button>
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
+          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
           onClick={() => chooseAnswer("B")}>
           B
         </button>
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
+          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
           onClick={() => chooseAnswer("C")}>
           C
         </button>
         <button
-          className="rounded-xl border-2 border-neutral-600 py-3 hover:border-neutral-500"
+          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
           onClick={() => chooseAnswer("D")}>
           D
         </button>

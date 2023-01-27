@@ -11,12 +11,12 @@ export default function PrevCard({
 }) {
   return (
     <button
-      className="group flex grow justify-center rounded-xl border border-neutral-600 p-3 hover:border-neutral-400 disabled:cursor-not-allowed disabled:border-neutral-800"
+      className="group flex grow justify-center rounded-xl border border-gray-600 p-3 hover:border-gray-400 disabled:cursor-not-allowed disabled:border-gray-800"
       onClick={prev}
       aria-label="prev"
       disabled={isDisabled}
     >
-      <ChevronLeftIcon className="h-6 w-6 group-disabled:text-neutral-500" />
+      <ChevronLeftIcon className="h-6 w-6 group-disabled:text-gray-500" />
     </button>
   );
 }
