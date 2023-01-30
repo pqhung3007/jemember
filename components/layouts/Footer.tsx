@@ -30,10 +30,18 @@ export default function Footer() {
             <div className="flex flex-col gap-5">
               <a
                 href="https://www.facebook.com/fu.jsclub"
-                className="text-lg text-green-400"
+                className="text-lg text-blue-400 hover:underline"
                 target="_blank"
               >
                 Facebook
+              </a>
+
+              <a
+                href="https://www.instagram.com/fptu.jsclub/"
+                className="text-lg text-blue-400 hover:underline"
+                target="_blank"
+              >
+                Instagram
               </a>
             </div>
           </div>

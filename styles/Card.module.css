@@ -4,7 +4,7 @@
   background-color: transparent;
   position: relative;
   width: min(800px, 88vw);
-  height: min(400px, 44vw);
+  height: min(400px, 44vmax);
 }
 
 /* This container is needed to position the front and back side */
