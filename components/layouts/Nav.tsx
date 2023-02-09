@@ -39,7 +39,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
             prefetch={false}
             href="/"
             className="block rounded-full p-3 hover:bg-gray-700/60">
-            <HomeIcon className="h-6 w-6 text-red-500" />
+            <HomeIcon className="h-6 w-6" />
           </Link>
         </h1>
 

@@ -1,6 +1,10 @@
 "use client";
 
-import { ChevronLeftIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 import AddCard from "components/lesson/edit/AddCard";
 import EditCard from "components/lesson/edit/EditCard";
 import ImportCard from "components/lesson/edit/ImportCard";
@@ -19,6 +23,7 @@ export default function EditLessonPage(props: LessonProps) {
   const [title, setTitle] = useState(props.lesson.name);
   const lessonNameInputRef = useRef<HTMLInputElement>(null);
   const [cards, setCards] = useState(props.cards as Card[]);
+  const [isImport, setIsImport] = useState(false);
   let typingTimer: NodeJS.Timeout;
 
   const updateTitle = async () => {
@@ -93,7 +98,17 @@ export default function EditLessonPage(props: LessonProps) {
             onKeyUp={updateTitle}
           />
         </div>
-        <ImportCard importCard={importCard} />
+        <button
+          className="inline-flex cursor-pointer items-center gap-2 rounded-xl p-2 text-lg"
+          onClick={() => setIsImport(!isImport)}>
+          {isImport ? (
+            <ChevronDownIcon className="h-5 w-5" />
+          ) : (
+            <ChevronRightIcon className="h-5 w-5" />
+          )}
+          Import
+        </button>
+        {isImport && <ImportCard importCard={importCard} />}
         {cards.map((card: Card, index: number) => (
           <EditCard
             index={index}

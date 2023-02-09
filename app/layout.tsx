@@ -5,6 +5,7 @@ import SupabaseListener from "components/common/SupabaseListener";
 
 import { useCurrentUserSession } from "utils/supabase/auth/server";
 import Footer from "components/layouts/Footer";
+import { ArrowUpIcon } from "@heroicons/react/24/solid";
 
 export const revalidate = 0;
 

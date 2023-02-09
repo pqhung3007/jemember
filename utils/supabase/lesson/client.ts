@@ -90,9 +90,9 @@ export const supabaseImportCard = async (
   const cardSet = lines.map((line) => {
     let question, answer;
     if (isReversed) {
-      [question, answer] = line.split(cardSep);
-    } else {
       [answer, question] = line.split(cardSep);
+    } else {
+      [question, answer] = line.split(cardSep);
     }
     return {
       question: question || "",
