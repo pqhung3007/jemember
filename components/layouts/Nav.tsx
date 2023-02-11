@@ -4,14 +4,8 @@ import Link from "next/link";
 import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import { supabaseSignOut } from "utils/supabase/auth/client";
 
-import {
-  ArrowLeftOnRectangleIcon,
-  ArrowRightOnRectangleIcon,
-  HomeIcon,
-  UserIcon,
-  UserPlusIcon,
-} from "@heroicons/react/24/outline";
-import { PlusIcon } from "@heroicons/react/24/solid";
+import { Bars2Icon } from "@heroicons/react/24/solid";
+import "styles/Nav.css";
 
 export default function Nav({ userID }: { userID: string | undefined }) {
   const isNotRendered = useSelectedLayoutSegments().some((x) =>
@@ -32,57 +26,64 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   };
 
   return isNotRendered ? null : (
-    <header className="fixed left-0 z-[99] w-screen bg-gray-800 py-3 drop-shadow-lg md:h-full md:w-[5rem] md:bg-transparent md:drop-shadow-none">
-      <div className="mx-auto flex w-full items-center justify-between gap-3 px-2 md:h-screen md:flex-col md:justify-center">
-        <h1 className="text-3xl font-medium">
+    <div className="fixed bottom-8 z-[99] flex w-full justify-center">
+      <input type="checkbox" name="" id="ham" className="peer hidden" />
+      <header className="peered m-2 flex items-center gap-3 rounded-xl bg-slate-700 p-2 transition-all duration-100 max-md:flex-col-reverse max-md:peer-checked:w-full">
+        <div className="flex items-center max-md:w-full">
           <Link
             prefetch={false}
             href="/"
-            className="block rounded-full p-3 hover:bg-gray-700/60">
-            <HomeIcon className="h-6 w-6" />
+            className="block rounded-xl bg-gray-900 px-7 py-4 font-medium max-md:grow">
+            j.home
           </Link>
-        </h1>
 
-        <Link
-          href="/lesson/new"
-          prefetch={false}
-          className="tooltip rounded-full p-3 after:content-['Add'] hover:bg-gray-700/60">
-          <PlusIcon className="h-6 w-6 text-green-500" />
-        </Link>
+          <label className="hidden max-md:block" htmlFor="ham">
+            <Bars2Icon className="mx-2 h-6 w-6 text-gray-200" />
+          </label>
+        </div>
 
-        {!userID && (
-          <>
-            <Link
-              href="/login"
-              prefetch={false}
-              className="tooltip rounded-full p-3 after:content-['Login'] hover:bg-gray-700/60 ">
-              <ArrowRightOnRectangleIcon className="h-6 w-6" />
-            </Link>
-            <Link
-              href="/signup"
-              prefetch={false}
-              className="tooltip rounded-full p-3 after:content-['Signup'] hover:bg-gray-700/60">
-              <UserPlusIcon className="h-6 w-6" />
-            </Link>
-          </>
-        )}
+        <div className="menu items-center rounded-xl bg-gray-800 p-1 max-md:hidden max-md:w-full max-md:flex-col">
+          <Link
+            href="/lesson/new"
+            prefetch={false}
+            className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+            Add
+          </Link>
 
-        {userID && (
-          <>
-            <Link
-              href="/profile"
-              prefetch={false}
-              className="tooltip rounded-full p-3 after:content-['Profile'] hover:bg-gray-700/60">
-              <UserIcon className="h-6 w-6" />
-            </Link>
-            <button
-              onClick={signOut}
-              className="tooltip rounded-full p-3 after:content-['Signout'] hover:bg-gray-700/60">
-              <ArrowLeftOnRectangleIcon className="h-6 w-6" />
-            </button>
-          </>
-        )}
-      </div>
-    </header>
+          {!userID && (
+            <>
+              <Link
+                href="/login"
+                prefetch={false}
+                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                prefetch={false}
+                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                Signup
+              </Link>
+            </>
+          )}
+
+          {userID && (
+            <>
+              <Link
+                href="/profile"
+                prefetch={false}
+                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                Profile
+              </Link>
+              <button
+                onClick={signOut}
+                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                Log out
+              </button>
+            </>
+          )}
+        </div>
+      </header>
+    </div>
   );
 }

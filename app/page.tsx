@@ -13,11 +13,11 @@ export default async function Home({
   searchParams?: { name?: string };
 }) {
   return (
-    <div className="relative pt-24 md:pl-24 lg:px-24">
+    <div className="relative pt-16 lg:px-24">
       <div className="flex justify-center pb-8">
         <RouterSearch searchParamName="name" />
       </div>
-      <div className="mx-auto grid max-w-[1200px] sm:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-12 px-5 pt-6 pb-20">
+      <div className="mx-auto grid max-w-[1200px] gap-12 px-5 pt-6 pb-20 sm:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
         <Suspense fallback={<LessonListSkeleton />}>
           <LessonList lessonName={searchParams?.name ?? ""} />
         </Suspense>

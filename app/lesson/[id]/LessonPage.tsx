@@ -11,6 +11,7 @@ import {
 
 import type { Card, LessonBase } from "type";
 import { ArrowUpIcon } from "@heroicons/react/24/solid";
+import Top from "components/layouts/Top";
 
 interface LessonPageProps {
   lesson: LessonBase;
@@ -50,11 +51,7 @@ export default function LessonPage({
         toggleMarked={toggleMarked}
       />
 
-      <button
-        className="fixed right-4 bottom-4 cursor-pointer rounded-full border border-gray-700 bg-gray-800 p-3 focus:outline-none"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <ArrowUpIcon className="h-6 w-6 text-green-400" />
-      </button>
+      <Top />
     </>
   );
 }

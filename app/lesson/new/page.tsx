@@ -7,7 +7,7 @@ export default async function NewLesson() {
   await authStatusOrRedirect(true, "/login");
 
   return (
-    <div className="mx-auto flex max-w-[1500px] justify-center p-5 md:pl-24 lg:px-24">
+    <div className="mx-auto flex max-w-[1500px] justify-center p-5 lg:px-24">
       <AddLesson count={count} />
     </div>
   );

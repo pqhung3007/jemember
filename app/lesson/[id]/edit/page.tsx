@@ -11,7 +11,6 @@ export default async function LessonEdit({
 }: {
   params: { id: string };
 }) {
-
   const editable = await isEditable(params.id);
 
   if (!editable) {
@@ -28,7 +27,7 @@ export default async function LessonEdit({
   }
 
   return (
-    <div className="p-4 pt-32 md:pl-24 lg:px-24">
+    <div className="p-4 pt-32 lg:px-24">
       <EditLessonPage lesson={lesson} cards={cards} />
     </div>
   );

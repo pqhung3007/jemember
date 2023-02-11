@@ -24,7 +24,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
   };
 
   return (
-    <div className="mx-auto grid max-w-[1200px] grid-cols-[16rem_1fr] gap-10 px-4 pt-28 md:pl-24 lg:px-24">
+    <div className="mx-auto grid max-w-[1200px] grid-cols-[16rem_1fr] gap-10 px-4 pt-28 lg:px-24">
       <div className="flex flex-col gap-1 pr-4">
         <Link
           href="/profile"

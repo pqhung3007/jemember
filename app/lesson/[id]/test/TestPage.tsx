@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeftIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
+import Top from "components/layouts/Top";
 import Question from "components/lesson/test/Question";
 import ToggleMarked from "components/lesson/test/ToggleMarked";
 import Link from "next/link";
@@ -52,11 +53,7 @@ export default function TestPage({
 
   return (
     <div className="mx-auto flex max-w-[80ch] flex-col gap-5 pb-20">
-      <button
-        className="fixed right-4 bottom-4 cursor-pointer rounded-full border border-gray-700 bg-gray-800 p-5 focus:outline-none"
-        onClick={() => window.scrollTo(0, 0)}>
-        <ArrowUpIcon className="h-6 w-6 text-green-300" />
-      </button>
+      <Top />
       <Link className="flex items-center gap-4" href=".">
         <ArrowLeftIcon className="h-6 w-6 " />
         Back
