@@ -91,29 +91,29 @@ export default function CurrentCard({
           className="w-full rounded-xl bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
         />
         <button
-          className="w-full rounded-xl bg-green-700 px-8 py-3 md:w-auto"
+          className="w-full rounded-xl bg-green-700 px-8 md:w-auto"
           onClick={checkAnswer}>
           Submit
         </button>
       </div>
-      <div className="grid gap-4 py-3 md:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-4">
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl border-2 border-gray-600 hover:border-gray-500"
           onClick={() => chooseAnswer("A")}>
           A
         </button>
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl border-2 border-gray-600 hover:border-gray-500"
           onClick={() => chooseAnswer("B")}>
           B
         </button>
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl border-2 border-gray-600 hover:border-gray-500"
           onClick={() => chooseAnswer("C")}>
           C
         </button>
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl border-2 border-gray-600 hover:border-gray-500"
           onClick={() => chooseAnswer("D")}>
           D
         </button>
