@@ -67,7 +67,7 @@ export default function CurrentCard({
   };
 
   return (
-    <div className="flex w-[90ch] flex-col justify-between rounded-3xl bg-gray-700 p-5">
+    <div className="flex md:w-[90ch] flex-col justify-between rounded-3xl bg-gray-700 p-5 my-10">
       <div className="flex justify-end">
         {isMarked ? (
           <StarredIcon
