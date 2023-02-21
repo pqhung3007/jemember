@@ -42,7 +42,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
           </label>
         </div>
 
-        <div className="menu items-center space-x-2 rounded-lg bg-gray-800 p-1 max-md:hidden max-md:w-full max-md:flex-col">
+        <div className="menu items-center space-x-2 rounded-lg bg-gray-800 px-1 py-4 max-md:hidden max-md:w-full max-md:flex-col">
           <Link
             href="/lesson/new"
             prefetch={false}

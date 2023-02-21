@@ -88,10 +88,10 @@ export default function CurrentCard({
           ref={inputRef}
           disabled={isDone}
           onKeyDown={processKeyBinding}
-          className="w-full rounded-full bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
+          className="w-full rounded-xl bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
         />
         <button
-          className="w-full rounded-full bg-green-700 px-8 py-3 md:w-auto"
+          className="w-full rounded-xl bg-green-700 px-8 py-3 md:w-auto"
           onClick={checkAnswer}>
           Submit
         </button>
