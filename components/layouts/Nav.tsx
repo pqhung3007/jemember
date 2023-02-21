@@ -28,13 +28,13 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   return isNotRendered ? null : (
     <div className="fixed bottom-8 z-[99] flex w-full justify-center">
       <input type="checkbox" name="" id="ham" className="peer hidden" />
-      <header className="peered m-2 flex items-center gap-3 rounded-xl bg-slate-700 p-2 transition-all duration-100 max-md:flex-col-reverse max-md:peer-checked:w-full">
+      <header className="peered m-2 flex items-center gap-3 rounded-xl bg-zinc-700 p-2 transition-all duration-100 max-md:flex-col-reverse max-md:peer-checked:w-full">
         <div className="flex items-center max-md:w-full">
           <Link
             prefetch={false}
             href="/"
-            className="block rounded-xl bg-gray-900 px-7 py-4 font-medium max-md:grow">
-            j.home
+            className="block rounded-lg bg-gray-900 px-7 py-4 font-medium max-md:grow">
+            j. home
           </Link>
 
           <label className="hidden max-md:block" htmlFor="ham">
@@ -42,11 +42,11 @@ export default function Nav({ userID }: { userID: string | undefined }) {
           </label>
         </div>
 
-        <div className="menu items-center rounded-xl bg-gray-800 p-1 max-md:hidden max-md:w-full max-md:flex-col">
+        <div className="menu items-center space-x-2 rounded-lg bg-gray-800 p-1 max-md:hidden max-md:w-full max-md:flex-col">
           <Link
             href="/lesson/new"
             prefetch={false}
-            className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+            className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
             Add
           </Link>
 
@@ -55,13 +55,13 @@ export default function Nav({ userID }: { userID: string | undefined }) {
               <Link
                 href="/login"
                 prefetch={false}
-                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
                 Login
               </Link>
               <Link
                 href="/signup"
                 prefetch={false}
-                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
                 Signup
               </Link>
             </>
@@ -72,12 +72,12 @@ export default function Nav({ userID }: { userID: string | undefined }) {
               <Link
                 href="/profile"
                 prefetch={false}
-                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
                 Profile
               </Link>
               <button
                 onClick={signOut}
-                className="rounded-xl border border-transparent py-3 px-5 hover:border-gray-700/90">
+                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
                 Log out
               </button>
             </>
