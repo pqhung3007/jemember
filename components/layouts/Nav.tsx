@@ -46,7 +46,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
           <Link
             href="/lesson/new"
             prefetch={false}
-            className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
+            className="rounded-md border border-transparent px-3 hover:border-gray-700/90">
             Add
           </Link>
 
@@ -55,13 +55,13 @@ export default function Nav({ userID }: { userID: string | undefined }) {
               <Link
                 href="/login"
                 prefetch={false}
-                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
+                className="rounded-md border border-transparent px-3 hover:border-gray-700/90">
                 Login
               </Link>
               <Link
                 href="/signup"
                 prefetch={false}
-                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
+                className="rounded-md border border-transparent px-3 hover:border-gray-700/90">
                 Signup
               </Link>
             </>
@@ -72,12 +72,12 @@ export default function Nav({ userID }: { userID: string | undefined }) {
               <Link
                 href="/profile"
                 prefetch={false}
-                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
+                className="rounded-md border border-transparent px-3 hover:border-gray-700/90">
                 Profile
               </Link>
               <button
                 onClick={signOut}
-                className="rounded-md border border-transparent py-3 px-3 hover:border-gray-700/90">
+                className="rounded-md border border-transparent px-3 hover:border-gray-700/90">
                 Log out
               </button>
             </>
