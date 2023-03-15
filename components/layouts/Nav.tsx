@@ -5,16 +5,14 @@ import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import { supabaseSignOut } from "utils/supabase/auth/client";
 
 import {
-  ArrowRightOnRectangleIcon,
-  Bars2Icon,
-} from "@heroicons/react/24/solid";
-import "styles/Nav.css";
-import {
   ArrowLeftOnRectangleIcon,
   HomeIcon,
   PlusCircleIcon,
   UserIcon,
+  UserPlusIcon,
 } from "@heroicons/react/24/outline";
+import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/solid";
+import "styles/Nav.css";
 
 export default function Nav({ userID }: { userID: string | undefined }) {
   const isNotRendered = useSelectedLayoutSegments().some((x) =>
@@ -35,19 +33,16 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   };
 
   return isNotRendered ? null : (
-    <div className="left-0 fixed z-[99] flex h-full flex-col items-center justify-center bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
+    <div className="fixed left-0 z-[99] flex h-full flex-col items-center justify-center bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
       <header className="flex flex-col max-md:flex-row">
-        <Link
-          prefetch={false}
-          href="/"
-          className="rounded-xl border border-transparent p-3 hover:border-gray-700/90">
+        <Link prefetch={false} href="/" className="rounded-xl p-3">
           <HomeIcon className="h-6 w-6" />
         </Link>
 
         <Link
           href="/lesson/new"
           prefetch={false}
-          className="rounded-xl border border-transparent p-3 hover:border-gray-700/90">
+          className="tooltip rounded-xl p-3 after:content-['Add']">
           <PlusCircleIcon className="h-6 w-6" />
         </Link>
 
@@ -56,14 +51,14 @@ export default function Nav({ userID }: { userID: string | undefined }) {
             <Link
               href="/login"
               prefetch={false}
-              className="rounded-xl border border-transparent p-3 hover:border-gray-700/90">
+              className="tooltip rounded-xl p-3 after:content-['Login']">
               <ArrowRightOnRectangleIcon className="h-6 w-6" />
             </Link>
             <Link
               href="/signup"
               prefetch={false}
-              className="rounded-xl border border-transparent p-3 hover:border-gray-700/90">
-              Signup
+              className="tooltip rounded-xl p-3 after:content-['Signup']">
+              <UserPlusIcon className="h-6 w-6" />
             </Link>
           </>
         )}
@@ -73,12 +68,12 @@ export default function Nav({ userID }: { userID: string | undefined }) {
             <Link
               href="/profile"
               prefetch={false}
-              className="rounded-xl border border-transparent p-3 hover:border-gray-700/90">
+              className="tooltip rounded-xl p-3 after:content-['Profile']">
               <UserIcon className="h-6 w-6" />
             </Link>
             <button
               onClick={signOut}
-              className="rounded-xl border border-transparent p-3 hover:border-gray-700/90">
+              className="tooltip rounded-xl p-3 after:content-['Signout']">
               <ArrowLeftOnRectangleIcon className="h-6 w-6" />
             </button>
           </>
