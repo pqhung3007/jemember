@@ -35,7 +35,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   };
 
   return isNotRendered ? null : (
-    <div className="lef-0 fixed z-[99] flex h-full flex-col items-center justify-center bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
+    <div className="left-0 fixed z-[99] flex h-full flex-col items-center justify-center bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
       <header className="flex flex-col max-md:flex-row">
         <Link
           prefetch={false}
