@@ -29,7 +29,7 @@ export default async function RootLayout({
       <body className="text-gray-100">
         <Nav userID={user?.id} />
         <SupabaseListener accessToken={session?.access_token} />
-        <div className="min-h-screen bg-gray-900">{children}</div>
+        <div className="min-h-screen bg-gray-900 md:pl-12">{children}</div>
         <Footer />
       </body>
     </html>

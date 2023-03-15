@@ -9,9 +9,8 @@ import {
   supabaseInsertMark,
 } from "utils/supabase/lesson/client";
 
-import type { Card, LessonBase } from "type";
-import { ArrowUpIcon } from "@heroicons/react/24/solid";
 import Top from "components/layouts/Top";
+import type { Card, LessonBase } from "type";
 
 interface LessonPageProps {
   lesson: LessonBase;

@@ -57,7 +57,7 @@ export default function LearnPage({
   };
 
   return current.id ? (
-    <div className="relative flex h-screen items-center justify-center p-4">
+    <div className="relative flex min-h-screen items-center justify-center p-4">
       <a href="./" className="absolute top-4 left-4 flex text-gray-300">
         <ChevronLeftIcon className="mr-4 h-6 w-6" />
         <p>Back</p>
