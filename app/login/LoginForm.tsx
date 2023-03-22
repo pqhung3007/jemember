@@ -51,7 +51,7 @@ export default function LoginForm() {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
                 onChange={() => setError("")}
-                className="block w-full rounded-full border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -68,14 +68,14 @@ export default function LoginForm() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-full border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 onChange={() => setError("")}
                 required
               />
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-full bg-green-700 px-5 py-3 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800"
+              className="w-full rounded-xl bg-green-700 px-5 py-3 text-center text-sm font-medium hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800"
               disabled={error.trim() !== ""}>
               Log in
             </button>
