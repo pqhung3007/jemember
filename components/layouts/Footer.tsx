@@ -12,7 +12,7 @@ export default function Footer() {
   );
 
   return isNotRendered ? null : (
-    <div className="min-h-[32rem] bg-gray-900 pb-40 md:py-16">
+    <div className="min-h-[32rem] bg-gray-900 pb-40 md:py-16 md:pl-12">
       <FooterWave />
       <div className="grid gap-12 p-12 md:grid-cols-2">
         <div className="">
@@ -31,16 +31,14 @@ export default function Footer() {
               <a
                 href="https://www.facebook.com/fu.jsclub"
                 className="text-lg text-blue-400 hover:underline"
-                target="_blank"
-              >
+                target="_blank">
                 Facebook
               </a>
 
               <a
                 href="https://www.instagram.com/fptu.jsclub/"
                 className="text-lg text-blue-400 hover:underline"
-                target="_blank"
-              >
+                target="_blank">
                 Instagram
               </a>
             </div>

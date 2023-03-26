@@ -21,7 +21,7 @@ export const useCardsByLessonId = async (lessonId: string): Promise<Card[]> => {
     .select()
     .eq("lesson_id", lessonId);
 
-  if (!error) {
+  if (!error && data) {
     return data;
   }
 
@@ -92,18 +92,21 @@ export const useLessonsByName = async (name: string) => {
 };
 
 export const isEditable = async (lessonId: string): Promise<boolean> => {
-
   const uid = (await useCurrentUserSession())?.user?.id;
 
   if (!uid) {
     return false;
   }
 
-  const { data, error } = await supabaseServerClient().from("lesson")
-    .select().eq("id", lessonId).eq("owner", uid).maybeSingle();
+  const { data, error } = await supabaseServerClient()
+    .from("lesson")
+    .select()
+    .eq("id", lessonId)
+    .eq("owner", uid)
+    .maybeSingle();
 
   return !!data && !error;
-}
+};
 
 export const useLessonsCount = async () => {
   const { count } = await supabaseServerClient()

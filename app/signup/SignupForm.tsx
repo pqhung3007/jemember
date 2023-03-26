@@ -61,7 +61,7 @@ export default function SignupForm() {
                 type="text"
                 name="username"
                 ref={usernameRef}
-                className="block w-full rounded-full border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="John Doe"
                 required
               />
@@ -74,7 +74,7 @@ export default function SignupForm() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
-                className="block w-full rounded-full border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -90,7 +90,7 @@ export default function SignupForm() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-full border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 required
               />
             </div>
@@ -105,13 +105,13 @@ export default function SignupForm() {
                 pattern=".{8,}"
                 ref={repeatPassRef}
                 title="Eight or more characters"
-                className="block w-full rounded-full border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 required
               />
             </div>
             <div className="text-center text-red-600">{error}</div>
             <button
-              className="w-full rounded-full bg-green-800 px-5 py-3 text-center text-sm font-medium text-gray-200 hover:bg-green-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800 disabled:text-gray-200"
+              className="w-full rounded-xl bg-green-800 px-5 py-3 text-center text-sm font-medium text-gray-200 hover:bg-green-700 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-800 disabled:text-gray-200"
               disabled={error.trim() !== ""}>
               Create account
             </button>
