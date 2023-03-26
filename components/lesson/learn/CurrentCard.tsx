@@ -82,6 +82,7 @@ export default function CurrentCard({
         )}
       </div>
       <p className="whitespace-pre-wrap pb-8 text-xl">{card.question}</p>
+      <p className="whitespace-pre-wrap pb-8 text-md text-gray-400">{card.answer?.length}</p>
       <div className="flex flex-col gap-4 md:flex-row">
         <input
           type="text"
