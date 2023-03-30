@@ -29,7 +29,7 @@ export default function ImportCard({
   return (
     <>
       <div className="flex gap-4 p-3">
-        <input type="checkbox" id="order" name="order" />
+        <input type="checkbox" id="order" ref={isAnswerFirstRef} name="order" />
         <label htmlFor="order">Answer first</label>
       </div>
       <div className="grid gap-5 py-3 md:grid-cols-2">
