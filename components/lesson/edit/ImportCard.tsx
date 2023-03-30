@@ -35,11 +35,13 @@ export default function ImportCard({
       <div className="grid gap-5 py-3 md:grid-cols-2">
         <input
           type="text"
+          ref={lineSepRef}
           className="rounded-xl border border-gray-700 bg-transparent px-3 py-2 focus:outline-none"
           placeholder="Line separator (default \n\n)"
         />
         <input
           type="text"
+          ref={cardSepRef}
           className="rounded-xl border border-gray-700 bg-transparent px-3 py-2 focus:outline-none"
           placeholder="Question and answer separator (default ' - ')"
         />
