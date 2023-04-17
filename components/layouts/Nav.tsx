@@ -34,16 +34,16 @@ export default function Nav({ userID }: { userID: string | undefined }) {
 
   return isNotRendered ? null : (
     <div className="fixed left-0 z-[99] flex h-full flex-col items-center justify-center bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
-      <header className="flex flex-col max-md:flex-row">
+      <header className="flex flex-col max-md:flex-row max-md:w-full max-md:justify-between max-md:px-5 max-md:py-2">
         <Link prefetch={false} href="/" className="rounded-xl p-3">
-          <HomeIcon className="h-6 w-6" />
+          <HomeIcon className="h-8 w-8" />
         </Link>
 
         <Link
           href="/lesson/new"
           prefetch={false}
           className="tooltip rounded-xl p-3 after:content-['Add']">
-          <PlusCircleIcon className="h-6 w-6" />
+          <PlusCircleIcon className="h-8 w-8" />
         </Link>
 
         {!userID && (
@@ -52,13 +52,13 @@ export default function Nav({ userID }: { userID: string | undefined }) {
               href="/login"
               prefetch={false}
               className="tooltip rounded-xl p-3 after:content-['Login']">
-              <ArrowRightOnRectangleIcon className="h-6 w-6" />
+              <ArrowRightOnRectangleIcon className="h-8 w-8" />
             </Link>
             <Link
               href="/signup"
               prefetch={false}
               className="tooltip rounded-xl p-3 after:content-['Signup']">
-              <UserPlusIcon className="h-6 w-6" />
+              <UserPlusIcon className="h-8 w-8" />
             </Link>
           </>
         )}
@@ -69,12 +69,12 @@ export default function Nav({ userID }: { userID: string | undefined }) {
               href="/profile"
               prefetch={false}
               className="tooltip rounded-xl p-3 after:content-['Profile']">
-              <UserIcon className="h-6 w-6" />
+              <UserIcon className="h-8 w-8" />
             </Link>
             <button
               onClick={signOut}
               className="tooltip rounded-xl p-3 after:content-['Signout']">
-              <ArrowLeftOnRectangleIcon className="h-6 w-6" />
+              <ArrowLeftOnRectangleIcon className="h-8 w-8" />
             </button>
           </>
         )}
