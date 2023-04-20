@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        'neutral': {
+        neutral: {
           50: "#FAFFFA",
           100: "#F5F9F5",
           200: "#E5E9E5",
@@ -18,9 +19,6 @@ module.exports = {
       },
     },
   },
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   plugins: [],
-}
+};

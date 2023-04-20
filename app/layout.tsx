@@ -17,7 +17,7 @@ export default async function RootLayout({
   const { user, session } = await useCurrentUserSession();
 
   return (
-    <html lang="en">
+    <html lang="en" className="">
       <head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -26,10 +26,10 @@ export default async function RootLayout({
         <link rel="icon" type="image/x-icon" href="/js.png" />
       </head>
 
-      <body className="text-gray-100">
+      <body className="text-gray-900 dark:text-gray-100">
         <Nav userID={user?.id} />
         <SupabaseListener accessToken={session?.access_token} />
-        <div className="min-h-screen bg-gray-900 md:pl-12">{children}</div>
+        <div className="min-h-screen bg-gray-200 dark:bg-gray-900 md:pl-12">{children}</div>
         <Footer />
       </body>
     </html>

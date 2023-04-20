@@ -15,7 +15,7 @@ export default function LessonList({ lessonName }: { lessonName: string }) {
         <Link
           href="/lesson/new"
           className="flex items-center gap-3 rounded-full bg-gray-700 px-5 py-4 hover:bg-green-700">
-          <PlusIcon className="h-6 w-6 text-gray-300" />
+          <PlusIcon className="h-6 w-6 text-gray-800 dark:text-gray-300" />
           Add a lesson
         </Link>
       </div>

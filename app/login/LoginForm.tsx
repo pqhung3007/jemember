@@ -51,7 +51,7 @@ export default function LoginForm() {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
                 onChange={() => setError("")}
-                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-300 dark:bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -68,7 +68,7 @@ export default function LoginForm() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-300 dark:bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 onChange={() => setError("")}
                 required
               />
@@ -79,7 +79,7 @@ export default function LoginForm() {
               disabled={error.trim() !== ""}>
               Log in
             </button>
-            <div className="text-sm font-medium text-gray-300">
+            <div className="text-sm font-medium text-gray-800 dark:text-gray-300">
               New here ?{" "}
               <Link href="/signup" className="text-green-500 hover:underline">
                 Signup

@@ -71,12 +71,12 @@ export default function CurrentCard({
       <div className="flex justify-end">
         {isMarked ? (
           <StarredIcon
-            className="h-6 w-6 text-yellow-400"
+            className="h-6 w-6 text-yellow-500 dark:text-yellow-400"
             onClick={toggleMarkedThisCard}
           />
         ) : (
           <StarIcon
-            className="h-6 w-6 text-white"
+            className="h-6 w-6 dark:text-white"
             onClick={toggleMarkedThisCard}
           />
         )}
@@ -89,7 +89,7 @@ export default function CurrentCard({
           ref={inputRef}
           disabled={isDone}
           onKeyDown={processKeyBinding}
-          className="w-full rounded-xl bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
+          className="w-full rounded-xl bg-gray-300 dark:bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
         />
         <button
           className="w-full rounded-xl bg-green-700 px-8 py-3 md:w-auto"

@@ -20,13 +20,13 @@ export default function AddLesson({ count }: { count: number }) {
     <form
       className="flex h-screen flex-col justify-center p-6 pt-8 text-2xl"
       onSubmit={addLessonHandler}>
-      <div className="mb-3 block pl-3 font-medium text-gray-300">
+      <div className="mb-3 block pl-3 font-medium text-gray-800 dark:text-gray-300">
         Lesson name
       </div>
       <input
         ref={lessonNameRef}
         type="text"
-        className="block w-full rounded-full bg-gray-700 p-3 text-white placeholder-gray-400 focus:outline-none"
+        className="block w-full rounded-full bg-gray-700 p-3 dark:text-white placeholder-gray-400 focus:outline-none"
         placeholder="My Jemember lesson"
         required
       />
@@ -37,7 +37,7 @@ export default function AddLesson({ count }: { count: number }) {
       )}
       <button
         type="submit"
-        className="my-5 w-full cursor-pointer rounded-full bg-green-700 px-5 py-3 text-center font-medium text-white hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-600 sm:w-auto md:text-sm"
+        className="my-5 w-full cursor-pointer rounded-full bg-green-700 px-5 py-3 text-center font-medium dark:text-white hover:bg-green-600 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-600 sm:w-auto md:text-sm"
         disabled={count >= 100}>
         Create
       </button>

@@ -27,7 +27,7 @@ export default function RouterSearch({
 
   return (
     <form onSubmit={handleSubmit} className="sm:flex p-3 gap-5">
-      <div className="relative flex rounded-2xl bg-gray-800 py-2 pl-16 pr-4">
+      <div className="relative flex rounded-2xl bg-gray-300 dark:bg-gray-800 py-2 pl-16 pr-4">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-6">
           <MagnifyingGlassIcon className="h-6 w-6 text-gray-400" />
         </div>
@@ -36,12 +36,12 @@ export default function RouterSearch({
           value={keyWord}
           type="search"
           placeholder="Lesson's name"
-          className="bg-transparent py-1 text-lg text-white placeholder-gray-500 focus:outline-none w-full"
+          className="bg-transparent py-1 text-lg dark:text-white placeholder-gray-500 focus:outline-none w-full"
         />
       </div>
       <button
         type="submit"
-        className="rounded-2xl bg-green-800 px-8 text-lg hover:bg-green-700 max-sm:my-4 py-3 max-sm:w-full"
+        className="rounded-2xl bg-green-400 dark:bg-green-800 px-8 text-lg hover:bg-green-500 max-sm:my-4 py-3 max-sm:w-full"
       >
         Search
       </button>

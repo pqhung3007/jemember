@@ -51,7 +51,7 @@ export default function Question({
   };
 
   return (
-    <div className="rounded-2xl bg-gray-800 p-5" key={ques.id}>
+    <div className="rounded-2xl bg-gray-300 dark:bg-gray-800 p-5" key={ques.id}>
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
       <div className="flex gap-2 pt-4">
         {choices?.map((choice) => (
@@ -67,7 +67,7 @@ export default function Question({
           ref={inputRef}
           type="text"
           placeholder="Your answer..."
-          className={`border bg-gray-900 ${setInputBorder()} mt-6 w-full rounded-xl px-4 py-3 focus:outline-none`}
+          className={`border bg-gray-200 dark:bg-gray-900 ${setInputBorder()} mt-6 w-full rounded-xl px-4 py-3 focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}
           disabled={isViewResult}
         />

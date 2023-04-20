@@ -33,7 +33,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   };
 
   return isNotRendered ? null : (
-    <div className="fixed left-0 z-[99] flex h-full flex-col items-center justify-center bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
+    <div className="fixed left-0 z-[99] flex h-full flex-col items-center justify-center bg-gray-200 dark:bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
       <header className="flex flex-col max-md:flex-row max-md:w-full max-md:justify-between max-md:px-5 max-md:py-2">
         <Link prefetch={false} href="/" className="rounded-xl p-3">
           <HomeIcon className="h-8 w-8" />

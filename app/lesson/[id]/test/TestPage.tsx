@@ -62,7 +62,7 @@ export default function TestPage({
         <div className="flex gap-3 rounded-xl bg-gray-700 px-4 py-2 font-medium">
           <p className="pointer-events-none text-gray-400">Test length</p>
           <input
-            className="w-[5rem] bg-gray-700 text-gray-300 focus:outline-none"
+            className="w-[5rem] bg-gray-700 text-gray-800 dark:text-gray-300 focus:outline-none"
             type="number"
             min={1}
             max={isMarkedOnly ? marked.length : cards.length}
@@ -80,11 +80,10 @@ export default function TestPage({
       </div>
       {isViewResult && (
         <div
-          className={`rounded-xl ${
-            grading() * 2 > testCards.length
-              ? "bg-green-700 text-green-200"
-              : "bg-red-700 text-red-200"
-          } p-6 text-center text-2xl font-semibold`}>
+          className={`rounded-xl ${grading() * 2 > testCards.length
+            ? "bg-green-700 text-green-200"
+            : "bg-red-700 text-red-200"
+            } p-6 text-center text-2xl font-semibold`}>
           Grade: {grading() + "/" + testCards.length}
         </div>
       )}
@@ -100,18 +99,17 @@ export default function TestPage({
       ))}
       {!isViewResult && (
         <button
-          className="rounded-xl bg-gray-800 py-3 font-semibold text-gray-200 hover:bg-gray-700"
+          className="rounded-xl bg-gray-300 dark:bg-gray-800 py-3 font-semibold text-gray-200 hover:bg-gray-400 dark:hover:bg-gray-700"
           onClick={() => setIsViewResult(true)}>
           Submit
         </button>
       )}
       {isViewResult && (
         <div
-          className={`rounded-xl ${
-            grading() * 2 > testCards.length
-              ? "bg-green-700 text-green-200"
-              : "bg-red-700 text-red-200"
-          } p-6 text-center text-2xl font-semibold`}>
+          className={`rounded-xl ${grading() * 2 > testCards.length
+            ? "bg-green-700 text-green-200"
+            : "bg-red-700 text-red-200"
+            } p-6 text-center text-2xl font-semibold`}>
           Grade: {grading() + "/" + testCards.length}
         </div>
       )}

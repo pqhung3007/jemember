@@ -87,7 +87,7 @@ export default function EditLessonPage(props: LessonProps) {
       <div className="mx-auto flex max-w-[1200px] flex-col px-5 py-6">
         <div className="flex max-w-[700px] items-center gap-10 py-6">
           <a href="./" className="px-3">
-            <ChevronLeftIcon className="h-6 w-6 cursor-pointer text-white" />
+            <ChevronLeftIcon className="h-6 w-6 cursor-pointer dark:text-white" />
           </a>
           <input
             id="name"
