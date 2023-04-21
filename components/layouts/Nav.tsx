@@ -100,7 +100,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
           </>
         )}
 
-        <div className="" onClick={toggleDarkMode}>
+        <div className="cursor-pointer" onClick={toggleDarkMode}>
           {isDarkMode ? (
             <SunIcon className="m-3 h-8 w-8" />
           ) : (
