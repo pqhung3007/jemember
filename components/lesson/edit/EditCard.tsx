@@ -50,7 +50,7 @@ export default function EditCard(props: {
   };
 
   return (
-    <div className="my-4 rounded-xl bg-gray-700 text-xl">
+    <div className="my-4 rounded-xl bg-gray-300 text-xl dark:bg-gray-700">
       <div className="flex items-center justify-between border-b-2 border-gray-900 px-4 py-2 font-semibold">
         <p>{props.index + 1}</p>
         <TrashIcon
@@ -61,7 +61,7 @@ export default function EditCard(props: {
       <div className="grid gap-6 px-4 py-6 lg:grid-cols-2">
         <p className="max-w-[100%]">
           <textarea
-            className="block w-full resize-none border-b bg-gray-700 focus:border-gray-500 focus:outline-none"
+            className="block w-full resize-none border-b border-gray-900 bg-gray-300 focus:border-gray-500 focus:outline-none dark:border-gray-200 dark:bg-gray-700"
             ref={questionRef}
             onKeyDown={() => clearTimeout(typingTimer)}
             onKeyUp={update}
@@ -69,7 +69,7 @@ export default function EditCard(props: {
         </p>
         <p className="max-w-[100%]">
           <textarea
-            className="block w-full resize-none border-b bg-gray-700 focus:border-gray-500 focus:outline-none"
+            className="block w-full resize-none border-b border-gray-900 bg-gray-300 focus:border-gray-500 focus:outline-none dark:border-gray-200 dark:bg-gray-700"
             ref={answerRef}
             onKeyDown={() => clearTimeout(typingTimer)}
             onKeyUp={update}

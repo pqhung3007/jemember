@@ -7,11 +7,10 @@ export default function AddCard({
 }) {
   return (
     <div
-      className="my-4 flex cursor-pointer justify-center rounded-xl bg-green-700 py-8 text-xl hover:bg-green-600/90"
-      onClick={insertCard}
-    >
+      className="my-4 flex cursor-pointer justify-center rounded-xl bg-green-400 py-8 text-xl hover:bg-green-600/90 dark:bg-green-700"
+      onClick={insertCard}>
       <div className="flex items-center gap-2">
-        <PlusIcon className="h-6 w-6 cursor-pointer text-green-300" />
+        <PlusIcon className="h-6 w-6 cursor-pointer text-green-800 dark:text-green-300" />
         <p className="font-semibold">Thêm thẻ</p>
       </div>
     </div>

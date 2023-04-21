@@ -22,7 +22,7 @@ export default function Nav({ userID }: { userID: string | undefined }) {
     ["login", "signup", "learn"].includes(x)
   );
 
-  const isDarkLocal = localStorage.getItem("darkmode") === "true";
+  const isDarkLocal = localStorage?.getItem("darkmode") === "true";
 
   useEffect(() => {
     if (isDarkLocal) {

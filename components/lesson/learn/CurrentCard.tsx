@@ -67,7 +67,7 @@ export default function CurrentCard({
   };
 
   return (
-    <div className="flex xl:w-[90ch] flex-col justify-between rounded-3xl bg-gray-700 p-5 max-sm:mt-12">
+    <div className="flex flex-col justify-between rounded-3xl bg-gray-300 p-5 dark:bg-gray-700 max-sm:mt-12 xl:w-[90ch]">
       <div className="flex justify-end">
         {isMarked ? (
           <StarredIcon
@@ -82,17 +82,19 @@ export default function CurrentCard({
         )}
       </div>
       <p className="whitespace-pre-wrap pb-8 text-xl">{card.question}</p>
-      <p className="whitespace-pre-wrap pb-8 text-md text-gray-400">{card.answer?.length}</p>
+      <p className="text-md whitespace-pre-wrap pb-8 text-gray-400">
+        Answer length: {card.answer?.length}
+      </p>
       <div className="flex flex-col gap-4 md:flex-row">
         <input
           type="text"
           ref={inputRef}
           disabled={isDone}
           onKeyDown={processKeyBinding}
-          className="w-full rounded-xl bg-gray-300 dark:bg-gray-800 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed"
+          className="w-full rounded-xl bg-gray-400 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed dark:bg-gray-800"
         />
         <button
-          className="w-full rounded-xl bg-green-700 px-8 py-3 md:w-auto"
+          className="w-full rounded-xl bg-green-400 px-8 py-3 dark:bg-green-700 md:w-auto"
           onClick={checkAnswer}>
           Submit
         </button>
