@@ -61,7 +61,7 @@ export default function SignupForm() {
                 type="text"
                 name="username"
                 ref={usernameRef}
-                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-300 dark:bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="John Doe"
                 required
               />
@@ -74,7 +74,7 @@ export default function SignupForm() {
                 ref={emailRef}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Valid email address"
-                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-300 dark:bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 placeholder="name@company.com"
                 required
               />
@@ -90,7 +90,7 @@ export default function SignupForm() {
                 placeholder="••••••••"
                 pattern=".{8,}"
                 title="Eight or more characters"
-                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-300 dark:bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 required
               />
             </div>
@@ -105,7 +105,7 @@ export default function SignupForm() {
                 pattern=".{8,}"
                 ref={repeatPassRef}
                 title="Eight or more characters"
-                className="block w-full rounded-xl border border-gray-500 bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
+                className="block w-full rounded-xl border border-gray-500 bg-gray-300 dark:bg-gray-800 p-2.5 text-sm placeholder-gray-400 focus:border-gray-500 focus:outline-none"
                 required
               />
             </div>
@@ -115,7 +115,7 @@ export default function SignupForm() {
               disabled={error.trim() !== ""}>
               Create account
             </button>
-            <div className="text-sm font-medium text-gray-300">
+            <div className="text-sm font-medium text-gray-800 dark:text-gray-300">
               Already have an account?{" "}
               <Link href="/login" className="text-green-500 hover:underline">
                 Login

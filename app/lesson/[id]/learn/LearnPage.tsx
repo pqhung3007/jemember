@@ -58,7 +58,7 @@ export default function LearnPage({
 
   return current.id ? (
     <div className="relative flex min-h-screen items-center justify-center p-4">
-      <a href="./" className="absolute top-4 left-4 flex text-gray-300">
+      <a href="./" className="absolute top-4 left-4 flex text-gray-800 dark:text-gray-300">
         <ChevronLeftIcon className="mr-4 h-6 w-6" />
         <p>Back</p>
       </a>
@@ -70,9 +70,9 @@ export default function LearnPage({
           toggleMarked={toggleMarked}
         />
         <div className="mx-auto max-w-[800px] pt-6">
-          <div className="mb-6 h-2 w-full rounded-full bg-gray-800">
+          <div className="mb-6 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-800">
             <div
-              className="h-2 rounded-full bg-blue-700/50"
+              className="h-2 rounded-full bg-blue-400/50 dark:bg-blue-700/50"
               style={{
                 width: (learnedCount * 100) / cards.length + "%",
               }}></div>

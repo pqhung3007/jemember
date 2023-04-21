@@ -43,7 +43,7 @@ export default function ProfilePage({ user }: { user: User | null }) {
               type="text"
               ref={usernameRef}
               defaultValue={user?.user_metadata.username}
-              className="w-full rounded-full bg-gray-800 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full rounded-full bg-gray-300 dark:bg-gray-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
 
@@ -53,12 +53,12 @@ export default function ProfilePage({ user }: { user: User | null }) {
               type="text"
               defaultValue={user?.email}
               disabled
-              className="w-full cursor-not-allowed rounded-full bg-gray-800 px-4 py-2 focus:border-green-600 focus:outline-none"
+              className="w-full cursor-not-allowed rounded-full bg-gray-300 dark:bg-gray-800 px-4 py-2 focus:border-green-600 focus:outline-none"
             />
           </div>
         </div>
 
-        <div className="flex justify-end gap-4 py-4 text-sm font-medium text-white">
+        <div className="flex justify-end gap-4 py-4 text-sm font-medium dark:text-white">
           <button
             type="button"
             onClick={updateProfile}

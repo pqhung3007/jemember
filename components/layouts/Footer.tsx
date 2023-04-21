@@ -12,7 +12,7 @@ export default function Footer() {
   );
 
   return isNotRendered ? null : (
-    <div className="min-h-[32rem] bg-gray-900 pb-40 md:py-16 md:pl-12">
+    <div className="min-h-[32rem] bg-gray-200 dark:bg-gray-900 pb-40 md:py-16 md:pl-12">
       <FooterWave />
       <div className="grid gap-12 p-12 md:grid-cols-2">
         <div className="">

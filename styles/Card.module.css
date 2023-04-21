@@ -21,7 +21,6 @@
 .flip-card-back {
   transition: transform 0.2s;
   transform-style: preserve-3d;
-  background-color: rgb(55 65 81);
   white-space: pre-wrap;
   text-align: left;
   position: absolute;

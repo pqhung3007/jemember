@@ -36,23 +36,21 @@ export default function CardDetails({
   return (
     <div className="mx-auto max-w-[800px]">
       <div className="sticky top-6 py-4 md:top-6">
-        <div className="absolute w-full bg-gray-900 -top-6 h-[4rem]"></div>
+        <div className="absolute w-full bg-gray-200 dark:bg-gray-900 -top-6 h-[4rem]"></div>
         <LocalSearch setKeyWord={setKeyWord} />
       </div>
       <div className="space-y-3">
         <div className="flex justify-end gap-4 py-3 text-gray-400">
           <button
-            className={`h-10 cursor-pointer rounded-xl px-5 ${
-              isMarkedOnly && "bg-yellow-600 text-yellow-100"
-            }`}
+            className={`h-10 cursor-pointer rounded-xl px-5 ${isMarkedOnly && "bg-yellow-600 text-yellow-100"
+              }`}
             onClick={() => setIsMarkedOnly(true)}
           >
             Marked cards ({markedIds.length || 0})
           </button>
           <button
-            className={`h-10 cursor-pointer rounded-xl px-5 ${
-              !isMarkedOnly && "bg-green-800 text-green-100"
-            }`}
+            className={`h-10 cursor-pointer rounded-xl px-5 ${!isMarkedOnly && "bg-green-800 text-green-100"
+              }`}
             onClick={() => setIsMarkedOnly(false)}
           >
             All cards ({cards.length || 0})
