@@ -17,7 +17,7 @@ export default async function RootLayout({
   const { user, session } = await useCurrentUserSession();
 
   return (
-    <html lang="en" className="">
+    <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

@@ -7,17 +7,32 @@ import { supabaseSignOut } from "utils/supabase/auth/client";
 import {
   ArrowLeftOnRectangleIcon,
   HomeIcon,
+  MoonIcon,
   PlusCircleIcon,
+  SunIcon,
   UserIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/solid";
 import "styles/Nav.css";
+import { useEffect, useState } from "react";
 
 export default function Nav({ userID }: { userID: string | undefined }) {
   const isNotRendered = useSelectedLayoutSegments().some((x) =>
     ["login", "signup", "learn"].includes(x)
   );
+
+  const isDarkLocal = localStorage.getItem("darkmode") === "true";
+
+  useEffect(() => {
+    if (isDarkLocal) {
+      document.getElementsByTagName("html")[0].classList.add("dark");
+    } else {
+      document.getElementsByTagName("html")[0].classList.remove("dark");
+    }
+  }, []);
+
+  const [isDarkMode, setDarkMode] = useState(isDarkLocal);
 
   const router = useRouter();
 
@@ -32,9 +47,15 @@ export default function Nav({ userID }: { userID: string | undefined }) {
     router.refresh();
   };
 
+  const toggleDarkMode = () => {
+    localStorage.setItem("darkmode", !isDarkMode ? "true" : "false");
+    setDarkMode(!isDarkMode);
+    document.getElementsByTagName("html")[0].classList.toggle("dark");
+  };
+
   return isNotRendered ? null : (
     <div className="fixed left-0 z-[99] flex h-full flex-col items-center justify-center bg-gray-200 dark:bg-gray-900 max-md:top-0 max-md:h-auto max-md:w-full">
-      <header className="flex flex-col max-md:flex-row max-md:w-full max-md:justify-between max-md:px-5 max-md:py-2">
+      <header className="flex flex-col max-md:w-full max-md:flex-row max-md:justify-between max-md:px-5 max-md:py-2">
         <Link prefetch={false} href="/" className="rounded-xl p-3">
           <HomeIcon className="h-8 w-8" />
         </Link>
@@ -78,6 +99,14 @@ export default function Nav({ userID }: { userID: string | undefined }) {
             </button>
           </>
         )}
+
+        <div className="" onClick={toggleDarkMode}>
+          {isDarkMode ? (
+            <SunIcon className="m-3 h-8 w-8" />
+          ) : (
+            <MoonIcon className="m-3 h-8 w-8" />
+          )}
+        </div>
       </header>
     </div>
   );

@@ -70,9 +70,9 @@ export default function LearnPage({
           toggleMarked={toggleMarked}
         />
         <div className="mx-auto max-w-[800px] pt-6">
-          <div className="mb-6 h-2 w-full rounded-full bg-gray-300 dark:bg-gray-800">
+          <div className="mb-6 h-2 w-full rounded-full bg-gray-200 dark:bg-gray-800">
             <div
-              className="h-2 rounded-full bg-blue-700/50"
+              className="h-2 rounded-full bg-blue-400/50 dark:bg-blue-700/50"
               style={{
                 width: (learnedCount * 100) / cards.length + "%",
               }}></div>

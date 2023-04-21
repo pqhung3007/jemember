@@ -14,7 +14,7 @@ export default function Search({
         type="search"
         placeholder="Search..."
         size={40}
-        className="block w-full rounded-2xl bg-gray-400 dark:bg-gray-700 py-3 px-6 text-xl dark:text-white placeholder-gray-700 dark:placeholder-gray-400 focus:border-green-600 focus:outline-none"
+        className="block w-full rounded-2xl bg-gray-300 dark:bg-gray-700 py-3 px-6 text-xl dark:text-white placeholder-gray-700 dark:placeholder-gray-400 focus:border-green-600 focus:outline-none"
       />
     </div>
   );

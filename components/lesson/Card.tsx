@@ -22,7 +22,7 @@ export default function Card(props: {
   return (
     <div className={styles[cardStyle]}>
       <div className={styles["flip-card-inner"]}>
-        <div className={styles["flip-card-front"]}>
+        <div className={styles["flip-card-front"] + " bg-gray-300 dark:bg-gray-700"}>
           <div
             className="absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer"
             onClick={markListener}
@@ -49,7 +49,7 @@ export default function Card(props: {
             </div>
           </div>
         </div>
-        <div className={styles["flip-card-back"]}>
+        <div className={styles["flip-card-back"] + " bg-gray-300 dark:bg-gray-700"}>
           <div
             className="absolute top-2 right-2 z-[99] h-6 w-6 cursor-pointer"
             onClick={markListener}
@@ -57,7 +57,7 @@ export default function Card(props: {
             {props.isMarked ? (
               <StarredIcon className="text-yellow-500 dark:text-yellow-400" />
             ) : (
-              <StarIcon className="text-white" />
+              <StarIcon className="text-gray-900 dark:text-white" />
             )}
           </div>
           <div

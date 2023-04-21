@@ -21,7 +21,6 @@
 .flip-card-back {
   transition: transform 0.2s;
   transform-style: preserve-3d;
-  background-color: #9ca3af;
   white-space: pre-wrap;
   text-align: left;
   position: absolute;
@@ -43,10 +42,4 @@
 /* Style the back side */
 .flip-card-back {
   transform: rotateX(180deg);
-}
-
-.dark .flip-card-front,
-.dark .flip-card-back {
-  background-color: rgb(55 65 81) !important;
-  color: white !important;
 }
