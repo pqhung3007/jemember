@@ -18,7 +18,7 @@ export default async function Lesson({ params }: { params: { id: string } }) {
     _markedCardsIdsPromise,
   ]);
 
-  if (!lesson) {
+  if (!lesson || !cards) {
     notFound();
   }
 

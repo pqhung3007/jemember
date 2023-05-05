@@ -66,6 +66,7 @@ export default function Question({
         <input
           ref={inputRef}
           type="text"
+          value={actual}
           placeholder="Your answer..."
           className={`border bg-gray-200 dark:bg-gray-900 ${setInputBorder()} mt-6 w-full rounded-xl px-4 py-3 focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}

@@ -8,7 +8,7 @@ import js from "public/js.png";
 
 export default function Footer() {
   const isNotRendered = useSelectedLayoutSegments().some((x) =>
-    ["login", "signup", "learn"].includes(x)
+    ["login", "signup", "learn", "test"].includes(x)
   );
 
   return isNotRendered ? null : (
