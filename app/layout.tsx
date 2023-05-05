@@ -1,11 +1,10 @@
 import "styles/globals.css";
 
-import Nav from "components/layouts/Nav";
 import SupabaseListener from "components/common/SupabaseListener";
+import Nav from "components/layouts/Nav";
 
-import { useCurrentUserSession } from "utils/supabase/auth/server";
 import Footer from "components/layouts/Footer";
-import { ArrowUpIcon } from "@heroicons/react/24/solid";
+import { useCurrentUserSession } from "utils/supabase/auth/server";
 
 export const revalidate = 0;
 

@@ -18,7 +18,7 @@ export default function Question({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const parseChoicesFromQuestion = (question: string) => {
-    const regex = /(?<=\n)[A-Za-z](?=[\.,])/g;
+    const regex = /(?<=\n)[A-Za-z](?=[.,])/g;
     if (question.match(regex)) {
       return Array.from(new Set(question.match(regex)));
     } else {
