@@ -7,6 +7,7 @@ import { useCallback, useRef, useState } from "react";
 import { Card } from "type";
 
 import { replaceAt } from "utils";
+import QuestionButton from "./QuestionButton";
 
 export default function TestPage({
   cards,
@@ -55,7 +56,7 @@ export default function TestPage({
           Grade: {grading() + "/" + cards.length}
         </div>
       )}
-      <div className="flex gap-2">
+      <div className="md:flex gap-2">
         <div className="flex h-full grow-[4] flex-col justify-between self-stretch">
           <Question
             key={currentQuestion}
@@ -78,15 +79,13 @@ export default function TestPage({
             </button>
           </div>
         </div>
-        <div className="grid w-[40ch] grid-cols-9 gap-1">
-          {cards.map((card, index) => (
-            <button
-              className={`rounded bg-gray-400 p-1 font-semibold text-gray-900 hover:bg-gray-500 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 ${
-                answers[index] && "bg-green-400 dark:bg-green-700"
-              }`}
-              onClick={() => setCurrentQuestion(index)}>
-              {index + 1}
-            </button>
+        <div className="grid max-h-[50vmin] w-full md:w-[40ch] grid-cols-10 md:grid-cols-9 gap-1 overflow-y-scroll">
+          {cards.map((_, index) => (
+            <QuestionButton
+              isAnswered={answers[index] !== ""}
+              index={index}
+              setCurrentQuestion={setCurrentQuestion}
+            />
           ))}
         </div>
       </div>

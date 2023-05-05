@@ -21,8 +21,11 @@ export default function Nav({ userID }: { userID: string | undefined }) {
   const isNotRendered = useSelectedLayoutSegments().some((x) =>
     ["login", "signup", "learn", "test"].includes(x)
   );
-
-  const isDarkLocal = localStorage?.getItem("darkmode") === "true";
+  
+  let isDarkLocal = false;
+  if (typeof window !== "undefined") {
+    isDarkLocal = localStorage?.getItem("darkmode") === "true";
+  }
 
   useEffect(() => {
     if (isDarkLocal) {
