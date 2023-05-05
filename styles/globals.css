@@ -18,6 +18,6 @@ html {
 
 @layer components {
   .tooltip {
-    @apply relative after:absolute after:-left-12 after:top-1 after:ml-2 after:rounded-xl after:bg-green-400 dark:after:bg-green-900 after:py-2 after:px-4 after:opacity-0 after:hover:left-12 after:hover:opacity-100 max-md:after:hidden;
+    @apply relative after:absolute after:-left-12 after:top-1 after:ml-2 after:rounded-xl after:bg-indigo-600 after:px-4 after:py-2 after:text-white after:opacity-0 after:hover:left-12 after:hover:opacity-100 dark:after:bg-indigo-900 max-md:after:hidden;
   }
 }
