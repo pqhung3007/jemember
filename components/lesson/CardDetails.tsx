@@ -36,7 +36,7 @@ export default function CardDetails({
   return (
     <div className="mx-auto max-w-[800px]">
       <div className="sticky top-6 py-4 md:top-6">
-        <div className="absolute -top-6 h-[4rem] w-full bg-gray-200 dark:bg-gray-900"></div>
+        <div className="absolute -top-6 h-[4rem] w-full bg-white dark:bg-gray-950"></div>
         <LocalSearch setKeyWord={setKeyWord} />
       </div>
       <div className="space-y-3">

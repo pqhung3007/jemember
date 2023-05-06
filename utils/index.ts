@@ -15,8 +15,8 @@ export function pickRandom<T>(arr: T[], num: number) {
   return shuffled.slice(0, num);
 }
 
-export function replaceAt(array: string[], index: number, value: string) {
+export const replaceAt = <T>(array: T[], index: number, value: T) => {
   const ret = array.slice(0);
   ret[index] = value;
   return ret;
-}
+};

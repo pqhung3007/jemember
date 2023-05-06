@@ -20,11 +20,11 @@ export default function CardSlide({
   toggleMarked: (cardId: string) => void;
 }) {
   const [isFront, setIsFront] = useState(true);
-  const [index, setIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const cardContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    containerRef.current?.focus();
+    cardContainer.current?.focus();
   }, []);
 
   const processKeyBinding = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -43,28 +43,28 @@ export default function CardSlide({
   };
 
   const prev = () => {
-    if (index > 0) {
+    if (currentCardIndex > 0) {
       setIsFront(true);
-      setIndex(index - 1);
+      setCurrentCardIndex(currentCardIndex - 1);
     }
   };
 
   const next = () => {
-    if (index < cards.length - 1) {
+    if (currentCardIndex < cards.length - 1) {
       setIsFront(true);
-      setIndex(index + 1);
+      setCurrentCardIndex(currentCardIndex + 1);
     }
   };
 
   const copy = () => {
     if (isFront) {
-      navigator.clipboard.writeText(cards[index] ? cards[index].question : "");
+      navigator.clipboard.writeText(cards[currentCardIndex] ? cards[currentCardIndex].question : "");
     } else {
-      navigator.clipboard.writeText(cards[index] ? cards[index].answer : "");
+      navigator.clipboard.writeText(cards[currentCardIndex] ? cards[currentCardIndex].answer : "");
     }
   };
 
-  const percent = ((index + 1) * 100) / cards.length + "%";
+  const cardProgress = ((currentCardIndex + 1) * 100) / cards.length + "%";
 
   return (
     <>
@@ -74,27 +74,27 @@ export default function CardSlide({
         </h1>
         <div className="h-0.5 w-full rounded-full bg-gray-300 dark:bg-gray-700">
           <div
-            className="h-0.5 rounded-full bg-green-500 dark:bg-green-700"
-            style={{ width: percent }}></div>
+            className="h-0.5 rounded-full bg-indigo-500 dark:bg-indigo-600"
+            style={{ width: cardProgress }}></div>
         </div>
         <div
           tabIndex={0}
-          ref={containerRef}
+          ref={cardContainer}
           className="focus:outline-none"
           onKeyDown={processKeyBinding}>
           <div className="mx-auto flex flex-col items-center">
             <CardComp
               isFront={isFront}
               setIsFront={setIsFront}
-              card={cards[index] || undefined}
-              isMarked={marked.includes(cards[index]?.id) || false}
-              progress={index + 1 + " / " + cards?.length}
+              card={cards[currentCardIndex] || undefined}
+              isMarked={marked.includes(cards[currentCardIndex]?.id) || false}
+              progress={currentCardIndex + 1 + " / " + cards?.length}
               toggleMarked={toggleMarked}
             />
           </div>
           <div className="flex justify-center gap-3 pt-8">
-            <PrevCard isDisabled={index <= 0} prev={prev} />
-            <NextCard isDisabled={index >= cards.length - 1} next={next} />
+            <PrevCard isDisabled={currentCardIndex <= 0} prev={prev} />
+            <NextCard isDisabled={currentCardIndex >= cards.length - 1} next={next} />
           </div>
         </div>
         <div className="grid max-w-[800px] gap-4 px-6 pb-8 md:mx-auto md:flex md:justify-center">

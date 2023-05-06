@@ -11,7 +11,6 @@ import {
 
 import Top from "components/layouts/Top";
 import type { Card, LessonBase } from "type";
-import Head from "next/head";
 
 interface LessonPageProps {
   lesson: LessonBase;

@@ -18,7 +18,7 @@ export default function Question({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const parseChoicesFromQuestion = (question: string) => {
-    const regex = /(?<=\s)[A-Za-z](?=\.)/g;
+    const regex = /(?<=\n)[A-Za-z](?=[.,])/g;
     if (question.match(regex)) {
       return Array.from(new Set(question.match(regex)));
     } else {
@@ -29,14 +29,13 @@ export default function Question({
   const choices = parseChoicesFromQuestion(ques.question);
 
   const setInputBorder = () => {
-    if (isViewResult) {
-      if (isAnswerCorrect(actual, ques.answer)) {
-        return "border-green-600";
-      } else {
-        return "border-red-600";
-      }
+    if (!isViewResult) {
+      return "border-transparent";
     }
-    return "border-gray-600";
+    if (isAnswerCorrect(actual, ques.answer)) {
+      return "border-green-600";
+    }
+    return "border-red-600";
   };
 
   const addToAnswer = (answerToAdd: string) => {
@@ -51,30 +50,33 @@ export default function Question({
   };
 
   return (
-    <div className="rounded-2xl bg-gray-300 dark:bg-gray-800 p-5" key={ques.id}>
+    <div className="rounded-2xl border-2 border-gray-300 p-5 dark:border-gray-700 dark:bg-slate-800">
       <p className="whitespace-pre-wrap">{index + 1 + ". " + ques.question}</p>
-      <div className="flex gap-2 pt-4">
-        {choices?.map((choice) => (
-          <button
-            className="grow rounded-lg border border-gray-600 p-2"
-            onClick={() => addToAnswer(choice)}>
-            {choice}
-          </button>
-        ))}
-      </div>
+      {!isViewResult && (
+        <div className="flex gap-2 pt-4">
+          {choices?.map((choice) => (
+            <button
+              className="grow rounded-lg bg-indigo-600 p-2 text-white shadow-sm dark:bg-indigo-700"
+              onClick={() => addToAnswer(choice)}>
+              {choice.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="">
         <input
           ref={inputRef}
           type="text"
+          value={actual}
           placeholder="Your answer..."
-          className={`border bg-gray-200 dark:bg-gray-900 ${setInputBorder()} mt-6 w-full rounded-xl px-4 py-3 focus:outline-none`}
+          className={`border bg-gray-300 dark:bg-gray-900 ${setInputBorder()} mt-6 w-full rounded-xl px-4 py-3 focus:outline-none`}
           onChange={(e) => updateAnswer(e.target.value, index)}
           disabled={isViewResult}
         />
       </div>
       {isViewResult && (
-        <p className="whitespace-pre-wrap pt-4 pl-3">
-          Actual answer: {ques.answer}
+        <p className="text-white whitespace-pre-wrap pl-3 mt-2 py-2 rounded-md bg-indigo-600 dark:bg-indigo-800">
+          Answer: {ques.answer}
         </p>
       )}
     </div>
