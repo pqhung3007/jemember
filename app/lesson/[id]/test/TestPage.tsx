@@ -1,14 +1,19 @@
 "use client";
 
-import { ArrowLeftIcon, BookmarkIcon } from "@heroicons/react/24/outline";
-import { BookmarkIcon as SolidBookmarkIcon } from "@heroicons/react/24/solid";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Question from "components/lesson/test/Question";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { Card } from "type";
 
 import { replaceAt } from "utils";
+import Grade from "./Grade";
+import MarkQuestion from "./MarkQuestion";
+import NextQuestion from "./NextQuestion";
+import PrevQuestion from "./PrevQuestion";
 import QuestionButton from "./QuestionButton";
+import Submit from "./Submit";
+import Timer from "./Timer";
 
 export default function TestPage({ cards }: { cards: Card[] }) {
   const [startTime, _] = useState(new Date());
@@ -16,7 +21,7 @@ export default function TestPage({ cards }: { cards: Card[] }) {
   const [answers, setAnswers] = useState(new Array(cards.length).fill(""));
   const [marked, setMarked] = useState(new Array(cards.length).fill(false));
 
-  const [remainingTime, setRemainingTime] = useState(testTimeInSeconds);
+  const [remainingTimeInSec, setRemainingTime] = useState(testTimeInSeconds);
   const [isDone, setIsDone] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -73,16 +78,7 @@ export default function TestPage({ cards }: { cards: Card[] }) {
         <ArrowLeftIcon className="h-6 w-6 " />
         Back
       </Link>
-      {isDone && (
-        <div
-          className={`rounded-xl ${
-            grading() * 2 > cards.length
-              ? "bg-green-400 text-green-900 dark:bg-green-700 dark:text-green-200"
-              : "bg-red-400 text-red-900 dark:bg-red-700 dark:text-red-200"
-          } p-6 text-center text-2xl font-semibold`}>
-          Grade: {grading() + "/" + cards.length}
-        </div>
-      )}
+      {isDone && <Grade grade={grading()} max={cards.length} />}
       <div className="gap-2 md:flex">
         <div className="flex h-full grow-[4] flex-col justify-between self-stretch">
           <Question
@@ -94,28 +90,19 @@ export default function TestPage({ cards }: { cards: Card[] }) {
             updateAnswer={updateAnswer}
           />
           <div className="flex justify-between gap-3 py-4">
-            <button
-              className="rounded-lg bg-gray-300 px-5 py-2 font-semibold text-gray-900 hover:bg-gray-500 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-              disabled={currentQuestion === 0}
-              onClick={prevQuestion}>
-              Previous
-            </button>
+            <PrevQuestion
+              isDisabled={currentQuestion <= 0}
+              onClick={prevQuestion}
+            />
             <div className="">
-              <button
-                className="mr-4 rounded-lg font-semibold text-gray-900 disabled:cursor-not-allowed dark:text-gray-200"
-                onClick={toggleMarkThisQuestion}>
-                {marked[currentQuestion] ? (
-                  <SolidBookmarkIcon className="inline h-6 w-6 text-yellow-500" />
-                ) : (
-                  <BookmarkIcon className="inline h-6 w-6" />
-                )}
-              </button>
-              <button
-                className="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-indigo-800 dark:hover:bg-indigo-700"
-                disabled={currentQuestion === cards.length - 1}
-                onClick={nextQuestion}>
-                Next
-              </button>
+              <MarkQuestion
+                onClick={toggleMarkThisQuestion}
+                isMarked={marked[currentQuestion]}
+              />
+              <NextQuestion
+                isDisabled={currentQuestion === cards.length - 1}
+                onClick={nextQuestion}
+              />
             </div>
           </div>
         </div>
@@ -132,18 +119,8 @@ export default function TestPage({ cards }: { cards: Card[] }) {
           </div>
           {!isDone && (
             <>
-              <button
-                className="my-3 w-full rounded-xl bg-indigo-600 p-3 font-semibold text-white hover:bg-indigo-600 dark:bg-indigo-800 dark:hover:bg-indigo-700"
-                onClick={() => setIsDone(true)}>
-                Submit
-              </button>
-              <div className="">
-                {"Remaining time: "}
-                <span className="font-bold">
-                  {Math.floor(remainingTime / 60)}:
-                  {Math.floor(remainingTime % 60)}
-                </span>
-              </div>
+              <Submit setDone={() => setIsDone(true)} />
+              <Timer remainingTimeInSec={remainingTimeInSec} />
             </>
           )}
         </div>

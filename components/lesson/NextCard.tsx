@@ -11,7 +11,7 @@ export default function NextCard({
 }) {
   return (
     <button
-      className="group flex grow justify-center rounded-xl bg-indigo-600 p-3 hover:border-gray-400 disabled:cursor-not-allowed disabled:bg-gray-600 dark:bg-indigo-700 dark:disabled:bg-gray-600"
+      className="group flex grow justify-center rounded-xl bg-indigo-600 p-3 hover:border-gray-400 disabled:cursor-not-allowed disabled:bg-gray-400 dark:bg-indigo-700 dark:disabled:bg-gray-600"
       onClick={next}
       aria-label="next"
       disabled={isDisabled}>
