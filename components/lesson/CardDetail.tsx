@@ -15,11 +15,11 @@ export default function CardDetail({
 }) {
   return (
     <div
-      className={`grid grid-cols-[repeat(12,1fr)] gap-6 rounded-xl bg-gray-300 dark:bg-gray-800 p-5 ${hidden && "hidden"
-        }`}
-    >
+      className={`grid grid-cols-[repeat(12,1fr)] gap-6 rounded-xl border border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800 ${
+        hidden && "hidden"
+      }`}>
       <div className="col-span-9 whitespace-pre-wrap pr-2">{card.question}</div>
-      <div className="col-span-2 whitespace-pre-wrap border-l border-gray-600 pr-2 pl-4">
+      <div className="col-span-2 whitespace-pre-wrap border-l border-gray-600 pl-4 pr-2">
         {card.answer}
       </div>
       <div className="col-span-1 cursor-pointer pl-5">

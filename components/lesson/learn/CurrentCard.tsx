@@ -67,7 +67,7 @@ export default function CurrentCard({
   };
 
   return (
-    <div className="flex flex-col justify-between rounded-3xl bg-gray-300 p-5 dark:bg-gray-700 max-sm:mt-12 xl:w-[90ch]">
+    <div className="flex flex-col justify-between rounded-3xl border border-gray-300 bg-gray-50 p-5 dark:border-gray-600 dark:bg-gray-800 max-sm:mt-12 xl:w-[90ch]">
       <div className="flex justify-end">
         {isMarked ? (
           <StarredIcon
@@ -91,7 +91,7 @@ export default function CurrentCard({
           ref={inputRef}
           disabled={isDone}
           onKeyDown={processKeyBinding}
-          className="w-full rounded-xl bg-gray-400 py-2 px-4 uppercase focus:outline-none disabled:cursor-not-allowed dark:bg-gray-800"
+          className="w-full rounded-xl border border-gray-300 bg-gray-200 px-4 py-2 uppercase focus:outline-none disabled:cursor-not-allowed dark:border-gray-600 dark:bg-gray-700"
         />
         <button
           className="w-full rounded-xl bg-green-400 px-8 py-3 dark:bg-green-700 md:w-auto"
@@ -99,24 +99,24 @@ export default function CurrentCard({
           Submit
         </button>
       </div>
-      <div className="grid gap-4 py-3 md:grid-cols-4">
+      <div className="grid gap-4 py-3 text-white md:grid-cols-4">
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl bg-indigo-700 py-3 dark:bg-indigo-800"
           onClick={() => chooseAnswer("A")}>
           A
         </button>
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl bg-indigo-700 py-3 dark:bg-indigo-800"
           onClick={() => chooseAnswer("B")}>
           B
         </button>
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl bg-indigo-700 py-3 dark:bg-indigo-800"
           onClick={() => chooseAnswer("C")}>
           C
         </button>
         <button
-          className="rounded-xl border-2 border-gray-600 py-3 hover:border-gray-500"
+          className="rounded-xl bg-indigo-700 py-3 dark:bg-indigo-800"
           onClick={() => chooseAnswer("D")}>
           D
         </button>
